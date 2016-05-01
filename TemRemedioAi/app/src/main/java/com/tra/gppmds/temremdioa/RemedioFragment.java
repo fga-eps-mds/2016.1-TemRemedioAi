@@ -1,8 +1,16 @@
 package com.tra.gppmds.temremdioa;
 
+import android.support.v4.app.Fragment;
+
 /**
  * Created by carolina on 01/05/16.
  */
-public class RemedioFragment {
+public class RemedioFragment extends Fragment{
+    public RemedioFragment(){
+    }
+
+    public static RemedioFragment newInstance(){
+        return new RemedioFragment();
+    }
 
 }
