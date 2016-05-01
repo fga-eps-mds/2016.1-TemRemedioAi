@@ -1,5 +1,5 @@
 //MODEL
-package com.tra.gppmds.temremdioa;
+package com.gppmds.tra.temremdioa.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

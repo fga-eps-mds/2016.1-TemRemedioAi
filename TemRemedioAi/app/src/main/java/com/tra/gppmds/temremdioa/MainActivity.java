@@ -25,6 +25,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     Context newContext;
+    public static TextView textView;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
@@ -180,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        textView.setText(newText);
         return false;
     }
 }
