@@ -1,5 +1,5 @@
 //MODEL
-package com.tra.gppmds.temremdioa;
+package com.gppmds.tra.temremdioa.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
@@ -22,6 +22,7 @@ public class UBS extends ParseObject {
     private String dsc_estrut_fisic_ambiencia;
     private String dsc_adap_defic_fisic_idosos;
     private String dsc_equipamentos;
+
 
     public Double getLatitude(){
         return getDouble("vlr_latitude");
