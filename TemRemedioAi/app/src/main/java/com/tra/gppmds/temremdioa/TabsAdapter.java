@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
  * Created by carolina on 01/05/16.
  */
 public class TabsAdapter extends FragmentPagerAdapter{
+
     public TabsAdapter(FragmentManager fm){
         super(fm);
     }
