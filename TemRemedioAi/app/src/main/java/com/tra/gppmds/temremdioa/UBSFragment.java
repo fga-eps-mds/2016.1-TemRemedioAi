@@ -23,7 +23,7 @@ public class UBSFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
-        RecyclerView recyclerView = (RecyclerView) ;
+//        RecyclerView recyclerView = (RecyclerView) ;
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }

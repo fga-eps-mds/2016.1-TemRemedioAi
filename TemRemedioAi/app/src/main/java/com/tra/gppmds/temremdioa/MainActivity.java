@@ -1,6 +1,7 @@
 package com.tra.gppmds.temremdioa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -95,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if (id == R.id.action_maps) {
+            Intent openMaps = new Intent(MainActivity.this, UbsMapsActivity.class);
+            startActivity(openMaps);
         }
 
         if (id == R.id.search) {
