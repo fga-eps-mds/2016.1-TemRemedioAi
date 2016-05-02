@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class UbsMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class UbsMapsActivity extends FragmentActivity implements OnMapReadyCallb
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        setLatitude(getIntent().getDoubleExtra("latitude", 0));
+        setLongitude(getIntent().getDoubleExtra("longitude", 0));
     }
 
 
@@ -42,8 +46,23 @@ public class UbsMapsActivity extends FragmentActivity implements OnMapReadyCallb
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng fga = new LatLng(-15.9893761,-48.0450676);
-        mMap.addMarker(new MarkerOptions().position(fga).title("Marker of FGA"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(fga, 15));
+        LatLng latLngValues = new LatLng(getLatitude(), getLongitude());
+        mMap.addMarker(new MarkerOptions().position(latLngValues).title("Marker of UBS"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 15));
     }
+
+    private double getLatitude() {
+        return this.latitude;
+    }
+    private double getLongitude() {
+        return this.longitude;
+    }
+
+    private void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+    private void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
 }
