@@ -28,12 +28,12 @@ public class UBSFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
+
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //pegar da dataBase
-        List<UBS> data = ParseInitializer
         //recyclerView.setAdapter(new CardListAdapter(this.getContext()));
         return rootView;
     }
