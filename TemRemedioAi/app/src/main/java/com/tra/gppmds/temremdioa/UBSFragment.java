@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gppmds.tra.temremdioa.model.UBS;
+
 import java.util.List;
 
 /**
@@ -31,10 +33,8 @@ public class UBSFragment extends Fragment{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //pegar da dataBase
-        List<UBS> data = ;
-        List<Remedio> data = ;
-
-        recyclerView.setAdapter(new CardListAdapter()this.getContext(), data);
+        List<UBS> data = ParseInitializer
+        //recyclerView.setAdapter(new CardListAdapter(this.getContext()));
         return rootView;
     }
 }
