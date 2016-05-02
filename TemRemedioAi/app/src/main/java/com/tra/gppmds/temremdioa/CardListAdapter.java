@@ -67,4 +67,5 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
     public int getItemCount() {
         return 10;
     }
+
 }

@@ -28,6 +28,7 @@ TemRemedioAi/.idea/runConfigurations.xml
 TemRemedioAi/.idea/scopes/scope_settings.xml
 TemRemedioAi/.idea/vcs.xml
 TemRemedioAi/*.iml
+TemRemedioAi/app/*.iml
 
 # OS-specific files
 TemRemedioAi/.DS_Store
