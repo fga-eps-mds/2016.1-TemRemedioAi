@@ -4,10 +4,6 @@ package com.gppmds.tra.temremdioa.model;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-/**
- * Created by Maria Carolina  on 27/04/2016.
- * Update  by Maria Carolina on 30/04/2016.
- */
 @ParseClassName("Medicamentos")
 public class Remedio extends ParseObject {
     public String getCodSes(){

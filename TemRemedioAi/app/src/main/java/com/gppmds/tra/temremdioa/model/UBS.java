@@ -4,10 +4,6 @@ package com.gppmds.tra.temremdioa.model;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-/**
- * Created by Maria Carolina  on 21/04/2016.
- * Update  by Maria Carolina on 30/04/2016.
- */
 @ParseClassName("UBS")
 public class UBS extends ParseObject {
     public Double getLatitude(){
