@@ -10,11 +10,6 @@ import com.parse.ParseObject;
  */
 @ParseClassName("Medicamentos")
 public class Remedio extends ParseObject {
-    private String cod_ses;
-    private String med_des;
-    private String unid;
-    private String nivel_at;
-
     public String getCodSes(){
         return getString("cod_ses");
     }
