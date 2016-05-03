@@ -10,20 +10,6 @@ import com.parse.ParseObject;
  */
 @ParseClassName("UBS")
 public class UBS extends ParseObject {
-    private Double vlr_latitude;
-    private Double vlr_longitude;
-    private Integer cod_munic;
-    private Integer cod_cnes;
-    private String nom_estab;
-    private String dsc_endereco;
-    private String dsc_bairro;
-    private String dsc_cidade;
-    private String dsc_telefone;
-    private String dsc_estrut_fisic_ambiencia;
-    private String dsc_adap_defic_fisic_idosos;
-    private String dsc_equipamentos;
-
-
     public Double getLatitude(){
         return getDouble("vlr_latitude");
     }
