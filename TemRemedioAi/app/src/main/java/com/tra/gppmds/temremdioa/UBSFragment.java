@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by carolina on 01/05/16.
+ * Updated by Guilherme on 02/05/2016.
  */
 public class UBSFragment extends Fragment{
     public UBSFragment(){
@@ -38,9 +39,8 @@ public class UBSFragment extends Fragment{
         dataUBS.add("Teste 2");
         dataUBS.add("Teste 3");
 
-//        recyclerView.setAdapter(new CardListAdapter(this.getContext(), dataUBS));
+        recyclerView.setAdapter(new CardListAdapter(this.getContext(), dataUBS));
 
-        //pegar da dataBase
         //recyclerView.setAdapter(new CardListAdapter(this.getContext()));
         return rootView;
     }
