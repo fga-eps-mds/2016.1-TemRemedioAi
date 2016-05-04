@@ -1,4 +1,4 @@
-package com.tra.gppmds.temremdioa;
+package com.gppmds.tra.temremdioa.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gppmds.tra.temremdioa.model.UBS;
+import com.tra.gppmds.temremdioa.R;
 
 import java.util.ArrayList;
 import java.util.List;
