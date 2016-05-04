@@ -38,6 +38,11 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         TextView editDscEndereco = (TextView) findViewById(R.id.textViewDscEndereco);
         editDscEndereco.setText(ubsSelecionada.getDscEndereco());
 
+        TextView editDscBairro = (TextView) findViewById(R.id.textViewDscBairro);
+        editDscBairro.setText(ubsSelecionada.getDscBairro());
+
+        TextView editDscTelefone = (TextView) findViewById(R.id.textViewDscTelefone);
+        editDscTelefone.setText(ubsSelecionada.getDscTelefone());
 
     }
 
