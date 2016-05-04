@@ -14,6 +14,7 @@ public class ParseInitializer extends android.app.Application {
     public void onCreate(){
         super.onCreate();
 
+        Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(UBS.class);
         ParseObject.registerSubclass(Remedio.class);
         // Establish connection with parse server
