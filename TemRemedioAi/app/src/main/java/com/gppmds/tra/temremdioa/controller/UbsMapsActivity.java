@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,13 +13,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
 public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private double latitude;
-    private double longitude;
+    private UBS ubsSelecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +30,16 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        setLatitude(getIntent().getDoubleExtra("latitude", 0));
-        setLongitude(getIntent().getDoubleExtra("longitude", 0));
-    }
+        ubsSelecionada = (UBS) getIntent().getSerializableExtra("UBS");
 
+        TextView editTitulo = (TextView) findViewById(R.id.textViewTitleUbs);
+        editTitulo.setText(ubsSelecionada.getNomEstab());
+
+        TextView editDscEndereco = (TextView) findViewById(R.id.textViewDscEndereco);
+        editDscEndereco.setText(ubsSelecionada.getDscEndereco());
+
+
+    }
 
     /**
      * Manipulates the map once available.
@@ -48,23 +55,9 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng latLngValues = new LatLng(getLatitude(), getLongitude());
+        LatLng latLngValues = new LatLng(ubsSelecionada.getLatitude(), ubsSelecionada.getLongitude());
         mMap.addMarker(new MarkerOptions().position(latLngValues).title("Marker of UBS"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 15));
-    }
-
-    private double getLatitude() {
-        return this.latitude;
-    }
-    private double getLongitude() {
-        return this.longitude;
-    }
-
-    private void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-    private void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 
 }
