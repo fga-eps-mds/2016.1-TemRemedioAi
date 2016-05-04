@@ -1,10 +1,9 @@
 package com.gppmds.tra.temremdioa.controller;
 
+import com.gppmds.tra.temremdioa.model.Remedio;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.Parse;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.parse.ParseObject;
 
 /**
  * Created by Vinicius on 18/04/2016.
@@ -15,6 +14,8 @@ public class ParseInitializer extends android.app.Application {
     public void onCreate(){
         super.onCreate();
 
+        ParseObject.registerSubclass(UBS.class);
+        ParseObject.registerSubclass(Remedio.class);
         // Establish connection with parse server
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("TemRemedioAi")
