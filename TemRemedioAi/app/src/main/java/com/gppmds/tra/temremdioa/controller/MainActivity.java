@@ -1,4 +1,4 @@
-package com.tra.gppmds.temremdioa;
+package com.gppmds.tra.temremdioa.controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,22 +10,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.gppmds.tra.temremdioa.controller.UBSController;
-import com.gppmds.tra.temremdioa.model.UBS;
+import com.tra.gppmds.temremdioa.R;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
@@ -91,8 +85,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         searchView.setOnQueryTextListener(this);
         searchView.setQueryHint("Pesquisar...");
 
-        UBSController ubs = new UBSController();
-        ubs.searchUBS(textView);
         return true;
     }
 

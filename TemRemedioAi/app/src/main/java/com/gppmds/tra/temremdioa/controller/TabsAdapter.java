@@ -1,9 +1,8 @@
-package com.tra.gppmds.temremdioa;
+package com.gppmds.tra.temremdioa.controller;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.widget.RecyclerView;
 
 /**
  * Created by carolina on 01/05/16.

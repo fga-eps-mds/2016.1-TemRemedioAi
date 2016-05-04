@@ -1,4 +1,4 @@
-package com.tra.gppmds.temremdioa;
+package com.gppmds.tra.temremdioa.controller;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.tra.gppmds.temremdioa.R;
 
 public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 

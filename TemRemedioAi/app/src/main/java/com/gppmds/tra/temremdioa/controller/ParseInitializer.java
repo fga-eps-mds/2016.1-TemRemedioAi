@@ -1,4 +1,4 @@
-package com.tra.gppmds.temremdioa;
+package com.gppmds.tra.temremdioa.controller;
 
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.Parse;
