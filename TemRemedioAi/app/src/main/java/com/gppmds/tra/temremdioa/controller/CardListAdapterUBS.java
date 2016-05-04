@@ -2,6 +2,7 @@ package com.gppmds.tra.temremdioa.controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +21,6 @@ import java.util.List;
 public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.ViewHolder>{
     private List<UBS> dataUBS;
     private Context contextOpen;
-//    private List<Remedio>;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView title;
@@ -36,8 +36,9 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
             Intent intent = new Intent(contextOpen, UbsMapsActivity.class);
             UBS selectItem = dataUBS.get(this.getAdapterPosition());
 
-            intent.putExtra("latitude", selectItem.getLatitude());
-            intent.putExtra("longitude", selectItem.getLongitude());
+            Bundle param = new Bundle();
+            param.putSerializable("UBS", selectItem);
+            intent.putExtra("UBS", selectItem);
             contextOpen.startActivity(intent);
         }
     }
@@ -63,7 +64,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
 
     @Override
     public int getItemCount() {
-        return 30;
+        return 150;
     }
 
 }
