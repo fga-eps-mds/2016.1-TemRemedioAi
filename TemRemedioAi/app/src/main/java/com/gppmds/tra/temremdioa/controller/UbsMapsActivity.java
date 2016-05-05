@@ -12,7 +12,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tra.gppmds.temremdioa.R;
 
-public class UBSMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 //    private UBS ubsSelecionada;
