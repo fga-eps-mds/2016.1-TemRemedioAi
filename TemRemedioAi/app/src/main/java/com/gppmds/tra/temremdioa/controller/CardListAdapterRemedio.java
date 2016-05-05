@@ -1,13 +1,12 @@
 package com.gppmds.tra.temremdioa.controller;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.model.Remedio;
@@ -33,10 +32,13 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(contextOpen, UbsMapsActivity.class);
-            Remedio selectItem = dataRemedio.get(this.getAdapterPosition());
-
-            contextOpen.startActivity(intent);
+            LinearLayout.LayoutParams lp;
+            if (title.getHeight() == 300) {
+                lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            } else {
+                lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 300, 1f);
+            }
+            title.setLayoutParams(lp);
         }
     }
 
