@@ -1,25 +1,23 @@
 package com.gppmds.tra.temremdioa.controller;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
-public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class UBSMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private UBS ubsSelecionada;
+//    private UBS ubsSelecionada;
+    private Double latitude;
+    private Double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +28,26 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        ubsSelecionada = (UBS) getIntent().getSerializableExtra("UBS");
+//        ubsSelecionada = (UBS) getIntent().getSerializableExtra("UBS");
+        String nomeUBS = getIntent().getStringExtra("nomeUBS");
+        String descEnderecoUBS = getIntent().getStringExtra("descEnderecoUBS");
+        String descBairroUBS = getIntent().getStringExtra("descBairroUBS");
+        String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
+
+        latitude = getIntent().getDoubleExtra("latitude", 0);
+        longitude = getIntent().getDoubleExtra("longitude", 0);
 
         TextView editTitulo = (TextView) findViewById(R.id.textViewTitleUbs);
-        editTitulo.setText(ubsSelecionada.getNomEstab());
+        editTitulo.setText(nomeUBS);
 
         TextView editDscEndereco = (TextView) findViewById(R.id.textViewDscEndereco);
-        editDscEndereco.setText(ubsSelecionada.getDscEndereco());
+        editDscEndereco.setText(descEnderecoUBS);
 
         TextView editDscBairro = (TextView) findViewById(R.id.textViewDscBairro);
-        editDscBairro.setText(ubsSelecionada.getDscBairro());
+        editDscBairro.setText(descBairroUBS);
 
         TextView editDscTelefone = (TextView) findViewById(R.id.textViewDscTelefone);
-        editDscTelefone.setText(ubsSelecionada.getDscTelefone());
-
+        editDscTelefone.setText(telefoneUBS);
     }
 
     /**
@@ -60,7 +64,8 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng latLngValues = new LatLng(ubsSelecionada.getLatitude(), ubsSelecionada.getLongitude());
+//        LatLng latLngValues = new LatLng(ubsSelecionada.getLatitude(), ubsSelecionada.getLongitude());
+        LatLng latLngValues = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLngValues).title("Marker of UBS"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 15));
     }

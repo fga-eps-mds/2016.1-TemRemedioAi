@@ -2,7 +2,6 @@ package com.gppmds.tra.temremdioa.controller;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,12 +32,17 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(contextOpen, UbsMapsActivity.class);
+            Intent intent = new Intent(contextOpen, UBSMapsActivity.class);
             UBS selectItem = dataUBS.get(this.getAdapterPosition());
 
-            Bundle param = new Bundle();
-            param.putSerializable("UBS", selectItem);
-            intent.putExtra("UBS", selectItem);
+//            intent.putExtra("UBS", selectItem);
+            intent.putExtra("latitude", selectItem.getLatitude());
+            intent.putExtra("longitude", selectItem.getLongitude());
+            intent.putExtra("nomeUBS", selectItem.getNomEstab());
+            intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
+            intent.putExtra("descBairroUBS", selectItem.getDscBairro());
+            intent.putExtra("telefoneUBS", selectItem.getDscTelefone());
+
             contextOpen.startActivity(intent);
         }
     }
