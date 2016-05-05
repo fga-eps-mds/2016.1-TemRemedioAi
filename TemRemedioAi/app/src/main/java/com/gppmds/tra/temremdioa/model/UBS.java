@@ -4,14 +4,12 @@ package com.gppmds.tra.temremdioa.model;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-import java.io.Serializable;
-
 /**
  * Created by Maria Carolina  on 21/04/2016.
  * Update  by Maria Carolina on 30/04/2016.
  */
 @ParseClassName("UBS")
-public class UBS extends ParseObject implements Serializable {
+public class UBS extends ParseObject {
     public Double getLatitude(){
         return getDouble("vlr_latitude");
     }

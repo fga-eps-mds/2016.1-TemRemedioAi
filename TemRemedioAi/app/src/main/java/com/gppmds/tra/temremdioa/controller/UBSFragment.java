@@ -14,7 +14,6 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,11 +39,6 @@ public class UBSFragment extends Fragment{
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        List<String> dataUBS = new ArrayList<String>();
-        dataUBS.add("Teste 1");
-        dataUBS.add("Teste 2");
-        dataUBS.add("Teste 3");
 
         ParseQuery<UBS> queryUBS = ParseQuery.getQuery(UBS.class);
         queryUBS.findInBackground(new FindCallback<UBS>() {
