@@ -43,7 +43,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.gppmds.tra.temremdioa.controller.UBSMapsActivity"
+            android:name="com.gppmds.tra.temremdioa.controller.UbsMapsActivity"
             android:label="@string/title_activity_ubs_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
