@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
         if (id == R.id.action_maps) {
-            Intent openMaps = new Intent(MainActivity.this, UbsMapsActivity.class);
+            Intent openMaps = new Intent(MainActivity.this, UBSMapsActivity.class);
             // FGA
 //            openMaps.putExtra("latitude", -15.9893761);
 //            openMaps.putExtra("longitude", -48.0450676);
