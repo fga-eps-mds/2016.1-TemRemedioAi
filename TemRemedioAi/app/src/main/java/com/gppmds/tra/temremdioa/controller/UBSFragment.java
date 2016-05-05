@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gppmds.tra.temremdioa.model.UBS;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
 
 import java.util.ArrayList;
@@ -18,6 +22,9 @@ import java.util.List;
  * Updated by Guilherme on 02/05/2016.
  */
 public class UBSFragment extends Fragment{
+
+    public RecyclerView recyclerView;
+
     public UBSFragment(){
     }
 
@@ -30,7 +37,7 @@ public class UBSFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -39,9 +46,18 @@ public class UBSFragment extends Fragment{
         dataUBS.add("Teste 2");
         dataUBS.add("Teste 3");
 
-        recyclerView.setAdapter(new CardListAdapter(this.getContext(), dataUBS));
+        ParseQuery<UBS> queryUBS = ParseQuery.getQuery(UBS.class);
+        queryUBS.findInBackground(new FindCallback<UBS>() {
+            @Override
+            public void done(List<UBS> list, ParseException e) {
+//                if (e == null) {
+                    recyclerView.setAdapter(new CardListAdapterUBS(UBSFragment.this.getContext(), list));
+//                } else {
+//                    Log.d("Error: ", e.getMessage());
+//                }
+            }
+        });
 
-        //recyclerView.setAdapter(new CardListAdapter(this.getContext()));
         return rootView;
     }
 }

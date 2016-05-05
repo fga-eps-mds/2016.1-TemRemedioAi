@@ -3,13 +3,14 @@ package com.gppmds.tra.temremdioa.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
@@ -17,10 +18,9 @@ import java.util.List;
 /**
  * Created by carolina on 01/05/16.
  */
-public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHolder>{
-    private List<String> dataUBS;
+public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.ViewHolder>{
+    private List<UBS> dataUBS;
     private Context contextOpen;
-//    private List<Remedio>;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView title;
@@ -34,22 +34,22 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(contextOpen, UbsMapsActivity.class);
-            String selectItem = dataUBS.get(this.getAdapterPosition());
+            UBS selectItem = dataUBS.get(this.getAdapterPosition());
 
-            Bundle args = new Bundle();
-//            args.putSerializable("", selectItem);
-            intent.putExtra("", 1);
+            Bundle param = new Bundle();
+            param.putSerializable("UBS", selectItem);
+            intent.putExtra("UBS", selectItem);
             contextOpen.startActivity(intent);
         }
     }
 
-    public CardListAdapter(Context context, List<String> dataUBS) {
+    public CardListAdapterUBS(Context context, List<UBS> dataUBS) {
         this.contextOpen = context;
         this.dataUBS = dataUBS;
     }
 
     @Override
-    public CardListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CardListAdapterUBS.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         CardView view = (CardView) inflater.inflate(R.layout.card_list_item, parent, false);
 
@@ -58,13 +58,13 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String rowData = this.dataUBS.get(position);
-        holder.title.setText(rowData);
+        UBS rowData = this.dataUBS.get(position);
+        holder.title.setText(rowData.getNomEstab());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 150;
     }
 
 }
