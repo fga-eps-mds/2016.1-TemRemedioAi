@@ -16,15 +16,9 @@
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#CD0000"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-        </android.support.v7.widget.Toolbar>
+        <include
+            android:id="@+id/id_toolbar"
+            layout="@layout/app_toolbar" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
