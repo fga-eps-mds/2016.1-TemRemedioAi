@@ -3,6 +3,7 @@ package com.gppmds.tra.temremdioa.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 /**
  * Created by Maria Carolina  on 21/04/2016.
@@ -64,6 +65,10 @@ public class UBS extends ParseObject {
 
     public void setNivelAt(String nivel_at){
         put("nivel_at", nivel_at);
+    }
+
+    public static ParseQuery<UBS> getQuery() {
+        return ParseQuery.getQuery(UBS.class);
     }
 
     @Override

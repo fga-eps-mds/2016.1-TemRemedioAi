@@ -3,6 +3,7 @@ package com.gppmds.tra.temremdioa.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 @ParseClassName("Medicamentos")
 public class Remedio extends ParseObject {
@@ -37,6 +38,11 @@ public class Remedio extends ParseObject {
     public void setNivelAt(String nivel_at){
         put("nivel_at", nivel_at);
     }
+
+    public static ParseQuery<Remedio> getQuery() {
+        return ParseQuery.getQuery(Remedio.class);
+    }
+
 
     @Override
     public String toString() {
