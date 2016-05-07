@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    /*
     @Override
     public void onStart() {
         super.onStart();
@@ -129,5 +129,5 @@ public class MainActivity extends AppCompatActivity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
-    }
+    }*/
 }
