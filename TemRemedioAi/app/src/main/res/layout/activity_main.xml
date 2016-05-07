@@ -12,7 +12,7 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#CD0000"
+        android:background="#e6312e"
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -24,7 +24,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#CD0000"
+            android:background="#e6312e"
             android:fillViewport="false" />
 
     </android.support.design.widget.AppBarLayout>
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="#CD0000"
+        app:backgroundTint="#e6312e"
         android:src="@drawable/ic_edit"
         android:scaleType="center" />
 
