@@ -58,7 +58,7 @@ public class UBS extends ParseObject {
         put("dsc_cidade", dsc_cidade);
     }
 
-    public String getNIvelAt(){
+    public String getNivelAt(){
         return getString("nivel_at");
     }
 
