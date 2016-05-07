@@ -68,7 +68,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
 
     @Override
     public int getItemCount() {
-        return 150;
+        return 100;
     }
 
 }
