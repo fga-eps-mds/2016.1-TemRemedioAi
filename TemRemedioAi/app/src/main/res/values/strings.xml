@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_maps">Maps</string>
     <string name="title_activity_ubs_maps">Tem Remédio Aí</string>
+    <string name="title_activity_ubs_maps">Localização</string>
     <string name="title_activity_maps_activityteste">Map</string>
     <string name="testeTexto">testeTexto</string>
 </resources>
