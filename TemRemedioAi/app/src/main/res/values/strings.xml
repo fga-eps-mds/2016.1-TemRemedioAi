@@ -2,9 +2,8 @@
     <string name="app_name">TemRemédioAí</string>
     <string name="action_settings">Settings</string>
     <string name="action_maps">Maps</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="search">Search</string>
     <string name="title_activity_ubs_maps">Localização</string>
     <string name="title_activity_maps_activityteste">Map</string>
     <string name="testeTexto">testeTexto</string>
+    <string name="search">Search</string>
 </resources>
