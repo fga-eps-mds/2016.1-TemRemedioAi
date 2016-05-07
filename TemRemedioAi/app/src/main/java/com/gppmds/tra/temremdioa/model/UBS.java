@@ -26,22 +26,6 @@ public class UBS extends ParseObject {
         put("vlr_longitude", vlr_longitude);
     }
 
-    public Integer getCodMunic(){
-        return getInt("cod_munic");
-    }
-
-    public void setCodMunic(Integer cod_munic){
-        put("cod_munic", cod_munic);
-    }
-
-    public Integer getCodCnes(){
-        return getInt("cod_cnes");
-    }
-
-    public void setCod_cnes(Integer cod_cnes){
-        put("cod_cnes", cod_cnes);
-    }
-
     public String getNomEstab(){
         return getString("nom_estab");
     }
@@ -74,44 +58,12 @@ public class UBS extends ParseObject {
         put("dsc_cidade", dsc_cidade);
     }
 
-    public String getDscTelefone(){
-        return getString("dsc_telefone");
+    public String getNIvelAt(){
+        return getString("nivel_at");
     }
 
-    public void setDscTelefone(String dsc_telefone){
-        put("dsc_telefone", dsc_telefone);
-    }
-
-    public String getDscEstrutFisicAmbiencia(){
-        return getString("dsc_estrut_fisic_ambiencia");
-    }
-
-    public void setDscEstrutFisicAmbiencia(String dsc_estrut_fisic_ambiencia){
-        put("dsc_estrut_fisic_ambiencia", dsc_estrut_fisic_ambiencia);
-    }
-
-    public String getDscAdapDeficFisicIdosos(){
-        return getString("dsc_adap_defic_fisic_idosos");
-    }
-
-    public void setDscAdapDeficFisicIdosos(String dsc_adap_defic_fisic_idosos){
-        put("dsc_adap_defic_fisic_idosos", dsc_adap_defic_fisic_idosos);
-    }
-
-    public String getDscEquipamentos(){
-        return getString("dsc_equipamentos");
-    }
-
-    public void setDscEquipamentos(String dsc_equipamentos){
-        put("dsc_equipamentos", dsc_equipamentos);
-    }
-
-    public String getDscMedicamentos(){
-        return getString("dsc_medicamentos");
-    }
-
-    public void setDscMedicamentos(String dsc_medicamentos){
-        put("dsc_medicamentos", dsc_medicamentos);
+    public void setNivelAt(String nivel_at){
+        put("nivel_at", nivel_at);
     }
 
     @Override
