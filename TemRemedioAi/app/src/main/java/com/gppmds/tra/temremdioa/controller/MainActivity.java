@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Toast.makeText(this, R.string.action_settings, Toast.LENGTH_LONG).show();
+            case R.id.action_about:
+                Toast.makeText(this, R.string.action_about, Toast.LENGTH_LONG).show();
         }
 //        if (id == R.id.action_maps) {
 //            Intent openMaps = new Intent(MainActivity.this, UbsMapsActivity.clas);
