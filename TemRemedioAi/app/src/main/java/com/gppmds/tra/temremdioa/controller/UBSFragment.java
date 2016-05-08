@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gppmds.tra.temremdioa.model.UBS;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
@@ -40,17 +39,17 @@ public class UBSFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ParseQuery<UBS> queryUBS = ParseQuery.getQuery(UBS.class);
-        queryUBS.findInBackground(new FindCallback<UBS>() {
-            @Override
-            public void done(List<UBS> list, ParseException e) {
-//                if (e == null) {
-                    recyclerView.setAdapter(new CardListAdapterUBS(UBSFragment.this.getContext(), list));
-//                } else {
-//                    Log.d("Error: ", e.getMessage());
-//                }
-            }
-        });
+        ParseQuery<UBS> queryUBS = UBS.getQuery();
+        queryUBS.orderByAscending(UBS.getTitleNomEstab());
+        List<UBS> ubss;
+        try {
+            ubss = queryUBS.find();
+//            UBS.pinAllInBackground(ubss);
+
+            recyclerView.setAdapter(new CardListAdapterUBS(UBSFragment.this.getContext(), ubss));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return rootView;
     }
