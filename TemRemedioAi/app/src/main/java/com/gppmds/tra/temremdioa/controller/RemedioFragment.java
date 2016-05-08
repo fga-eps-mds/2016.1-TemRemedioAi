@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.model.Remedio;
 import com.parse.FindCallback;
@@ -32,6 +33,7 @@ public class RemedioFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_remedio, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
@@ -48,4 +50,5 @@ public class RemedioFragment extends Fragment{
         });
         return rootView;
     }
+
 }
