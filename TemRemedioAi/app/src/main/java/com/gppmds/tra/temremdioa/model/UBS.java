@@ -3,6 +3,7 @@ package com.gppmds.tra.temremdioa.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 /**
  * Created by Maria Carolina  on 21/04/2016.
@@ -11,63 +12,82 @@ import com.parse.ParseObject;
 @ParseClassName("UBS")
 public class UBS extends ParseObject {
     public Double getLatitude(){
-        return getDouble("vlr_latitude");
+        return getDouble(getTitleLatitude());
     }
-
     public void setLatitude(Double vlr_latitude){
-        put("vlr_latitude", vlr_latitude);
+        put(getTitleLatitude(), vlr_latitude);
     }
 
     public Double getLongitude(){
-        return getDouble("vlr_longitude");
+        return getDouble(getTitleLongitude());
     }
-
     public void setLongitude(Double vlr_longitude){
-        put("vlr_longitude", vlr_longitude);
+        put(getTitleLongitude(), vlr_longitude);
     }
 
     public String getNomEstab(){
-        return getString("nom_estab");
+        return getString(getTitleNomEstab());
     }
-
     public void setNomEstab(String name){
-        put("nom_estab", name);
+        put(getTitleNomEstab(), name);
     }
 
     public String getDscEndereco(){
-        return getString("dsc_endereco");
+        return getString(getTitleDscEndereco());
     }
-
     public void setDscEndereco(String dsc_endereco){
-        put("dsc_endereco", dsc_endereco);
+        put(getTitleDscEndereco(), dsc_endereco);
     }
 
     public String getDscBairro(){
-        return getString("dsc_bairro");
+        return getString(getTitleDscBairro());
     }
-
     public void setDscBairro(String dsc_bairro){
-        put("dsc_bairro", dsc_bairro);
+        put(getTitleDscBairro(), dsc_bairro);
     }
 
     public String getDscCidade(){
-        return getString("dsc_cidade");
+        return getString(getTitleDscCidade());
     }
-
     public void setDscCidade(String dsc_cidade){
-        put("dsc_cidade", dsc_cidade);
+        put(getTitleDscCidade(), dsc_cidade);
     }
 
     public String getNivelAt(){
-        return getString("nivel_at");
+        return getString(getTitleNivelAt());
+    }
+    public void setNivelAt(String nivel_at){
+        put(getTitleNivelAt(), nivel_at);
     }
 
-    public void setNivelAt(String nivel_at){
-        put("nivel_at", nivel_at);
+    public static ParseQuery<UBS> getQuery() {
+        return ParseQuery.getQuery(UBS.class);
+    }
+
+    public static String getTitleLongitude(){
+        return "vlr_longitude";
+    }
+    public static String getTitleLatitude(){
+        return "vlr_latitude";
+    }
+    public static String getTitleNomEstab(){
+        return "nom_estab";
+    }
+    public static String getTitleDscEndereco(){
+        return "dsc_endereco";
+    }
+    public static String getTitleDscBairro(){
+        return "dsc_bairro";
+    }
+    public static String getTitleDscCidade(){
+        return "dsc_cidade";
+    }
+    public static String getTitleNivelAt(){
+        return "nivel_at";
     }
 
     @Override
     public String toString(){
-        return getString("nom_estab");
+        return getString(getTitleNomEstab());
     }
 }
