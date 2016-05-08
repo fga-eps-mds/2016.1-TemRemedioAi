@@ -41,7 +41,6 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
             intent.putExtra("nomeUBS", selectItem.getNomEstab());
             intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
             intent.putExtra("descBairroUBS", selectItem.getDscBairro());
-            intent.putExtra("telefoneUBS", selectItem.getDscTelefone());
 
             contextOpen.startActivity(intent);
         }
