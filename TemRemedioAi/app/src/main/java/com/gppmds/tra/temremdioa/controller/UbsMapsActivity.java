@@ -28,11 +28,11 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-//        ubsSelecionada = (UBS) getIntent().getSerializableExtra("UBS");
+        // ubsSelecionada = (UBS) getIntent().getSerializableExtra("UBS");
         String nomeUBS = getIntent().getStringExtra("nomeUBS");
         String descEnderecoUBS = getIntent().getStringExtra("descEnderecoUBS");
         String descBairroUBS = getIntent().getStringExtra("descBairroUBS");
-        String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
+        // String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
 
         latitude = getIntent().getDoubleExtra("latitude", 0);
         longitude = getIntent().getDoubleExtra("longitude", 0);
