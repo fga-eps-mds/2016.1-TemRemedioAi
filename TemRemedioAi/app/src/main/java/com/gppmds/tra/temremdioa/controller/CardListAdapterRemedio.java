@@ -21,24 +21,33 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
     private List<Remedio> dataRemedio;
     private Context contextOpen;
 
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView title;
+        public TextView textViewNomeMedicamento;
+        public TextView textViewTipoMedicamento;
+        public TextView textViewQuantidadePorcao;
+        public TextView textViewNivelAtMedicamento;
+        public CardView carViewRemedio;
 
         public ViewHolder(CardView card) {
             super(card);
-            this.title = (TextView) card.findViewById(R.id.title);
+            this.textViewNomeMedicamento = (TextView) card.findViewById(R.id.textViewNomeMedicamento);
+            this.textViewTipoMedicamento = (TextView) card.findViewById(R.id.textViewTipoMedicamento);
+            this.textViewQuantidadePorcao = (TextView) card.findViewById(R.id.textViewQuantidadePorcao);
+            this.textViewNivelAtMedicamento = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
+            this.carViewRemedio = card;
             card.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            LinearLayout.LayoutParams lp;
-            if (title.getHeight() == 300) {
+           LinearLayout.LayoutParams lp;
+            if (carViewRemedio.getHeight() == 250) {
                 lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             } else {
-                lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 300, 1f);
+                lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 250, 1f);
             }
-            title.setLayoutParams(lp);
+            carViewRemedio.setLayoutParams(lp);
         }
     }
 
@@ -50,7 +59,7 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
     @Override
     public CardListAdapterRemedio.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        CardView view = (CardView) inflater.inflate(R.layout.card_list_item, parent, false);
+        CardView view = (CardView) inflater.inflate(R.layout.card_list_remedio, parent, false);
 
         return new ViewHolder(view);
     }
@@ -58,12 +67,17 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Remedio rowData = this.dataRemedio.get(position);
-        holder.title.setText(rowData.getMedDes());
+        holder.textViewNomeMedicamento.setText(rowData.getMedDes());
+        holder.textViewTipoMedicamento.setText(rowData.getUnidadeFormated());
+//        holder.textViewQuantidadePorcao.setText(rowData.getUnid());
+        holder.textViewNivelAtMedicamento.setText(rowData.getNivelAtencaoFormated());
+
+//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 50, 1f);
+//        holder.carViewRemedio.setLayoutParams(lp);
     }
 
     @Override
     public int getItemCount() {
         return 30;
     }
-
 }
