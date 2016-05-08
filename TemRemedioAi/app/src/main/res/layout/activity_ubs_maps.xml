@@ -1,108 +1,98 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:layout_alignParentStart="true"
+            tools:context="com.gppmds.tra.temremdioa.controller.UbsMapsActivity" />
+
+
+        <LinearLayout
+            android:id="@+id/viewB"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textViewTitleUbs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="40dp"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="22dp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignStart="@+id/textViewTitleUbs"
+                    android:layout_centerVertical="true"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:layout_row="0"
+                    android:layout_rowSpan="2"
+                    android:layout_weight="0.05"
+                    android:background="@drawable/ic_place" />
+
+                <TextView
+                    android:id="@+id/textViewDscEndereco"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_column="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_row="0"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/textViewDscBairro"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDscEndereco"
+                    android:layout_column="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_row="0"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:scaleType="center"
+        android:src="@drawable/ic_directions"
+        app:backgroundTint="#3d6aff"
+        app:layout_anchor="@id/map"
+        app:layout_anchorGravity="bottom|right|end" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textViewTitleUbs"
-            android:textAlignment="center"
-            android:layout_marginTop="10dp"
-            android:textSize="25dp" />
-            <!--android:text="Nome da UBS"-->
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3.35" />
-
-        <!--android:text="DF - 040"-->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Endereço:"
-            android:id="@+id/textViewTitleEndereco"
-            android:layout_marginLeft="10dp"
-            android:textStyle="italic"
-            android:textSize="20dp" />
-
-        <!--android:text="Bairro"-->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textViewDscEndereco"
-            android:layout_marginLeft="10dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textViewDscBairro"
-            android:layout_marginLeft="10dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textViewCidade"
-            android:layout_marginLeft="10dp" />
-            <!--android:text="Cidade"-->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Telefone:"
-            android:id="@+id/textViewTitleTelefone"
-            android:layout_marginLeft="10dp"
-            android:singleLine="false"
-            android:textStyle="italic"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textViewDscTelefone"
-            android:layout_marginLeft="10dp" />
-            <!--android:text="num telefone"-->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Adaptado"
-            android:id="@+id/textViewTitleAdaptado"
-            android:layout_marginLeft="10dp"
-            android:textStyle="italic"
-            android:textSize="20dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50" />
-
-</LinearLayout>
-
-<fragment
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.MapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.gppmds.tra.temremdioa.controller.UbsMapsActivity" />
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

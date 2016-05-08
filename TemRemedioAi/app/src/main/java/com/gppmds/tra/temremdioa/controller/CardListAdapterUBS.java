@@ -34,14 +34,12 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
         public void onClick(View view) {
             Intent intent = new Intent(contextOpen, UbsMapsActivity.class);
             UBS selectItem = dataUBS.get(this.getAdapterPosition());
-
 //            intent.putExtra("UBS", selectItem);
             intent.putExtra("latitude", selectItem.getLatitude());
             intent.putExtra("longitude", selectItem.getLongitude());
             intent.putExtra("nomeUBS", selectItem.getNomEstab());
             intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
             intent.putExtra("descBairroUBS", selectItem.getDscBairro());
-
             contextOpen.startActivity(intent);
         }
     }
