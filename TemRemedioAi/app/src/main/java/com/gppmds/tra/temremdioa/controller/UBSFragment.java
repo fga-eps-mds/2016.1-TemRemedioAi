@@ -43,6 +43,7 @@ public class UBSFragment extends Fragment{
         queryUBS.orderByAscending(UBS.getTitleNomEstab());
         List<UBS> ubss;
         try {
+
             ubss = queryUBS.find();
 //            UBS.pinAllInBackground(ubss);
 
