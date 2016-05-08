@@ -14,6 +14,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,8 @@ public class RemedioFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        List<Remedio> newsRemedio = new ArrayList<Remedio>();
+
         View rootView = inflater.inflate(R.layout.fragment_remedio, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
@@ -43,13 +46,23 @@ public class RemedioFragment extends Fragment{
         List<Remedio> remedios;
         try {
             remedios = queryRemedio.find();
-//            Remedio.pinAllInBackground(remedios);
+            if (MainActivity.searchQuery != null) {
+                for (int i = 0; i < remedios.size(); i++) {
+                    if (remedios.get(i).getMedDes().toLowerCase().startsWith(MainActivity.searchQuery.toLowerCase())) {
+                        newsRemedio.add(remedios.get(i));
+                    }
+                }
+                recyclerView.setAdapter(new CardListAdapterRemedio(RemedioFragment.this.getContext(), newsRemedio));
+            }
+            else {
+                recyclerView.setAdapter(new CardListAdapterRemedio(RemedioFragment.this.getContext(), remedios));
+            }
 
-            recyclerView.setAdapter(new CardListAdapterRemedio(RemedioFragment.this.getContext(), remedios));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
+//            Remedio.pinAllInBackground(remedios);
         return rootView;
     }
 

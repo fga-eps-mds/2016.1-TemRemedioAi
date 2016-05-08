@@ -78,6 +78,6 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
 
     @Override
     public int getItemCount() {
-        return 30;
+        return dataRemedio.size();
     }
 }
