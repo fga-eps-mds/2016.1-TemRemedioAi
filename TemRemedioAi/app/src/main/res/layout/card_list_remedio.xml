@@ -30,34 +30,27 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="top">
 
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/imageView2"
-                        android:layout_gravity="left" />
-
                     <TextView
-                        android:layout_width="250dp"
+                        android:layout_width="285dp"
                         android:layout_height="match_parent"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:id="@+id/textViewNomeMedicamento"
                         android:textAlignment="center"
-                        android:layout_marginTop="5dp"
                         android:textSize="18dp"
                         android:textStyle="bold"
-                        android:text="hahahahahahaha"
+                        android:text="nome medicamento"
+                        android:editable="false"
                         android:padding="10dp" />
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:id="@+id/imageView"
-                        android:layout_marginRight="5dp"
                         android:layout_gravity="right"
                         android:clickable="true"
                         android:background="@drawable/ic_keyboard_arrow_down" />
@@ -67,42 +60,45 @@
         </TableLayout>
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/expandable"
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"        >
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="138dp">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:weightSum="1">
 
                 <LinearLayout
                     android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_height="117dp"
                     android:orientation="vertical"
                     android:weightSum="1"
                     android:layout_gravity="left"
                     android:layout_marginLeft="25dp">
 
                     <ImageView
-                        android:layout_width="match_parent"
+                        android:layout_width="103dp"
                         android:layout_height="match_parent"
                         android:id="@+id/imageView3"
                         android:background="@android:drawable/ic_menu_recent_history" />
                 </LinearLayout>
-
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="25dp">
+                    android:layout_width="250dp"
+                    android:layout_height="115dp"
+                    android:baselineAligned="false"
+                    android:weightSum="1">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -135,27 +131,19 @@
                         android:text="300  mg" />
 
                 </LinearLayout>
-
             </LinearLayout>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="bottom">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Selecionar UBS"
-                    android:id="@+id/button"
-                    android:layout_gravity="right" />
-            </LinearLayout>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Selecionar UBS"
+                android:id="@+id/button" />
         </TableRow>
+
     </LinearLayout>
 </android.support.v7.widget.CardView>
