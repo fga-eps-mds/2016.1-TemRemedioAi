@@ -18,14 +18,15 @@ import java.util.List;
  * Created by carolina on 04/05/16.
  */
 public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemedio> implements Filterable{
-    private List<Remedio> dataRemedio;
-    private List<Remedio> filterDataRemedio;
-    private Context contextOpen;
-    //FilterSearchs filter;
+    List<Remedio> dataRemedio;
+    List<Remedio> filterDataRemedio;
+    Context contextOpen;
+    FilterSearchsRemedio filter;
 
     public CardListAdapterRemedio(Context context, List<Remedio> dataRemedio) {
         this.contextOpen = context;
         this.dataRemedio = dataRemedio;
+        this.filterDataRemedio = dataRemedio;
     }
 
     @Override
@@ -46,12 +47,11 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
 
     @Override
     public Filter getFilter() {
-//        if(filter == null) {
-//            filter = new CustomFilter( filterDataRemedio,this );
-//        }
-//
-//        return filter;
-        return null;
+        if(filter == null) {
+            filter = new FilterSearchsRemedio( filterDataRemedio , this );
+        }
+
+        return filter;
     }
 
     @Override

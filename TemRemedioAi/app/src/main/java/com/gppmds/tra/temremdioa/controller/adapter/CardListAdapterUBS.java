@@ -24,7 +24,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
     private List<UBS> dataUBS;
     private List<UBS> filterDataUBS;
     private Context contextOpen;
-    // FilterSearchs filter;
+    // FilterSearchsRemedio filter;
 
     @Override
     public Filter getFilter() {

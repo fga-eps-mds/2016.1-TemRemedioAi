@@ -19,9 +19,10 @@ import android.widget.Toast;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.gppmds.tra.temremdioa.controller.adapter.TabsAdapter;
+import com.gppmds.tra.temremdioa.controller.fragment.RemedioFragment;
 import com.tra.gppmds.temremdioa.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     public static String searchQuery = null;
     public static SearchView searchView;
@@ -89,6 +90,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(aboutActivity);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String searchQuery) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String searchQuery) {
+        RemedioFragment.adapter.getFilter().filter( searchQuery );
+        return false;
     }
     /*
     @Override
