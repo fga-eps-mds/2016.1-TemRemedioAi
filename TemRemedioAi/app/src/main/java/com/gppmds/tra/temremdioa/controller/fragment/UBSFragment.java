@@ -1,4 +1,4 @@
-package com.gppmds.tra.temremdioa.controller;
+package com.gppmds.tra.temremdioa.controller.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -22,6 +23,7 @@ import java.util.List;
 public class UBSFragment extends Fragment{
 
     public RecyclerView recyclerView;
+    public static CardListAdapterUBS adapter;
 
     public UBSFragment(){
     }
@@ -47,7 +49,9 @@ public class UBSFragment extends Fragment{
             ubss = queryUBS.find();
 //            UBS.pinAllInBackground(ubss);
 
-            recyclerView.setAdapter(new CardListAdapterUBS(UBSFragment.this.getContext(), ubss));
+            adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubss);
+
+            recyclerView.setAdapter( adapter );
         } catch (ParseException e) {
             e.printStackTrace();
         }
