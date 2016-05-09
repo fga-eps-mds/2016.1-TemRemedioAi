@@ -26,6 +26,8 @@ import com.tra.gppmds.temremdioa.R;
 public class MainActivity extends AppCompatActivity {
 
     public static String searchQuery = null;
+    public static SearchView searchView;
+    public static SearchManager searchManager;
     private GoogleApiClient client;
 
     @Override
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             searchQuery = intent.getStringExtra(SearchManager.QUERY);
-            Toast.makeText(MainActivity.this, searchQuery, Toast.LENGTH_SHORT).show();
         }
 
         // FloatingButton
@@ -70,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default

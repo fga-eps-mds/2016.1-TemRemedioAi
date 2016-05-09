@@ -53,7 +53,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         TextView editDscBairro = (TextView) findViewById(R.id.textViewDscBairro);
         editDscBairro.setText(descBairroUBS);
 
-        direction = (FloatingActionButton) findViewById(R.id.direction);
+        //direction = (FloatingActionButton) findViewById(R.id.direction);
         direction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
