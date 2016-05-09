@@ -12,138 +12,100 @@
     android:weightSum="1">
     <!--android:id="@+id/cardViewRemedio"-->
 
-    <LinearLayout
-        android:id="@+id/header"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_gravity="top"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TableLayout
+        <RelativeLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewNomeMedicamento"
+                android:layout_alignParentStart="true"
+                android:textSize="14sp"
+                android:text="Nome Medicamento"
+                android:textColor="@color/colorPrimaryText"
+                android:editable="false" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:layout_gravity="top">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewQuantidadeMedicamento"
+                android:textColor="@color/colorSecondText"
+                android:textSize="14sp"
+                android:text="300 mg"
+                android:editable="false"
+                android:layout_below="@+id/textViewNomeMedicamento" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:padding="8dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_keyboard_arrow_down" />
 
-                    <TextView
-                        android:layout_width="285dp"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/textViewNomeMedicamento"
-                        android:textAlignment="center"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:text="nome medicamento"
-                        android:editable="false"
-                        android:padding="10dp" />
+        </RelativeLayout>
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/imageView"
-                        android:layout_gravity="right"
-                        android:clickable="true"
-                        android:background="@drawable/ic_keyboard_arrow_down" />
-
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/expandable"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"        >
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="138dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:weightSum="1">
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="117dp"
-                    android:orientation="vertical"
-                    android:weightSum="1"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="103dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imageView3"
-                        android:background="@android:drawable/ic_menu_recent_history" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="250dp"
-                    android:layout_height="115dp"
-                    android:baselineAligned="false"
-                    android:weightSum="1">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/textViewTipoMedicamento"
-                        android:textAlignment="textStart"
-                        android:layout_marginTop="5dp"
-                        android:textSize="17dp"
-                        android:text="Unidade" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/textViewNivelAtMedicamento"
-                        android:textAlignment="textStart"
-                        android:layout_marginTop="5dp"
-                        android:textSize="17dp"
-                        android:text="Teste de Amostra" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/textViewQuantidadePorcao"
-                        android:textAlignment="textStart"
-                        android:layout_marginTop="5dp"
-                        android:textSize="17dp"
-                        android:text="300  mg" />
-
-                </LinearLayout>
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/expandable"
+            android:layout_below="@id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="Selecionar UBS"
-                android:id="@+id/button" />
-        </TableRow>
 
-    </LinearLayout>
+                <!--<ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/imageGraficView"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@android:drawable/ic_menu_recent_history" />-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewTipoMedicamento"
+                    android:textSize="14sp"
+                    android:text="Unidade de Venda"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="24dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewNivelAtMedicamento"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:text="Nível de Atenção"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_below="@+id/textViewTipoMedicamento"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selecionar UBS"
+                    android:id="@+id/buttonSelecionarUbs"
+                    android:layout_alignParentEnd="true"
+                    android:minWidth="88dp"
+                    android:minHeight="54dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_alignParentBottom="false"
+                    android:textColor="@color/colorPrimaryText"
+                    android:singleLine="false"
+                    android:elevation="0dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
