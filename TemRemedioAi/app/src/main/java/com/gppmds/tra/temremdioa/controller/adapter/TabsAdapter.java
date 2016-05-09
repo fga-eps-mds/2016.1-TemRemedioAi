@@ -1,8 +1,11 @@
-package com.gppmds.tra.temremdioa.controller;
+package com.gppmds.tra.temremdioa.controller.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.gppmds.tra.temremdioa.controller.fragment.RemedioFragment;
+import com.gppmds.tra.temremdioa.controller.fragment.UBSFragment;
 
 /**
  * Created by carolina on 01/05/16.

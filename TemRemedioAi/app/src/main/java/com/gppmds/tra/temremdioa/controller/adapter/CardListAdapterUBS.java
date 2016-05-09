@@ -1,4 +1,4 @@
-package com.gppmds.tra.temremdioa.controller;
+package com.gppmds.tra.temremdioa.controller.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 

@@ -1,18 +1,12 @@
-package com.gppmds.tra.temremdioa.controller;
+package com.gppmds.tra.temremdioa.controller.adapter;
 
-import android.animation.Animator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderRemedio;
 import com.gppmds.tra.temremdioa.model.Remedio;
 import com.tra.gppmds.temremdioa.R;
 

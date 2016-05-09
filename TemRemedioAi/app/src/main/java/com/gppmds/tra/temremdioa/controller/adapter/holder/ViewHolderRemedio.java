@@ -1,4 +1,4 @@
-package com.gppmds.tra.temremdioa.controller;
+package com.gppmds.tra.temremdioa.controller.adapter.holder;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
