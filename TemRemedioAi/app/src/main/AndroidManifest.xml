@@ -71,13 +71,14 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name="com.gppmds.tra.temremdioa.controller.AboutActivity"
+        <activity
+            android:name="com.gppmds.tra.temremdioa.controller.AboutActivity"
             android:label="@string/title_activity_about">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
-
+        <activity android:name="com.gppmds.tra.temremdioa.controller.SelectUBSActivity"></activity>
     </application>
 
 </manifest>
