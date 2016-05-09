@@ -1,11 +1,15 @@
 package com.gppmds.tra.temremdioa.controller;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,13 +25,15 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
     private List<Remedio> dataRemedio;
     private Context contextOpen;
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewNomeMedicamento;
         public TextView textViewTipoMedicamento;
         public TextView textViewQuantidadePorcao;
         public TextView textViewNivelAtMedicamento;
-        public CardView carViewRemedio;
+        public CardView cardViewRemedio;
+        public LinearLayout headerLayout;
+        public LinearLayout expandLayout;
+        public ValueAnimator mAnimator;
 
         public ViewHolder(CardView card) {
             super(card);
@@ -35,19 +41,88 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
             this.textViewTipoMedicamento = (TextView) card.findViewById(R.id.textViewTipoMedicamento);
             this.textViewQuantidadePorcao = (TextView) card.findViewById(R.id.textViewQuantidadePorcao);
             this.textViewNivelAtMedicamento = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
-            this.carViewRemedio = card;
-            card.setOnClickListener(this);
+            this.cardViewRemedio = card;
+            this.expandLayout = (LinearLayout) card.findViewById(R.id.expandable);
+            this.expandLayout.setVisibility(View.GONE);
+            this.headerLayout = (LinearLayout) card.findViewById(R.id.header);
+
+            this.expandLayout.getViewTreeObserver().addOnPreDrawListener(
+                    new ViewTreeObserver.OnPreDrawListener() {
+
+                        @Override
+                        public boolean onPreDraw() {
+                            expandLayout.getViewTreeObserver().removeOnPreDrawListener(this);
+                            expandLayout.setVisibility(View.GONE);
+
+                            final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                            final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                            expandLayout.measure(widthSpec, heightSpec);
+
+                            mAnimator = slideAnimator(0, expandLayout.getMeasuredHeight());
+                            return true;
+                        }
+                    });
+
+            this.headerLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (expandLayout.getVisibility()==View.GONE){
+                        Log.i("log", "expand click");
+                        expand();
+                    }else{
+                        Log.i("log", "collapse click");
+                        collapse();
+                    }
+                }
+            });
         }
 
-        @Override
-        public void onClick(View view) {
-           LinearLayout.LayoutParams lp;
-            if (carViewRemedio.getHeight() == 250) {
-                lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-            } else {
-                lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 250, 1f);
-            }
-            carViewRemedio.setLayoutParams(lp);
+        private void expand() {
+            //set Visible
+            expandLayout.setVisibility(View.VISIBLE);
+            mAnimator.start();
+        }
+
+        private void collapse() {
+            int finalHeight = expandLayout.getHeight();
+
+            mAnimator = slideAnimator(finalHeight, 0);
+            mAnimator.addListener(new Animator.AnimatorListener(){
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    expandLayout.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAnimationStart(Animator animator) {
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animator) {
+                }
+            });
+            mAnimator.start();
+        }
+
+        private ValueAnimator slideAnimator(int start, int end) {
+            ValueAnimator animator = ValueAnimator.ofInt(start, end);
+
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    //Update Height
+                    int value = (Integer) valueAnimator.getAnimatedValue();
+
+                    ViewGroup.LayoutParams layoutParams = expandLayout.getLayoutParams();
+                    layoutParams.height = value;
+                    expandLayout.setLayoutParams(layoutParams);
+                }
+            });
+            return animator;
         }
     }
 
@@ -60,7 +135,6 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
     public CardListAdapterRemedio.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         CardView view = (CardView) inflater.inflate(R.layout.card_list_remedio, parent, false);
-
         return new ViewHolder(view);
     }
 
@@ -69,11 +143,8 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<CardListAdapter
         Remedio rowData = this.dataRemedio.get(position);
         holder.textViewNomeMedicamento.setText(rowData.getMedDes());
         holder.textViewTipoMedicamento.setText(rowData.getUnidadeFormated());
-//        holder.textViewQuantidadePorcao.setText(rowData.getUnid());
+//      holder.textViewQuantidadePorcao.setText(rowData.getUnid());
         holder.textViewNivelAtMedicamento.setText(rowData.getNivelAtencaoFormated());
-
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 50, 1f);
-//        holder.carViewRemedio.setLayoutParams(lp);
     }
 
     @Override
