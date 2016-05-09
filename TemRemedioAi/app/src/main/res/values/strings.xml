@@ -3,7 +3,11 @@
     <string name="action_settings">Configurações</string>
     <string name="action_about">Sobre o Aplicativo</string>
     <string name="title_activity_ubs_maps">Localização</string>
-    <string name="title_activity_maps_activityteste">Map</string>
+    <string name="title_activity_about">Informações</string>
     <string name="testeTexto">testeTexto</string>
     <string name="search">Pesquisar...</string>
+    <string name="dsc_about">O aplicativo Tem Remédio Aí? tem como objetivo facilitar o acesso
+                            à informação da disponibilidade de medicamentos em Unidades Básicas
+                            de Saúde, Hospitais e Centros de Distribuição de Alto Custo.
+                            </string>
 </resources>
