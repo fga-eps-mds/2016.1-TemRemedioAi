@@ -1,7 +1,5 @@
 package com.gppmds.tra.temremdioa.controller;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,11 +20,9 @@ import com.gppmds.tra.temremdioa.controller.adapter.TabsAdapter;
 import com.gppmds.tra.temremdioa.controller.fragment.RemedioFragment;
 import com.tra.gppmds.temremdioa.R;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class MainActivity extends AppCompatActivity{
 
-    public static String searchQuery = null;
     public static SearchView searchView;
-    public static SearchManager searchManager;
     private GoogleApiClient client;
 
     @Override
@@ -45,11 +41,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-        Intent intent = getIntent();
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            searchQuery = intent.getStringExtra(SearchManager.QUERY);
-        }
 
         // FloatingButton
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -71,10 +62,20 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                //FILTER AS YOU TYPE
+                RemedioFragment.adapter.getFilter().filter(query);
+                return false;
+            }
+        });
 
         return true;
     }
@@ -90,17 +91,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 startActivity(aboutActivity);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String searchQuery) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String searchQuery) {
-        RemedioFragment.adapter.getFilter().filter( searchQuery );
-        return false;
     }
     /*
     @Override
