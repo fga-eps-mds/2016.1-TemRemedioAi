@@ -21,10 +21,10 @@ import java.util.List;
  * Created by carolina on 01/05/16.
  */
 public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.ViewHolder> implements Filterable{
-    private List<UBS> dataUBS;
-    private List<UBS> filterDataUBS;
-    private Context contextOpen;
-    // FilterSearchsRemedio filter;
+    List<UBS> dataUBS;
+    List<UBS> filterDataUBS;
+    Context contextOpen;
+    // FilterSearchRemedio filter;
 
     @Override
     public Filter getFilter() {

@@ -21,7 +21,7 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
     List<Remedio> dataRemedio;
     List<Remedio> filterDataRemedio;
     Context contextOpen;
-    FilterSearchsRemedio filter;
+    FilterSearchRemedio filter;
 
     public CardListAdapterRemedio(Context context, List<Remedio> dataRemedio) {
         this.contextOpen = context;
@@ -48,7 +48,7 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
     @Override
     public Filter getFilter() {
         if(filter == null) {
-            filter = new FilterSearchsRemedio( filterDataRemedio , this );
+            filter = new FilterSearchRemedio( filterDataRemedio , this );
         }
 
         return filter;

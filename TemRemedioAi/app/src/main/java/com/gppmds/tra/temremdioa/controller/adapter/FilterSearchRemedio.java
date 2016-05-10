@@ -10,13 +10,13 @@ import java.util.List;
 /**
  * Created by elmar on 09/05/16.
  */
-public class FilterSearchsRemedio extends Filter{
+public class FilterSearchRemedio extends Filter{
 
     CardListAdapterRemedio adapter;
     List<Remedio> filterList;
 
 
-    public FilterSearchsRemedio(List<Remedio> filterList, CardListAdapterRemedio adapter)
+    public FilterSearchRemedio(List<Remedio> filterList, CardListAdapterRemedio adapter)
     {
         this.adapter = adapter;
         this.filterList = filterList;
