@@ -24,16 +24,15 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
     List<UBS> dataUBS;
     List<UBS> filterDataUBS;
     Context contextOpen;
-    // FilterSearchRemedio filter;
+    FilterSearchUBS filter;
 
     @Override
     public Filter getFilter() {
-//        if(filter == null) {
-//            filter = new CustomFilter( filterDataRemedio,this );
-//        }
-//
-//        return filter;
-        return null;
+        if(filter == null) {
+            filter = new FilterSearchUBS( filterDataUBS ,this );
+        }
+
+        return filter;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -62,6 +61,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
     public CardListAdapterUBS(Context context, List<UBS> dataUBS) {
         this.contextOpen = context;
         this.dataUBS = dataUBS;
+        this.filterDataUBS = dataUBS;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
 
     @Override
     public int getItemCount() {
-        return 100;
+        return dataUBS.size();
     }
 
 }
