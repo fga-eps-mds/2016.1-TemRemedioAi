@@ -3,6 +3,7 @@ package com.gppmds.tra.temremdioa.controller.adapter.holder;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.renderscript.Sampler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,11 +26,11 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
     public TextView textViewTipoMedicamento;
     public TextView textViewQuantidadePorcao;
     public TextView textViewNivelAtMedicamento;
-    public CardView cardViewRemedio;
     public RelativeLayout headerLayout;
     public RelativeLayout expandLayout;
     public ValueAnimator mAnimator;
     public Button buttonSelecionaUbs;
+    public ImageView imageViewArrow;
 
     public ViewHolderRemedio(CardView card) {
         super(card);
@@ -36,11 +38,12 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
         this.textViewTipoMedicamento = (TextView) card.findViewById(R.id.textViewTipoMedicamento);
         this.textViewQuantidadePorcao = (TextView) card.findViewById(R.id.textViewQuantidadeMedicamento);
         this.textViewNivelAtMedicamento = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
-        this.cardViewRemedio = card;
-        this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
-        this.expandLayout.setVisibility(View.GONE);
-        this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
+        this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelecionaUbs = (Button) card.findViewById(R.id.buttonSelecionarUbs);
+        this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
+        this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
+
+        this.expandLayout.setVisibility(View.GONE);
 
         this.expandLayout.getViewTreeObserver().addOnPreDrawListener(
                 new ViewTreeObserver.OnPreDrawListener() {
@@ -62,11 +65,12 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
         this.headerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("LOG", "onClickListener of headerLayout clicked");
                 if (expandLayout.getVisibility() == View.GONE) {
-                    Log.i("log", "expand click");
+                    Log.i("LOG", "Expand Click");
                     expand();
                 } else {
-                    Log.i("log", "collapse click");
+                    Log.i("LOG", "Collapse Click");
                     collapse();
                 }
             }
@@ -83,17 +87,20 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
 
     private void expand() {
         //set Visible
+        Log.i("LOG", "Expand enter, View.VISIBLE");
         expandLayout.setVisibility(View.VISIBLE);
         mAnimator.start();
+        imageViewArrow.setBackgroundResource(R.drawable.ic_keyboard_arrow_up);
     }
 
     private void collapse() {
         int finalHeight = expandLayout.getHeight();
 
-        mAnimator = slideAnimator(finalHeight, 0);
-        mAnimator.addListener(new Animator.AnimatorListener(){
+        ValueAnimator mAnimator2 = slideAnimator(finalHeight, 0);
+        mAnimator2.addListener(new Animator.AnimatorListener(){
             @Override
             public void onAnimationEnd(Animator animator) {
+                Log.i("LOG", "collapse onAnimationEnd enter, View.GONE");
                 expandLayout.setVisibility(View.GONE);
             }
 
@@ -109,7 +116,8 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
             public void onAnimationRepeat(Animator animator) {
             }
         });
-        mAnimator.start();
+        mAnimator2.start();
+        imageViewArrow.setBackgroundResource(R.drawable.ic_keyboard_arrow_down);
     }
 
     private ValueAnimator slideAnimator(int start, int end) {
