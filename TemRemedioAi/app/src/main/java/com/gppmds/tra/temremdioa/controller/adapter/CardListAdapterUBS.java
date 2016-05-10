@@ -12,6 +12,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
+import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
@@ -20,10 +21,10 @@ import java.util.List;
 /**
  * Created by carolina on 01/05/16.
  */
-public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.ViewHolder> implements Filterable{
-    List<UBS> dataUBS;
+public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> implements Filterable{
+    public static List<UBS> dataUBS;
     List<UBS> filterDataUBS;
-    Context contextOpen;
+    public static Context contextOpen;
     FilterSearchUBS filter;
 
     @Override
@@ -35,29 +36,6 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
         return filter;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView title;
-
-        public ViewHolder(CardView card) {
-            super(card);
-            this.title = (TextView) card.findViewById(R.id.title);
-            card.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(contextOpen, UbsMapsActivity.class);
-            UBS selectItem = dataUBS.get(this.getAdapterPosition());
-//            intent.putExtra("UBS", selectItem);
-            intent.putExtra("latitude", selectItem.getLatitude());
-            intent.putExtra("longitude", selectItem.getLongitude());
-            intent.putExtra("nomeUBS", selectItem.getNomEstab());
-            intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
-            intent.putExtra("descBairroUBS", selectItem.getDscBairro());
-            contextOpen.startActivity(intent);
-        }
-    }
-
     public CardListAdapterUBS(Context context, List<UBS> dataUBS) {
         this.contextOpen = context;
         this.dataUBS = dataUBS;
@@ -65,15 +43,15 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<CardListAdapterUBS.
     }
 
     @Override
-    public CardListAdapterUBS.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolderUBS onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         CardView view = (CardView) inflater.inflate(R.layout.card_list_item, parent, false);
 
-        return new ViewHolder(view);
+        return new ViewHolderUBS(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolderUBS holder, int position) {
         UBS rowData = this.dataUBS.get(position);
         holder.title.setText(rowData.getNomEstab());
     }
