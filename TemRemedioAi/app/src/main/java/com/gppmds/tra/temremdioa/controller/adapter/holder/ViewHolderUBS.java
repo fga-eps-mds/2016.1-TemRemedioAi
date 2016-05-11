@@ -11,6 +11,8 @@ import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by elmar on 10/05/16.
  */
