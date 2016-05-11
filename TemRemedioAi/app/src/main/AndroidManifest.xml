@@ -62,7 +62,7 @@
             android:label="@string/title_activity_ubs_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gppmds.tra.temremdioa.controller.UbsMapsActivity" />
+                android:value="com.gppmds.tra.temremdioa.controller. " />
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -79,7 +79,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
-        <activity android:name="com.gppmds.tra.temremdioa.controller.SelectUBSActivity"></activity>
+        <activity android:name="com.gppmds.tra.temremdioa.controller.SelectUBSActivity"
+            android:label="@string/title_activity_select_UBS">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

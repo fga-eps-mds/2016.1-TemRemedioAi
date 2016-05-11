@@ -21,6 +21,13 @@ public class Remedio extends ParseObject {
         put(getTitleMedDes(), med_des);
     }
 
+    public String getMedDos(){
+        return getString(getTitleMedDos());
+    }
+    public void setMedDos(String med_dos){
+        put(getTitleMedDos(), med_dos);
+    }
+
     public String getUnid(){
         return getString(getTitleUnid());
     }
@@ -122,6 +129,9 @@ public class Remedio extends ParseObject {
     }
     public static String getTitleMedDes(){
         return "med_des";
+    }
+    public static String getTitleMedDos(){
+        return "med_dos";
     }
     public static String getTitleUnid(){
         return "unid";

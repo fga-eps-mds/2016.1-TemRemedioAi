@@ -41,7 +41,7 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
         Remedio rowData = this.dataRemedio.get(position);
         holder.textViewNomeMedicamento.setText(rowData.getMedDes());
         holder.textViewTipoMedicamento.setText(rowData.getUnidadeFormated());
-        holder.textViewQuantidadePorcao.setText("300 mg");
+        holder.textViewQuantidadePorcao.setText(rowData.getMedDos());
         holder.textViewNivelAtMedicamento.setText(rowData.getNivelAtencaoFormated());
     }
 
