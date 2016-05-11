@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginRight="1dp"
+    android:layout_marginLeft="1dp"
+    android:layout_marginBottom="1dp"
+    android:layout_width="match_parent"
+    app:cardElevation="1dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewNomeUBS"
+                android:layout_alignParentStart="true"
+                android:textSize="14sp"
+                android:text="Nome da UBS"
+                android:textColor="@color/colorPrimaryText"
+                android:editable="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewBairroUBS"
+                android:textColor="@color/colorSecondText"
+                android:textSize="14sp"
+                android:text="Bairro da UBS"
+                android:editable="false"
+                android:layout_below="@+id/textViewNomeUBS" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageViewArrow"
+                android:padding="8dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_keyboard_arrow_down" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/expandable"
+            android:layout_below="@id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:id="@+id/imageGraficView"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@android:drawable/ic_menu_recent_history" />-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewCidadeUBS"
+                android:textSize="14sp"
+                android:text="Cidade de Localizaçao"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewNivelAtencaoUBS"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:text="Nível de Atenção"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="24dp"
+                android:layout_below="@+id/textViewCidadeUBS"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remédios"
+                android:id="@+id/buttonSelecionarRemedio"
+                android:layout_alignParentEnd="false"
+                android:minWidth="88dp"
+                android:minHeight="54dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorPrimaryText"
+                android:singleLine="false"
+                android:elevation="0dp"
+                android:layout_below="@+id/textViewNivelAtencaoUBS"
+                android:layout_toLeftOf="@+id/buttonVisualizarDescricaoUBS" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição"
+                android:id="@+id/buttonVisualizarDescricaoUBS"
+                android:minWidth="88dp"
+                android:minHeight="54dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorPrimaryText"
+                android:singleLine="false"
+                android:elevation="0dp"
+                android:layout_below="@+id/textViewNivelAtencaoUBS"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

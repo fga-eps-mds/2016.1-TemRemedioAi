@@ -18,7 +18,7 @@ import java.util.List;
  * Created by carolina on 04/05/16.
  */
 public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemedio> implements Filterable{
-    List<Remedio> dataRemedio;
+    public static List<Remedio> dataRemedio;
     List<Remedio> filterDataRemedio;
     Context contextOpen;
     FilterSearchRemedio filter;
