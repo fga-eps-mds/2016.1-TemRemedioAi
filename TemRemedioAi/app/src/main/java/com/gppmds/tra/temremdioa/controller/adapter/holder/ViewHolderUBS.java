@@ -153,5 +153,6 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             }
         });
         return animator;
+
     }
 }

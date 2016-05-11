@@ -1,7 +1,8 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,59 +27,98 @@
             android:layout_weight="0.4"
             android:orientation="horizontal">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textViewTitleUbs"
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view"
+                    android:layout_gravity="top"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginTop="40dp"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="22dp" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_alignStart="@+id/textViewTitleUbs"
-                    android:layout_centerVertical="true"
-                    android:layout_column="0"
+                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_row="0"
-                    android:layout_rowSpan="2"
-                    android:layout_weight="0.05"
-                    android:background="@drawable/ic_place" />
+                    card_view:cardCornerRadius="1dp">
 
-                <TextView
-                    android:id="@+id/textViewDscEndereco"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_column="1"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_row="0"
-                    android:layout_toEndOf="@+id/imageView"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewDscBairro"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewDscEndereco"
-                    android:layout_column="1"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_row="0"
-                    android:layout_toEndOf="@+id/imageView"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textViewTitleUbs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="30dp"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="22dp" />
 
-            </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignStart="@+id/textViewTitleUbs"
+                        android:layout_centerVertical="true"
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:layout_rowSpan="2"
+                        android:layout_weight="0.05"
+                        android:background="@drawable/ic_place"
+                        android:adjustViewBounds="false" />
+
+                    <TextView
+                        android:id="@+id/textViewDscEndereco"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_column="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_row="0"
+                        android:layout_toEndOf="@+id/imageView"
+                        android:layout_toRightOf="@+id/imageView"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textViewDscBairro"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textViewDscEndereco"
+                        android:layout_column="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_row="0"
+                        android:layout_toEndOf="@+id/imageView"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/textViewCidadeUbs"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_row="0"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_below="@+id/textViewDscBairro"
+                        android:layout_toEndOf="@+id/imageView" />
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/image"-->
+                        <!--android:layout_width="48dp"-->
+                        <!--android:layout_height="48dp"-->
+                        <!--android:layout_alignStart="@+id/imageView"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_weight="10.05"-->
+                        <!--android:background="@drawable/ic_line_divider"-->
+                        <!--android:adjustViewBounds="false" />-->
+
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
         </LinearLayout>
 
     </LinearLayout>
