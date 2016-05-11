@@ -1,7 +1,6 @@
 package com.gppmds.tra.temremdioa.controller.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.TextView;
 
-import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
@@ -26,6 +23,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     List<UBS> filterDataUBS;
     public static Context contextOpen;
     FilterSearchUBS filter;
+    private Boolean showButtonRemedios;
 
     @Override
     public Filter getFilter() {
@@ -40,12 +38,13 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         this.contextOpen = context;
         this.dataUBS = dataUBS;
         this.filterDataUBS = dataUBS;
+        setShowButtonRemedios(true);
     }
 
     @Override
     public ViewHolderUBS onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        CardView view = (CardView) inflater.inflate(R.layout.card_list_item, parent, false);
+        CardView view = (CardView) inflater.inflate(R.layout.card_list_ubs, parent, false);
 
         return new ViewHolderUBS(view);
     }
@@ -53,12 +52,26 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     @Override
     public void onBindViewHolder(ViewHolderUBS holder, int position) {
         UBS rowData = this.dataUBS.get(position);
-        holder.title.setText(rowData.getNomEstab());
+        holder.textViewNomeUBS.setText(rowData.getNomEstab());
+        holder.textViewBairroUBS.setText(rowData.getDscBairro());
+        holder.textViewCidadeUBS.setText(rowData.getDscCidade());
+        holder.textViewNivelAtencaoUBS.setText(rowData.getNivelAt());
+        if (!getShowButtonRemedios()) {
+            holder.buttonSelecionaRemedio.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public int getItemCount() {
         return dataUBS.size();
+    }
+
+    public void setShowButtonRemedios(Boolean showButtonRemedios) {
+        this.showButtonRemedios = showButtonRemedios;
+    }
+
+    private Boolean getShowButtonRemedios() {
+        return this.showButtonRemedios;
     }
 
 }
