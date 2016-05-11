@@ -79,9 +79,7 @@ public class UBS extends ParseObject {
     public static String getTitleDscBairro(){
         return "dsc_bairro";
     }
-    public static String getTitleDscCidade(){
-        return "dsc_cidade";
-    }
+    public static String getTitleDscCidade(){ return "dsc_cidade"; }
     public static String getTitleNivelAt(){
         return "nivel_at";
     }

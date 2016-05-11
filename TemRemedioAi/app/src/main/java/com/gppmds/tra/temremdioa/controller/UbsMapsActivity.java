@@ -37,6 +37,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         String nomeUBS = getIntent().getStringExtra("nomeUBS");
         String descEnderecoUBS = getIntent().getStringExtra("descEnderecoUBS");
         String descBairroUBS = getIntent().getStringExtra("descBairroUBS");
+        String descCidadeUBS = getIntent().getStringExtra("descCidadeUBS");
         // String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
 
         latitude = getIntent().getDoubleExtra("latitude", 0);
@@ -50,6 +51,10 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
         TextView editDscBairro = (TextView) findViewById(R.id.textViewDscBairro);
         editDscBairro.setText(descBairroUBS);
+
+        TextView editDscCidade = (TextView) findViewById(R.id.textViewCidadeUbs);
+        editDscCidade.setText(descCidadeUBS);
+
 
         direction = (FloatingActionButton) findViewById(R.id.direction);
         direction.setOnClickListener(new View.OnClickListener() {

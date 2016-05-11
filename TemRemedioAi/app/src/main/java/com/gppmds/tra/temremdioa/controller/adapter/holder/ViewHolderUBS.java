@@ -33,6 +33,9 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder implements View.OnCli
         intent.putExtra("nomeUBS", selectItem.getNomEstab());
         intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
         intent.putExtra("descBairroUBS", selectItem.getDscBairro());
+        intent.putExtra("descCidadeUBS", selectItem.getDscCidade());
         CardListAdapterUBS.contextOpen.startActivity(intent);
     }
 }
+
+;
