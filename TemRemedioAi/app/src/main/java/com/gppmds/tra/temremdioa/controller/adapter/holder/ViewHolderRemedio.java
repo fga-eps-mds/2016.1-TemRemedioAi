@@ -3,7 +3,6 @@ package com.gppmds.tra.temremdioa.controller.adapter.holder;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.renderscript.Sampler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,6 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
+import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterRemedio;
+import com.gppmds.tra.temremdioa.model.Remedio;
 import com.tra.gppmds.temremdioa.R;
 
 /**
@@ -80,6 +81,10 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
+                Remedio selectItem = CardListAdapterRemedio.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
+                intent.putExtra("nomeRemedio", selectItem.getMedDes());
+                intent.putExtra("nivelAtencao", selectItem.getNivelAt());
+
                 v.getContext().startActivity(intent);
             }
         });
