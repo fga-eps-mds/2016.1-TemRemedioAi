@@ -56,7 +56,7 @@
             android:label="@string/title_activity_ubs_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gppmds.tra.temremdioa.controller. " />
+                android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
