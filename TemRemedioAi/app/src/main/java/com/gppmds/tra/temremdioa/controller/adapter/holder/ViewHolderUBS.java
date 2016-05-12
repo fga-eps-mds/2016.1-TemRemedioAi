@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gppmds.tra.temremdioa.controller.SelectRemedioActivity;
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
@@ -85,7 +86,10 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         this.buttonSelecionaRemedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
+                Intent intent = new Intent(v.getContext(), SelectRemedioActivity.class);
+                UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
+                intent.putExtra("nomeUBS", selectItem.getNomEstab());
+                intent.putExtra("nivelAtencao", selectItem.getNivelAt());
                 v.getContext().startActivity(intent);
             }
         });

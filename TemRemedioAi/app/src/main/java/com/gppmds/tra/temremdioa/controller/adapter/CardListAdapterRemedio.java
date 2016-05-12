@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -22,11 +23,13 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
     List<Remedio> filterDataRemedio;
     Context contextOpen;
     FilterSearchRemedio filter;
+    private Boolean showButtonUBSs;
 
     public CardListAdapterRemedio(Context context, List<Remedio> dataRemedio) {
         this.contextOpen = context;
         this.dataRemedio = dataRemedio;
         this.filterDataRemedio = dataRemedio;
+        setShowButtonUBSs(true);
     }
 
     @Override
@@ -43,6 +46,9 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
         holder.textViewTipoMedicamento.setText(rowData.getUnidadeFormated());
         holder.textViewQuantidadePorcao.setText(rowData.getMedDos());
         holder.textViewNivelAtMedicamento.setText(rowData.getNivelAtencaoFormated());
+        if (!getShowButtonUBSs()) {
+            holder.buttonSelecionaUbs.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -57,5 +63,13 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
     @Override
     public int getItemCount() {
         return dataRemedio.size();
+    }
+
+    public void setShowButtonUBSs(Boolean showButtonUBSs) {
+        this.showButtonUBSs = showButtonUBSs;
+    }
+
+    private Boolean getShowButtonUBSs() {
+        return this.showButtonUBSs;
     }
 }
