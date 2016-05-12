@@ -105,7 +105,7 @@ public class Remedio extends ParseObject {
                 returnNivelAt = "Atendimento Hospitalar";
                 break;
             case "CE":
-                returnNivelAt = "Componetne Especializado";
+                returnNivelAt = "Componente Especializado";
                 break;
             case "MC":
                 returnNivelAt = "Média Complexidade";
