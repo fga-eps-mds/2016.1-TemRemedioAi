@@ -1,17 +1,16 @@
 package com.gppmds.tra.temremdioa;
 
 import android.app.ListActivity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.tra.gppmds.temremdioa.R;
 
 import java.util.ArrayList;
 import java.util.List;

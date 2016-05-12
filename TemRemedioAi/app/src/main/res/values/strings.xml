@@ -1,4 +1,16 @@
 <resources>
-    <string name="app_name">Tem Remédio Aí?</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Tem Remédio Aí</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_about">Sobre o Aplicativo</string>
+    <string name="title_activity_ubs_maps">Localização</string>
+    <string name="title_activity_about">Informações</string>
+    <string name="title_activity_select_UBS">UBSs Encontradas</string>
+    <string name="title_activity_select_Remedio">Remedios Encontrados</string>
+    <string name="testeTexto">testeTexto</string>
+    <string name="search">Pesquisar...</string>
+    <string name="dsc_about">O aplicativo Tem Remédio Aí? tem como objetivo facilitar o acesso
+                            à informação da disponibilidade de medicamentos em Unidades Básicas
+                            de Saúde, Hospitais e Farmácias de Alto Custo da Secretaria de Saúde do
+                            Distrito Federal.
+                            </string>
 </resources>
