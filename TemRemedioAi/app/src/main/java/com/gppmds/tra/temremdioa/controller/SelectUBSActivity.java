@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
@@ -32,7 +33,14 @@ public class SelectUBSActivity extends AppCompatActivity {
 
         String nomeRemedio = getIntent().getStringExtra("nomeRemedio");
         String nivelAtencaoRemedio = getIntent().getStringExtra("nivelAtencao");
-        String filtrosNivelAtencao[] = nivelAtencaoRemedio.split(", ");
+        String filtrosNivelAtencao[] = nivelAtencaoRemedio.split(",");
+
+        for(int i = 0; i < filtrosNivelAtencao.length; i++) {
+            if (filtrosNivelAtencao[i].equalsIgnoreCase("HO")) {
+                filtrosNivelAtencao[i] = "HO,AB";
+            }
+            Log.i("CLAUS WHERE", "Nível de atenção do Remédio " + i + ": " + filtrosNivelAtencao[i]);
+        }
 
         TextView textViewRemedioSelecionado = (TextView) findViewById(R.id.textViewRemedioSelecionado);
         textViewRemedioSelecionado.setText(nomeRemedio);
