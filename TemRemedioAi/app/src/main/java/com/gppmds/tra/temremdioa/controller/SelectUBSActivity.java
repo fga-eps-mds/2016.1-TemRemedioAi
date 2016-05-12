@@ -49,7 +49,7 @@ public class SelectUBSActivity extends AppCompatActivity {
             recyclerView.setAdapter(claUbs);
 
             TextView textViewQuantidadeItens = (TextView) findViewById(R.id.textViewQuantidadeItens);
-            textViewQuantidadeItens.setText(ubss.size() + " UBSs encontradas");
+            textViewQuantidadeItens.setText("Encontrada(s): " + ubss.size());
         } catch (ParseException e) {
             e.printStackTrace();
         }
