@@ -104,6 +104,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
                 intent.putExtra("nomeUBS", selectItem.getNomEstab());
                 intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
                 intent.putExtra("descBairroUBS", selectItem.getDscBairro());
+                intent.putExtra("descCidadeUBS", selectItem.getDscCidade());
                 v.getContext().startActivity(intent);
             }
         });
