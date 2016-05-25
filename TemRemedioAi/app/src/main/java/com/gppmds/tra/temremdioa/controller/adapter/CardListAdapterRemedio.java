@@ -42,10 +42,10 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
     @Override
     public void onBindViewHolder(ViewHolderRemedio holder, int position) {
         Remedio rowData = this.dataRemedio.get(position);
-        holder.textViewNomeMedicamento.setText(rowData.getMedDes());
-        holder.textViewTipoMedicamento.setText(rowData.getUnidadeFormated());
-        holder.textViewQuantidadePorcao.setText(rowData.getMedDos());
-        holder.textViewNivelAtMedicamento.setText(rowData.getNivelAtencaoFormated());
+        holder.textViewNomeMedicamento.setText(rowData.getMedicineDescription());
+        holder.textViewTipoMedicamento.setText(rowData.getMedicineUnitExtended());
+        holder.textViewQuantidadePorcao.setText(rowData.getMedicineDosage());
+        holder.textViewNivelAtMedicamento.setText(rowData.getMedicineAttentionLevelExtended());
         if (!getShowButtonUBSs()) {
             holder.buttonSelecionaUbs.setVisibility(View.GONE);
         }

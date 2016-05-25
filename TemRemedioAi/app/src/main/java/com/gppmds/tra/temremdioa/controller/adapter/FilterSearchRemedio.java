@@ -33,7 +33,7 @@ public class FilterSearchRemedio extends Filter{
 
             for (int i=0;i<filterList.size();i++)
             {
-                if(filterList.get(i).getMedDes().toUpperCase().contains(constraint))
+                if(filterList.get(i).getMedicineDescription().toUpperCase().contains(constraint))
                 {
                     filteredRemedios.add(filterList.get(i));
                 }

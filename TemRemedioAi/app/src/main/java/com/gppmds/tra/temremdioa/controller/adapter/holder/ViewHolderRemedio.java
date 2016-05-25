@@ -82,8 +82,8 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
                 Remedio selectItem = CardListAdapterRemedio.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
-                intent.putExtra("nomeRemedio", selectItem.getMedDes());
-                intent.putExtra("nivelAtencao", selectItem.getNivelAt());
+                intent.putExtra("nomeRemedio", selectItem.getMedicineDescription());
+                intent.putExtra("nivelAtencao", selectItem.getMedicineAttentionLevel());
 
                 v.getContext().startActivity(intent);
             }

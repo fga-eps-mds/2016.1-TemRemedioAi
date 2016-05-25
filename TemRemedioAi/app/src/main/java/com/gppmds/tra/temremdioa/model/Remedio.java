@@ -7,141 +7,170 @@ import com.parse.ParseQuery;
 
 @ParseClassName("Medicamentos")
 public class Remedio extends ParseObject {
-    public String getCodSes(){
-        return getString(getTitleCodSes());
-    }
-    public void setCodSes(String cod_ses){
-        put(getTitleCodSes(), cod_ses);
+    //Returns the SES Code of a medicine
+    public String getMedicineSESCode(){
+        return getString(getMedicineSESCodeTitle());
     }
 
-    public String getMedDes(){
-        return getString(getTitleMedDes());
-    }
-    public void setMedDes(String med_des){
-        put(getTitleMedDes(), med_des);
+    //Sets a SES Code to a medicine
+    public void setMedicineSESCode(String sesCode){
+        put(getMedicineSESCodeTitle(), sesCode);
     }
 
-    public String getMedDos(){
-        return getString(getTitleMedDos());
-    }
-    public void setMedDos(String med_dos){
-        put(getTitleMedDos(), med_dos);
+    //Returns the medicine description (or name) of a medicine
+    public String getMedicineDescription(){
+        return getString(getMedicineDescriptionTitle());
     }
 
-    public String getUnid(){
-        return getString(getTitleUnid());
+    //Sets a description (or name) to a medicine
+    public void setMedicineDescription(String medicineDescription){
+        put(getMedicineDescriptionTitle(), medicineDescription);
     }
-    public String getUnidadeFormated(){
-        String returnUnid = getString(getTitleUnid());
-        switch (returnUnid) {
+
+    //Returns the dosage of a medicine
+    public String getMedicineDosage(){
+        return getString(getMedicineDosageTitle());
+    }
+
+    //Sets a dosage to a medicine
+    public void setMedicineDosage(String medicineDosage){
+        put(getMedicineDosageTitle(), medicineDosage);
+    }
+
+    //Returns the unit of a medicine
+    public String getMedicineUnit(){
+        return getString(getMedicineUnitTitle());
+    }
+
+    //Returns the extended unit of a medicine
+    public String getMedicineUnitExtended(){
+        String medicineUnit = getString(getMedicineUnitTitle());
+        switch (medicineUnit) {
             case "AMP":
-                returnUnid = "Ampola";
+                medicineUnit = "Ampola";
                 break;
             case "BS":
-                returnUnid = "Bisnaga";
+                medicineUnit = "Bisnaga";
                 break;
             case "CJ":
-                returnUnid = "Conjunto";
+                medicineUnit = "Conjunto";
                 break;
             case "CP":
-                returnUnid = "Comprimido";
+                medicineUnit = "Comprimido";
                 break;
             case "CS":
-                returnUnid = "Cápsula";
+                medicineUnit = "Cápsula";
                 break;
             case "CT":
-                returnUnid = "Cartela";
+                medicineUnit = "Cartela";
                 break;
             case "CX":
-                returnUnid = "Caixa";
+                medicineUnit = "Caixa";
                 break;
             case "DG":
-                returnUnid = "Drageia";
+                medicineUnit = "Drageia";
                 break;
             case "EN":
-                returnUnid = "Envelope";
+                medicineUnit = "Envelope";
                 break;
             case "FA":
-                returnUnid = "Frasco-Ampola";
+                medicineUnit = "Frasco-Ampola";
                 break;
             case "FR":
-                returnUnid = "Frasco";
+                medicineUnit = "Frasco";
                 break;
             case "GL":
-                returnUnid = "Galão";
+                medicineUnit = "Galão";
                 break;
             case "KT":
-                returnUnid = "Kit";
+                medicineUnit = "Kit";
                 break;
             case "PT":
-                returnUnid = "Pote";
+                medicineUnit = "Pote";
                 break;
             case "UM":
-                returnUnid = "Unidade";
+                medicineUnit = "Unidade";
                 break;
             case "UN":
-                returnUnid = "Unidade";
+                medicineUnit = "Unidade";
                 break;
             default:
-                returnUnid = "Sem medição";
+                medicineUnit = "Sem medição";
                 break;
         }
-        return returnUnid;
-    }
-    public void setUnid(String unid){
-        put(getTitleUnid(), unid);
+        return medicineUnit;
     }
 
-    public String getNivelAt(){
-        return getString(getTitleNivelAt());
+    //Sets a unit to a medicine
+    public void setMedicineUnit(String medicineUnit){
+        put(getMedicineUnitTitle(), medicineUnit);
     }
-    public String getNivelAtencaoFormated() {
-        String returnNivelAt = getString(getTitleNivelAt());
-        switch (returnNivelAt) {
+
+    //Returns the attention level of a medicine
+    public String getMedicineAttentionLevel(){
+        return getString(getMedicineAttentionLevelTitle());
+    }
+
+    //Returns the extended attention level of a medicine
+    public String getMedicineAttentionLevelExtended() {
+        String medicineAttentionLevel = getString(getMedicineAttentionLevelTitle());
+        switch (medicineAttentionLevel) {
             case "AB":
-                returnNivelAt = "Atenção Básica";
+                medicineAttentionLevel = "Atenção Básica";
                 break;
             case "HO":
-                returnNivelAt = "Atendimento Hospitalar";
+                medicineAttentionLevel = "Atendimento Hospitalar";
                 break;
             case "CE":
-                returnNivelAt = "Componente Especializado";
+                medicineAttentionLevel = "Componente Especializado";
                 break;
             case "MC":
-                returnNivelAt = "Média Complexidade";
+                medicineAttentionLevel = "Média Complexidade";
                 break;
             case "ME":
-                returnNivelAt = "Medicamentos Estratégicos";
+                medicineAttentionLevel = "Medicamentos Estratégicos";
                 break;
         }
-        return returnNivelAt;
-    }
-    public void setNivelAt(String nivel_at){
-        put(getTitleNivelAt(), nivel_at);
+        return medicineAttentionLevel;
     }
 
+    //Sets a attention level to a medicine
+    public void setMedicineAttentionLevel(String nivel_at){
+        put(getMedicineAttentionLevelTitle(), nivel_at);
+    }
+
+    //Returns a parse query of medicine
     public static ParseQuery<Remedio> getQuery() {
         return ParseQuery.getQuery(Remedio.class);
     }
-
-    public static String getTitleCodSes(){
+    //Returns the SES Code Title of a medicine
+    public static String getMedicineSESCodeTitle(){
         return "cod_ses";
     }
-    public static String getTitleMedDes(){
+
+    //Returns the description title of a medicine
+    public static String getMedicineDescriptionTitle(){
         return "med_des";
     }
-    public static String getTitleMedDos(){
+
+    //Returns the dosage title of a medicine
+    public static String getMedicineDosageTitle(){
         return "med_dos";
     }
-    public static String getTitleUnid(){
+
+    //Returns the unit title of a medicine
+    public static String getMedicineUnitTitle(){
         return "unid";
     }
-    public static String getTitleNivelAt(){
+
+    //Returns the attention level title of a medicine
+    public static String getMedicineAttentionLevelTitle(){
         return "nivel_at";
     }
 
+    //Overrides the method to returns the description title of a medicine
     @Override
     public String toString() {
-        return getString(getTitleMedDes());
+        return getString(getMedicineDescriptionTitle());
     }
 }

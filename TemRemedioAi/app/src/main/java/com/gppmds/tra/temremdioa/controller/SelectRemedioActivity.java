@@ -43,8 +43,8 @@ public class SelectRemedioActivity extends AppCompatActivity {
         textViewRemedioSelecionado.setText(nomeUBS);
 
         ParseQuery<Remedio> queryRemedio = Remedio.getQuery();
-        queryRemedio.whereContainedIn(Remedio.getTitleNivelAt(), Arrays.asList(filtrosNivelAtencao));
-        queryRemedio.orderByAscending(Remedio.getTitleMedDes());
+        queryRemedio.whereContainedIn(Remedio.getMedicineAttentionLevelTitle(), Arrays.asList(filtrosNivelAtencao));
+        queryRemedio.orderByAscending(Remedio.getMedicineDescriptionTitle());
         List<Remedio> remedios;
         try {
             remedios = queryRemedio.find();
