@@ -13,4 +13,7 @@
                             de Saúde, Hospitais e Farmácias de Alto Custo da Secretaria de Saúde do
                             Distrito Federal.
                             </string>
+    <string name="action_login">Log in</string>
+    <string name="action_log_in">Entrar</string>
+    <string name="action_sign_in">Cadastrar</string>
 </resources>
