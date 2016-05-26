@@ -31,33 +31,35 @@ public class SelectUBSActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(llm);
 
-        String nomeRemedio = getIntent().getStringExtra("nomeRemedio");
-        String nivelAtencaoRemedio = getIntent().getStringExtra("nivelAtencao");
-        String filtrosNivelAtencao[] = nivelAtencaoRemedio.split(",");
+        //Getting medicine description from medicine holder
+        String mecicineName = getIntent().getStringExtra("nomeRemedio");
+        String medicineAttentionLevel = getIntent().getStringExtra("nivelAtencao");
+        String attentionLevelFilters[] = medicineAttentionLevel.split(",");
 
-        for(int i = 0; i < filtrosNivelAtencao.length; i++) {
-            if (filtrosNivelAtencao[i].equalsIgnoreCase("HO")) {
-                filtrosNivelAtencao[i] = "HO,AB";
+        //Getting attention level count
+        for(int i = 0; i < attentionLevelFilters.length; i++) {
+            if (attentionLevelFilters[i].equalsIgnoreCase("HO")) {
+                attentionLevelFilters[i] = "HO,AB";
             }
-            Log.i("CLAUS WHERE", "Nível de atenção do Remédio " + i + ": " + filtrosNivelAtencao[i]);
+            Log.i("CLAUS WHERE", "Nível de atenção do Remédio " + i + ": " + attentionLevelFilters[i]);
         }
+        TextView textViewMedicineSelected = (TextView) findViewById(R.id.textViewMedicineSelected);
+        textViewMedicineSelected.setText(mecicineName);
 
-        TextView textViewRemedioSelecionado = (TextView) findViewById(R.id.textViewRemedioSelecionado);
-        textViewRemedioSelecionado.setText(nomeRemedio);
-
+        //Query ubs data from parse
         ParseQuery<UBS> queryUBS = UBS.getQuery();
-        queryUBS.whereContainedIn(UBS.getEstablishmentAttentionLevelTitle(), Arrays.asList(filtrosNivelAtencao));
+        queryUBS.whereContainedIn(UBS.getEstablishmentAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
         queryUBS.orderByAscending(UBS.getEstablishmentNameTitle());
-        List<UBS> ubss;
+        List<UBS> ubsList;
         try {
-            ubss = queryUBS.find();
+            ubsList = queryUBS.find();
 
-            CardListAdapterUBS claUbs = new CardListAdapterUBS(SelectUBSActivity.this, ubss);
+            CardListAdapterUBS claUbs = new CardListAdapterUBS(SelectUBSActivity.this, ubsList);
             claUbs.setShowButtonRemedios(false);
             recyclerView.setAdapter(claUbs);
 
-            TextView textViewQuantidadeItens = (TextView) findViewById(R.id.textViewQuantidadeItens);
-            textViewQuantidadeItens.setText("Encontrada(s): " + ubss.size());
+            TextView textViewUbsQuantity = (TextView) findViewById(R.id.textViewUbsQuantity);
+            textViewUbsQuantity.setText("Encontrada(s): " + ubsList.size());
         } catch (ParseException e) {
             e.printStackTrace();
         }
