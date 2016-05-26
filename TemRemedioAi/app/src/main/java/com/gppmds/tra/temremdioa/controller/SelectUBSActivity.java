@@ -46,8 +46,8 @@ public class SelectUBSActivity extends AppCompatActivity {
         textViewRemedioSelecionado.setText(nomeRemedio);
 
         ParseQuery<UBS> queryUBS = UBS.getQuery();
-        queryUBS.whereContainedIn(UBS.getTitleNivelAt(), Arrays.asList(filtrosNivelAtencao));
-        queryUBS.orderByAscending(UBS.getTitleNomEstab());
+        queryUBS.whereContainedIn(UBS.getEstablishmentAttentionLevelTitle(), Arrays.asList(filtrosNivelAtencao));
+        queryUBS.orderByAscending(UBS.getEstablishmentNameTitle());
         List<UBS> ubss;
         try {
             ubss = queryUBS.find();

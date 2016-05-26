@@ -5,87 +5,120 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-/**
- * Created by Maria Carolina  on 21/04/2016.
- * Update  by Maria Carolina on 30/04/2016.
- */
 @ParseClassName("UBS")
 public class UBS extends ParseObject {
-    public Double getLatitude(){
-        return getDouble(getTitleLatitude());
-    }
-    public void setLatitude(Double vlr_latitude){
-        put(getTitleLatitude(), vlr_latitude);
+
+    //Returns the latitude of a establishment
+    public Double getEstablishmentLatitude(){
+        return getDouble(getEstablishmentLatitudeTitle());
     }
 
-    public Double getLongitude(){
-        return getDouble(getTitleLongitude());
-    }
-    public void setLongitude(Double vlr_longitude){
-        put(getTitleLongitude(), vlr_longitude);
+    //Sets a latitude to a establishment
+    public void setEstablishmentLatitude(Double establishmentLatitude){
+        put(getEstablishmentLatitudeTitle(), establishmentLatitude);
     }
 
-    public String getNomEstab(){
-        return getString(getTitleNomEstab());
-    }
-    public void setNomEstab(String name){
-        put(getTitleNomEstab(), name);
+    //Returns the longitude of a establishment
+    public Double getEstablishmentLongitude(){
+        return getDouble(getEstablishmentLongitudeTitle());
     }
 
-    public String getDscEndereco(){
-        return getString(getTitleDscEndereco());
-    }
-    public void setDscEndereco(String dsc_endereco){
-        put(getTitleDscEndereco(), dsc_endereco);
+    //Sets the longitude to a establishment
+    public void setEstablishmentLongitude(Double establishmentLongitude){
+        put(getEstablishmentLongitudeTitle(), establishmentLongitude);
     }
 
-    public String getDscBairro(){
-        return getString(getTitleDscBairro());
-    }
-    public void setDscBairro(String dsc_bairro){
-        put(getTitleDscBairro(), dsc_bairro);
+    //Returns the name of a establishment
+    public String getEstablishmentName(){
+        return getString(getEstablishmentNameTitle());
     }
 
-    public String getDscCidade(){
-        return getString(getTitleDscCidade());
-    }
-    public void setDscCidade(String dsc_cidade){
-        put(getTitleDscCidade(), dsc_cidade);
+    //Sets a name to a establishment
+    public void setEstablishmentName(String establishmentName){
+        put(getEstablishmentNameTitle(), establishmentName);
     }
 
-    public String getNivelAt(){
-        return getString(getTitleNivelAt());
-    }
-    public void setNivelAt(String nivel_at){
-        put(getTitleNivelAt(), nivel_at);
+    //Returns the address of a establishment
+    public String getEstablishmentAddress(){
+        return getString(getEstablishmentAddressTitle());
     }
 
+    //Sets an address to a establishment
+    public void setEstablishmentAddress(String establishmentAddress){
+        put(getEstablishmentAddressTitle(), establishmentAddress);
+    }
+
+    //Returns the neighborhood of a establishment
+    public String getEstablishmentNeighborhood(){
+        return getString(getEstablishmentNeighborhoodTitle());
+    }
+
+    //Sets a neighborhood to a establishment
+    public void setEstablishmentNeighborhood(String establishmentNeighborhood){
+        put(getEstablishmentNeighborhoodTitle(), establishmentNeighborhood);
+    }
+
+    //Returns a city of a establishment
+    public String getEstablishmentCity(){
+        return getString(getEstablishmentCityTitle());
+    }
+
+    //Sets a city to a establishment
+    public void setEstablishmentCity(String establishmentCity){
+        put(getEstablishmentCityTitle(), establishmentCity);
+    }
+
+    //Returns the attention level of a establishment
+    public String getEstablishmentAttentionLevel(){
+        return getString(getEstablishmentAttentionLevelTitle());
+    }
+
+    //Sets an attention level to a
+    public void setEstablishmentAttentionLevel(String establishmentAttentionLevel){
+        put(getEstablishmentAttentionLevelTitle(), establishmentAttentionLevel);
+    }
+
+    //Returns the parse query of establishments
     public static ParseQuery<UBS> getQuery() {
         return ParseQuery.getQuery(UBS.class);
     }
 
-    public static String getTitleLongitude(){
+    //Returns the longitude title of a establishment
+    public static String getEstablishmentLongitudeTitle(){
         return "vlr_longitude";
     }
-    public static String getTitleLatitude(){
+
+    //Returns the latitude title of a establishment
+    public static String getEstablishmentLatitudeTitle(){
         return "vlr_latitude";
     }
-    public static String getTitleNomEstab(){
+
+    //Returns the name title of a establishment
+    public static String getEstablishmentNameTitle(){
         return "nom_estab";
     }
-    public static String getTitleDscEndereco(){
+
+    //Returns the address title of a establishment
+    public static String getEstablishmentAddressTitle(){
         return "dsc_endereco";
     }
-    public static String getTitleDscBairro(){
+
+    //Returns the neighborhood title of a establishment
+    public static String getEstablishmentNeighborhoodTitle(){
         return "dsc_bairro";
     }
-    public static String getTitleDscCidade(){ return "dsc_cidade"; }
-    public static String getTitleNivelAt(){
+
+    //Returns the city title of a establishment
+    public static String getEstablishmentCityTitle(){ return "dsc_cidade"; }
+
+    //Returns the attention level title of a establishment
+    public static String getEstablishmentAttentionLevelTitle(){
         return "nivel_at";
     }
 
+    //Overrides the method to returns the description title of a establishment
     @Override
     public String toString(){
-        return getString(getTitleNomEstab());
+        return getString(getEstablishmentNameTitle());
     }
 }

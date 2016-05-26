@@ -42,7 +42,7 @@ public class UBSFragment extends Fragment{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         ParseQuery<UBS> queryUBS = UBS.getQuery();
-        queryUBS.orderByAscending(UBS.getTitleNomEstab());
+        queryUBS.orderByAscending(UBS.getEstablishmentNameTitle());
         List<UBS> ubss;
         try {
 

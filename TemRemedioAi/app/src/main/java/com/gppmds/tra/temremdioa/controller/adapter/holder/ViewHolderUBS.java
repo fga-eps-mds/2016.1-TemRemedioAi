@@ -15,13 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.SelectRemedioActivity;
-import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by elmar on 10/05/16.
@@ -88,8 +85,8 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectRemedioActivity.class);
                 UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
-                intent.putExtra("nomeUBS", selectItem.getNomEstab());
-                intent.putExtra("nivelAtencao", selectItem.getNivelAt());
+                intent.putExtra("nomeUBS", selectItem.getEstablishmentName());
+                intent.putExtra("nivelAtencao", selectItem.getEstablishmentAttentionLevel());
                 v.getContext().startActivity(intent);
             }
         });
@@ -99,12 +96,12 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UbsMapsActivity.class);
                 UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
-                intent.putExtra("latitude", selectItem.getLatitude());
-                intent.putExtra("longitude", selectItem.getLongitude());
-                intent.putExtra("nomeUBS", selectItem.getNomEstab());
-                intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
-                intent.putExtra("descBairroUBS", selectItem.getDscBairro());
-                intent.putExtra("descCidadeUBS", selectItem.getDscCidade());
+                intent.putExtra("latitude", selectItem.getEstablishmentLatitude());
+                intent.putExtra("longitude", selectItem.getEstablishmentLongitude());
+                intent.putExtra("nomeUBS", selectItem.getEstablishmentName());
+                intent.putExtra("descEnderecoUBS", selectItem.getEstablishmentAddress());
+                intent.putExtra("descBairroUBS", selectItem.getEstablishmentNeighborhood());
+                intent.putExtra("descCidadeUBS", selectItem.getEstablishmentCity());
                 v.getContext().startActivity(intent);
             }
         });

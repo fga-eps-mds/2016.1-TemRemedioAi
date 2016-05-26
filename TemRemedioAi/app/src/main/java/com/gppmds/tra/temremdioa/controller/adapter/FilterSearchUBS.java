@@ -32,7 +32,7 @@ public class FilterSearchUBS extends Filter {
 
             for (int i=0;i<filterList.size();i++)
             {
-                if(filterList.get(i).getNomEstab().toUpperCase().contains(constraint))
+                if(filterList.get(i).getEstablishmentName().toUpperCase().contains(constraint))
                 {
                     filteredUBSs.add(filterList.get(i));
                 }

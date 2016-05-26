@@ -52,10 +52,10 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     @Override
     public void onBindViewHolder(ViewHolderUBS holder, int position) {
         UBS rowData = this.dataUBS.get(position);
-        holder.textViewNomeUBS.setText(rowData.getNomEstab());
-        holder.textViewBairroUBS.setText(rowData.getDscBairro());
-        holder.textViewCidadeUBS.setText(rowData.getDscCidade());
-        holder.textViewNivelAtencaoUBS.setText(rowData.getNivelAt());
+        holder.textViewNomeUBS.setText(rowData.getEstablishmentName());
+        holder.textViewBairroUBS.setText(rowData.getEstablishmentNeighborhood());
+        holder.textViewCidadeUBS.setText(rowData.getEstablishmentCity());
+        holder.textViewNivelAtencaoUBS.setText(rowData.getEstablishmentAttentionLevel());
         if (!getShowButtonRemedios()) {
             holder.buttonSelecionaRemedio.setVisibility(View.GONE);
         }

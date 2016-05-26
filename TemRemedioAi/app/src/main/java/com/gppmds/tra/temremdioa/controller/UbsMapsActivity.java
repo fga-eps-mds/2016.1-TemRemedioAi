@@ -84,7 +84,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-//        LatLng latLngValues = new LatLng(ubsSelecionada.getLatitude(), ubsSelecionada.getLongitude());
+//        LatLng latLngValues = new LatLng(ubsSelecionada.getEstablishmentLatitude(), ubsSelecionada.getEstablishmentLongitude());
         LatLng latLngValues = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLngValues).title("Marker of UBS"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 15));
