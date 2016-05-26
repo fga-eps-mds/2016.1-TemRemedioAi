@@ -55,7 +55,7 @@ public class SelectUBSActivity extends AppCompatActivity {
             ubsList = queryUBS.find();
 
             CardListAdapterUBS claUbs = new CardListAdapterUBS(SelectUBSActivity.this, ubsList);
-            claUbs.setShowButtonRemedios(false);
+            claUbs.setShowButtonMedicines(false);
             recyclerView.setAdapter(claUbs);
 
             TextView textViewUbsQuantity = (TextView) findViewById(R.id.textViewUbsQuantity);

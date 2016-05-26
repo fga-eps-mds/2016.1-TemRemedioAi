@@ -30,7 +30,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     public RelativeLayout headerLayout;
     public RelativeLayout expandLayout;
     public ValueAnimator mAnimator;
-    public Button buttonUbsSelect;
+    public Button buttonSelectUbs;
     public ImageView imageViewArrow;
 
     public ViewHolderMedicine(CardView card) {
@@ -40,7 +40,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         this.textViewMedicineDosage = (TextView) card.findViewById(R.id.textViewQuantidadeMedicamento);
         this.textViewMedicineAttentionLevel = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
-        this.buttonUbsSelect = (Button) card.findViewById(R.id.buttonSelecionarUbs);
+        this.buttonSelectUbs = (Button) card.findViewById(R.id.buttonSelecionarUbs);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -77,7 +77,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
             }
         });
 
-        this.buttonUbsSelect.setOnClickListener(new View.OnClickListener() {
+        this.buttonSelectUbs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);

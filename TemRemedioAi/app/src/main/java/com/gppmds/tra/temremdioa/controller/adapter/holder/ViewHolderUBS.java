@@ -24,25 +24,25 @@ import com.tra.gppmds.temremdioa.R;
  * Created by elmar on 10/05/16.
  */
 public class ViewHolderUBS extends RecyclerView.ViewHolder{
-    public TextView textViewNomeUBS;
-    public TextView textViewBairroUBS;
-    public TextView textViewCidadeUBS;
-    public TextView textViewNivelAtencaoUBS;
+    public TextView textViewUbsName;
+    public TextView textViewUbsNeighborhood;
+    public TextView textViewUbsCity;
+    public TextView textViewUbsAttentionLevel;
     public RelativeLayout headerLayout;
     public RelativeLayout expandLayout;
     public ValueAnimator mAnimator;
-    public Button buttonSelecionaRemedio;
+    public Button buttonSelectMedicine;
     public Button buttonVisualizarDescricaoUBS;
     public ImageView imageViewArrow;
 
     public ViewHolderUBS(CardView card) {
         super(card);
-        this.textViewNomeUBS = (TextView) card.findViewById(R.id.textViewNomeUBS);
-        this.textViewBairroUBS = (TextView) card.findViewById(R.id.textViewBairroUBS);
-        this.textViewCidadeUBS = (TextView) card.findViewById(R.id.textViewCidadeUBS);
-        this.textViewNivelAtencaoUBS = (TextView) card.findViewById(R.id.textViewNivelAtencaoUBS);
+        this.textViewUbsName = (TextView) card.findViewById(R.id.textViewNomeUBS);
+        this.textViewUbsNeighborhood = (TextView) card.findViewById(R.id.textViewBairroUBS);
+        this.textViewUbsCity = (TextView) card.findViewById(R.id.textViewCidadeUBS);
+        this.textViewUbsAttentionLevel = (TextView) card.findViewById(R.id.textViewNivelAtencaoUBS);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
-        this.buttonSelecionaRemedio = (Button) card.findViewById(R.id.buttonSelecionarRemedio);
+        this.buttonSelectMedicine = (Button) card.findViewById(R.id.buttonSelecionarRemedio);
         this.buttonVisualizarDescricaoUBS = (Button) card.findViewById(R.id.buttonVisualizarDescricaoUBS);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
@@ -80,7 +80,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             }
         });
 
-        this.buttonSelecionaRemedio.setOnClickListener(new View.OnClickListener() {
+        this.buttonSelectMedicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectRemedioActivity.class);

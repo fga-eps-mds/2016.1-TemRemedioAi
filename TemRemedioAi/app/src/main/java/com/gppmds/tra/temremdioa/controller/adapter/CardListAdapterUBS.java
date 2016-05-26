@@ -15,15 +15,12 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
-/**
- * Created by carolina on 01/05/16.
- */
 public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> implements Filterable{
     public static List<UBS> dataUBS;
     List<UBS> filterDataUBS;
     public static Context contextOpen;
     FilterSearchUBS filter;
-    private Boolean showButtonRemedios;
+    private Boolean showButtonMedicines;
 
     @Override
     public Filter getFilter() {
@@ -38,7 +35,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         this.contextOpen = context;
         this.dataUBS = dataUBS;
         this.filterDataUBS = dataUBS;
-        setShowButtonRemedios(true);
+        setShowButtonMedicines(true);
     }
 
     @Override
@@ -52,12 +49,12 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     @Override
     public void onBindViewHolder(ViewHolderUBS holder, int position) {
         UBS rowData = this.dataUBS.get(position);
-        holder.textViewNomeUBS.setText(rowData.getEstablishmentName());
-        holder.textViewBairroUBS.setText(rowData.getEstablishmentNeighborhood());
-        holder.textViewCidadeUBS.setText(rowData.getEstablishmentCity());
-        holder.textViewNivelAtencaoUBS.setText(rowData.getEstablishmentAttentionLevel());
-        if (!getShowButtonRemedios()) {
-            holder.buttonSelecionaRemedio.setVisibility(View.GONE);
+        holder.textViewUbsName.setText(rowData.getEstablishmentName());
+        holder.textViewUbsNeighborhood.setText(rowData.getEstablishmentNeighborhood());
+        holder.textViewUbsCity.setText(rowData.getEstablishmentCity());
+        holder.textViewUbsAttentionLevel.setText(rowData.getEstablishmentAttentionLevel());
+        if (!getShowButtonMedicines()) {
+            holder.buttonSelectMedicine.setVisibility(View.GONE);
         }
     }
 
@@ -66,12 +63,12 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         return dataUBS.size();
     }
 
-    public void setShowButtonRemedios(Boolean showButtonRemedios) {
-        this.showButtonRemedios = showButtonRemedios;
+    public void setShowButtonMedicines(Boolean showButtonMedicines) {
+        this.showButtonMedicines = showButtonMedicines;
     }
 
-    private Boolean getShowButtonRemedios() {
-        return this.showButtonRemedios;
+    private Boolean getShowButtonMedicines() {
+        return this.showButtonMedicines;
     }
 
 }

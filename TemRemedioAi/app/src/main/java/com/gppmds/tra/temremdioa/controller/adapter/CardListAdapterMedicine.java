@@ -44,7 +44,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
         holder.textViewMedicineDosage.setText(rowData.getMedicineDosage());
         holder.textViewMedicineAttentionLevel.setText(rowData.getMedicineAttentionLevelExtended());
         if (!getShowButtonUBSs()) {
-            holder.buttonUbsSelect.setVisibility(View.GONE);
+            holder.buttonSelectUbs.setVisibility(View.GONE);
         }
     }
 
