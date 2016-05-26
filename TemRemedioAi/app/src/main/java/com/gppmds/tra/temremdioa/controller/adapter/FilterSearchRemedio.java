@@ -54,7 +54,7 @@ public class FilterSearchRemedio extends Filter{
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        adapter.dataRemedio = ( List<Remedio>) results.values;
+        adapter.dataMedicine = ( List<Remedio>) results.values;
 
         adapter.notifyDataSetChanged();
     }

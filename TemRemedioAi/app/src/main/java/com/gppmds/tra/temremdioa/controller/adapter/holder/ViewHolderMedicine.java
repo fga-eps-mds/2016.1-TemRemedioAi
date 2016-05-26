@@ -22,25 +22,25 @@ import com.tra.gppmds.temremdioa.R;
 /**
  * Created by elmar on 09/05/16.
  */
-public class ViewHolderRemedio extends RecyclerView.ViewHolder {
-    public TextView textViewNomeMedicamento;
-    public TextView textViewTipoMedicamento;
-    public TextView textViewQuantidadePorcao;
-    public TextView textViewNivelAtMedicamento;
+public class ViewHolderMedicine extends RecyclerView.ViewHolder {
+    public TextView textViewMedicineName;
+    public TextView textViewMedicineType;
+    public TextView textViewMedicineDosage;
+    public TextView textViewMedicineAttentionLevel;
     public RelativeLayout headerLayout;
     public RelativeLayout expandLayout;
     public ValueAnimator mAnimator;
-    public Button buttonSelecionaUbs;
+    public Button buttonUbsSelect;
     public ImageView imageViewArrow;
 
-    public ViewHolderRemedio(CardView card) {
+    public ViewHolderMedicine(CardView card) {
         super(card);
-        this.textViewNomeMedicamento = (TextView) card.findViewById(R.id.textViewNomeMedicamento);
-        this.textViewTipoMedicamento = (TextView) card.findViewById(R.id.textViewTipoMedicamento);
-        this.textViewQuantidadePorcao = (TextView) card.findViewById(R.id.textViewQuantidadeMedicamento);
-        this.textViewNivelAtMedicamento = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
+        this.textViewMedicineName = (TextView) card.findViewById(R.id.textViewNomeMedicamento);
+        this.textViewMedicineType = (TextView) card.findViewById(R.id.textViewTipoMedicamento);
+        this.textViewMedicineDosage = (TextView) card.findViewById(R.id.textViewQuantidadeMedicamento);
+        this.textViewMedicineAttentionLevel = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
-        this.buttonSelecionaUbs = (Button) card.findViewById(R.id.buttonSelecionarUbs);
+        this.buttonUbsSelect = (Button) card.findViewById(R.id.buttonSelecionarUbs);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -77,11 +77,11 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
             }
         });
 
-        this.buttonSelecionaUbs.setOnClickListener(new View.OnClickListener() {
+        this.buttonUbsSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
-                Remedio selectItem = CardListAdapterMedicine.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
+                Remedio selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
                 intent.putExtra("nomeRemedio", selectItem.getMedicineDescription());
                 intent.putExtra("nivelAtencao", selectItem.getMedicineAttentionLevel());
 
