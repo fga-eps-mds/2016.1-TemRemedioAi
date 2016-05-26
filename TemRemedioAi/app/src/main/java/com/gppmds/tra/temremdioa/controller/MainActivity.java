@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.gppmds.tra.temremdioa.controller.adapter.TabsAdapter;
-import com.gppmds.tra.temremdioa.controller.fragment.RemedioFragment;
+import com.gppmds.tra.temremdioa.controller.fragment.MedicineFragment;
 import com.gppmds.tra.temremdioa.controller.fragment.UBSFragment;
 import com.tra.gppmds.temremdioa.R;
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public boolean onQueryTextChange(String query) {
                 UBSFragment.adapter.getFilter().filter( query );
-                RemedioFragment.adapter.getFilter().filter(query);
+                MedicineFragment.adapter.getFilter().filter(query);
                 return false;
             }
         });

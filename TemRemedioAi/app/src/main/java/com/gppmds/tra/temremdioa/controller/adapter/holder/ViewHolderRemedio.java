@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
-import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterRemedio;
+import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
 import com.gppmds.tra.temremdioa.model.Remedio;
 import com.tra.gppmds.temremdioa.R;
 
@@ -81,7 +81,7 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
-                Remedio selectItem = CardListAdapterRemedio.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
+                Remedio selectItem = CardListAdapterMedicine.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
                 intent.putExtra("nomeRemedio", selectItem.getMedicineDescription());
                 intent.putExtra("nivelAtencao", selectItem.getMedicineAttentionLevel());
 

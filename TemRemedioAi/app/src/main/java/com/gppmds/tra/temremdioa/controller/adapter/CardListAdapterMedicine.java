@@ -18,14 +18,14 @@ import java.util.List;
 /**
  * Created by carolina on 04/05/16.
  */
-public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemedio> implements Filterable{
+public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderRemedio> implements Filterable{
     public static List<Remedio> dataRemedio;
     List<Remedio> filterDataRemedio;
     Context contextOpen;
     FilterSearchRemedio filter;
     private Boolean showButtonUBSs;
 
-    public CardListAdapterRemedio(Context context, List<Remedio> dataRemedio) {
+    public CardListAdapterMedicine(Context context, List<Remedio> dataRemedio) {
         this.contextOpen = context;
         this.dataRemedio = dataRemedio;
         this.filterDataRemedio = dataRemedio;

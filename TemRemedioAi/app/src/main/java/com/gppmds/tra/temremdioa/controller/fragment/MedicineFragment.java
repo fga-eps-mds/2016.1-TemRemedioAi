@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterRemedio;
+import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
 import com.gppmds.tra.temremdioa.model.Remedio;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -16,19 +16,17 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
-/**
- * Created by carolina on 01/05/16.
- */
-public class RemedioFragment extends Fragment{
+
+public class MedicineFragment extends Fragment{
 
     public RecyclerView recyclerView;
-    public static CardListAdapterRemedio adapter;
+    public static CardListAdapterMedicine adapter;
 
-    public RemedioFragment(){
+    public MedicineFragment(){
     }
 
-    public static RemedioFragment newInstance(){
-        return new RemedioFragment();
+    public static MedicineFragment newInstance(){
+        return new MedicineFragment();
     }
 
     @Override
@@ -40,11 +38,12 @@ public class RemedioFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ParseQuery<Remedio> queryRemedio = Remedio.getQuery();
-        List<Remedio> remedios;
+        //Query medicine data from parse
+        ParseQuery<Remedio> queryMedicine = Remedio.getQuery();
+        List<Remedio> medicines;
         try {
-            remedios = queryRemedio.find();
-                adapter = new CardListAdapterRemedio(RemedioFragment.this.getContext(), remedios);
+            medicines = queryMedicine.find();
+                adapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
                 recyclerView.setAdapter( adapter );
 
 
@@ -52,7 +51,6 @@ public class RemedioFragment extends Fragment{
             e.printStackTrace();
         }
 
-//            Remedio.pinAllInBackground(remedios);
         return rootView;
     }
 

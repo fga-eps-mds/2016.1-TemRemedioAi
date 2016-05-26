@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterRemedio;
+import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
 import com.gppmds.tra.temremdioa.model.Remedio;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -52,7 +52,7 @@ public class SelectRemedioActivity extends AppCompatActivity {
         try {
             medicines = queryMedicine.find();
 
-            CardListAdapterRemedio claMedicine = new CardListAdapterRemedio(SelectRemedioActivity.this, medicines);
+            CardListAdapterMedicine claMedicine = new CardListAdapterMedicine(SelectRemedioActivity.this, medicines);
             claMedicine.setShowButtonUBSs(false);
             recyclerView.setAdapter(claMedicine);
 

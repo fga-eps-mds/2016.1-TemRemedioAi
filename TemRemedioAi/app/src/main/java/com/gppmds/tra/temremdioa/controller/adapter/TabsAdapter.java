@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.gppmds.tra.temremdioa.controller.fragment.RemedioFragment;
+import com.gppmds.tra.temremdioa.controller.fragment.MedicineFragment;
 import com.gppmds.tra.temremdioa.controller.fragment.UBSFragment;
 
 /**
@@ -20,7 +20,7 @@ public class TabsAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return RemedioFragment.newInstance();
+                return MedicineFragment.newInstance();
             case 1:
                 return UBSFragment.newInstance();
         }

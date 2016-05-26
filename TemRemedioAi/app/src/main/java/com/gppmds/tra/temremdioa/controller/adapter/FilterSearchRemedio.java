@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class FilterSearchRemedio extends Filter{
 
-    CardListAdapterRemedio adapter;
+    CardListAdapterMedicine adapter;
     List<Remedio> filterList;
 
 
-    public FilterSearchRemedio(List<Remedio> filterList, CardListAdapterRemedio adapter)
+    public FilterSearchRemedio(List<Remedio> filterList, CardListAdapterMedicine adapter)
     {
         this.adapter = adapter;
         this.filterList = filterList;
