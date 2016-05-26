@@ -16,10 +16,6 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
-/**
- * Created by carolina on 01/05/16.
- * Updated by Guilherme on 02/05/2016.
- */
 public class UBSFragment extends Fragment{
 
     public RecyclerView recyclerView;
@@ -41,15 +37,15 @@ public class UBSFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        //Query UBS data from parse
         ParseQuery<UBS> queryUBS = UBS.getQuery();
         queryUBS.orderByAscending(UBS.getEstablishmentNameTitle());
-        List<UBS> ubss;
+        List<UBS> ubsList;
         try {
 
-            ubss = queryUBS.find();
-//            UBS.pinAllInBackground(ubss);
+            ubsList = queryUBS.find();
 
-            adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubss);
+            adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubsList);
 
             recyclerView.setAdapter( adapter );
         } catch (ParseException e) {
