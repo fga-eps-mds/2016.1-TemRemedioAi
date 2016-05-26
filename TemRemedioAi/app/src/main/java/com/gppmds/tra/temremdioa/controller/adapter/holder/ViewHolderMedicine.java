@@ -19,9 +19,6 @@ import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
 import com.gppmds.tra.temremdioa.model.Remedio;
 import com.tra.gppmds.temremdioa.R;
 
-/**
- * Created by elmar on 09/05/16.
- */
 public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     public TextView textViewMedicineName;
     public TextView textViewMedicineType;
@@ -35,12 +32,12 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
 
     public ViewHolderMedicine(CardView card) {
         super(card);
-        this.textViewMedicineName = (TextView) card.findViewById(R.id.textViewNomeMedicamento);
-        this.textViewMedicineType = (TextView) card.findViewById(R.id.textViewTipoMedicamento);
-        this.textViewMedicineDosage = (TextView) card.findViewById(R.id.textViewQuantidadeMedicamento);
-        this.textViewMedicineAttentionLevel = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
+        this.textViewMedicineName = (TextView) card.findViewById(R.id.textViewMedicineName);
+        this.textViewMedicineType = (TextView) card.findViewById(R.id.textViewMedicineType);
+        this.textViewMedicineDosage = (TextView) card.findViewById(R.id.textViewMedicineDosage);
+        this.textViewMedicineAttentionLevel = (TextView) card.findViewById(R.id.textViewMedicineAttetionLevel);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
-        this.buttonSelectUbs = (Button) card.findViewById(R.id.buttonSelecionarUbs);
+        this.buttonSelectUbs = (Button) card.findViewById(R.id.buttonSelectUbs);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 

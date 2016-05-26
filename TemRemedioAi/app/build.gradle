@@ -16,6 +16,9 @@ apply plugin: 'com.android.application'
              minifyEnabled false
              proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
          }
+         debug {
+             testCoverageEnabled true
+         }
      }
  }
 
