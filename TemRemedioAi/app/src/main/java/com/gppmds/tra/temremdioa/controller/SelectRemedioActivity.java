@@ -31,30 +31,33 @@ public class SelectRemedioActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(llm);
 
-        String nomeUBS = getIntent().getStringExtra("nomeUBS");
-        String nivelAtencaoUBS = getIntent().getStringExtra("nivelAtencao");
-        String filtrosNivelAtencao[] = nivelAtencaoUBS.split(",");
+        //Getting UBS description from UBS holder
+        String ubsName = getIntent().getStringExtra("nomeUBS");
+        String ubsAttentionLevel = getIntent().getStringExtra("nivelAtencao");
+        String attentionLevelFilters[] = ubsAttentionLevel.split(",");
 
-        for(int i = 0; i < filtrosNivelAtencao.length; i++) {
-            Log.i("CLAUS WHERE", "Nível de atenção da UBS " + i + ": " + filtrosNivelAtencao[i]);
+        //Getting UBS attention level count
+        for(int i = 0; i < attentionLevelFilters.length; i++) {
+            Log.i("CLAUS WHERE", "Nível de atenção da UBS " + i + ": " + attentionLevelFilters[i]);
         }
 
-        TextView textViewRemedioSelecionado = (TextView) findViewById(R.id.textViewUBSSelecionada);
-        textViewRemedioSelecionado.setText(nomeUBS);
+        TextView textViewSelectedMedicine = (TextView) findViewById(R.id.textViewSelectedUBS);
+        textViewSelectedMedicine.setText(ubsName);
 
-        ParseQuery<Remedio> queryRemedio = Remedio.getQuery();
-        queryRemedio.whereContainedIn(Remedio.getMedicineAttentionLevelTitle(), Arrays.asList(filtrosNivelAtencao));
-        queryRemedio.orderByAscending(Remedio.getMedicineDescriptionTitle());
-        List<Remedio> remedios;
+        //Query medicine data from parse
+        ParseQuery<Remedio> queryMedicine = Remedio.getQuery();
+        queryMedicine.whereContainedIn(Remedio.getMedicineAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
+        queryMedicine.orderByAscending(Remedio.getMedicineDescriptionTitle());
+        List<Remedio> medicines;
         try {
-            remedios = queryRemedio.find();
+            medicines = queryMedicine.find();
 
-            CardListAdapterRemedio claRemedio = new CardListAdapterRemedio(SelectRemedioActivity.this, remedios);
-            claRemedio.setShowButtonUBSs(false);
-            recyclerView.setAdapter(claRemedio);
+            CardListAdapterRemedio claMedicine = new CardListAdapterRemedio(SelectRemedioActivity.this, medicines);
+            claMedicine.setShowButtonUBSs(false);
+            recyclerView.setAdapter(claMedicine);
 
-            TextView textViewQuantidadeLocais = (TextView) findViewById(R.id.textViewQuantidadeLocais);
-            textViewQuantidadeLocais.setText("Encontrado(s): " + remedios.size());
+            TextView textViewMedicineQuantity = (TextView) findViewById(R.id.textViewMedicineQuantity);
+            textViewMedicineQuantity.setText("Encontrado(s): " + medicines.size());
         } catch (ParseException e) {
             e.printStackTrace();
         }
