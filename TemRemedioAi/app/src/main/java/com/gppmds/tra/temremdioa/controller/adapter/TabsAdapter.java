@@ -7,9 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.gppmds.tra.temremdioa.controller.fragment.MedicineFragment;
 import com.gppmds.tra.temremdioa.controller.fragment.UBSFragment;
 
-/**
- * Created by carolina on 01/05/16.
- */
 public class TabsAdapter extends FragmentPagerAdapter{
 
     public TabsAdapter(FragmentManager fm){
@@ -36,7 +33,7 @@ public class TabsAdapter extends FragmentPagerAdapter{
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Remedio";
+                return "Remédio";
             case 1:
                 return "UBS";
         }

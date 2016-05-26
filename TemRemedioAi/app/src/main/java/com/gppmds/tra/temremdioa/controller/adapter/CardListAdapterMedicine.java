@@ -19,7 +19,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     public static List<Remedio> dataMedicine;
     List<Remedio> filterDataMedicine;
     Context contextOpen;
-    FilterSearchRemedio filter;
+    FilterSearchMedicine filter;
     private Boolean showButtonUBSs;
 
     public CardListAdapterMedicine(Context context, List<Remedio> dataMedicine) {
@@ -51,7 +51,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     @Override
     public Filter getFilter() {
         if(filter == null) {
-            filter = new FilterSearchRemedio(filterDataMedicine, this );
+            filter = new FilterSearchMedicine(filterDataMedicine, this );
         }
 
         return filter;

@@ -7,9 +7,6 @@ import com.gppmds.tra.temremdioa.model.UBS;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by elmar on 09/05/16.
- */
 public class FilterSearchUBS extends Filter {
     CardListAdapterUBS adapter;
     List<UBS> filterList;

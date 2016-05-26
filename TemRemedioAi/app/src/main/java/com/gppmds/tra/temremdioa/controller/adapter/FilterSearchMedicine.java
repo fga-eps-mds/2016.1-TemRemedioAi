@@ -7,16 +7,13 @@ import com.gppmds.tra.temremdioa.model.Remedio;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by elmar on 09/05/16.
- */
-public class FilterSearchRemedio extends Filter{
+public class FilterSearchMedicine extends Filter{
 
     CardListAdapterMedicine adapter;
     List<Remedio> filterList;
 
 
-    public FilterSearchRemedio(List<Remedio> filterList, CardListAdapterMedicine adapter)
+    public FilterSearchMedicine(List<Remedio> filterList, CardListAdapterMedicine adapter)
     {
         this.adapter = adapter;
         this.filterList = filterList;
@@ -29,18 +26,18 @@ public class FilterSearchRemedio extends Filter{
         if(constraint != null && constraint.length() > 0)
         {
             constraint = constraint.toString().toUpperCase();
-            List<Remedio> filteredRemedios = new ArrayList<>();
+            List<Remedio> filteredMedicines = new ArrayList<>();
 
             for (int i=0;i<filterList.size();i++)
             {
                 if(filterList.get(i).getMedicineDescription().toUpperCase().contains(constraint))
                 {
-                    filteredRemedios.add(filterList.get(i));
+                    filteredMedicines.add(filterList.get(i));
                 }
             }
 
-            results.count = filteredRemedios.size();
-            results.values = filteredRemedios;
+            results.count = filteredMedicines.size();
+            results.values = filteredMedicines;
         }else
         {
             results.count = filterList.size();
