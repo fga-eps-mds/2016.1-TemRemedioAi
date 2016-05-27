@@ -8,7 +8,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
-import com.gppmds.tra.temremdioa.model.Remedio;
+import com.gppmds.tra.temremdioa.model.Medicine;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
@@ -45,10 +45,10 @@ public class SelectRemedioActivity extends AppCompatActivity {
         textViewSelectedMedicine.setText(ubsName);
 
         //Query medicine data from parse
-        ParseQuery<Remedio> queryMedicine = Remedio.getQuery();
-        queryMedicine.whereContainedIn(Remedio.getMedicineAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
-        queryMedicine.orderByAscending(Remedio.getMedicineDescriptionTitle());
-        List<Remedio> medicines;
+        ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
+        queryMedicine.whereContainedIn(Medicine.getMedicineAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
+        queryMedicine.orderByAscending(Medicine.getMedicineDescriptionTitle());
+        List<Medicine> medicines;
         try {
             medicines = queryMedicine.find();
 

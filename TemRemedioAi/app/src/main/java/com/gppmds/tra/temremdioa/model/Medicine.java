@@ -6,7 +6,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 @ParseClassName("Medicamentos")
-public class Remedio extends ParseObject {
+public class Medicine extends ParseObject {
     //Returns the SES Code of a medicine
     public String getMedicineSESCode(){
         return getString(getMedicineSESCodeTitle());
@@ -140,8 +140,8 @@ public class Remedio extends ParseObject {
     }
 
     //Returns a parse query of medicine
-    public static ParseQuery<Remedio> getQuery() {
-        return ParseQuery.getQuery(Remedio.class);
+    public static ParseQuery<Medicine> getQuery() {
+        return ParseQuery.getQuery(Medicine.class);
     }
     //Returns the SES Code Title of a medicine
     public static String getMedicineSESCodeTitle(){

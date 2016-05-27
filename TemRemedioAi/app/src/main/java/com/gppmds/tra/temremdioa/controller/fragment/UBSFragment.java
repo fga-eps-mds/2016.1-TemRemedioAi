@@ -39,7 +39,7 @@ public class UBSFragment extends Fragment{
 
         //Query UBS data from parse
         ParseQuery<UBS> queryUBS = UBS.getQuery();
-        queryUBS.orderByAscending(UBS.getEstablishmentNameTitle());
+        queryUBS.orderByAscending(UBS.getUbsNameTitle());
         List<UBS> ubsList;
         try {
 

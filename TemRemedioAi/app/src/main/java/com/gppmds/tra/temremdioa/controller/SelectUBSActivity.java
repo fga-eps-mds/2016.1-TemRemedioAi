@@ -48,8 +48,8 @@ public class SelectUBSActivity extends AppCompatActivity {
 
         //Query ubs data from parse
         ParseQuery<UBS> queryUBS = UBS.getQuery();
-        queryUBS.whereContainedIn(UBS.getEstablishmentAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
-        queryUBS.orderByAscending(UBS.getEstablishmentNameTitle());
+        queryUBS.whereContainedIn(UBS.getUbsAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
+        queryUBS.orderByAscending(UBS.getUbsNameTitle());
         List<UBS> ubsList;
         try {
             ubsList = queryUBS.find();

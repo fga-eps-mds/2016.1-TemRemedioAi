@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
-import com.gppmds.tra.temremdioa.model.Remedio;
+import com.gppmds.tra.temremdioa.model.Medicine;
 import com.tra.gppmds.temremdioa.R;
 
 public class ViewHolderMedicine extends RecyclerView.ViewHolder {
@@ -78,7 +78,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
-                Remedio selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
+                Medicine selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
                 intent.putExtra("nomeRemedio", selectItem.getMedicineDescription());
                 intent.putExtra("nivelAtencao", selectItem.getMedicineAttentionLevel());
 

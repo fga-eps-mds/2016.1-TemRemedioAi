@@ -10,19 +10,19 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderMedicine;
-import com.gppmds.tra.temremdioa.model.Remedio;
+import com.gppmds.tra.temremdioa.model.Medicine;
 import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
 public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedicine> implements Filterable{
-    public static List<Remedio> dataMedicine;
-    List<Remedio> filterDataMedicine;
+    public static List<Medicine> dataMedicine;
+    List<Medicine> filterDataMedicine;
     Context contextOpen;
     FilterSearchMedicine filter;
     private Boolean showButtonUBSs;
 
-    public CardListAdapterMedicine(Context context, List<Remedio> dataMedicine) {
+    public CardListAdapterMedicine(Context context, List<Medicine> dataMedicine) {
         this.contextOpen = context;
         this.dataMedicine = dataMedicine;
         this.filterDataMedicine = dataMedicine;
@@ -38,7 +38,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
 
     @Override
     public void onBindViewHolder(ViewHolderMedicine holder, int position) {
-        Remedio rowData = this.dataMedicine.get(position);
+        Medicine rowData = this.dataMedicine.get(position);
         holder.textViewMedicineName.setText(rowData.getMedicineDescription());
         holder.textViewMedicineType.setText(rowData.getMedicineUnitExtended());
         holder.textViewMedicineDosage.setText(rowData.getMedicineDosage());

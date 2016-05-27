@@ -85,8 +85,8 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectRemedioActivity.class);
                 UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
-                intent.putExtra("nomeUBS", selectItem.getEstablishmentName());
-                intent.putExtra("nivelAtencao", selectItem.getEstablishmentAttentionLevel());
+                intent.putExtra("nomeUBS", selectItem.getUbsName());
+                intent.putExtra("nivelAtencao", selectItem.getUbsAttentionLevel());
                 v.getContext().startActivity(intent);
             }
         });
@@ -96,12 +96,12 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UbsMapsActivity.class);
                 UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
-                intent.putExtra("latitude", selectItem.getEstablishmentLatitude());
-                intent.putExtra("longitude", selectItem.getEstablishmentLongitude());
-                intent.putExtra("nomeUBS", selectItem.getEstablishmentName());
-                intent.putExtra("descEnderecoUBS", selectItem.getEstablishmentAddress());
-                intent.putExtra("descBairroUBS", selectItem.getEstablishmentNeighborhood());
-                intent.putExtra("descCidadeUBS", selectItem.getEstablishmentCity());
+                intent.putExtra("latitude", selectItem.getUbsLatitude());
+                intent.putExtra("longitude", selectItem.getUbsLongitude());
+                intent.putExtra("nomeUBS", selectItem.getUbsName());
+                intent.putExtra("descEnderecoUBS", selectItem.getUbsAddress());
+                intent.putExtra("descBairroUBS", selectItem.getUbsNeighborhood());
+                intent.putExtra("descCidadeUBS", selectItem.getUbsCity());
                 v.getContext().startActivity(intent);
             }
         });

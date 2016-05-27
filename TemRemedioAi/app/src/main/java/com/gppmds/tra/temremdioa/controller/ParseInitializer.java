@@ -1,6 +1,6 @@
 package com.gppmds.tra.temremdioa.controller;
 
-import com.gppmds.tra.temremdioa.model.Remedio;
+import com.gppmds.tra.temremdioa.model.Medicine;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -16,7 +16,7 @@ public class ParseInitializer extends android.app.Application {
         super.onCreate();
 
         ParseObject.registerSubclass(UBS.class);
-        ParseObject.registerSubclass(Remedio.class);
+        ParseObject.registerSubclass(Medicine.class);
         // Establish connection with parse server
         Parse.enableLocalDatastore(getApplicationContext());
         Parse.initialize(new Parse.Configuration.Builder(this)

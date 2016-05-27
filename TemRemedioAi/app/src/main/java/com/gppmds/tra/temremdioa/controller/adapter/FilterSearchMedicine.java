@@ -2,7 +2,7 @@ package com.gppmds.tra.temremdioa.controller.adapter;
 
 import android.widget.Filter;
 
-import com.gppmds.tra.temremdioa.model.Remedio;
+import com.gppmds.tra.temremdioa.model.Medicine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,10 @@ import java.util.List;
 public class FilterSearchMedicine extends Filter{
 
     CardListAdapterMedicine adapter;
-    List<Remedio> filterList;
+    List<Medicine> filterList;
 
 
-    public FilterSearchMedicine(List<Remedio> filterList, CardListAdapterMedicine adapter)
+    public FilterSearchMedicine(List<Medicine> filterList, CardListAdapterMedicine adapter)
     {
         this.adapter = adapter;
         this.filterList = filterList;
@@ -26,7 +26,7 @@ public class FilterSearchMedicine extends Filter{
         if(constraint != null && constraint.length() > 0)
         {
             constraint = constraint.toString().toUpperCase();
-            List<Remedio> filteredMedicines = new ArrayList<>();
+            List<Medicine> filteredMedicines = new ArrayList<>();
 
             for (int i=0;i<filterList.size();i++)
             {
@@ -51,7 +51,7 @@ public class FilterSearchMedicine extends Filter{
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        adapter.dataMedicine = ( List<Remedio>) results.values;
+        adapter.dataMedicine = ( List<Medicine>) results.values;
 
         adapter.notifyDataSetChanged();
     }

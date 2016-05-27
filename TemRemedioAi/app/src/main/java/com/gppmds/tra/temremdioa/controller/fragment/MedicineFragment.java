@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
-import com.gppmds.tra.temremdioa.model.Remedio;
+import com.gppmds.tra.temremdioa.model.Medicine;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
@@ -39,8 +39,8 @@ public class MedicineFragment extends Fragment{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //Query medicine data from parse
-        ParseQuery<Remedio> queryMedicine = Remedio.getQuery();
-        List<Remedio> medicines;
+        ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
+        List<Medicine> medicines;
         try {
             medicines = queryMedicine.find();
                 adapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
