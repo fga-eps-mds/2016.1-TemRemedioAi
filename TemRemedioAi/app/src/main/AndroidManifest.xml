@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.tra.gppmds.temremdioa">
 
     <!-- User Permissions -->
@@ -16,18 +15,15 @@
 
     <application
         android:name="com.gppmds.tra.temremdioa.controller.ParseInitializer"
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-
             android:name="com.gppmds.tra.temremdioa.controller.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -47,14 +43,12 @@
         <activity
             android:name="com.gppmds.tra.temremdioa.controller.SplashScreenActivity"
             android:theme="@style/FullSrceenTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.gppmds.tra.temremdioa.controller.UbsMapsActivity"
             android:label="@string/title_activity_ubs_maps">
@@ -77,18 +71,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
-        <activity android:name="com.gppmds.tra.temremdioa.controller.SelectUBSActivity"
+        <activity
+            android:name="com.gppmds.tra.temremdioa.controller.SelectUBSActivity"
             android:label="@string/title_activity_select_UBS">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
-        <activity android:name="com.gppmds.tra.temremdioa.controller.SelectRemedioActivity"
+        <activity
+            android:name="com.gppmds.tra.temremdioa.controller.SelectRemedioActivity"
             android:label="@string/title_activity_select_Remedio">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
+        <activity android:name="com.gppmds.tra.temremdioa.controller.LogInActivit"></activity>
     </application>
 
 </manifest>

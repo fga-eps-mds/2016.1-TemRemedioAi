@@ -16,4 +16,5 @@
     <string name="action_login">Log in</string>
     <string name="action_log_in">Entrar</string>
     <string name="action_sign_in">Cadastrar</string>
+    <string name="error_incorrect_password">Senha incorreta</string>
 </resources>
