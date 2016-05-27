@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -85,6 +86,8 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         else
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Maps");
+            builder.setIcon(R.drawable.google_maps_icon);
             builder.setMessage("Instalar Google Maps");
             builder.setCancelable(true);
             builder.setNegativeButton("Cancelar",null);
