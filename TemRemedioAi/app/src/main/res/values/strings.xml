@@ -17,4 +17,10 @@
     <string name="action_log_in">Entrar</string>
     <string name="action_sign_in">Cadastrar</string>
     <string name="error_incorrect_password">Senha incorreta</string>
+    <string name="action_sign_in_short">Sing in</string>
+    <string name="prompt_password2">Confirmação da senha</string>
+    <string name="prompt_password">Senha</string>
+    <string name="prompt_age">Idade</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_name">Nome</string>
 </resources>
