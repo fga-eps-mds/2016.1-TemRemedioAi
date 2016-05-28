@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +43,15 @@ public class LogInActivit extends AppCompatActivity implements LoaderCallbacks<C
     // res references
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private View mProgressView;
+    private ProgressBar mProgressView;
     private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Set up log in form
         mEmailView = (AutoCompleteTextView) findViewById(R.id.log_in_email_field);
@@ -74,7 +78,7 @@ public class LogInActivit extends AppCompatActivity implements LoaderCallbacks<C
         });
 
         mLoginFormView = (View) findViewById(R.id.log_in_form);
-        mProgressView = (View) findViewById(R.id.log_in_progress_bar);
+        mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
     }
 
 
@@ -134,6 +138,10 @@ public class LogInActivit extends AppCompatActivity implements LoaderCallbacks<C
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) { // Honeycombe api use to show progress bar
+
+        mProgressView.getIndeterminateDrawable().setColorFilter(Color.RED,
+                                                            android.graphics.PorterDuff.Mode.SRC_IN);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
@@ -217,16 +225,38 @@ public class LogInActivit extends AppCompatActivity implements LoaderCallbacks<C
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return null;
+        return new CursorLoader(this,
+                // Retrieve data rows for the device user's 'profile' contact.
+                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
+                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
+
+                // Select only email addresses.
+                ContactsContract.Contacts.Data.MIMETYPE +
+                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
+                .CONTENT_ITEM_TYPE},
+
+                // Show primary email addresses first. Note that there won't be
+                // a primary email address if the user hasn't specified one.
+                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
+    }
+
+    private interface ProfileQuery {
+        String[] PROJECTION = {
+                ContactsContract.CommonDataKinds.Email.ADDRESS,
+                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
+        };
+
+        int ADDRESS = 0;
+        int IS_PRIMARY = 1;
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-
+        finish();
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        finish();
     }
 }

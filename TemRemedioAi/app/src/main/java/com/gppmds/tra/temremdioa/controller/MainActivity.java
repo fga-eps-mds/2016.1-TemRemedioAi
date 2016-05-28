@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity{
             case R.id.action_login:
                 Intent loginActivity = new Intent(MainActivity.this,LogInActivit.class);
                 startActivity(loginActivity);
+                break;
             case R.id.action_settings:
                 Toast.makeText(this, R.string.action_settings, Toast.LENGTH_LONG).show();
                 break;
