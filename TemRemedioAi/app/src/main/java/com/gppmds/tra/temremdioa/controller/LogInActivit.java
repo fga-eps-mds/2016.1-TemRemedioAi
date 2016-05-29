@@ -3,6 +3,7 @@ package com.gppmds.tra.temremdioa.controller;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -74,6 +75,15 @@ public class LogInActivit extends AppCompatActivity implements LoaderCallbacks<C
             public void onClick(View view) {
                 attemptLogin();
 
+            }
+        });
+
+        Button mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
+        mRegisterButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerActivity = new Intent(LogInActivit.this, RegisterActivity.class);
+                startActivity(registerActivity);
             }
         });
 
