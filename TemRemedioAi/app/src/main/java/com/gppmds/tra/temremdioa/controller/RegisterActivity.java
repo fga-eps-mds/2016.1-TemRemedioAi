@@ -44,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
     /*Variaveis para o User*/
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private EditText mPasswordViewConfirmation;
     private EditText mAge;
     private EditText mName;
     private RadioButton mSexo;
