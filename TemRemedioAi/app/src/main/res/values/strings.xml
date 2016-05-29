@@ -27,4 +27,6 @@
     <string name="error_invalid_email">O email digitado é invalido</string>
     <string name="error_invalid_password">A senha é muito curta</string>
     <string name="error_field_required">Ops!!! Esse campo não foi preenchido.</string>
+    <string name="cancel">Cancelar</string>
+    <string name="error_different_password">Ops!!! As senhas são diferentes.</string>
 </resources>
