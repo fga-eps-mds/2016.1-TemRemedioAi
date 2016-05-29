@@ -79,4 +79,12 @@ public class User extends ParseObject{
     public static String getTitleAge(){
         return "age_user";
     }
+
+    public boolean isContainValid(String word, String contain) {
+        return word.contains(contain);
+    }
+
+    public boolean isLengthValid(String word, int sizeMin, int sizeMax) {
+        return word.length() > sizeMin && word.length() < sizeMax;
+    }
 }
