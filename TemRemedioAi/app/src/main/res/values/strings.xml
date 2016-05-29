@@ -29,4 +29,6 @@
     <string name="error_field_required">Ops!!! Esse campo não foi preenchido.</string>
     <string name="cancel">Cancelar</string>
     <string name="error_different_password">Ops!!! As senhas são diferentes.</string>
+    <string name="error_invalid_age">Idade inválida.</string>
+    <string name="error_invalid_genre">Sexo não escolhido</string>
 </resources>

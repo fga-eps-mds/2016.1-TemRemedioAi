@@ -35,23 +35,25 @@ import android.widget.Toast;
 import com.gppmds.tra.temremdioa.model.User;
 import com.tra.gppmds.temremdioa.R;
 
-public class RegisterActivity extends AppCompatActivity /*implements LoaderCallbacks<Cursor> */{
+public class RegisterActivity extends AppCompatActivity {
 
     User user;
 
-//    private static final int REQUEST_READ_CONTACTS = 0;
-//
+    private static final int REQUEST_READ_CONTACTS = 0;
+
 //    private static final String[] DUMMY_CREDENTIALS = new String[]{
 //            "foo@example.com:hello", "bar@example.com:world"
 //    };
-//
-//    /*Variaveis para o User*/
-//    private AutoCompleteTextView mEmailView;
+
+    /*Variaveis para o User*/
+    private EditText mEmailView;
     private EditText mPasswordView;
     private EditText mPasswordViewConfirmation;
-//    private EditText mAgeView;
+    private EditText mAgeView;
     private EditText mNameView;
-//    private RadioButton mGenreView;
+    private RadioButton mGenreMaleView;
+    private RadioButton mGenreFemView;
+    private TextView mGenre;
 
     private View mProgressView;
     private View mRegisterFormView;
@@ -60,15 +62,15 @@ public class RegisterActivity extends AppCompatActivity /*implements LoaderCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-//
+
         mNameView = (EditText) findViewById(R.id.name);
-//
-//        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-//        populateAutoComplete();
-//
-//        mAge = (EditText) findViewById(R.id.ageText);
+        mEmailView = (EditText) findViewById(R.id.email);
+        mAgeView = (EditText) findViewById(R.id.ageText);
+        mGenreFemView = (RadioButton) findViewById(R.id.femButton);
+        mGenreMaleView = (RadioButton) findViewById(R.id.mascButton);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordViewConfirmation = (EditText) findViewById(R.id.password2);
+        mGenre = (TextView) findViewById(R.id.textViewGenre);
 
 //        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 //            @Override
@@ -89,26 +91,18 @@ public class RegisterActivity extends AppCompatActivity /*implements LoaderCallb
             }
         });
 
-//        Button cancelButton = (Button) findViewById(R.id.register_cancel);
-//        cancelButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
+        Button cancelButton = (Button) findViewById(R.id.register_cancel);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         mRegisterFormView= findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
-//    private void populateAutoComplete() {
-//        if (!mayRequestContacts()) {
-//            return;
-//        }
-//
-//        getLoaderManager().initLoader(0, null, this);
-//    }
-//
 //    private boolean mayRequestContacts() {
 //        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 //            return true;
@@ -130,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity /*implements LoaderCallb
 //        }
 //        return false;
 //    }
-//
+
 //    @Override
 //    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
 //                                           @NonNull int[] grantResults) {
@@ -146,21 +140,32 @@ public class RegisterActivity extends AppCompatActivity /*implements LoaderCallb
 
         // Reset errors.
         mNameView.setError(null);
-//        mEmailView.setError(null);
+        mEmailView.setError(null);
         mPasswordView.setError(null);
         mPasswordViewConfirmation.setError(null);
+        mAgeView.setError(null);
+        mGenreMaleView.setError(null);
+        mGenreFemView.setError(null);
+        mGenre.setError(null);
 
         // Store values at the time of the login attempt.
-//        String email = mEmailView.getText().toString();
+        String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
         String passwordConfirmation = mPasswordViewConfirmation.getText().toString();
         String name = mNameView.getText().toString();
+        int age = 0;
+        String genre = null;
 
         boolean cancel = false;
         View focusView = null;
 
         /*Password*/
         if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_field_required));
+            focusView = mPasswordView;
+            cancel = true;
+        }
+        else if (password.length() < 6){
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -171,16 +176,16 @@ public class RegisterActivity extends AppCompatActivity /*implements LoaderCallb
             cancel = true;
         }
 
-//        /*Email*/
-//        if (TextUtils.isEmpty(email)) {
-//            mEmailView.setError(getString(R.string.error_field_required));
-//            focusView = mEmailView;
-//            cancel = true;
-//        } else if (!user.isContainValid(email, "@")) {
-//            mEmailView.setError(getString(R.string.error_invalid_email));
-//            focusView = mEmailView;
-//            cancel = true;
-//        }
+        /*Email*/
+        if (TextUtils.isEmpty(email)) {
+            mEmailView.setError(getString(R.string.error_field_required));
+            focusView = mEmailView;
+            cancel = true;
+        } else if (!isContainValid(email)) {
+            mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
+            cancel = true;
+        }
 
         /*Name*/
         if (TextUtils.isEmpty(name)) {
@@ -188,6 +193,27 @@ public class RegisterActivity extends AppCompatActivity /*implements LoaderCallb
             focusView = mNameView;
             cancel = true;
         }
+
+        /*Age*/
+        if (TextUtils.isEmpty(mAgeView.getText().toString())) {
+            mAgeView.setError(getString(R.string.error_field_required));
+            focusView = mAgeView;
+            cancel = true;
+        } else {
+            age = Integer.parseInt(mAgeView.getText().toString());
+            if (age < 0 || age > 120) {
+                mAgeView.setError(getString(R.string.error_invalid_age));
+            }
+        }
+
+        /*Genre*/
+        if (!mGenreMaleView.isChecked() && !mGenreFemView.isChecked()) {
+            mGenre.setError(getString(R.string.error_invalid_genre));
+            focusView = mGenre;
+            cancel = true;
+        }
+        else if (mGenreFemView.isSelected()) genre = "Feminino";
+        else if (mGenreMaleView.isSelected()) genre = "Masculino";
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -197,10 +223,14 @@ public class RegisterActivity extends AppCompatActivity /*implements LoaderCallb
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
 //            showProgress(true);
-//            user = new User(null, name, null, null, 0);
+//            user = new User(password, name, genre, email, age);
             Toast.makeText(this, "Cadastrado", Toast.LENGTH_LONG).show();
             finish();
         }
+    }
+
+    public boolean isContainValid(String email) {
+        return email.contains("@");
     }
 
 //    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
