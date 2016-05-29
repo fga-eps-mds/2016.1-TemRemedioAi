@@ -41,9 +41,6 @@ public class SelectUBSActivity extends AppCompatActivity {
             if (attentionLevelFilters[i].equalsIgnoreCase("HO")) {
                 attentionLevelFilters[i] = "HO,AB";
             }
-            else {
-                // Nothing to do
-            }
             Log.i("CLAUS WHERE", "Nível de atenção do Remédio " + i + ": " + attentionLevelFilters[i]);
         }
         TextView textViewMedicineSelected = (TextView) findViewById(R.id.textViewMedicineSelected);
@@ -54,6 +51,7 @@ public class SelectUBSActivity extends AppCompatActivity {
         queryUBS.whereContainedIn(UBS.getUbsAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
         queryUBS.orderByAscending(UBS.getUbsNameTitle());
         List<UBS> ubsList;
+
         try {
             ubsList = queryUBS.find();
 

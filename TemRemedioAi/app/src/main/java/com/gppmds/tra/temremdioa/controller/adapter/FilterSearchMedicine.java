@@ -12,39 +12,31 @@ public class FilterSearchMedicine extends Filter{
     CardListAdapterMedicine adapter;
     List<Medicine> filterList;
 
-
-    public FilterSearchMedicine(List<Medicine> filterList, CardListAdapterMedicine adapter)
-    {
+    public FilterSearchMedicine(List<Medicine> filterList, CardListAdapterMedicine adapter) {
         this.adapter = adapter;
         this.filterList = filterList;
-
     }
+
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
         FilterResults results = new FilterResults();
 
-        if(constraint != null && constraint.length() > 0)
-        {
+        if(constraint != null && constraint.length() > 0) {
             constraint = constraint.toString().toUpperCase();
             List<Medicine> filteredMedicines = new ArrayList<>();
 
-            for (int i=0;i<filterList.size();i++)
-            {
-                if(filterList.get(i).getMedicineDescription().toUpperCase().contains(constraint))
-                {
+            for (int i=0;i<filterList.size();i++) {
+                if(filterList.get(i).getMedicineDescription().toUpperCase().contains(constraint)) {
                     filteredMedicines.add(filterList.get(i));
                 }
             }
 
             results.count = filteredMedicines.size();
             results.values = filteredMedicines;
-        }else
-        {
+        } else {
             results.count = filterList.size();
             results.values = filterList;
-
         }
-
 
         return results;
     }
@@ -52,7 +44,6 @@ public class FilterSearchMedicine extends Filter{
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
         adapter.dataMedicine = ( List<Medicine>) results.values;
-
         adapter.notifyDataSetChanged();
     }
 }

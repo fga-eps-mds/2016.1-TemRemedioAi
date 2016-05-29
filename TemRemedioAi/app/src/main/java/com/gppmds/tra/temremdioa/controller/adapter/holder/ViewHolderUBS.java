@@ -20,9 +20,6 @@ import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
-/**
- * Created by elmar on 10/05/16.
- */
 public class ViewHolderUBS extends RecyclerView.ViewHolder{
     public TextView textViewUbsName;
     public TextView textViewUbsNeighborhood;

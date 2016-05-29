@@ -11,47 +11,38 @@ public class FilterSearchUBS extends Filter {
     CardListAdapterUBS adapter;
     List<UBS> filterList;
 
-
-    public FilterSearchUBS(List<UBS> filterList, CardListAdapterUBS adapter)
-    {
+    public FilterSearchUBS(List<UBS> filterList, CardListAdapterUBS adapter) {
         this.adapter = adapter;
         this.filterList = filterList;
-
     }
+
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
         FilterResults results = new FilterResults();
 
-        if(constraint != null && constraint.length() > 0)
-        {
+        if(constraint != null && constraint.length() > 0) {
             constraint = constraint.toString().toUpperCase();
             List<UBS> filteredUBSs = new ArrayList<>();
 
-            for (int i=0;i<filterList.size();i++)
-            {
-                if(filterList.get(i).getUbsName().toUpperCase().contains(constraint))
-                {
+            for (int i=0;i<filterList.size();i++) {
+                if(filterList.get(i).getUbsName().toUpperCase().contains(constraint)) {
                     filteredUBSs.add(filterList.get(i));
                 }
             }
 
             results.count = filteredUBSs.size();
             results.values = filteredUBSs;
-        }else
-        {
+        } else {
             results.count = filterList.size();
             results.values = filterList;
-
         }
-
 
         return results;
     }
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        adapter.dataUBS = ( List<UBS>) results.values;
-
+        adapter.dataUBS = (List<UBS>) results.values;
         adapter.notifyDataSetChanged();
     }
 }

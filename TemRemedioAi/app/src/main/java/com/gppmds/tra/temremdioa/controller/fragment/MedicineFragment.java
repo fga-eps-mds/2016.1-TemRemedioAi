@@ -22,18 +22,6 @@ public class MedicineFragment extends Fragment{
     public RecyclerView recyclerView;
     public static CardListAdapterMedicine adapter;
 
-    // -------------------------------------------------------------
-    // Function:
-    // Description:
-    // Parameters:
-    //      tipo nome;            Description
-    //
-    //  Atributes:
-    //      tipo nome;            Description
-    // Return: void
-    // Observation:
-    // -------------------------------------------------------------
-
     public MedicineFragment(){
     }
 
@@ -42,7 +30,8 @@ public class MedicineFragment extends Fragment{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_remedio, container, false);
 
@@ -55,8 +44,8 @@ public class MedicineFragment extends Fragment{
         List<Medicine> medicines;
         try {
             medicines = queryMedicine.find();
-                adapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
-                recyclerView.setAdapter( adapter );
+            adapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
+            recyclerView.setAdapter( adapter );
         } catch (ParseException e) {
             e.printStackTrace();
         }
