@@ -1,5 +1,7 @@
 package com.gppmds.tra.temremdioa.model;
 
+import android.widget.EditText;
+
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -86,5 +88,9 @@ public class User extends ParseObject{
 
     public boolean isLengthValid(String word, int sizeMin, int sizeMax) {
         return word.length() > sizeMin && word.length() < sizeMax;
+    }
+
+    public boolean isPasswordValid(String password, String passwordConfirmation) {
+        return passwordConfirmation.equals(password);
     }
 }

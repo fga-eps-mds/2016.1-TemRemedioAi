@@ -35,6 +35,8 @@ import com.tra.gppmds.temremdioa.R;
 
 public class RegisterActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    User user;
+
     private static final int REQUEST_READ_CONTACTS = 0;
 
     private static final String[] DUMMY_CREDENTIALS = new String[]{
@@ -46,11 +48,10 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
     /*Variaveis para o User*/
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText mPasswordViewConfirmation;
     private EditText mAge;
     private EditText mName;
     private RadioButton mSexo;
-
-    User user;
 
     private View mProgressView;
     private View mLoginFormView;
@@ -60,10 +61,15 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        mName = (EditText) findViewById(R.id.name);
+
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
+        mAge = (EditText) findViewById(R.id.ageText);
         mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordViewConfirmation = (EditText) findViewById(R.id.password2);
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -83,18 +89,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
             }
         });
 
-        Button cancelButton = (Button) findViewById(R.id.register_cancel);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-
-
     }
 
     private void populateAutoComplete() {
@@ -127,9 +123,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         return false;
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -149,27 +142,33 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
+        mPasswordViewConfirmation.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String passwordConfirmation = mPasswordViewConfirmation.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !user.isLengthValid(password, 6, 25)) {
+        /*Password*/
+        if (!TextUtils.isEmpty(password) && !user.isLengthValid(password, 6, Integer.MAX_VALUE)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
+        } else if (!user.isPasswordValid(password, passwordConfirmation)) {
+            mPasswordViewConfirmation.setError(getString(R.string.error_different_password));
+            focusView = mPasswordViewConfirmation;
+            cancel = true;
         }
 
-        // Check for a valid email address.
+        /*Email*/
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (user.isContainValid(email,"@")) {
+        } else if (!user.isContainValid(email, "@")) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
@@ -188,9 +187,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         }
     }
 
-    /**
-     * Shows the progress UI and hides the login form.
-     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
