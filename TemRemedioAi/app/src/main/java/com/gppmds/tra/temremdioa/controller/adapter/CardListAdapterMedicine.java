@@ -46,7 +46,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
         if (!getShowButtonUBSs()) {
             holder.buttonSelectUbs.setVisibility(View.GONE);
         } else {
-            // Nothing to do
+            /* Nothing to do */
         }
     }
 
@@ -55,7 +55,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
         if(filter == null) {
             filter = new FilterSearchMedicine(filterDataMedicine, this );
         } else {
-            // Nothing to do
+            /* Nothing to do */
         }
 
         return filter;

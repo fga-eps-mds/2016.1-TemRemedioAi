@@ -29,7 +29,8 @@ public class UBSFragment extends Fragment{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
 
@@ -37,7 +38,7 @@ public class UBSFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //Query UBS data from parse
+        /* Query UBS data from parse */
         ParseQuery<UBS> queryUBS = UBS.getQuery();
         queryUBS.orderByAscending(UBS.getUbsNameTitle());
         List<UBS> ubsList;

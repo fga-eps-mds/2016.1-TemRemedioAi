@@ -31,12 +31,12 @@ public class SelectRemedioActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(llm);
 
-        //Getting UBS description from UBS holder
+        /* Getting UBS description from UBS holder */
         String ubsName = getIntent().getStringExtra("nomeUBS");
         String ubsAttentionLevel = getIntent().getStringExtra("nivelAtencao");
         String attentionLevelFilters[] = ubsAttentionLevel.split(",");
 
-        //Getting UBS attention level count
+        /* Getting UBS attention level count */
         for(int i = 0; i < attentionLevelFilters.length; i++) {
             Log.i("CLAUS WHERE", "Nível de atenção da UBS " + i + ": " + attentionLevelFilters[i]);
         }
@@ -44,7 +44,7 @@ public class SelectRemedioActivity extends AppCompatActivity {
         TextView textViewSelectedMedicine = (TextView) findViewById(R.id.textViewSelectedUBS);
         textViewSelectedMedicine.setText(ubsName);
 
-        //Query medicine data from parse
+        /* Query medicine data from parse */
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
         queryMedicine.whereContainedIn(Medicine.getMedicineAttentionLevelTitle(),
                 Arrays.asList(attentionLevelFilters));

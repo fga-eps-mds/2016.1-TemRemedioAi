@@ -14,7 +14,7 @@ public class ParseInitializer extends android.app.Application {
 
         ParseObject.registerSubclass(UBS.class);
         ParseObject.registerSubclass(Medicine.class);
-        // Establish connection with parse server
+        /* Establish connection with parse server */
         Parse.enableLocalDatastore(getApplicationContext());
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("TemRemedioAi")

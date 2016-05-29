@@ -25,11 +25,11 @@ public class FilterSearchMedicine extends Filter{
             constraint = constraint.toString().toUpperCase();
             List<Medicine> filteredMedicines = new ArrayList<>();
 
-            for (int i=0;i<filterList.size();i++) {
+            for (int i = 0; i < filterList.size(); i++) {
                 if(filterList.get(i).getMedicineDescription().toUpperCase().contains(constraint)) {
                     filteredMedicines.add(filterList.get(i));
                 } else {
-                    // Nothing to do
+                    /* Nothing to do */
                 }
             }
 
@@ -45,7 +45,7 @@ public class FilterSearchMedicine extends Filter{
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        adapter.dataMedicine = ( List<Medicine>) results.values;
+        adapter.dataMedicine = (List<Medicine>) results.values;
         adapter.notifyDataSetChanged();
     }
 }

@@ -39,7 +39,7 @@ public class MedicineFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //Query medicine data from parse
+        /* Query medicine data from parse */
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
         List<Medicine> medicines;
 

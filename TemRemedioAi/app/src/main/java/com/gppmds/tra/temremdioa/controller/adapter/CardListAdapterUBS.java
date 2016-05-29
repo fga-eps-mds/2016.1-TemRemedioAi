@@ -27,7 +27,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         if(filter == null) {
             filter = new FilterSearchUBS( filterDataUBS ,this );
         } else {
-            // Nothing to do
+            /* Nothing to do */
         }
 
         return filter;
@@ -58,7 +58,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         if (!getShowButtonMedicines()) {
             holder.buttonSelectMedicine.setVisibility(View.GONE);
         } else {
-            // Nothing to do
+            /* Nothing to do */
         }
     }
 

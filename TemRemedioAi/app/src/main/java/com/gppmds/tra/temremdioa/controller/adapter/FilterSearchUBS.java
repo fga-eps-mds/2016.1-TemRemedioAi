@@ -24,11 +24,11 @@ public class FilterSearchUBS extends Filter {
             constraint = constraint.toString().toUpperCase();
             List<UBS> filteredUBSs = new ArrayList<>();
 
-            for (int i=0;i<filterList.size();i++) {
+            for (int i = 0; i < filterList.size(); i++) {
                 if(filterList.get(i).getUbsName().toUpperCase().contains(constraint)) {
                     filteredUBSs.add(filterList.get(i));
                 } else {
-                    // Nothing to do
+                    /* Nothing to do */
                 }
             }
 

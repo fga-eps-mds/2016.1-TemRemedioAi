@@ -105,7 +105,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
     }
 
     private void expand() {
-        //set Visible
+        /* set Visible */
         Log.i("LOG", "Expand enter, View.VISIBLE");
         expandLayout.setVisibility(View.VISIBLE);
         mAnimator.start();
@@ -145,7 +145,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                //Update Height
+                /* Update Height */
                 int value = (Integer) valueAnimator.getAnimatedValue();
 
                 ViewGroup.LayoutParams layoutParams = expandLayout.getLayoutParams();

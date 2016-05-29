@@ -34,11 +34,11 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubs_maps);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        /* Obtain the SupportMapFragment and get notified when the map is ready to be used */
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //Getting UBS descriptions from UBS Holder class
+        /* Getting UBS descriptions from UBS Holder class */
         ubsName = getIntent().getStringExtra("nomeUBS");
         String descUbsAddress = getIntent().getStringExtra("descEnderecoUBS");
         String descUbsNeighborhood = getIntent().getStringExtra("descBairroUBS");
@@ -63,9 +63,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         generateTrajectory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setUpMapIfNeeded();
-
             }
         });
 
@@ -73,7 +71,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
     private void setUpMapIfNeeded() {
         if(isGoogleMapsInstalled()) {
-            //Get latitude and longitude from ubs Holder and open with GMaps
+            /* Get latitude and longitude from ubs Holder and open with GMaps */
             String uri = "http://maps.google.com/maps?saddr="+"&daddr="+latitude+","+longitude;
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
             intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
@@ -90,7 +88,6 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
             dialog.show();
         }
     }
-
 
     public boolean isGoogleMapsInstalled() {
         try {
@@ -110,7 +107,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.apps.maps"));
                 startActivity(intent);
 
-                //Finish the activity so they can't circumvent the check
+                /* Finish the activity so they can't circumvent the check */
                 finish();
             }
         };
@@ -119,7 +116,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        //Get latitude and longitude to create a marker on map
+        /* Get latitude and longitude to create a marker on map */
         LatLng latLngValues = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLngValues).title(ubsName));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 13));
