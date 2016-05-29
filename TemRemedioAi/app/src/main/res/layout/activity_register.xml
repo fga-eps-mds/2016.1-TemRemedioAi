@@ -67,21 +67,31 @@
                 android:id="@+id/textView"
                 android:backgroundTint="@color/colorPrimary"/>
 
-            <RadioButton
+            <RadioGroup
+                android:id="@+id/register_radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Feminino"
-                android:id="@+id/femButton"
-                android:checked="false"
-                android:buttonTint="@color/colorPrimary"/>
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/ll_1"
+                android:layout_marginLeft="20dp">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Masculino"
-                android:id="@+id/mascButton"
-                android:checked="false"
-                android:buttonTint="@color/colorPrimary"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feminino"
+                    android:id="@+id/femButton"
+                    android:checked="false"
+                    android:buttonTint="@color/colorPrimary"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Masculino"
+                    android:id="@+id/mascButton"
+                    android:checked="false"
+                    android:buttonTint="@color/colorPrimary"/>
+
+            </RadioGroup>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
