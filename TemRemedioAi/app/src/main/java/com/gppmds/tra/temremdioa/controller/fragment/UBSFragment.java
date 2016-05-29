@@ -41,6 +41,7 @@ public class UBSFragment extends Fragment{
         ParseQuery<UBS> queryUBS = UBS.getQuery();
         queryUBS.orderByAscending(UBS.getUbsNameTitle());
         List<UBS> ubsList;
+
         try {
             ubsList = queryUBS.find();
             adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubsList);

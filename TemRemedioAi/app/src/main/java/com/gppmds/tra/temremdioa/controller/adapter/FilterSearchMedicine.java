@@ -28,6 +28,8 @@ public class FilterSearchMedicine extends Filter{
             for (int i=0;i<filterList.size();i++) {
                 if(filterList.get(i).getMedicineDescription().toUpperCase().contains(constraint)) {
                     filteredMedicines.add(filterList.get(i));
+                } else {
+                    // Nothing to do
                 }
             }
 

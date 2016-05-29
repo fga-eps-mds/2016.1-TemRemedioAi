@@ -169,6 +169,9 @@ public class Medicine extends ParseObject {
             case "ME":
                 medicineAttentionLevel = "Medicamentos Estratégicos";
                 break;
+            default:
+                // Nothing to do
+                break;
         }
         return medicineAttentionLevel;
     }

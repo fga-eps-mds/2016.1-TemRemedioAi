@@ -50,6 +50,7 @@ public class SelectRemedioActivity extends AppCompatActivity {
                 Arrays.asList(attentionLevelFilters));
         queryMedicine.orderByAscending(Medicine.getMedicineDescriptionTitle());
         List<Medicine> medicines;
+
         try {
             medicines = queryMedicine.find();
 

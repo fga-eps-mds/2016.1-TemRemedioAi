@@ -42,6 +42,7 @@ public class MedicineFragment extends Fragment{
         //Query medicine data from parse
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
         List<Medicine> medicines;
+
         try {
             medicines = queryMedicine.find();
             adapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);

@@ -6,9 +6,6 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-/**
- * Created by Vinicius on 18/04/2016.
- */
 public class ParseInitializer extends android.app.Application {
 
     @Override
@@ -27,7 +24,6 @@ public class ParseInitializer extends android.app.Application {
         );
 
         ParseUser.enableAutomaticUser();
-
     }
 
 }

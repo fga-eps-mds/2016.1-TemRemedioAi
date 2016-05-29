@@ -45,6 +45,8 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
         holder.textViewMedicineAttentionLevel.setText(rowData.getMedicineAttentionLevelExtended());
         if (!getShowButtonUBSs()) {
             holder.buttonSelectUbs.setVisibility(View.GONE);
+        } else {
+            // Nothing to do
         }
     }
 
@@ -52,6 +54,8 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     public Filter getFilter() {
         if(filter == null) {
             filter = new FilterSearchMedicine(filterDataMedicine, this );
+        } else {
+            // Nothing to do
         }
 
         return filter;

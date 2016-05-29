@@ -20,6 +20,9 @@ public class TabsAdapter extends FragmentPagerAdapter{
                 return MedicineFragment.newInstance();
             case 1:
                 return UBSFragment.newInstance();
+            default:
+                // Nothing to do
+                break;
         }
         return null;
     }
@@ -36,6 +39,9 @@ public class TabsAdapter extends FragmentPagerAdapter{
                 return "Remédio";
             case 1:
                 return "UBS";
+            default:
+                // Nothing to do
+                break;
         }
         return null;
     }
