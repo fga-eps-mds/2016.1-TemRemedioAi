@@ -2,60 +2,81 @@ package com.gppmds.tra.temremdioa.model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 @ParseClassName("User")
 public class User extends ParseObject{
     private String password;
     private String name;
-    private boolean genre;
+    private String genre;
     private String email;
     private int age;
 
-    public User(String password, String name, boolean genre, String email, int age) {
-        this.password = password;
-        this.name = name;
-        this.genre = genre;
-        this.email = email;
-        this.age = age;
+    public User(String password, String name, String genre, String email, int age) {
+        put(getTitlePassword(), password);
+        put(getTitleName(), name);
+        put(getTitleGenre(), genre);
+        put(getTitleEmail(), email);
+        put(getTitleAge(), age);
     }
 
     public String getPassword() {
-        return password;
+        return getString(getTitlePassword());
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        put(getTitlePassword(), password);
     }
 
     public String getName() {
-        return name;
+        return getString(getTitleName());
     }
 
     public void setName(String name) {
-        this.name = name;
+        put(getTitleName(), name);
     }
 
-    public boolean isGenre() {
-        return genre;
+    public String getGenre() {
+        return getString(getTitleGenre());
     }
 
-    public void setGenre(boolean genre) {
-        this.genre = genre;
+    public void setGenre(String genre) {
+        put(getTitleGenre(), genre);
     }
 
     public String getEmail() {
-        return email;
+        return getString(getTitleEmail());
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        put(getTitleEmail(), email);
     }
 
     public int getAge() {
-        return age;
+        return getInt(getTitleAge());
     }
 
     public void setAge(int age) {
-        this.age = age;
+        put(getTitleAge(), age);
+    }
+
+    public static ParseQuery<User> getQuery() {
+        return ParseQuery.getQuery(User.class);
+    }
+
+    public static String getTitlePassword(){
+        return "password_user";
+    }
+    public static String getTitleName(){
+        return "name_user";
+    }
+    public static String getTitleGenre(){
+        return "genre_user";
+    }
+    public static String getTitleEmail(){
+        return "email_user";
+    }
+    public static String getTitleAge(){
+        return "age_user";
     }
 }
