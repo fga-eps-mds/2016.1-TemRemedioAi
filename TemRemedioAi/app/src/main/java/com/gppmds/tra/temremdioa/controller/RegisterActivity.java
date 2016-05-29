@@ -28,6 +28,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static android.Manifest.permission.READ_CONTACTS;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.widget.Toast;
@@ -192,6 +195,10 @@ public class RegisterActivity extends AppCompatActivity {
             mNameView.setError(getString(R.string.error_field_required));
             focusView = mNameView;
             cancel = true;
+        } else if (getSpecialCharacter(name)) {
+            mNameView.setError(getString(R.string.error_character));
+            focusView = mNameView;
+            cancel = true;
         }
 
         /*Age*/
@@ -227,6 +234,12 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Cadastrado", Toast.LENGTH_LONG).show();
             finish();
         }
+    }
+
+    public boolean getSpecialCharacter(String word) {
+        Pattern pattern = Pattern.compile("[^A-Za-z0-9]");
+        Matcher matcher = pattern.matcher(word);
+        return matcher.find();
     }
 
     public boolean isContainValid(String email) {

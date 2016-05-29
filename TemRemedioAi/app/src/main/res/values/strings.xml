@@ -31,4 +31,5 @@
     <string name="error_different_password">Ops!!! As senhas são diferentes.</string>
     <string name="error_invalid_age">Idade inválida.</string>
     <string name="error_invalid_genre">Sexo não escolhido</string>
+    <string name="error_character">Caracter inválido digitado.</string>
 </resources>
