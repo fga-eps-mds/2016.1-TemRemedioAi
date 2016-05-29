@@ -13,7 +13,6 @@
                             de Saúde, Hospitais e Farmácias de Alto Custo da Secretaria de Saúde do
                             Distrito Federal.
                             </string>
-    <string name="action_login">Log in</string>
     <string name="action_log_in">Entrar</string>
     <string name="action_sign_in">Cadastrar</string>
     <string name="error_incorrect_password">Senha incorreta</string>
@@ -27,4 +26,5 @@
     <string name="error_invalid_email">O email digitado é invalido</string>
     <string name="error_invalid_password">A senha é muito curta</string>
     <string name="error_field_required">Ops!!! Esse campo não foi preenchido.</string>
+    <string name="cancel">Cancelar</string>
 </resources>

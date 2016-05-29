@@ -29,6 +29,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import static android.Manifest.permission.READ_CONTACTS;
+
+import com.gppmds.tra.temremdioa.model.User;
 import com.tra.gppmds.temremdioa.R;
 
 public class RegisterActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -47,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
     private EditText mAge;
     private EditText mName;
     private RadioButton mSexo;
+
+    User user;
 
     private View mProgressView;
     private View mLoginFormView;
@@ -79,8 +83,18 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
             }
         });
 
+        Button cancelButton = (Button) findViewById(R.id.register_cancel);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
     }
 
     private void populateAutoComplete() {
@@ -144,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(password) && !user.isLengthValid(password, 6, 25)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -155,7 +169,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } else if (user.isContainValid(email,"@")) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
@@ -172,16 +186,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
-    }
-
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
     }
 
     /**
