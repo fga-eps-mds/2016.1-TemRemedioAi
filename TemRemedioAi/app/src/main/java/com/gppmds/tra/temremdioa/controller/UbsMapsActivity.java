@@ -72,19 +72,13 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
     private void setUpMapIfNeeded() {
-
-
-        if(isGoogleMapsInstalled())
-        {
+        if(isGoogleMapsInstalled()) {
             //Get latitude and longitude from ubs Holder and open with GMaps
             String uri = "http://maps.google.com/maps?saddr="+"&daddr="+latitude+","+longitude;
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
             intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
             startActivity(intent);
-
-        }
-        else
-        {
+        } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Maps");
             builder.setIcon(R.drawable.google_maps_icon);
@@ -98,21 +92,16 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
 
-    public boolean isGoogleMapsInstalled()
-    {
-        try
-        {
+    public boolean isGoogleMapsInstalled() {
+        try {
             ApplicationInfo info = getPackageManager().getApplicationInfo("com.google.android.apps.maps", 0 );
             return true;
-        }
-        catch(PackageManager.NameNotFoundException e)
-        {
+        } catch(PackageManager.NameNotFoundException e) {
             return false;
         }
     }
 
-    public DialogInterface.OnClickListener getGoogleMapsListener()
-    {
+    public DialogInterface.OnClickListener getGoogleMapsListener() {
         return new DialogInterface.OnClickListener()
         {
             @Override
@@ -135,5 +124,4 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         mMap.addMarker(new MarkerOptions().position(latLngValues).title(ubsName));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 13));
     }
-
 }

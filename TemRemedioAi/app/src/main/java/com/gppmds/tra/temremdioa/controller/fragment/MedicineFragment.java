@@ -22,6 +22,18 @@ public class MedicineFragment extends Fragment{
     public RecyclerView recyclerView;
     public static CardListAdapterMedicine adapter;
 
+    // -------------------------------------------------------------
+    // Function:
+    // Description:
+    // Parameters:
+    //      tipo nome;            Description
+    //
+    //  Atributes:
+    //      tipo nome;            Description
+    // Return: void
+    // Observation:
+    // -------------------------------------------------------------
+
     public MedicineFragment(){
     }
 
@@ -45,13 +57,10 @@ public class MedicineFragment extends Fragment{
             medicines = queryMedicine.find();
                 adapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
                 recyclerView.setAdapter( adapter );
-
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         return rootView;
     }
-
 }

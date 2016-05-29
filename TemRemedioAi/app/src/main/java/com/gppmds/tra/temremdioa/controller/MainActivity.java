@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity{
             case R.id.action_about:
                 Intent aboutActivity = new Intent(this, AboutActivity.class);
                 startActivity(aboutActivity);
+            default:
+                // Nothing to do
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

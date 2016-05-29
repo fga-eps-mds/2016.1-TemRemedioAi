@@ -23,7 +23,6 @@ public class ParseInitializer extends android.app.Application {
                 .applicationId("TemRemedioAi")
                 .server("http://temremedioai.herokuapp.com/temremedioai/Class")
                 .clientKey("kijasijijasiasjsiajalllkaosiajhsis")
-
                 .build()
         );
 

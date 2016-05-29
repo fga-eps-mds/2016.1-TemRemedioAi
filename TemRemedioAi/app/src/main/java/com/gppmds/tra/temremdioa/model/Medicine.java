@@ -1,4 +1,7 @@
-//MODEL
+/**
+ * Medicine.java to define Remedio
+ * Used to get data of medicine from Parse
+ */
 package com.gppmds.tra.temremdioa.model;
 
 import com.parse.ParseClassName;
@@ -7,43 +10,69 @@ import com.parse.ParseQuery;
 
 @ParseClassName("Medicamentos")
 public class Medicine extends ParseObject {
-    //Returns the SES Code of a medicine
+    /**
+     * getMedicineSESCode get the medicine code in "Secretaria de Estado de Saúde"
+     * @return string representing code of medicine
+     */
     public String getMedicineSESCode(){
         return getString(getMedicineSESCodeTitle());
     }
 
-    //Sets a SES Code to a medicine
+    /**
+     * setMedicineSESCode the code of medicine im "Secretaria de Estado de Saúde"
+     * @param sesCode
+     */
     public void setMedicineSESCode(String sesCode){
         put(getMedicineSESCodeTitle(), sesCode);
     }
 
-    //Returns the medicine description (or name) of a medicine
+    /**
+     * getMedicineDescription to get the nome of the medicine from database
+     * @return string representing the name of the medicine
+     */
     public String getMedicineDescription(){
         return getString(getMedicineDescriptionTitle());
     }
 
-    //Sets a description (or name) to a medicine
+    /**
+     * setMedicineDescription to set the name of the medicine
+     * @param medicineDescription
+     */
     public void setMedicineDescription(String medicineDescription){
         put(getMedicineDescriptionTitle(), medicineDescription);
     }
 
-    //Returns the dosage of a medicine
+    /**
+     * getMedicineDosage to get the dosage of the medicine from database
+     * @return string representing dosage of the medicine
+     */
     public String getMedicineDosage(){
         return getString(getMedicineDosageTitle());
     }
 
-    //Sets a dosage to a medicine
+    /**
+     * setMedicinedOSAGE to set the dosage of the medicine
+     * @param medicineDosage
+     */
     public void setMedicineDosage(String medicineDosage){
         put(getMedicineDosageTitle(), medicineDosage);
     }
 
-    //Returns the unit of a medicine
+    /**
+     * getMedicineUnit get the unity of the medicine, like "CP" that's represent "pill" from
+     * database
+     * @return string representind the initials of unity medicine
+     */
     public String getMedicineUnit(){
         return getString(getMedicineUnitTitle());
     }
 
-    //Returns the extended unit of a medicine
-    public String getMedicineUnitExtended(){
+    /**
+     * getUnityMedicineFormatted get the initiaçs of the unity medicine and write the complete name
+     * to show in screen
+     * @return string representing every initials from unity medicine
+     */
+    public String getUnityMedicineFormatted(){
         String medicineUnit = getString(getMedicineUnitTitle());
         switch (medicineUnit) {
             case "AMP":
@@ -101,17 +130,27 @@ public class Medicine extends ParseObject {
         return medicineUnit;
     }
 
-    //Sets a unit to a medicine
+    /**
+     * setMedicineUnit set the initials of unity medicine
+     * @param medicineUnit
+     */
     public void setMedicineUnit(String medicineUnit){
         put(getMedicineUnitTitle(), medicineUnit);
     }
 
-    //Returns the attention level of a medicine
+    /**
+     * getMedicineAttentionLevel get the level of attention from medicine
+     * @return string representing the initials of attention level of medicine
+     */
     public String getMedicineAttentionLevel(){
         return getString(getMedicineAttentionLevelTitle());
     }
 
-    //Returns the extended attention level of a medicine
+    /**
+     * getMedicineAttentionLevelExtended get the initials from attention level of medicine and
+     * write the complete name
+     * @return string representing every initials from attention level medicine
+     */
     public String getMedicineAttentionLevelExtended() {
         String medicineAttentionLevel = getString(getMedicineAttentionLevelTitle());
         switch (medicineAttentionLevel) {
@@ -134,41 +173,65 @@ public class Medicine extends ParseObject {
         return medicineAttentionLevel;
     }
 
-    //Sets a attention level to a medicine
+    /**
+     * setMedicineAttentionLevel set the initials of attention level of medicine
+     * @param nivel_at
+     */
     public void setMedicineAttentionLevel(String nivel_at){
         put(getMedicineAttentionLevelTitle(), nivel_at);
     }
 
-    //Returns a parse query of medicine
+    /**
+     * @return a parse query of medicine
+     */
     public static ParseQuery<Medicine> getQuery() {
         return ParseQuery.getQuery(Medicine.class);
     }
-    //Returns the SES Code Title of a medicine
+
+    /**
+     * getMedicineSESCodeTitle get the medicine code in "Secretaria de Estado e Saúde"
+     * @return string representing the code of medicine
+     */
     public static String getMedicineSESCodeTitle(){
         return "cod_ses";
     }
 
-    //Returns the description title of a medicine
+    /**
+     * getMedicineDescriptionTitle get the name of medicine
+     * @return string representing the name of medicine
+     */
     public static String getMedicineDescriptionTitle(){
         return "med_des";
     }
 
-    //Returns the dosage title of a medicine
+    /**
+     * getMedicineDosageTitle get the dosage of medicine
+     * @return string representing the dosage of medicine
+     */
     public static String getMedicineDosageTitle(){
         return "med_dos";
     }
 
-    //Returns the unit title of a medicine
+    /**
+     * getMedicineUnitTitle get the title of medicine unity
+     * @return string representing the title of unity from medicine
+     */
     public static String getMedicineUnitTitle(){
         return "unid";
     }
 
-    //Returns the attention level title of a medicine
+    /**
+     * getMedicineAttentionLevelTitle get the attention level from medicine
+     * @return string representing the attention level of medicine
+     */
     public static String getMedicineAttentionLevelTitle(){
         return "nivel_at";
     }
 
-    //Overrides the method to returns the description title of a medicine
+    /**
+     * toString get the title of medicine
+     * @return string representing the name of medicine
+     */
     @Override
     public String toString() {
         return getString(getMedicineDescriptionTitle());

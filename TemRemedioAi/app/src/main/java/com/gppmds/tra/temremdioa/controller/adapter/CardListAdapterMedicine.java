@@ -40,7 +40,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     public void onBindViewHolder(ViewHolderMedicine holder, int position) {
         Medicine rowData = this.dataMedicine.get(position);
         holder.textViewMedicineName.setText(rowData.getMedicineDescription());
-        holder.textViewMedicineType.setText(rowData.getMedicineUnitExtended());
+        holder.textViewMedicineType.setText(rowData.getUnityMedicineFormatted());
         holder.textViewMedicineDosage.setText(rowData.getMedicineDosage());
         holder.textViewMedicineAttentionLevel.setText(rowData.getMedicineAttentionLevelExtended());
         if (!getShowButtonUBSs()) {

@@ -25,7 +25,7 @@ public class UBSFragment extends Fragment{
     }
 
     public static UBSFragment newInstance(){
-       return new UBSFragment();
+        return new UBSFragment();
     }
 
     @Override
@@ -42,11 +42,8 @@ public class UBSFragment extends Fragment{
         queryUBS.orderByAscending(UBS.getUbsNameTitle());
         List<UBS> ubsList;
         try {
-
             ubsList = queryUBS.find();
-
             adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubsList);
-
             recyclerView.setAdapter( adapter );
         } catch (ParseException e) {
             e.printStackTrace();

@@ -46,7 +46,8 @@ public class SelectRemedioActivity extends AppCompatActivity {
 
         //Query medicine data from parse
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
-        queryMedicine.whereContainedIn(Medicine.getMedicineAttentionLevelTitle(), Arrays.asList(attentionLevelFilters));
+        queryMedicine.whereContainedIn(Medicine.getMedicineAttentionLevelTitle(),
+                Arrays.asList(attentionLevelFilters));
         queryMedicine.orderByAscending(Medicine.getMedicineDescriptionTitle());
         List<Medicine> medicines;
         try {
