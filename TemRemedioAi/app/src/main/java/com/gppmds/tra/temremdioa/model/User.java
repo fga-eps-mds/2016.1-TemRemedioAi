@@ -86,8 +86,8 @@ public class User extends ParseObject{
         return word.contains(contain);
     }
 
-    public boolean isLengthValid(String word, int sizeMin, int sizeMax) {
-        return word.length() > sizeMin && word.length() < sizeMax;
+    public boolean isLengthValid(String word, int sizeMin) {
+        return word.length() > sizeMin;
     }
 
     public boolean isPasswordValid(String password, String passwordConfirmation) {
