@@ -14,4 +14,6 @@
                             Distrito Federal.
                             </string>
     <string name="about">Sobre o Aplicativo</string>
+    <string name="selectedUBS">UBS Selecionada</string>
+    <string name="ubsQuantity">Quantidade de Locais</string>
 </resources>
