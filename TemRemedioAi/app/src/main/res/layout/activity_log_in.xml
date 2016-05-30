@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.gppmds.tra.temremdioa.controller.LogInActivit">
+    tools:context="com.gppmds.tra.temremdioa.controller.LogInActivity">
 
     <ProgressBar
         android:id="@+id/log_in_progress_bar"

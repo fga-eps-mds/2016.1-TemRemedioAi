@@ -5,65 +5,42 @@ import android.widget.EditText;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 @ParseClassName("User")
-public class User extends ParseObject{
-    private String password;
-    private String name;
-    private String genre;
-    private String email;
-    private int age;
+public class User extends ParseUser{
+    private String passwordTxt;
+    private String nameTxt;
+    private String genreTxt;
+    private String emailTxt;
+    private int ageTxt;
 
-    public User(String password, String name, String genre, String email, int age) {
-        put(getTitlePassword(), password);
-        put(getTitleName(), name);
-        put(getTitleGenre(), genre);
-        put(getTitleEmail(), email);
-        put(getTitleAge(), age);
+    public User(String passwordTxt, String nameTxt, String genreTxt, String emailTxt, int ageTxt) {
+        this.passwordTxt = passwordTxt;
+        this.nameTxt = nameTxt;
+        this.genreTxt = genreTxt;
+        this.emailTxt = emailTxt;
+        this.ageTxt = ageTxt;
     }
 
-    public String getPassword() {
-        return getString(getTitlePassword());
+    public void setPasswordTxt(String passwordTxt) {
+        setPassword(passwordTxt);
     }
 
-    public void setPassword(String password) {
-        put(getTitlePassword(), password);
+    public void setNameTxt(String nameTxt) {
+        put(getTitleName(), nameTxt);
     }
 
-    public String getName() {
-        return getString(getTitleName());
+    public void setGenreTxt(String genreTxt) {
+        put(getTitleGenre(), genreTxt);
     }
 
-    public void setName(String name) {
-        put(getTitleName(), name);
+    public void setEmailTxt(String emailTxt) {
+        setEmail(emailTxt);
     }
 
-    public String getGenre() {
-        return getString(getTitleGenre());
-    }
-
-    public void setGenre(String genre) {
-        put(getTitleGenre(), genre);
-    }
-
-    public String getEmail() {
-        return getString(getTitleEmail());
-    }
-
-    public void setEmail(String email) {
-        put(getTitleEmail(), email);
-    }
-
-    public int getAge() {
-        return getInt(getTitleAge());
-    }
-
-    public void setAge(int age) {
-        put(getTitleAge(), age);
-    }
-
-    public static ParseQuery<User> getQuery() {
-        return ParseQuery.getQuery(User.class);
+    public void setAgeTxt(int ageTxt) {
+        put(getTitleAge(), ageTxt);
     }
 
     public static String getTitlePassword(){
@@ -86,8 +63,8 @@ public class User extends ParseObject{
         return word.contains(contain);
     }
 
-    public boolean isLengthValid(String word, int sizeMin) {
-        return word.length() > sizeMin;
+    public boolean isLengthValid(String word, int sizeMin, int sizeMax) {
+        return word.length() > sizeMin && word.length() < sizeMax;
     }
 
     public boolean isPasswordValid(String password, String passwordConfirmation) {

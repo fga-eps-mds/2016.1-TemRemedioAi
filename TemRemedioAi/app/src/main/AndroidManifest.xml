@@ -81,8 +81,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
-        <activity android:name="com.gppmds.tra.temremdioa.controller.LogInActivit" />
-        <activity android:name="com.gppmds.tra.temremdioa.controller.RegisterActivity"></activity>
+        <activity android:name="com.gppmds.tra.temremdioa.controller.LogInActivity" />
+        <activity android:name="com.gppmds.tra.temremdioa.controller.SignUpActivity"></activity>
     </application>
 
 </manifest>

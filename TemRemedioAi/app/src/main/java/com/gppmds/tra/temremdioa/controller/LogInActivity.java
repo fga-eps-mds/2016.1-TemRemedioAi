@@ -4,10 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -25,18 +22,15 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.tra.gppmds.temremdioa.R;
 
-public class LogInActivit extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     private UserLoginTask mAuthTask = null; //Keep track of the login task to ensure we can cancel
                                             // it if requested.
@@ -82,8 +76,8 @@ public class LogInActivit extends AppCompatActivity implements LoaderCallbacks<C
         mRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerActivity = new Intent(LogInActivit.this, RegisterActivity.class);
-                startActivity(registerActivity);
+                Intent signUpActivity = new Intent(LogInActivity.this, SignUpActivity.class);
+                startActivity(signUpActivity);
             }
         });
 
