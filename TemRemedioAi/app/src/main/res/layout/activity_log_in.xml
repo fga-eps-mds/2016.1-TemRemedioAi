@@ -34,9 +34,8 @@
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/log_in_email_field"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
+                android:id="@+id/log_in_username_field"
+                android:hint="Username"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/colorPrimary"

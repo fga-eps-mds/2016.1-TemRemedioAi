@@ -27,7 +27,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 import com.tra.gppmds.temremdioa.R;
 
 public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
@@ -36,7 +40,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
                                             // it if requested.
 
     // res references
-    private AutoCompleteTextView mEmailView;
+    private EditText mUsernameView;
     private EditText mPasswordView;
     private ProgressBar mProgressView;
     private View mLoginFormView;
@@ -49,7 +53,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Set up log in form
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.log_in_email_field);
+        mUsernameView = (EditText) findViewById(R.id.log_in_username_field);
 
         mPasswordView = (EditText) findViewById(R.id.log_in_password_field);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -63,8 +67,8 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.log_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        Button mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
+        mUsernameSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -93,11 +97,11 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         // Reset errors
-        mEmailView.setError(null);
+        mUsernameView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt
-        String email = mEmailView.getText().toString();
+        String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -115,25 +119,30 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         // Check if email is valid
-        if (TextUtils.isEmpty(email)){
-            mEmailView.setError("Por favor, coloque seu email.");
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError("Esse email não é válido.");
-            focusView = mEmailView;
+        if (TextUtils.isEmpty(username)) {
+            mUsernameView.setError("Por favor, coloque seu username.");
+            focusView = mUsernameView;
             cancel = true;
         }
-
         if (cancel) { // Either there's a error with email or password
             focusView.requestFocus();
         } else {
             showProgress(true);
-        }
-    }
+            ParseUser.logInInBackground(username, password, new LogInCallback() {
+                @Override
+                public void done(ParseUser parseUser, ParseException e) {
+                    if (parseUser != null) {
 
-    private boolean isEmailValid(String email) {
-        return email.contains("@");
+                        Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Esse username não existe!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     private boolean isPasswordValid(String password) {
@@ -176,11 +185,11 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
+        private final String mUsername;
         private final String mPassword;
 
-        UserLoginTask(String email, String password) {
-            mEmail = email;
+        UserLoginTask(String username, String password) {
+            mUsername = username;
             mPassword = password;
         }
 
