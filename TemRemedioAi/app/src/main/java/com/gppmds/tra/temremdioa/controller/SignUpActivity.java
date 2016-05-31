@@ -130,7 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
             cancel = true;
         } else {
             age = Integer.parseInt(mAgeView.getText().toString());
-            if (age < 0 || age > 120) {
+            if (age < 0 || age > 100) {
                 mAgeView.setError(getString(R.string.error_invalid_age));
             }
         }
@@ -152,16 +152,18 @@ public class SignUpActivity extends AppCompatActivity {
 
             user.setEmail(email);
             user.setPassword(password);
-            user.put("Name" , name);
+            user.setUsername(name);
             user.put("Age" , age);
             user.put("Genre" , genre);
             user.signUpInBackground ( new SignUpCallback() {
                 @Override
                 public void done(com.parse.ParseException e) {
                     if (e == null ) {
-                        Toast.makeText(getApplicationContext(), "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Cadastrado efetuado com sucesso", Toast.LENGTH_SHORT).show();
+                        finish();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Erro no cadastro", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Erro no cadastro, tente novamente!", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             });
