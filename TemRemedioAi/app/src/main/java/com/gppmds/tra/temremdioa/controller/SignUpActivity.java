@@ -25,6 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText mPasswordViewConfirmation;
     private EditText mAgeView;
     private EditText mNameView;
+    private EditText mUsernameView;
     private RadioButton mGenreMaleView;
     private RadioButton mGenreFemView;
     private TextView mGenre;
@@ -32,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_sign_up);
 
         mNameView = (EditText) findViewById(R.id.name);
         mEmailView = (EditText) findViewById(R.id.email);
@@ -42,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordViewConfirmation = (EditText) findViewById(R.id.password2);
         mGenre = (TextView) findViewById(R.id.textViewGenre);
+        mUsernameView = (EditText) findViewById(R.id.username);
 
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +74,14 @@ public class SignUpActivity extends AppCompatActivity {
         mGenreMaleView.setError(null);
         mGenreFemView.setError(null);
         mGenre.setError(null);
+        mUsernameView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
         String passwordConfirmation = mPasswordViewConfirmation.getText().toString();
         String name = mNameView.getText().toString();
+        String username = mUsernameView.getText().toString();
         int age = 0;
         String genre = null;
 
@@ -144,6 +148,13 @@ public class SignUpActivity extends AppCompatActivity {
         else if (mGenreFemView.isChecked()) genre = "Feminino";
         else if (mGenreMaleView.isChecked()) genre = "Masculino";
 
+        /*Username*/
+        if (TextUtils.isEmpty(username)) {
+            mUsernameView.setError(getString(R.string.error_field_required));
+            focusView = mUsernameView;
+            cancel = true;
+        }
+
         if (cancel) {
 
             focusView.requestFocus();
@@ -152,7 +163,8 @@ public class SignUpActivity extends AppCompatActivity {
 
             user.setEmail(email);
             user.setPassword(password);
-            user.setUsername(name);
+            user.setUsername(username);
+            user.put("Name", name);
             user.put("Age" , age);
             user.put("Genre" , genre);
             user.signUpInBackground ( new SignUpCallback() {

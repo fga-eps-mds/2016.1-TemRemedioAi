@@ -61,6 +61,22 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_username"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimary"/>
+
+            </android.support.design.widget.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
