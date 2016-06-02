@@ -29,6 +29,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.*;
+import com.facebook.login.widget.LoginButton;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -44,6 +46,8 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private ProgressBar mProgressView;
     private View mLoginFormView;
+    private CallbackManager callbackManager;
+    private LoginButton facebookLoginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +89,36 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        callbackManager = CallbackManager.Factory.create();
+
+
         mLoginFormView = (View) findViewById(R.id.log_in_form);
         mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
     }
 
+
+    private void facebookLogin(){
+
+    }
+
+    private facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+
+        }
+
+        @Override
+        public void onCancel() {
+
+        }
+
+        @Override
+        public void onError(FacebookException e) {
+
+        }
+    });
 
     // Attempts to login in the system if the entries email and password are valid
     private void attemptLogin(){

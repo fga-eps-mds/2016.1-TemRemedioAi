@@ -85,6 +85,17 @@
                 android:textColor="@color/colorAccent"
                 android:backgroundTint="@color/colorPrimary"/>
 
+            <com.facebook.login.widget.LoginButton
+                style="?android:textAppearanceSmall"
+                android:id="@+id/log_in_sign_in_Facebook_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/sign_in_Facebook"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent" />
+                android:backgroundTint="@color/colorFacebook" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

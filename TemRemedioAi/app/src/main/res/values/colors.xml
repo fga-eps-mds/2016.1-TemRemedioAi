@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#e6312e</color>
+    <color name="colorFacebook">#3b5998</color>
     <color name="colorPrimaryDark">#B22222</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorPrimaryText">#212121</color>
