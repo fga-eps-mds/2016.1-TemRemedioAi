@@ -38,3 +38,6 @@ TemRemedioAi/.Spotlight-V100
 TemRemedioAi/.Trashes
 TemRemedioAi/ehthumbs.db
 TemRemedioAi/Thumbs.db
+
+# Sonar files
+.sonar/
