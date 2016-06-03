@@ -24,7 +24,7 @@ public class TestMedicine {
     }
 
     @Test
-    public void test_getMedicineSESCode(){
+    public void testGetMedicineSESCode(){
         medicine.setMedicineSESCode("test SES Code");
         assertEquals("test SES Code", medicine.getMedicineSESCode());
     }

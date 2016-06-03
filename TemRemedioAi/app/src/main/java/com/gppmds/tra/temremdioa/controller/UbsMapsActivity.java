@@ -10,7 +10,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,6 +27,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     private Double longitude;
     private String ubsName;
     FloatingActionButton generateTrajectory;
+    private static final int latLngZoom = 13;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +99,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
     public DialogInterface.OnClickListener getGoogleMapsListener() {
-        return new DialogInterface.OnClickListener()
-        {
+        return new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
@@ -119,6 +118,6 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         /* Get latitude and longitude to create a marker on map */
         LatLng latLngValues = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLngValues).title(ubsName));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 13));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, latLngZoom));
     }
 }

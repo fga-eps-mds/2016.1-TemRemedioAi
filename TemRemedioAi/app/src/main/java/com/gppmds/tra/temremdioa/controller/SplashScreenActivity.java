@@ -11,6 +11,8 @@ import java.util.TimerTask;
 
 public class SplashScreenActivity extends Activity {
 
+    private static final int waitTime = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,6 @@ public class SplashScreenActivity extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, waitTime);
     }
 }

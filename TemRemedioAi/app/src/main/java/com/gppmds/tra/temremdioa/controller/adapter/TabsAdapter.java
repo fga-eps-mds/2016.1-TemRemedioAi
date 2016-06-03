@@ -9,6 +9,8 @@ import com.gppmds.tra.temremdioa.controller.fragment.UBSFragment;
 
 public class TabsAdapter extends FragmentPagerAdapter{
 
+    private static final int tabsQuantity = 2;
+
     public TabsAdapter(FragmentManager fm){
         super(fm);
     }
@@ -29,7 +31,7 @@ public class TabsAdapter extends FragmentPagerAdapter{
 
     @Override
     public int getCount() {
-        return 2;
+        return tabsQuantity;
     }
 
     @Override

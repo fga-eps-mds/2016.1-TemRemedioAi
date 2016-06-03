@@ -20,17 +20,39 @@ import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
+import org.w3c.dom.Text;
+
 public class ViewHolderUBS extends RecyclerView.ViewHolder{
-    public TextView textViewUbsName;
-    public TextView textViewUbsNeighborhood;
-    public TextView textViewUbsCity;
-    public TextView textViewUbsAttentionLevel;
-    public RelativeLayout headerLayout;
-    public RelativeLayout expandLayout;
-    public ValueAnimator mAnimator;
-    public Button buttonSelectMedicine;
-    public Button buttonVisualizarDescricaoUBS;
-    public ImageView imageViewArrow;
+    private TextView textViewUbsName;
+    private TextView textViewUbsNeighborhood;
+    private TextView textViewUbsCity;
+    private TextView textViewUbsAttentionLevel;
+    private RelativeLayout headerLayout;
+    private RelativeLayout expandLayout;
+    private ValueAnimator mAnimator;
+    private Button buttonSelectMedicine;
+    private Button buttonViewUbsDescription;
+    private ImageView imageViewArrow;
+
+    public TextView getTextViewUbsName(){
+        return textViewUbsName;
+    }
+
+    public TextView getTextViewUbsNeighborhood(){
+        return textViewUbsNeighborhood;
+    }
+
+    public TextView getTextViewUbsCity(){
+        return textViewUbsCity;
+    }
+
+    public TextView getTextViewUbsAttentionLevel(){
+        return textViewUbsAttentionLevel;
+    }
+
+    public Button getButtonSelectMedicine(){
+        return buttonSelectMedicine;
+    }
 
     public ViewHolderUBS(CardView card) {
         super(card);
@@ -40,7 +62,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         this.textViewUbsAttentionLevel = (TextView) card.findViewById(R.id.textViewNivelAtencaoUBS);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelectMedicine = (Button) card.findViewById(R.id.buttonSelecionarRemedio);
-        this.buttonVisualizarDescricaoUBS = (Button) card.findViewById(R.id.buttonVisualizarDescricaoUBS);
+        this.buttonViewUbsDescription = (Button) card.findViewById(R.id.buttonVisualizarDescricaoUBS);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -88,7 +110,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             }
         });
 
-        this.buttonVisualizarDescricaoUBS.setOnClickListener(new View.OnClickListener() {
+        this.buttonViewUbsDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UbsMapsActivity.class);
