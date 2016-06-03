@@ -39,12 +39,12 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     @Override
     public void onBindViewHolder(ViewHolderMedicine holder, int position) {
         Medicine rowData = this.dataMedicine.get(position);
-        holder.textViewMedicineName.setText(rowData.getMedicineDescription());
-        holder.textViewMedicineType.setText(rowData.getUnityMedicineFormatted());
-        holder.textViewMedicineDosage.setText(rowData.getMedicineDosage());
-        holder.textViewMedicineAttentionLevel.setText(rowData.getMedicineAttentionLevelExtended());
+        holder.getTextViewMedicineName().setText(rowData.getMedicineDescription());
+        holder.getTextViewMedicineType().setText(rowData.getUnityMedicineFormatted());
+        holder.getTextViewMedicineDosage().setText(rowData.getMedicineDosage());
+        holder.getTextViewMedicineAttentionLevel().setText(rowData.getMedicineAttentionLevelExtended());
         if (!getShowButtonUBSs()) {
-            holder.buttonSelectUbs.setVisibility(View.GONE);
+            holder.getButtonSelectUbs().setVisibility(View.GONE);
         } else {
             /* Nothing to do */
         }

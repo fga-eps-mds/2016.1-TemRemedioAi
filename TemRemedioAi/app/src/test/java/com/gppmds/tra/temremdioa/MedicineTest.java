@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
-public class TestMedicine {
+public class MedicineTest {
 
     private Medicine medicine;
 
@@ -24,31 +24,31 @@ public class TestMedicine {
     }
 
     @Test
-    public void testGetMedicineSESCode(){
+    public void getMedicineSESCodeTest(){
         medicine.setMedicineSESCode("test SES Code");
         assertEquals("test SES Code", medicine.getMedicineSESCode());
     }
 
     @Test
-    public void test_getMedicineDescription(){
+    public void getMedicineDescriptionTest(){
         medicine.setMedicineDescription("test description");
         assertEquals("test description", medicine.getMedicineDescription());
     }
 
     @Test
-    public void test_getMedicineDosage(){
+    public void getMedicineDosageTest(){
         medicine.setMedicineDosage("test dosage");
         assertEquals("test dosage", medicine.getMedicineDosage());
     }
 
     @Test
-    public void test_getMedicineUnit(){
+    public void getMedicineUnitTest(){
         medicine.setMedicineUnit("test unit");
         assertEquals("test unit", medicine.getMedicineUnit());
     }
 
     @Test
-    public void test_getUnityMedicineFormatted(){
+    public void getUnityMedicineFormattedTest(){
         medicine.setMedicineUnit("AMP");
         assertEquals("Ampola", medicine.getUnityMedicineFormatted());
         medicine.setMedicineUnit("BS");
@@ -86,13 +86,13 @@ public class TestMedicine {
     }
 
     @Test
-    public void test_getMedicineAttentionLevel(){
+    public void getMedicineAttentionLevelTest(){
         medicine.setMedicineAttentionLevel("test Attention Level");
         assertEquals("test Attention Level", medicine.getMedicineAttentionLevel());
     }
 
     @Test
-    public void test_getMedicineAttentionLevelExtended(){
+    public void getMedicineAttentionLevelExtendedTest(){
         medicine.setMedicineAttentionLevel("AB");
         assertEquals("Atenção Básica", medicine.getMedicineAttentionLevelExtended());
         medicine.setMedicineAttentionLevel("HO");
@@ -106,13 +106,13 @@ public class TestMedicine {
     }
 
     @Test
-    public void test_toString(){
+    public void toStringTest(){
         medicine.setMedicineDescription("test toStrong");
         assertEquals("test toStrong", medicine.toString());
     }
 
     @Test
-    public void test_getQuery() {
+    public void getQueryTest() {
         assertNotEquals(medicine.getQuery(), ParseQuery.getQuery(Medicine.class));
     }
 

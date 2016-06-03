@@ -18,9 +18,16 @@ import java.util.List;
 public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> implements Filterable{
     public static List<UBS> dataUBS;
     List<UBS> filterDataUBS;
-    public static Context contextOpen;
+    private static Context contextOpen;
     FilterSearchUBS filter;
     private Boolean showButtonMedicines;
+
+    public CardListAdapterUBS(Context context, List<UBS> dataUBS) {
+        this.contextOpen = context;
+        this.dataUBS = dataUBS;
+        this.filterDataUBS = dataUBS;
+        setShowButtonMedicines(true);
+    }
 
     @Override
     public Filter getFilter() {
@@ -31,13 +38,6 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         }
 
         return filter;
-    }
-
-    public CardListAdapterUBS(Context context, List<UBS> dataUBS) {
-        this.contextOpen = context;
-        this.dataUBS = dataUBS;
-        this.filterDataUBS = dataUBS;
-        setShowButtonMedicines(true);
     }
 
     @Override

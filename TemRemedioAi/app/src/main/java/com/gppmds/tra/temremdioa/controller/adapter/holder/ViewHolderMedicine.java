@@ -20,15 +20,15 @@ import com.gppmds.tra.temremdioa.model.Medicine;
 import com.tra.gppmds.temremdioa.R;
 
 public class ViewHolderMedicine extends RecyclerView.ViewHolder {
-    public TextView textViewMedicineName;
-    public TextView textViewMedicineType;
-    public TextView textViewMedicineDosage;
-    public TextView textViewMedicineAttentionLevel;
-    public RelativeLayout headerLayout;
-    public RelativeLayout expandLayout;
-    public ValueAnimator mAnimator;
-    public Button buttonSelectUbs;
-    public ImageView imageViewArrow;
+    private TextView textViewMedicineName;
+    private TextView textViewMedicineType;
+    private TextView textViewMedicineDosage;
+    private TextView textViewMedicineAttentionLevel;
+    private RelativeLayout headerLayout;
+    private RelativeLayout expandLayout;
+    private ValueAnimator mAnimator;
+    private Button buttonSelectUbs;
+    private ImageView imageViewArrow;
 
     public ViewHolderMedicine(CardView card) {
         super(card);
@@ -137,5 +137,25 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
             }
         });
         return animator;
+    }
+
+    public TextView getTextViewMedicineName(){
+        return textViewMedicineName;
+    }
+
+    public TextView getTextViewMedicineType() {
+        return textViewMedicineType;
+    }
+
+    public TextView getTextViewMedicineDosage() {
+        return textViewMedicineDosage;
+    }
+
+    public TextView getTextViewMedicineAttentionLevel() {
+        return textViewMedicineAttentionLevel;
+    }
+
+    public Button getButtonSelectUbs() {
+        return buttonSelectUbs;
     }
 }

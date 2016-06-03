@@ -16,8 +16,8 @@ import static org.junit.Assert.*;
 public class UBSTest {
 
     private UBS ubs;
-    private static final Double ubsLatitude = 3.23;
-    private static final Double ubsLongitude = 2.11;
+    private static final Double LATITUDE = 3.23;
+    private static final Double LONGITUDE = 2.11;
 
     @Before
     public void setUp() {
@@ -27,14 +27,14 @@ public class UBSTest {
 
     @Test
     public void getUbsLatitudeTest() throws Exception {
-        ubs.setUbsLatitude(ubsLatitude);
-        assertEquals(ubsLatitude, ubs.getUbsLatitude());
+        ubs.setUbsLatitude(LATITUDE);
+        assertEquals(LATITUDE, ubs.getUbsLatitude());
     }
 
     @Test
     public void getUbsLongitudeTest() throws Exception {
-        ubs.setUbsLongitude(ubsLongitude);
-        assertEquals(ubsLongitude, ubs.getUbsLongitude());
+        ubs.setUbsLongitude(LONGITUDE);
+        assertEquals(LONGITUDE, ubs.getUbsLongitude());
     }
 
     @Test
