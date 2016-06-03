@@ -25,7 +25,7 @@ public class SelectRemedioActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.remedio_recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.medicine_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());

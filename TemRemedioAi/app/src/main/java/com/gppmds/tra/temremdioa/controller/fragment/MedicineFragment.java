@@ -29,9 +29,9 @@ public class MedicineFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_remedio, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_medicine, container, false);
 
-        medicineRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        medicineRecyclerView = (RecyclerView) rootView.findViewById(R.id.medicine_recycler_view);
         medicineRecyclerView.setHasFixedSize(true);
         medicineRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
