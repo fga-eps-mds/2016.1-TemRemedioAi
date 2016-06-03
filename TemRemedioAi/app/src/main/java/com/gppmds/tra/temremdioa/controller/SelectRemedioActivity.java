@@ -34,7 +34,7 @@ public class SelectRemedioActivity extends AppCompatActivity {
         /* Getting UBS description from UBS holder */
         String ubsName = getIntent().getStringExtra("nomeUBS");
         String ubsAttentionLevel = getIntent().getStringExtra("nivelAtencao");
-        String attentionLevelFilters[] = ubsAttentionLevel.split(",");
+        String[] attentionLevelFilters = ubsAttentionLevel.split(",");
 
         /* Getting UBS attention level count */
         for(int i = 0; i < attentionLevelFilters.length; i++) {

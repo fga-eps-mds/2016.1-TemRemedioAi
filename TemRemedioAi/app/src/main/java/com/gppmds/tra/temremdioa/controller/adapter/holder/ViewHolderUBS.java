@@ -20,8 +20,6 @@ import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
-import org.w3c.dom.Text;
-
 public class ViewHolderUBS extends RecyclerView.ViewHolder{
     private TextView textViewUbsName;
     private TextView textViewUbsNeighborhood;
@@ -33,26 +31,6 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
     private Button buttonSelectMedicine;
     private Button buttonViewUbsDescription;
     private ImageView imageViewArrow;
-
-    public TextView getTextViewUbsName(){
-        return textViewUbsName;
-    }
-
-    public TextView getTextViewUbsNeighborhood(){
-        return textViewUbsNeighborhood;
-    }
-
-    public TextView getTextViewUbsCity(){
-        return textViewUbsCity;
-    }
-
-    public TextView getTextViewUbsAttentionLevel(){
-        return textViewUbsAttentionLevel;
-    }
-
-    public Button getButtonSelectMedicine(){
-        return buttonSelectMedicine;
-    }
 
     public ViewHolderUBS(CardView card) {
         super(card);
@@ -147,14 +125,17 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
 
             @Override
             public void onAnimationStart(Animator animator) {
+                /* Nothing to do */
             }
 
             @Override
             public void onAnimationCancel(Animator animator) {
+                /* Nothing to do */
             }
 
             @Override
             public void onAnimationRepeat(Animator animator) {
+                /* Nothing to do */
             }
         });
         mAnimator2.start();
@@ -177,5 +158,25 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         });
         return animator;
 
+    }
+
+    public TextView getTextViewUbsName(){
+        return textViewUbsName;
+    }
+
+    public TextView getTextViewUbsNeighborhood(){
+        return textViewUbsNeighborhood;
+    }
+
+    public TextView getTextViewUbsCity(){
+        return textViewUbsCity;
+    }
+
+    public TextView getTextViewUbsAttentionLevel(){
+        return textViewUbsAttentionLevel;
+    }
+
+    public Button getButtonSelectMedicine(){
+        return buttonSelectMedicine;
     }
 }

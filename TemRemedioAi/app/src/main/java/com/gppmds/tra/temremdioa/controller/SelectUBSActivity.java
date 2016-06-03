@@ -34,11 +34,11 @@ public class SelectUBSActivity extends AppCompatActivity {
         /* Getting medicine description from medicine holder */
         String mecicineName = getIntent().getStringExtra("nomeRemedio");
         String medicineAttentionLevel = getIntent().getStringExtra("nivelAtencao");
-        String attentionLevelFilters[] = medicineAttentionLevel.split(",");
+        String[] attentionLevelFilters = medicineAttentionLevel.split(",");
 
         /* Getting attention level count */
         for(int i = 0; i < attentionLevelFilters.length; i++) {
-            if (attentionLevelFilters[i].equalsIgnoreCase("HO")) {
+            if ("HO".equalsIgnoreCase(attentionLevelFilters[i])) {
                 attentionLevelFilters[i] = "HO,AB";
             }
             Log.i("CLAUS WHERE", "Nível de atenção do Remédio " + i + ": " + attentionLevelFilters[i]);
