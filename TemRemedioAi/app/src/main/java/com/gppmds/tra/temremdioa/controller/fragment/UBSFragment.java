@@ -34,7 +34,7 @@ public class UBSFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.ubs_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
