@@ -170,7 +170,7 @@ public class Medicine extends ParseObject {
                 medicineAttentionLevel = "Medicamentos Estratégicos";
                 break;
             default:
-                // Nothing to do
+                /* Nothing to do */
                 break;
         }
         return medicineAttentionLevel;
@@ -178,10 +178,10 @@ public class Medicine extends ParseObject {
 
     /**
      * setMedicineAttentionLevel set the initials of attention level of medicine
-     * @param nivel_at
+     * @param medicineAttentionLevel
      */
-    public void setMedicineAttentionLevel(String nivel_at){
-        put(getMedicineAttentionLevelTitle(), nivel_at);
+    public void setMedicineAttentionLevel(String medicineAttentionLevel){
+        put(getMedicineAttentionLevelTitle(), medicineAttentionLevel);
     }
 
     /**

@@ -18,14 +18,15 @@ import java.util.List;
 
 public class UBSFragment extends Fragment{
 
-    public RecyclerView recyclerView;
-    public static CardListAdapterUBS adapter;
-
-    public UBSFragment(){
-    }
+    private RecyclerView ubsRecyclerView;
+    private static CardListAdapterUBS ubsAdapter;
 
     public static UBSFragment newInstance(){
         return new UBSFragment();
+    }
+
+    public static CardListAdapterUBS getUbsAdapter() {
+        return ubsAdapter;
     }
 
     @Override
@@ -34,9 +35,9 @@ public class UBSFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        ubsRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        ubsRecyclerView.setHasFixedSize(true);
+        ubsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         /* Query UBS data from parse */
         ParseQuery<UBS> queryUBS = UBS.getQuery();
@@ -45,8 +46,8 @@ public class UBSFragment extends Fragment{
 
         try {
             ubsList = queryUBS.find();
-            adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubsList);
-            recyclerView.setAdapter( adapter );
+            ubsAdapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubsList);
+            ubsRecyclerView.setAdapter(getUbsAdapter());
         } catch (ParseException e) {
             e.printStackTrace();
         }

@@ -108,14 +108,17 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
 
             @Override
             public void onAnimationStart(Animator animator) {
+                /* Method declared empty because the override is mandatory */
             }
 
             @Override
             public void onAnimationCancel(Animator animator) {
+                /* Method declared empty because the override is mandatory */
             }
 
             @Override
             public void onAnimationRepeat(Animator animator) {
+                /* Method declared empty because the override is mandatory */
             }
         });
         mAnimator2.start();

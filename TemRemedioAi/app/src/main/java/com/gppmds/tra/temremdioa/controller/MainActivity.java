@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public boolean onQueryTextChange(String query) {
-                UBSFragment.adapter.getFilter().filter( query );
-                MedicineFragment.adapter.getFilter().filter(query);
+                UBSFragment.getUbsAdapter().getFilter().filter( query );
+                MedicineFragment.getMedicineAdapter().getFilter().filter(query);
                 return false;
             }
         });

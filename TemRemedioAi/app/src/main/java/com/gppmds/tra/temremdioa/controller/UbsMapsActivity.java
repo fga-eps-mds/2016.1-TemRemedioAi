@@ -27,7 +27,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     private Double longitude;
     private String ubsName;
     FloatingActionButton generateTrajectory;
-    private static final int latLngZoom = 13;
+    private static final int LATLNGZOOM = 13;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +100,9 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
     public DialogInterface.OnClickListener getGoogleMapsListener() {
         return new DialogInterface.OnClickListener() {
+
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
+            public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.apps.maps"));
                 startActivity(intent);
 
@@ -118,6 +118,6 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         /* Get latitude and longitude to create a marker on map */
         LatLng latLngValues = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLngValues).title(ubsName));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, latLngZoom));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, LATLNGZOOM));
     }
 }

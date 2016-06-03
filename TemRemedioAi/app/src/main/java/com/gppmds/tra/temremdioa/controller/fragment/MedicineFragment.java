@@ -19,14 +19,10 @@ import java.util.List;
 
 public class MedicineFragment extends Fragment{
 
-    public RecyclerView recyclerView;
-    public static CardListAdapterMedicine adapter;
+    private RecyclerView medicineRecyclerView;
+    public static CardListAdapterMedicine medicineAdapter;
 
     public MedicineFragment(){
-    }
-
-    public static MedicineFragment newInstance(){
-        return new MedicineFragment();
     }
 
     @Override
@@ -35,9 +31,9 @@ public class MedicineFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_remedio, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        medicineRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        medicineRecyclerView.setHasFixedSize(true);
+        medicineRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         /* Query medicine data from parse */
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
@@ -45,12 +41,20 @@ public class MedicineFragment extends Fragment{
 
         try {
             medicines = queryMedicine.find();
-            adapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
-            recyclerView.setAdapter( adapter );
+            medicineAdapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
+            medicineRecyclerView.setAdapter(medicineAdapter);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         return rootView;
+    }
+
+    public static MedicineFragment newInstance(){
+        return new MedicineFragment();
+    }
+
+    public static CardListAdapterMedicine getMedicineAdapter() {
+        return medicineAdapter;
     }
 }
