@@ -32,6 +32,8 @@ public class ViewHolderMedicineTest  extends ActivityInstrumentationTestCase2<Ma
         onView(withId(R.id.medicine_recycler_view)).
                 perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
 
+
+
 //        onView(withId(R.id.expandable)).check(matches(isDisplayed()));
     }
 
