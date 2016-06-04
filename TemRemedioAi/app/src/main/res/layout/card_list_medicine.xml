@@ -8,8 +8,8 @@
     android:layout_marginBottom="1dp"
     android:layout_width="match_parent"
     app:cardElevation="1dp"
-    android:layout_height="wrap_content">
-    <!--android:id="@+id/cardViewRemedio"-->
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view_medicine">
 
     <RelativeLayout
         android:layout_width="wrap_content"
