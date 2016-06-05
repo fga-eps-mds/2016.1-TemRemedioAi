@@ -30,6 +30,8 @@
     <string name="cancel">Cancelar</string>
     <string name="error_different_password">Ops!!! As senhas são diferentes.</string>
     <string name="error_invalid_age">Idade inválida.</string>
+    <string name="exit">Sair</string>
+    <string name="user">Usuário</string>
     <string name="error_invalid_genre">Sexo não escolhido</string>
     <string name="error_character">Caracter inválido digitado.</string>
     <string name="prompt_username">Username</string>
