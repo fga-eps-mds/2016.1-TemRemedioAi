@@ -13,9 +13,7 @@ import org.junit.Before;
 
 import java.util.List;
 
-/**
- * Created by Usuário on 04/06/2016.
- */
+
 public class CardListAdapterMedicineTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public CardListAdapterMedicineTest () {
@@ -28,7 +26,7 @@ public class CardListAdapterMedicineTest extends ActivityInstrumentationTestCase
         getActivity();
     }
 
-    public void testCountMedicinesItensOnCardListAdapter() {
+    public void testCountMedicinesItens() {
         RecyclerView rv = (RecyclerView) getActivity().findViewById(R.id.medicine_recycler_view);
 
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
@@ -44,4 +42,34 @@ public class CardListAdapterMedicineTest extends ActivityInstrumentationTestCase
 
     }
 
+    public void testFilterMedicinesItens() {
+//        onView(withId(R.id.action_search))
+//                .perform(click(), typeText("ACICLOVIR"));
+//
+////        SearchView searchView = (SearchView) getActivity().findViewById(R.id.action_search);
+////        searchView.setQuery("ACICLOVIR", false);
+//
+//        RecyclerView rv = (RecyclerView) getActivity().findViewById(R.id.medicine_recycler_view);
+//
+//        ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
+//        queryMedicine.whereContains(Medicine.getMedicineDescriptionTitle(), "ACICLOVIR");
+//        List<Medicine> medicines;
+//
+//        try {
+//            medicines = queryMedicine.find();
+//
+//            assertTrue(medicines.size() == rv.getAdapter().getItemCount());
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+    }
+
+    public void testShowButtonShowUBSTrue() {
+        // This Button need to be checked in primary fragment of medicines. The button is need to be Showed.
+    }
+
+    public void testShowButtonShowUBSFalse() {
+        // This Button need to be checked after click on UBS and go to a new fragment of medicines. The button is not be showed.
+    }
 }
