@@ -9,9 +9,9 @@
     <string name="testeTexto">testeTexto</string>
     <string name="search">Pesquisar...</string>
     <string name="dsc_about">O aplicativo Tem Remédio Aí? tem como objetivo facilitar o acesso
-                            à informação da disponibilidade de medicamentos em Unidades Básicas
-                            de Saúde, Hospitais e Farmácias de Alto Custo da Secretaria de Saúde do
-                            Distrito Federal.
+                            à informação da disponibilidade de medicamentos gratuitamente
+                            distribuídos em Unidades Básicas de Saúde, Hospitais e Farmácias de
+                            Alto Custo da Secretaria de Saúde do Distrito Federal.
                             </string>
     <string name="about">Sobre o Aplicativo</string>
     <string name="selectedUBS">UBS Selecionada</string>
