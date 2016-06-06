@@ -133,12 +133,15 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
                 public void done(ParseUser parseUser, ParseException e) {
                     if (parseUser != null) {
 
-                        Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LogInActivity.this, UserProfile.class);
                         startActivity(intent);
                         finish();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Esse username não existe!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Username e/ou senha não existente!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LogInActivity.this, LogInActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }
             });
@@ -146,7 +149,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 6;
+        return password.length() > 5;
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)

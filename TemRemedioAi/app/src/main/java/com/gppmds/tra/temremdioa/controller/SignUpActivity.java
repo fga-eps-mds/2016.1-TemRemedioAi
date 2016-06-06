@@ -175,7 +175,6 @@ public class SignUpActivity extends AppCompatActivity {
                         finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "Erro no cadastro, tente novamente!", Toast.LENGTH_SHORT).show();
-
                     }
                 }
             });
