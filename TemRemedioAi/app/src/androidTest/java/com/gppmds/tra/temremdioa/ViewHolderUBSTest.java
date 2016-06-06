@@ -27,20 +27,23 @@ public class ViewHolderUBSTest extends ActivityInstrumentationTestCase2<MainActi
 
     public void testIfCardExpands(){
         onView(withId(R.id.container)).perform(swipeLeft());
-        onView(allOf(withId(R.id.ubs_recycler_view),withText("ADOLEScentro"))).perform(click());
+        onView(withId(R.id.ubs_recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(allOf(withId(R.id.textViewCidadeUBS),withText("Brasília")))
+                .check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.textViewNivelAtencaoUBS)
+                , withText("AB")))
                 .check(matches(isDisplayed()));
     }
 
     public void testIfCardCollapses(){
         onView(withId(R.id.container)).perform(swipeLeft());
-        onView(withId(R.id.ubs_recycler_view)).
-                perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        onView(withId(R.id.ubs_recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, doubleClick()));
         onView(allOf(withId(R.id.textViewCidadeUBS),withText("Brasília")))
-                .check(matches(isDisplayed()));
-        onView(withId(R.id.ubs_recycler_view)).
-                perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        onView(allOf(withId(R.id.textViewCidadeUBS),withText("Brasília")))
+                .check(matches(not(isDisplayed())));
+        onView(allOf(withId(R.id.textViewNivelAtencaoUBS)
+                , withText("AB")))
                 .check(matches(not(isDisplayed())));
     }
 }
