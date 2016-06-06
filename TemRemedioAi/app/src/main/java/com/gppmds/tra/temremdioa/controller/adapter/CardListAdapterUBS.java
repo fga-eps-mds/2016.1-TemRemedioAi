@@ -32,9 +32,9 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     @Override
     public Filter getFilter() {
         if(filter == null) {
-            filter = new FilterSearchUBS( filterDataUBS ,this );
+            filter = new FilterSearchUBS(filterDataUBS, this);
         } else {
-            /* Nothing to do */
+            // Nothing to do
         }
 
         return filter;
@@ -58,12 +58,13 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         if (!getShowButtonMedicines()) {
             holder.getButtonSelectMedicine().setVisibility(View.GONE);
         } else {
-            /* Nothing to do */
+            // Nothing to do
         }
     }
 
     @Override
     public int getItemCount() {
+
         return dataUBS.size();
     }
 
@@ -72,6 +73,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     }
 
     private Boolean getShowButtonMedicines() {
+
         return this.showButtonMedicines;
     }
 
