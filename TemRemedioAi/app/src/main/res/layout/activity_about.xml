@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:layout_column="0"
         android:layout_row="0"
         android:layout_rowSpan="2"
@@ -31,8 +31,8 @@
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="#000000"
         android:textSize="18dp"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="1dp"
+        android:paddingTop="8dp"
         android:id="@+id/textView3"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
@@ -44,9 +44,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="#000000"
+        android:paddingBottom="1dp"
+        android:paddingTop="1dp"
         android:textSize="14dp"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
         android:id="@+id/textView4"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView3"
@@ -62,8 +62,8 @@
         android:background="@drawable/ic_info"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/textView" />
 
     <TextView
         android:layout_width="match_parent"
@@ -75,22 +75,25 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:id="@+id/textView2"
+        android:layout_marginLeft="5dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageView"
+        android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true" />
 
     <TextView
         android:text="@string/about"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="#000000"
         android:textSize="16dp"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:id="@+id/textView"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_below="@+id/textView4"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginTop="44dp" />
 
 
 </RelativeLayout>

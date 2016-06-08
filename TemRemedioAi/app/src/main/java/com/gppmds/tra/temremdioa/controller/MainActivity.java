@@ -82,9 +82,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                Toast.makeText(this, R.string.action_settings, Toast.LENGTH_LONG).show();
-                break;
+            // case ENTRAR
             case R.id.action_about:
                 Intent aboutActivity = new Intent(this, AboutActivity.class);
                 startActivity(aboutActivity);
