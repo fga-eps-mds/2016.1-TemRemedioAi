@@ -12,6 +12,7 @@ import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
+import com.gppmds.tra.temremdioa.controller.adapter.SortUBS;
 
 import java.util.Arrays;
 import java.util.List;
