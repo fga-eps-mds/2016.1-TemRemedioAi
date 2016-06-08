@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference     android:title="Ordenar UBS por"
+        android:summary="Selecione a ordem que as UBS irão aparecer."
+        android:key="downloadType"
+        android:defaultValue="1"
+        android:entries="@array/listArray"
+        android:entryValues="@array/listValues" />
+</PreferenceScreen>
