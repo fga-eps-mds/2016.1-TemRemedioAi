@@ -1,6 +1,7 @@
 package com.gppmds.tra.temremdioa.controller;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,10 +22,19 @@ public class SplashScreenActivity extends Activity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(intent);
+                openMainActivity();
                 finish();
             }
         }, waitTime);
+    }
+
+    public boolean openMainActivity() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        try {
+            startActivity(intent);
+            return true;
+        } catch (ActivityNotFoundException e) {
+            return false;
+        }
     }
 }
