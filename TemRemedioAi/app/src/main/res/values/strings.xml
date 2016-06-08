@@ -16,4 +16,5 @@
     <string name="about">Sobre o Aplicativo</string>
     <string name="selectedUBS">UBS Selecionada</string>
     <string name="ubsQuantity">Quantidade de Locais</string>
+    <string name="version">Versão 1.0</string>
 </resources>
