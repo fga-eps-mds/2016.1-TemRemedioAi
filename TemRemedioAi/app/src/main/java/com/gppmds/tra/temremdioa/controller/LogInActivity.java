@@ -45,6 +45,9 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private ProgressBar mProgressView;
     private View mLoginFormView;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,6 +152,11 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isPasswordValid(String password) {
+
+        return password.length() > 5;
+    }
+
+    public boolean returnIsPasswordValid(String password){
         return password.length() > 5;
     }
 
