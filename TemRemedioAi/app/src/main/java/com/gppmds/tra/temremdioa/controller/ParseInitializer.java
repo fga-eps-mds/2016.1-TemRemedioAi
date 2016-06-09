@@ -12,18 +12,37 @@ public class ParseInitializer extends android.app.Application {
     public void onCreate(){
         super.onCreate();
 
-        ParseObject.registerSubclass(UBS.class);
-        ParseObject.registerSubclass(Medicine.class);
-        /* Establish connection with parse server */
-        Parse.enableLocalDatastore(getApplicationContext());
-        Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("TemRemedioAi")
-                .server("http://temremedioai.herokuapp.com/temremedioai/Class")
-                .clientKey("kijasijijasiasjsiajalllkaosiajhsis")
-                .build()
-        );
+        registerParserSubClasses();
+        inicializeParser();
 
-        ParseUser.enableAutomaticUser();
+    }
+
+    public boolean registerParserSubClasses() {
+        try {
+            ParseObject.registerSubclass(UBS.class);
+            ParseObject.registerSubclass(Medicine.class);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean inicializeParser() {
+        /* Establish connection with parse server */
+        try {
+            Parse.enableLocalDatastore(this);
+            Parse.initialize(new Parse.Configuration.Builder(this)
+                    .applicationId("TemRemedioAi")
+                    .server("http://temremedioai.herokuapp.com/temremedioai/Class")
+                    .clientKey("kijasijijasiasjsiajalllkaosiajhsis")
+                    .build()
+            );
+            ParseUser.enableAutomaticUser();
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
