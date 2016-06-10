@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity{
                         .setAction("Action", null).show();
             }
         });
-        
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        client = createClient();
     }
 
     @Override
@@ -92,5 +92,9 @@ public class MainActivity extends AppCompatActivity{
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public GoogleApiClient createClient(){
+        return (new GoogleApiClient.Builder(this).addApi(AppIndex.API).build());
     }
 }
