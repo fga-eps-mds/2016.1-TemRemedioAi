@@ -17,7 +17,7 @@ public class FilterSearchUBS extends Filter {
     }
 
     @Override
-    protected FilterResults performFiltering(CharSequence constraint) {
+    public FilterResults performFiltering(CharSequence constraint) {
         FilterResults results = new FilterResults();
 
         if(constraint != null && constraint.length() > 0) {
@@ -43,8 +43,8 @@ public class FilterSearchUBS extends Filter {
     }
 
     @Override
-    protected void publishResults(CharSequence constraint, FilterResults results) {
+    public void publishResults(CharSequence constraint, FilterResults results) {
         adapter.dataUBS = (List<UBS>) results.values;
-        adapter.notifyDataSetChanged();
+        // adapter.notifyDataSetChanged();
     }
 }
