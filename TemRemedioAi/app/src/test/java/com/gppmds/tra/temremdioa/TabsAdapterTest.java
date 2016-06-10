@@ -27,14 +27,17 @@ public class TabsAdapterTest extends FragmentActivity {
     }
 
     @Test
+    public void getItemReturnMedicineTest(){
+        assertEquals(MedicineFragment.class, tabsAdapter.getItem(0).getClass());
+    }
+
+    @Test
+    public void getItemReturnUBSTest(){
+        assertEquals(UBSFragment.class, tabsAdapter.getItem(1).getClass());
+    }
+
+    @Test
     public void getItemReturnNullTest(){
-//        MedicineFragment medicineFragment = new MedicineFragment();
-//        UBSFragment ubsFragment = new UBSFragment();
-//
-//        assert
-//
-//        assertEquals(MedicineFragment.newInstance(), tabsAdapter.getItem(0));
-//        assertEquals(UBSFragment.newInstance(), tabsAdapter.getItem(1));
         assertNull(tabsAdapter.getItem(2));
     }
 
@@ -44,9 +47,17 @@ public class TabsAdapterTest extends FragmentActivity {
     }
 
     @Test
-    public void getPageTitleTest(){
+    public void getPageTitleMedicineTest(){
         assertEquals("Remédio",tabsAdapter.getPageTitle(0));
+    }
+
+    @Test
+    public void getPageTitleUBSTest(){
         assertEquals("UBS",tabsAdapter.getPageTitle(1));
+    }
+
+    @Test
+    public void getPageTitleReturnNullTest(){
         assertNull(tabsAdapter.getPageTitle(2));
     }
 }
