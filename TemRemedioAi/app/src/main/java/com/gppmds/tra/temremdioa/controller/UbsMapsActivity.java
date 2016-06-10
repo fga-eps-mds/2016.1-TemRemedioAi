@@ -26,7 +26,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     private Double latitude;
     private Double longitude;
     private String ubsName;
-    FloatingActionButton generateTrajectory;
+
     private static final int LATLNGZOOM = 13;
 
     @Override
@@ -35,10 +35,21 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         setContentView(R.layout.activity_ubs_maps);
 
         /* Obtain the SupportMapFragment and get notified when the map is ready to be used */
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+       obtainSupportMapFragment();
 
         /* Getting UBS descriptions from UBS Holder class */
+        gettingUbsFromHolder();
+
+        /* Ubs trajectory */
+        generateTrajectory();
+    }
+
+    private void obtainSupportMapFragment () {
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    private void gettingUbsFromHolder() {
         ubsName = getIntent().getStringExtra("nomeUBS");
         String descUbsAddress = getIntent().getStringExtra("descEnderecoUBS");
         String descUbsNeighborhood = getIntent().getStringExtra("descBairroUBS");
@@ -58,7 +69,10 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
         TextView editDscCity = (TextView) findViewById(R.id.textViewCityUbs);
         editDscCity.setText(descUbsCity);
+    }
 
+    private void generateTrajectory() {
+        FloatingActionButton generateTrajectory;
         generateTrajectory = (FloatingActionButton) findViewById(R.id.direction);
         generateTrajectory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +80,6 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
                 setUpMapIfNeeded();
             }
         });
-
     }
 
     private void setUpMapIfNeeded() {
@@ -74,7 +87,8 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
             /* Get latitude and longitude from ubs Holder and open with GMaps */
             String uri = "http://maps.google.com/maps?saddr="+"&daddr="+latitude+","+longitude;
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+            intent.setClassName("com.google.android.apps.maps",
+                                "com.google.android.maps.MapsActivity");
             startActivity(intent);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -91,7 +105,8 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
     public boolean isGoogleMapsInstalled() {
         try {
-            ApplicationInfo info = getPackageManager().getApplicationInfo("com.google.android.apps.maps", 0 );
+            ApplicationInfo info = getPackageManager()
+                    .getApplicationInfo("com.google.android.apps.maps", 0);
             return true;
         } catch(PackageManager.NameNotFoundException e) {
             return false;
@@ -103,7 +118,8 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.apps.maps"));
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("market://details?id=com.google.android.apps.maps"));
                 startActivity(intent);
 
                 /* Finish the activity so they can't circumvent the check */
@@ -115,6 +131,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
         /* Get latitude and longitude to create a marker on map */
         LatLng latLngValues = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLngValues).title(ubsName));
