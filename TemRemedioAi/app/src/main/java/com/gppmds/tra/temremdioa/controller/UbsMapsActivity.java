@@ -30,12 +30,14 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     private static final int LATLNGZOOM = 13;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubs_maps);
 
         /* Obtain the SupportMapFragment and get notified when the map is ready to be used */
-       obtainSupportMapFragment();
+        obtainSupportMapFragment();
+
+        gettingLatitudeAndLongitude();
 
         /* Getting UBS descriptions from UBS Holder class */
         gettingUbsFromHolder();
@@ -47,28 +49,47 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     private void obtainSupportMapFragment () {
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    };
+
+    private void gettingLatitudeAndLongitude() {
+        latitude = getIntent().getDoubleExtra("latitude", 0);
+        longitude = getIntent().getDoubleExtra("longitude", 0);
     }
 
     private void gettingUbsFromHolder() {
-        ubsName = getIntent().getStringExtra("nomeUBS");
-        String descUbsAddress = getIntent().getStringExtra("descEnderecoUBS");
-        String descUbsNeighborhood = getIntent().getStringExtra("descBairroUBS");
-        String descUbsCity = getIntent().getStringExtra("descCidadeUBS");
-        // String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
-        latitude = getIntent().getDoubleExtra("latitude", 0);
-        longitude = getIntent().getDoubleExtra("longitude", 0);
+        gettingUbsName();
+        gettingUbsAddress();
+        gettingUbsNeighborhood();
+        gettingUbsCity();
+        //gettingUbsPhone();
+    }
 
+    private void gettingUbsName() {
+        ubsName = getIntent().getStringExtra("nomeUBS");
         TextView editName = (TextView) findViewById(R.id.textViewUbsName);
         editName.setText(ubsName);
+    }
 
+    private void gettingUbsAddress () {
+        String descUbsAddress = getIntent().getStringExtra("descEnderecoUBS");
         TextView editDscAddress = (TextView) findViewById(R.id.textViewDscAddress);
         editDscAddress.setText(descUbsAddress);
+    }
 
+    private void gettingUbsNeighborhood() {
+        String descUbsNeighborhood = getIntent().getStringExtra("descBairroUBS");
         TextView editDscNeighborhood = (TextView) findViewById(R.id.textViewDscNeighborhood);
         editDscNeighborhood.setText(descUbsNeighborhood);
+    }
 
+    private void gettingUbsCity() {
+        String descUbsCity = getIntent().getStringExtra("descCidadeUBS");
         TextView editDscCity = (TextView) findViewById(R.id.textViewCityUbs);
         editDscCity.setText(descUbsCity);
+    }
+
+    private void gettingUbsPhone() {
+        // String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
     }
 
     private void generateTrajectory() {
