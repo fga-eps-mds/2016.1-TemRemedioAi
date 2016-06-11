@@ -30,7 +30,7 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     }
 
     @Override
-    public Filter getFilter() {
+    public FilterSearchUBS getFilter() {
         if(filter == null) {
             filter = new FilterSearchUBS(filterDataUBS, this);
         } else {
@@ -73,8 +73,11 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     }
 
     private Boolean getShowButtonMedicines() {
-
         return this.showButtonMedicines;
     }
 
+    public void createFilter() {
+        filter = new FilterSearchUBS(filterDataUBS, this);
+        Boolean test = getShowButtonMedicines();
+    }
 }
