@@ -44,8 +44,8 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private ProgressBar mProgressView;
     private View mLoginFormView;
-
-
+    private Button mUsernameSignInButton;
+    private Button mRegisterButton;
 
 
     @Override
@@ -55,10 +55,27 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Set up log in form
-        mUsernameView = (EditText) findViewById(R.id.log_in_username_field);
+        setValues();
 
+        setListener();
+
+    }
+
+    public boolean setValues() {
+
+        mUsernameView = (EditText) findViewById(R.id.log_in_username_field);
         mPasswordView = (EditText) findViewById(R.id.log_in_password_field);
+
+        mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
+        mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
+
+        mLoginFormView = (View) findViewById(R.id.log_in_form);
+        mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
+
+        return true;
+    }
+
+    public void setListener() {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -70,7 +87,6 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
         mUsernameSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +95,6 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
         mRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,11 +102,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
                 startActivity(signUpActivity);
             }
         });
-
-        mLoginFormView = (View) findViewById(R.id.log_in_form);
-        mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
     }
-
 
     // Attempts to login in the system if the entries email and password are valid
     private void attemptLogin(){
