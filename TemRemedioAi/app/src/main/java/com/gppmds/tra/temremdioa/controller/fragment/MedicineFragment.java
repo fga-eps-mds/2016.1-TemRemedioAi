@@ -26,28 +26,31 @@ public class MedicineFragment extends Fragment{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_medicine, container, false);
+
+        medicineAdapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), getListOfMedicines());
 
         medicineRecyclerView = (RecyclerView) rootView.findViewById(R.id.medicine_recycler_view);
         medicineRecyclerView.setHasFixedSize(true);
         medicineRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        medicineRecyclerView.setAdapter(medicineAdapter);
 
+        return rootView;
+    }
+
+    public List<Medicine> getListOfMedicines() {
         /* Query medicine data from parse */
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
-        List<Medicine> medicines;
+        List<Medicine> medicines = null;
 
         try {
             medicines = queryMedicine.find();
-            medicineAdapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), medicines);
-            medicineRecyclerView.setAdapter(medicineAdapter);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        return rootView;
+        return medicines;
     }
 
     public static MedicineFragment newInstance(){
