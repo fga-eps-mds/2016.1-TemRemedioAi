@@ -35,4 +35,6 @@
     <string name="error_invalid_genre">Sexo não escolhido</string>
     <string name="error_character">Caracter inválido digitado.</string>
     <string name="prompt_username">Username</string>
+    <string name="title_activity_log_in">Entrar</string>
+    <string name="title_activity_sign_up">Cadastro</string>
 </resources>
