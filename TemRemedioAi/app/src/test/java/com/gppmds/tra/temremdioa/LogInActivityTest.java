@@ -17,4 +17,14 @@ public class LogInActivityTest {
         LogInActivity newLogin = new LogInActivity();
         assertEquals(false,newLogin.returnIsPasswordValid(password));
     }
+
+    @Test
+    public void isSetValuesValidTest() {
+
+    }
+
+    @Test
+    public void isSetListenerValidTest() {
+
+    }
 }

@@ -61,7 +61,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
-    public boolean setValues() {
+    private void setValues() {
 
         mUsernameView = (EditText) findViewById(R.id.log_in_username_field);
         mPasswordView = (EditText) findViewById(R.id.log_in_password_field);
@@ -72,10 +72,9 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = (View) findViewById(R.id.log_in_form);
         mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
 
-        return true;
     }
 
-    public void setListener() {
+    private void setListener() {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {

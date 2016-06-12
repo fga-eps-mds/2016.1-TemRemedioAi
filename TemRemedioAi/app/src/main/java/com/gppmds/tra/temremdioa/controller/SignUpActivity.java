@@ -29,23 +29,41 @@ public class SignUpActivity extends AppCompatActivity {
     private RadioButton mGenreMaleView;
     private RadioButton mGenreFemView;
     private TextView mGenre;
+    private Button mRegisterButton;
+    private Button cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        setValues();
+
+        setListener();
+
+    }
+
+    private void setValues() {
+
         mNameView = (EditText) findViewById(R.id.name);
         mEmailView = (EditText) findViewById(R.id.email);
         mAgeView = (EditText) findViewById(R.id.ageText);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        mUsernameView = (EditText) findViewById(R.id.username);
+        mPasswordViewConfirmation = (EditText) findViewById(R.id.password2);
+
+        mGenre = (TextView) findViewById(R.id.textViewGenre);
+
         mGenreFemView = (RadioButton) findViewById(R.id.femButton);
         mGenreMaleView = (RadioButton) findViewById(R.id.mascButton);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordViewConfirmation = (EditText) findViewById(R.id.password2);
-        mGenre = (TextView) findViewById(R.id.textViewGenre);
-        mUsernameView = (EditText) findViewById(R.id.username);
 
-        Button mRegisterButton = (Button) findViewById(R.id.register_button);
+        mRegisterButton = (Button) findViewById(R.id.register_button);
+        cancelButton = (Button) findViewById(R.id.register_cancel);
+
+    }
+
+    private void setListener() {
+
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +71,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        Button cancelButton = (Button) findViewById(R.id.register_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
