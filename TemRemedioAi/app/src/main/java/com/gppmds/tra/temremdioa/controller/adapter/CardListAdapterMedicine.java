@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderMedicine;
@@ -51,7 +50,7 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     }
 
     @Override
-    public Filter getFilter() {
+    public FilterSearchMedicine getFilter() {
         if(filter == null) {
             filter = new FilterSearchMedicine(filterDataMedicine, this );
         } else {
@@ -72,5 +71,11 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
 
     private Boolean getShowButtonUBSs() {
         return this.showButtonUBSs;
+    }
+
+
+    public void createFilter() {
+        filter = new FilterSearchMedicine(filterDataMedicine, this);
+        Boolean test = getShowButtonUBSs();
     }
 }
