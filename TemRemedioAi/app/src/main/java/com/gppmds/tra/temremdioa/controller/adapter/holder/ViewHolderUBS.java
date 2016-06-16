@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.gppmds.tra.temremdioa.controller.SelectRemedioActivity;
+import com.gppmds.tra.temremdioa.controller.SelectMedicineActivity;
 import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
@@ -80,7 +80,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         this.buttonSelectMedicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SelectRemedioActivity.class);
+                Intent intent = new Intent(v.getContext(), SelectMedicineActivity.class);
                 UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
                 intent.putExtra("nomeUBS", selectItem.getUbsName());
                 intent.putExtra("nivelAtencao", selectItem.getUbsAttentionLevel());
