@@ -54,12 +54,12 @@ public class SelectMedicineActivity extends AppCompatActivity {
         }
     }
 
-    private LinearLayoutManager createNewLinearLayoutManager() {
+    public LinearLayoutManager createNewLinearLayoutManager() {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         return llm;
     }
 
-    private void createRecyclerView(CardListAdapterMedicine cardListAdapterMedicine) throws Exception {
+    public void createRecyclerView(CardListAdapterMedicine cardListAdapterMedicine) throws Exception {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.medicine_recycler_view);
         if (recyclerView != null) {
             recyclerView.setLayoutManager(createNewLinearLayoutManager());
@@ -70,7 +70,7 @@ public class SelectMedicineActivity extends AppCompatActivity {
         }
     }
 
-    private List<Medicine> getListOfMedicine(ArrayList<String> filterAttentionLevel) {
+    public List<Medicine> getListOfMedicine(ArrayList<String> filterAttentionLevel) {
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
         queryMedicine.whereContainedIn(Medicine.getMedicineAttentionLevelTitle(), filterAttentionLevel);
         queryMedicine.orderByAscending(Medicine.getMedicineDescriptionTitle());
@@ -109,7 +109,7 @@ public class SelectMedicineActivity extends AppCompatActivity {
         setFilterAttentionLevel(getUbsAttentionLevel());
     }
 
-    private void setFilterAttentionLevel(String ubsAttentionLevel) {
+    public void setFilterAttentionLevel(String ubsAttentionLevel) {
         String [] attentionLevelFilters = ubsAttentionLevel.split(",");
 
         filterAttentionLevel = new ArrayList<String>();
