@@ -8,8 +8,8 @@
     android:layout_marginBottom="1dp"
     android:layout_width="match_parent"
     app:cardElevation="1dp"
-    android:layout_height="wrap_content">
-    <!--android:id="@+id/cardViewRemedio"-->
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view_medicine">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewNomeMedicamento"
+                android:id="@+id/textViewMedicineName"
                 android:layout_alignParentStart="true"
                 android:textSize="14sp"
                 android:text="Nome Medicamento"
@@ -34,12 +34,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewQuantidadeMedicamento"
+                android:id="@+id/textViewMedicineDosage"
                 android:textColor="@color/colorSecondText"
                 android:textSize="14sp"
                 android:text="300 mg"
                 android:editable="false"
-                android:layout_below="@+id/textViewNomeMedicamento" />
+                android:layout_below="@+id/textViewMedicineName" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -47,7 +47,8 @@
                 android:id="@+id/imageViewArrow"
                 android:padding="8dp"
                 android:layout_alignParentEnd="true"
-                android:background="@drawable/ic_keyboard_arrow_down" />
+                android:background="@drawable/ic_keyboard_arrow_down"
+                android:clickable="true"/>
 
         </RelativeLayout>
 
@@ -71,7 +72,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewTipoMedicamento"
+                    android:id="@+id/textViewMedicineType"
                     android:textSize="14sp"
                     android:text="Unidade de Venda"
                     android:layout_marginTop="24dp"
@@ -80,20 +81,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewNivelAtMedicamento"
+                    android:id="@+id/textViewMedicineAttetionLevel"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
                     android:text="Nível de Atenção"
                     android:layout_marginTop="4dp"
                     android:layout_marginLeft="24dp"
                     android:layout_marginBottom="24dp"
-                    android:layout_below="@+id/textViewTipoMedicamento"/>
+                    android:layout_below="@+id/textViewMedicineType"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Selecionar UBS"
-                    android:id="@+id/buttonSelecionarUbs"
+                    android:id="@+id/buttonSelectUbs"
                     android:layout_alignParentEnd="true"
                     android:minWidth="88dp"
                     android:minHeight="54dp"

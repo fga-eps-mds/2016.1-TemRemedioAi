@@ -16,42 +16,38 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
-/**
- * Created by carolina on 01/05/16.
- * Updated by Guilherme on 02/05/2016.
- */
 public class UBSFragment extends Fragment{
 
-    public RecyclerView recyclerView;
-    public static CardListAdapterUBS adapter;
-
-    public UBSFragment(){
-    }
+    private RecyclerView ubsRecyclerView;
+    private static CardListAdapterUBS ubsAdapter;
 
     public static UBSFragment newInstance(){
-       return new UBSFragment();
+        return new UBSFragment();
+    }
+
+    public static CardListAdapterUBS getUbsAdapter() {
+        return ubsAdapter;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        ubsRecyclerView = (RecyclerView) rootView.findViewById(R.id.ubs_recycler_view);
+        ubsRecyclerView.setHasFixedSize(true);
+        ubsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        /* Query UBS data from parse */
         ParseQuery<UBS> queryUBS = UBS.getQuery();
-        queryUBS.orderByAscending(UBS.getTitleNomEstab());
-        List<UBS> ubss;
+        queryUBS.orderByAscending(UBS.getUbsNameTitle());
+        List<UBS> ubsList;
+
         try {
-
-            ubss = queryUBS.find();
-//            UBS.pinAllInBackground(ubss);
-
-            adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubss);
-
-            recyclerView.setAdapter( adapter );
+            ubsList = queryUBS.find();
+            ubsAdapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubsList);
+            ubsRecyclerView.setAdapter(getUbsAdapter());
         } catch (ParseException e) {
             e.printStackTrace();
         }

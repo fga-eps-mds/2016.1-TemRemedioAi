@@ -41,15 +41,15 @@
                     card_view:cardCornerRadius="1dp">
 
                     <TextView
-                        android:id="@+id/textViewTitleUbs"
+                        android:id="@+id/textViewUbsName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -57,8 +57,8 @@
 
                         <ImageView
                             android:id="@+id/imageView2"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="82dp"
                             android:background="@drawable/ic_place"
@@ -67,7 +67,7 @@
                             android:layout_marginStart="25dp" />
 
                         <TextView
-                            android:id="@+id/textViewDscEndereco"
+                            android:id="@+id/textViewDscAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@+id/imageView2"
@@ -85,7 +85,7 @@
                             android:background="@drawable/line_divider" />
 
                         <TextView
-                            android:id="@+id/textViewDscBairro"
+                            android:id="@+id/textViewDscNeighborhood"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/imageView3"
@@ -99,11 +99,11 @@
                             android:layout_width="400dp"
                             android:layout_height="20dp"
                             android:layout_alignParentStart="true"
-                            android:layout_below="@+id/textViewDscBairro"
+                            android:layout_below="@+id/textViewDscNeighborhood"
                             android:background="@drawable/line_divider" />
 
                         <TextView
-                            android:id="@+id/textViewCidadeUbs"
+                            android:id="@+id/textViewCityUbs"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/imageView4"

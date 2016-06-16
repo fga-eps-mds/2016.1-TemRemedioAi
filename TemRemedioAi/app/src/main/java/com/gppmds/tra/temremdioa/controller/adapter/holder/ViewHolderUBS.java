@@ -15,38 +15,32 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.SelectRemedioActivity;
-import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.tra.gppmds.temremdioa.R;
 
-import org.w3c.dom.Text;
-
-/**
- * Created by elmar on 10/05/16.
- */
 public class ViewHolderUBS extends RecyclerView.ViewHolder{
-    public TextView textViewNomeUBS;
-    public TextView textViewBairroUBS;
-    public TextView textViewCidadeUBS;
-    public TextView textViewNivelAtencaoUBS;
-    public RelativeLayout headerLayout;
-    public RelativeLayout expandLayout;
-    public ValueAnimator mAnimator;
-    public Button buttonSelecionaRemedio;
-    public Button buttonVisualizarDescricaoUBS;
-    public ImageView imageViewArrow;
+    private TextView textViewUbsName;
+    private TextView textViewUbsNeighborhood;
+    private TextView textViewUbsCity;
+    private TextView textViewUbsAttentionLevel;
+    private RelativeLayout headerLayout;
+    private RelativeLayout expandLayout;
+    private ValueAnimator mAnimator;
+    private Button buttonSelectMedicine;
+    private Button buttonViewUbsDescription;
+    private ImageView imageViewArrow;
 
     public ViewHolderUBS(CardView card) {
         super(card);
-        this.textViewNomeUBS = (TextView) card.findViewById(R.id.textViewNomeUBS);
-        this.textViewBairroUBS = (TextView) card.findViewById(R.id.textViewBairroUBS);
-        this.textViewCidadeUBS = (TextView) card.findViewById(R.id.textViewCidadeUBS);
-        this.textViewNivelAtencaoUBS = (TextView) card.findViewById(R.id.textViewNivelAtencaoUBS);
+        this.textViewUbsName = (TextView) card.findViewById(R.id.textViewNomeUBS);
+        this.textViewUbsNeighborhood = (TextView) card.findViewById(R.id.textViewBairroUBS);
+        this.textViewUbsCity = (TextView) card.findViewById(R.id.textViewCidadeUBS);
+        this.textViewUbsAttentionLevel = (TextView) card.findViewById(R.id.textViewNivelAtencaoUBS);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
-        this.buttonSelecionaRemedio = (Button) card.findViewById(R.id.buttonSelecionarRemedio);
-        this.buttonVisualizarDescricaoUBS = (Button) card.findViewById(R.id.buttonVisualizarDescricaoUBS);
+        this.buttonSelectMedicine = (Button) card.findViewById(R.id.buttonSelecionarRemedio);
+        this.buttonViewUbsDescription = (Button) card.findViewById(R.id.buttonVisualizarDescricaoUBS);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -83,35 +77,35 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             }
         });
 
-        this.buttonSelecionaRemedio.setOnClickListener(new View.OnClickListener() {
+        this.buttonSelectMedicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectRemedioActivity.class);
                 UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
-                intent.putExtra("nomeUBS", selectItem.getNomEstab());
-                intent.putExtra("nivelAtencao", selectItem.getNivelAt());
+                intent.putExtra("nomeUBS", selectItem.getUbsName());
+                intent.putExtra("nivelAtencao", selectItem.getUbsAttentionLevel());
                 v.getContext().startActivity(intent);
             }
         });
 
-        this.buttonVisualizarDescricaoUBS.setOnClickListener(new View.OnClickListener() {
+        this.buttonViewUbsDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UbsMapsActivity.class);
                 UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
-                intent.putExtra("latitude", selectItem.getLatitude());
-                intent.putExtra("longitude", selectItem.getLongitude());
-                intent.putExtra("nomeUBS", selectItem.getNomEstab());
-                intent.putExtra("descEnderecoUBS", selectItem.getDscEndereco());
-                intent.putExtra("descBairroUBS", selectItem.getDscBairro());
-                intent.putExtra("descCidadeUBS", selectItem.getDscCidade());
+                intent.putExtra("latitude", selectItem.getUbsLatitude());
+                intent.putExtra("longitude", selectItem.getUbsLongitude());
+                intent.putExtra("nomeUBS", selectItem.getUbsName());
+                intent.putExtra("descEnderecoUBS", selectItem.getUbsAddress());
+                intent.putExtra("descBairroUBS", selectItem.getUbsNeighborhood());
+                intent.putExtra("descCidadeUBS", selectItem.getUbsCity());
                 v.getContext().startActivity(intent);
             }
         });
     }
 
     private void expand() {
-        //set Visible
+        /* set Visible */
         Log.i("LOG", "Expand enter, View.VISIBLE");
         expandLayout.setVisibility(View.VISIBLE);
         mAnimator.start();
@@ -131,14 +125,17 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
 
             @Override
             public void onAnimationStart(Animator animator) {
+                /* Nothing to do */
             }
 
             @Override
             public void onAnimationCancel(Animator animator) {
+                /* Nothing to do */
             }
 
             @Override
             public void onAnimationRepeat(Animator animator) {
+                /* Nothing to do */
             }
         });
         mAnimator2.start();
@@ -151,7 +148,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                //Update Height
+                /* Update Height */
                 int value = (Integer) valueAnimator.getAnimatedValue();
 
                 ViewGroup.LayoutParams layoutParams = expandLayout.getLayoutParams();
@@ -161,5 +158,25 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         });
         return animator;
 
+    }
+
+    public TextView getTextViewUbsName(){
+        return textViewUbsName;
+    }
+
+    public TextView getTextViewUbsNeighborhood(){
+        return textViewUbsNeighborhood;
+    }
+
+    public TextView getTextViewUbsCity(){
+        return textViewUbsCity;
+    }
+
+    public TextView getTextViewUbsAttentionLevel(){
+        return textViewUbsAttentionLevel;
+    }
+
+    public Button getButtonSelectMedicine(){
+        return buttonSelectMedicine;
     }
 }

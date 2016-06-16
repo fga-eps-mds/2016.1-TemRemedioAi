@@ -5,87 +5,120 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-/**
- * Created by Maria Carolina  on 21/04/2016.
- * Update  by Maria Carolina on 30/04/2016.
- */
 @ParseClassName("UBS")
 public class UBS extends ParseObject {
-    public Double getLatitude(){
-        return getDouble(getTitleLatitude());
-    }
-    public void setLatitude(Double vlr_latitude){
-        put(getTitleLatitude(), vlr_latitude);
+
+    //Returns the latitude of the establishment
+    public Double getUbsLatitude(){
+        return getDouble(getUbsLatitudeTitle());
     }
 
-    public Double getLongitude(){
-        return getDouble(getTitleLongitude());
-    }
-    public void setLongitude(Double vlr_longitude){
-        put(getTitleLongitude(), vlr_longitude);
+    //Sets a latitude to the establishment
+    public void setUbsLatitude(Double ubsLatitude){
+        put(getUbsLatitudeTitle(), ubsLatitude);
     }
 
-    public String getNomEstab(){
-        return getString(getTitleNomEstab());
-    }
-    public void setNomEstab(String name){
-        put(getTitleNomEstab(), name);
+    //Returns the longitude of the establishment
+    public Double getUbsLongitude(){
+        return getDouble(getUbsLongitudeTitle());
     }
 
-    public String getDscEndereco(){
-        return getString(getTitleDscEndereco());
-    }
-    public void setDscEndereco(String dsc_endereco){
-        put(getTitleDscEndereco(), dsc_endereco);
+    //Sets the longitude to the establishment
+    public void setUbsLongitude(Double ubsLongitude){
+        put(getUbsLongitudeTitle(), ubsLongitude);
     }
 
-    public String getDscBairro(){
-        return getString(getTitleDscBairro());
-    }
-    public void setDscBairro(String dsc_bairro){
-        put(getTitleDscBairro(), dsc_bairro);
+    //Returns the name of the establishment
+    public String getUbsName(){
+        return getString(getUbsNameTitle());
     }
 
-    public String getDscCidade(){
-        return getString(getTitleDscCidade());
-    }
-    public void setDscCidade(String dsc_cidade){
-        put(getTitleDscCidade(), dsc_cidade);
+    //Sets a name to the establishment
+    public void setUbsName(String ubsName){
+        put(getUbsNameTitle(), ubsName);
     }
 
-    public String getNivelAt(){
-        return getString(getTitleNivelAt());
-    }
-    public void setNivelAt(String nivel_at){
-        put(getTitleNivelAt(), nivel_at);
+    //Returns the address of the establishment
+    public String getUbsAddress(){
+        return getString(getUbsAddressTitle());
     }
 
+    //Sets an address to the establishment
+    public void setUbsAddress(String ubsAddress){
+        put(getUbsAddressTitle(), ubsAddress);
+    }
+
+    //Returns the neighborhood of the establishment
+    public String getUbsNeighborhood(){
+        return getString(getUbsNeighborhoodTitle());
+    }
+
+    //Sets a neighborhood to the establishment
+    public void setUbsNeighborhood(String ubsNeighborhood){
+        put(getUbsNeighborhoodTitle(), ubsNeighborhood);
+    }
+
+    //Returns a city of the establishment
+    public String getUbsCity(){
+        return getString(getUbsCityTitle());
+    }
+
+    //Sets a city to the establishment
+    public void setUbsCity(String ubsCity){
+        put(getUbsCityTitle(), ubsCity);
+    }
+
+    //Returns the attention level of a establishment
+    public String getUbsAttentionLevel(){
+        return getString(getUbsAttentionLevelTitle());
+    }
+
+    //Sets an attention level to a
+    public void setUbsAttentionLevel(String ubsAttentionLevel){
+        put(getUbsAttentionLevelTitle(), ubsAttentionLevel);
+    }
+
+    //Query UBS data from parse
     public static ParseQuery<UBS> getQuery() {
         return ParseQuery.getQuery(UBS.class);
     }
 
-    public static String getTitleLongitude(){
+    //Returns the longitude title of a establishment
+    public static String getUbsLongitudeTitle(){
         return "vlr_longitude";
     }
-    public static String getTitleLatitude(){
+
+    //Returns the latitude title of a establishment
+    public static String getUbsLatitudeTitle(){
         return "vlr_latitude";
     }
-    public static String getTitleNomEstab(){
+
+    //Returns the name title of a establishment
+    public static String getUbsNameTitle(){
         return "nom_estab";
     }
-    public static String getTitleDscEndereco(){
+
+    //Returns the address title of a establishment
+    public static String getUbsAddressTitle(){
         return "dsc_endereco";
     }
-    public static String getTitleDscBairro(){
+
+    //Returns the neighborhood title of a establishment
+    public static String getUbsNeighborhoodTitle(){
         return "dsc_bairro";
     }
-    public static String getTitleDscCidade(){ return "dsc_cidade"; }
-    public static String getTitleNivelAt(){
+
+    //Returns the city title of a establishment
+    public static String getUbsCityTitle(){ return "dsc_cidade"; }
+
+    //Returns the attention level title of a establishment
+    public static String getUbsAttentionLevelTitle(){
         return "nivel_at";
     }
 
+    //Overrides the method to returns the description title of a establishment
     @Override
     public String toString(){
-        return getString(getTitleNomEstab());
+        return getString(getUbsNameTitle());
     }
 }

@@ -1,9 +1,13 @@
 package com.gppmds.tra.temremdioa.controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -19,75 +23,139 @@ import com.tra.gppmds.temremdioa.R;
 public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-//    private UBS ubsSelecionada;
     private Double latitude;
     private Double longitude;
-    FloatingActionButton direction;
+    private String ubsName;
+
+    private static final int LATLNGZOOM = 13;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubs_maps);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        /* Obtain the SupportMapFragment and get notified when the map is ready to be used */
+        obtainSupportMapFragment();
 
-        // ubsSelecionada = (UBS) getIntent().getSerializableExtra("UBS");
-        String nomeUBS = getIntent().getStringExtra("nomeUBS");
-        String descEnderecoUBS = getIntent().getStringExtra("descEnderecoUBS");
-        String descBairroUBS = getIntent().getStringExtra("descBairroUBS");
-        String descCidadeUBS = getIntent().getStringExtra("descCidadeUBS");
-        // String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
+        gettingLatitudeAndLongitude();
 
-        latitude = getIntent().getDoubleExtra("latitude", 0);
-        longitude = getIntent().getDoubleExtra("longitude", 0);
+        /* Getting UBS descriptions from UBS Holder class */
+        gettingUbsFromHolder();
 
-        TextView editTitulo = (TextView) findViewById(R.id.textViewTitleUbs);
-        editTitulo.setText(nomeUBS);
-
-        TextView editDscEndereco = (TextView) findViewById(R.id.textViewDscEndereco);
-        editDscEndereco.setText(descEnderecoUBS);
-
-        TextView editDscBairro = (TextView) findViewById(R.id.textViewDscBairro);
-        editDscBairro.setText(descBairroUBS);
-
-        TextView editDscCidade = (TextView) findViewById(R.id.textViewCidadeUbs);
-        editDscCidade.setText(descCidadeUBS);
-
-        direction = (FloatingActionButton) findViewById(R.id.direction);
-        direction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String uri = "http://maps.google.com/maps?saddr="+"&daddr="+latitude+","+longitude;
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
-                intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-                startActivity(intent);
-
-            }
-        });
-
+        /* Ubs trajectory */
+        generateTrajectory();
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    private void obtainSupportMapFragment () {
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    };
+
+    private void gettingLatitudeAndLongitude() {
+        latitude = getIntent().getDoubleExtra("latitude", 0);
+        longitude = getIntent().getDoubleExtra("longitude", 0);
+    }
+
+    private void gettingUbsFromHolder() {
+        gettingUbsName();
+        gettingUbsAddress();
+        gettingUbsNeighborhood();
+        gettingUbsCity();
+        //gettingUbsPhone();
+    }
+
+    private void gettingUbsName() {
+        ubsName = getIntent().getStringExtra("nomeUBS");
+        TextView editName = (TextView) findViewById(R.id.textViewUbsName);
+        editName.setText(ubsName);
+    }
+
+    private void gettingUbsAddress () {
+        String descUbsAddress = getIntent().getStringExtra("descEnderecoUBS");
+        TextView editDscAddress = (TextView) findViewById(R.id.textViewDscAddress);
+        editDscAddress.setText(descUbsAddress);
+    }
+
+    private void gettingUbsNeighborhood() {
+        String descUbsNeighborhood = getIntent().getStringExtra("descBairroUBS");
+        TextView editDscNeighborhood = (TextView) findViewById(R.id.textViewDscNeighborhood);
+        editDscNeighborhood.setText(descUbsNeighborhood);
+    }
+
+    private void gettingUbsCity() {
+        String descUbsCity = getIntent().getStringExtra("descCidadeUBS");
+        TextView editDscCity = (TextView) findViewById(R.id.textViewCityUbs);
+        editDscCity.setText(descUbsCity);
+    }
+
+    private void gettingUbsPhone() {
+        // String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
+    }
+
+    private void generateTrajectory() {
+        FloatingActionButton generateTrajectory;
+        generateTrajectory = (FloatingActionButton) findViewById(R.id.direction);
+        generateTrajectory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setUpMapIfNeeded();
+            }
+        });
+    }
+
+    private void setUpMapIfNeeded() {
+        if(isGoogleMapsInstalled()) {
+            /* Get latitude and longitude from ubs Holder and open with GMaps */
+            String uri = "http://maps.google.com/maps?saddr="+"&daddr="+latitude+","+longitude;
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setClassName("com.google.android.apps.maps",
+                                "com.google.android.maps.MapsActivity");
+            startActivity(intent);
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Maps");
+            builder.setIcon(R.drawable.google_maps_icon);
+            builder.setMessage("Instalar Google Maps");
+            builder.setCancelable(true);
+            builder.setNegativeButton("Cancelar",null);
+            builder.setPositiveButton("Instalar", getGoogleMapsListener());
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    }
+
+    public boolean isGoogleMapsInstalled() {
+        try {
+            ApplicationInfo info = getPackageManager()
+                    .getApplicationInfo("com.google.android.apps.maps", 0);
+            return true;
+        } catch(PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    public DialogInterface.OnClickListener getGoogleMapsListener() {
+        return new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("market://details?id=com.google.android.apps.maps"));
+                startActivity(intent);
+
+                /* Finish the activity so they can't circumvent the check */
+                finish();
+            }
+        };
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-//        LatLng latLngValues = new LatLng(ubsSelecionada.getLatitude(), ubsSelecionada.getLongitude());
+        /* Get latitude and longitude to create a marker on map */
         LatLng latLngValues = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(latLngValues).title("Marker of UBS"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, 15));
+        mMap.addMarker(new MarkerOptions().position(latLngValues).title(ubsName));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngValues, LATLNGZOOM));
     }
-
 }

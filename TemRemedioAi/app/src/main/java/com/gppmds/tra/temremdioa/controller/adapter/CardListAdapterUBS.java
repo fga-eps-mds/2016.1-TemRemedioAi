@@ -15,30 +15,29 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
-/**
- * Created by carolina on 01/05/16.
- */
 public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> implements Filterable{
     public static List<UBS> dataUBS;
     List<UBS> filterDataUBS;
-    public static Context contextOpen;
+    private static Context contextOpen;
     FilterSearchUBS filter;
-    private Boolean showButtonRemedios;
-
-    @Override
-    public Filter getFilter() {
-        if(filter == null) {
-            filter = new FilterSearchUBS( filterDataUBS ,this );
-        }
-
-        return filter;
-    }
+    private Boolean showButtonMedicines;
 
     public CardListAdapterUBS(Context context, List<UBS> dataUBS) {
         this.contextOpen = context;
         this.dataUBS = dataUBS;
         this.filterDataUBS = dataUBS;
-        setShowButtonRemedios(true);
+        setShowButtonMedicines(true);
+    }
+
+    @Override
+    public FilterSearchUBS getFilter() {
+        if(filter == null) {
+            filter = new FilterSearchUBS(filterDataUBS, this);
+        } else {
+            // Nothing to do
+        }
+
+        return filter;
     }
 
     @Override
@@ -52,26 +51,33 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     @Override
     public void onBindViewHolder(ViewHolderUBS holder, int position) {
         UBS rowData = this.dataUBS.get(position);
-        holder.textViewNomeUBS.setText(rowData.getNomEstab());
-        holder.textViewBairroUBS.setText(rowData.getDscBairro());
-        holder.textViewCidadeUBS.setText(rowData.getDscCidade());
-        holder.textViewNivelAtencaoUBS.setText(rowData.getNivelAt());
-        if (!getShowButtonRemedios()) {
-            holder.buttonSelecionaRemedio.setVisibility(View.GONE);
+        holder.getTextViewUbsName().setText(rowData.getUbsName());
+        holder.getTextViewUbsNeighborhood().setText(rowData.getUbsNeighborhood());
+        holder.getTextViewUbsCity().setText(rowData.getUbsCity());
+        holder.getTextViewUbsAttentionLevel().setText(rowData.getUbsAttentionLevel());
+        if (!getShowButtonMedicines()) {
+            holder.getButtonSelectMedicine().setVisibility(View.GONE);
+        } else {
+            // Nothing to do
         }
     }
 
     @Override
     public int getItemCount() {
+
         return dataUBS.size();
     }
 
-    public void setShowButtonRemedios(Boolean showButtonRemedios) {
-        this.showButtonRemedios = showButtonRemedios;
+    public void setShowButtonMedicines(Boolean showButtonMedicines) {
+        this.showButtonMedicines = showButtonMedicines;
     }
 
-    private Boolean getShowButtonRemedios() {
-        return this.showButtonRemedios;
+    private Boolean getShowButtonMedicines() {
+        return this.showButtonMedicines;
     }
 
+    public void createFilter() {
+        filter = new FilterSearchUBS(filterDataUBS, this);
+        Boolean test = getShowButtonMedicines();
+    }
 }

@@ -15,32 +15,29 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
-import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterRemedio;
-import com.gppmds.tra.temremdioa.model.Remedio;
+import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
+import com.gppmds.tra.temremdioa.model.Medicine;
 import com.tra.gppmds.temremdioa.R;
 
-/**
- * Created by elmar on 09/05/16.
- */
-public class ViewHolderRemedio extends RecyclerView.ViewHolder {
-    public TextView textViewNomeMedicamento;
-    public TextView textViewTipoMedicamento;
-    public TextView textViewQuantidadePorcao;
-    public TextView textViewNivelAtMedicamento;
-    public RelativeLayout headerLayout;
-    public RelativeLayout expandLayout;
-    public ValueAnimator mAnimator;
-    public Button buttonSelecionaUbs;
-    public ImageView imageViewArrow;
+public class ViewHolderMedicine extends RecyclerView.ViewHolder {
+    private TextView textViewMedicineName;
+    private TextView textViewMedicineType;
+    private TextView textViewMedicineDosage;
+    private TextView textViewMedicineAttentionLevel;
+    private RelativeLayout headerLayout;
+    private RelativeLayout expandLayout;
+    private ValueAnimator mAnimator;
+    private Button buttonSelectUbs;
+    private ImageView imageViewArrow;
 
-    public ViewHolderRemedio(CardView card) {
+    public ViewHolderMedicine(CardView card) {
         super(card);
-        this.textViewNomeMedicamento = (TextView) card.findViewById(R.id.textViewNomeMedicamento);
-        this.textViewTipoMedicamento = (TextView) card.findViewById(R.id.textViewTipoMedicamento);
-        this.textViewQuantidadePorcao = (TextView) card.findViewById(R.id.textViewQuantidadeMedicamento);
-        this.textViewNivelAtMedicamento = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
+        this.textViewMedicineName = (TextView) card.findViewById(R.id.textViewMedicineName);
+        this.textViewMedicineType = (TextView) card.findViewById(R.id.textViewMedicineType);
+        this.textViewMedicineDosage = (TextView) card.findViewById(R.id.textViewMedicineDosage);
+        this.textViewMedicineAttentionLevel = (TextView) card.findViewById(R.id.textViewMedicineAttetionLevel);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
-        this.buttonSelecionaUbs = (Button) card.findViewById(R.id.buttonSelecionarUbs);
+        this.buttonSelectUbs = (Button) card.findViewById(R.id.buttonSelectUbs);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -77,13 +74,13 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
             }
         });
 
-        this.buttonSelecionaUbs.setOnClickListener(new View.OnClickListener() {
+        this.buttonSelectUbs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
-                Remedio selectItem = CardListAdapterRemedio.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
-                intent.putExtra("nomeRemedio", selectItem.getMedDes());
-                intent.putExtra("nivelAtencao", selectItem.getNivelAt());
+                Medicine selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
+                intent.putExtra("nomeRemedio", selectItem.getMedicineDescription());
+                intent.putExtra("nivelAtencao", selectItem.getMedicineAttentionLevel());
 
                 v.getContext().startActivity(intent);
             }
@@ -91,7 +88,7 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
     }
 
     private void expand() {
-        //set Visible
+        /* set Visible */
         Log.i("LOG", "Expand enter, View.VISIBLE");
         expandLayout.setVisibility(View.VISIBLE);
         mAnimator.start();
@@ -111,14 +108,17 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
 
             @Override
             public void onAnimationStart(Animator animator) {
+                /* Method declared empty because the override is mandatory */
             }
 
             @Override
             public void onAnimationCancel(Animator animator) {
+                /* Method declared empty because the override is mandatory */
             }
 
             @Override
             public void onAnimationRepeat(Animator animator) {
+                /* Method declared empty because the override is mandatory */
             }
         });
         mAnimator2.start();
@@ -131,7 +131,7 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                //Update Height
+                /* Update Height */
                 int value = (Integer) valueAnimator.getAnimatedValue();
 
                 ViewGroup.LayoutParams layoutParams = expandLayout.getLayoutParams();
@@ -140,5 +140,25 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
             }
         });
         return animator;
+    }
+
+    public TextView getTextViewMedicineName(){
+        return textViewMedicineName;
+    }
+
+    public TextView getTextViewMedicineType() {
+        return textViewMedicineType;
+    }
+
+    public TextView getTextViewMedicineDosage() {
+        return textViewMedicineDosage;
+    }
+
+    public TextView getTextViewMedicineAttentionLevel() {
+        return textViewMedicineAttentionLevel;
+    }
+
+    public Button getButtonSelectUbs() {
+        return buttonSelectUbs;
     }
 }

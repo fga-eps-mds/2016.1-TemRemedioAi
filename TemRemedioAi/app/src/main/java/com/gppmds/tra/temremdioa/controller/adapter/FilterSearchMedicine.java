@@ -2,16 +2,17 @@ package com.gppmds.tra.temremdioa.controller.adapter;
 
 import android.widget.Filter;
 
-import com.gppmds.tra.temremdioa.model.UBS;
+import com.gppmds.tra.temremdioa.model.Medicine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterSearchUBS extends Filter {
-    CardListAdapterUBS adapter;
-    List<UBS> filterList;
+public class FilterSearchMedicine extends Filter{
 
-    public FilterSearchUBS(List<UBS> filterList, CardListAdapterUBS adapter) {
+    CardListAdapterMedicine adapter;
+    List<Medicine> filterList;
+
+    public FilterSearchMedicine(List<Medicine> filterList, CardListAdapterMedicine adapter) {
         this.adapter = adapter;
         this.filterList = filterList;
     }
@@ -22,18 +23,18 @@ public class FilterSearchUBS extends Filter {
 
         if(constraint != null && constraint.length() > 0) {
             constraint = constraint.toString().toUpperCase();
-            List<UBS> filteredUBSs = new ArrayList<>();
+            List<Medicine> filteredMedicines = new ArrayList<>();
 
             for (int i = 0; i < filterList.size(); i++) {
-                if(filterList.get(i).getUbsName().toUpperCase().contains(constraint)) {
-                    filteredUBSs.add(filterList.get(i));
+                if(filterList.get(i).getMedicineDescription().toUpperCase().contains(constraint)) {
+                    filteredMedicines.add(filterList.get(i));
                 } else {
                     /* Nothing to do */
                 }
             }
 
-            results.count = filteredUBSs.size();
-            results.values = filteredUBSs;
+            results.count = filteredMedicines.size();
+            results.values = filteredMedicines;
         } else {
             results.count = filterList.size();
             results.values = filterList;
@@ -44,7 +45,7 @@ public class FilterSearchUBS extends Filter {
 
     @Override
     public void publishResults(CharSequence constraint, FilterResults results) {
-        adapter.dataUBS = (List<UBS>) results.values;
-        // adapter.notifyDataSetChanged();
+        adapter.dataMedicine = (List<Medicine>) results.values;
+        adapter.notifyDataSetChanged();
     }
 }
