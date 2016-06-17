@@ -69,6 +69,24 @@ public class FilterSearchMedicineTest extends Filter {
         Assert.assertNotSame(resultsSuccess, resultsFail);
     }
 
+    @Test
+    public void publishResultsTest(){
+
+        charSequence = "Success";
+        medicineTest1.setMedicineDescription("Fail");
+        medicineTest2.setMedicineDescription("Success");
+        medicineTest3.setMedicineDescription("Fail");
+
+        filterList.add(medicineTest1);
+        filterList.add(medicineTest2);
+        filterList.add(medicineTest3);
+
+        filterSearchMedicine = new FilterSearchMedicine(filterList, adapter);
+
+        resultsSuccess = filterSearchMedicine.performFiltering(charSequence);
+
+        filterSearchMedicine.publishResults(Mockito.mock(CharSequence.class), Mockito.mock(FilterResults.class));
+    }
 
     /*
     -------- Ignore everything bellow this line --------
