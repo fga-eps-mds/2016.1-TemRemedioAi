@@ -45,6 +45,7 @@ public class MedicineFragmentTest {
 
     @Test
     public void getListOfMedicinesTest() {
+        medicineFragment = new MedicineFragment();
         assertNotNull(medicineFragment.getListOfMedicines());
     }
 
