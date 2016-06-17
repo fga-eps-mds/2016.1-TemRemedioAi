@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -40,6 +41,14 @@ public class SelectMedicineActivityTest {
         activity = Mockito.mock(AppCompatActivity.class);
         ParseObject.registerSubclass(Medicine.class);
         medicine = new Medicine();
+//        selectMedicineActivity = new SelectMedicineActivity();
+    }
+
+    @Test
+    public void onCreateTest(){
+        selectMedicineActivity.onCreate(bundle);
+        assertNotEquals(view, selectMedicineActivity.getCurrentFocus());
+        assertEquals(activity.getCurrentFocus(), selectMedicineActivity.getCurrentFocus());
     }
 
     @Test
@@ -64,7 +73,7 @@ public class SelectMedicineActivityTest {
     public void getListOfMedicineTest() {
 //        selectMedicineActivity = new SelectMedicineActivity();
         ArrayList<String> arrayList = new ArrayList<String>();
-        arrayList.add("HO");
+        arrayList.add("AB");
         assertNotNull(selectMedicineActivity.getListOfMedicine(arrayList));
     }
 
@@ -86,4 +95,17 @@ public class SelectMedicineActivityTest {
         }
     }
 
+    @Test
+    public void setAndGetUbsNameTest(){
+        selectMedicineActivity = new SelectMedicineActivity();
+        selectMedicineActivity.setUbsName("UBSTeste");
+        assertEquals(selectMedicineActivity.getUbsName(),"UBSTeste");
+    }
+
+    @Test
+    public void setAndGetUBSAttentionLevelTest () {
+        selectMedicineActivity = new SelectMedicineActivity();
+        selectMedicineActivity.setUbsAttentionLevel("AB");
+        assertEquals("AB", selectMedicineActivity.getUbsAttentionLevel());
+    }
 }
