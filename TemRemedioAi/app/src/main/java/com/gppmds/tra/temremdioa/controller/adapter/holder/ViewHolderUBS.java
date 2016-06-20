@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.gppmds.tra.temremdioa.controller.Inform;
 import com.gppmds.tra.temremdioa.controller.SelectRemedioActivity;
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
@@ -24,6 +23,9 @@ import com.tra.gppmds.temremdioa.R;
 
 import org.w3c.dom.Text;
 
+/**
+ * Created by elmar on 10/05/16.
+ */
 public class ViewHolderUBS extends RecyclerView.ViewHolder{
     public TextView textViewNomeUBS;
     public TextView textViewBairroUBS;
@@ -34,10 +36,6 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
     public ValueAnimator mAnimator;
     public Button buttonSelecionaRemedio;
     public Button buttonVisualizarDescricaoUBS;
-    public Button buttonUbsInform;
-    public String medicineSelectedName;
-    public String medicineSelectedDos;
-
     public ImageView imageViewArrow;
 
     public ViewHolderUBS(CardView card) {
@@ -49,7 +47,6 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelecionaRemedio = (Button) card.findViewById(R.id.buttonSelecionarRemedio);
         this.buttonVisualizarDescricaoUBS = (Button) card.findViewById(R.id.buttonVisualizarDescricaoUBS);
-        this.buttonUbsInform = (Button) card.findViewById(R.id.buttonInformUbs);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -111,19 +108,6 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
                 v.getContext().startActivity(intent);
             }
         });
-
-        this.buttonUbsInform.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Inform.class);
-                UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
-                intent.putExtra("UBSName", selectItem.getNomEstab());
-                intent.putExtra("MedicineName", medicineSelectedName);
-                intent.putExtra("MedicineDos", medicineSelectedDos);
-
-                view.getContext().startActivity(intent);
-            }
-        });
     }
 
     private void expand() {
@@ -176,5 +160,6 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             }
         });
         return animator;
+
     }
 }

@@ -33,7 +33,6 @@ public class SelectUBSActivity extends AppCompatActivity {
 
         String nomeRemedio = getIntent().getStringExtra("nomeRemedio");
         String nivelAtencaoRemedio = getIntent().getStringExtra("nivelAtencao");
-        String medicineDos =  getIntent().getStringExtra("medicineDos");
         String filtrosNivelAtencao[] = nivelAtencaoRemedio.split(",");
 
         for(int i = 0; i < filtrosNivelAtencao.length; i++) {
@@ -55,9 +54,6 @@ public class SelectUBSActivity extends AppCompatActivity {
 
             CardListAdapterUBS claUbs = new CardListAdapterUBS(SelectUBSActivity.this, ubss);
             claUbs.setShowButtonRemedios(false);
-            claUbs.setShowButtonInform(true);
-            claUbs.setMedicineName(nomeRemedio);
-            claUbs.setMedicineDos(medicineDos);
             recyclerView.setAdapter(claUbs);
 
             TextView textViewQuantidadeItens = (TextView) findViewById(R.id.textViewQuantidadeItens);

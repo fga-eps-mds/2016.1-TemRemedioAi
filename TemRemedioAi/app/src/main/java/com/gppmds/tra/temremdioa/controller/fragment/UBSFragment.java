@@ -16,6 +16,10 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
+/**
+ * Created by carolina on 01/05/16.
+ * Updated by Guilherme on 02/05/2016.
+ */
 public class UBSFragment extends Fragment{
 
     public RecyclerView recyclerView;
@@ -46,13 +50,12 @@ public class UBSFragment extends Fragment{
 //            UBS.pinAllInBackground(ubss);
 
             adapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubss);
-            adapter.setShowButtonInform(false);
-            adapter.setMedicineName("");
-            adapter.setMedicineDos("");
+
             recyclerView.setAdapter( adapter );
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         return rootView;
     }
 }
