@@ -34,13 +34,13 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
 
     public ViewHolderUBS(CardView card) {
         super(card);
-        this.textViewUbsName = (TextView) card.findViewById(R.id.textViewNomeUBS);
-        this.textViewUbsNeighborhood = (TextView) card.findViewById(R.id.textViewBairroUBS);
-        this.textViewUbsCity = (TextView) card.findViewById(R.id.textViewCidadeUBS);
-        this.textViewUbsAttentionLevel = (TextView) card.findViewById(R.id.textViewNivelAtencaoUBS);
+        this.textViewUbsName = (TextView) card.findViewById(R.id.textViewUBSName);
+        this.textViewUbsNeighborhood = (TextView) card.findViewById(R.id.textViewUBSNeighborhood);
+        this.textViewUbsCity = (TextView) card.findViewById(R.id.textViewUBSCity);
+        this.textViewUbsAttentionLevel = (TextView) card.findViewById(R.id.textViewUbsAttentionLevel);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
-        this.buttonSelectMedicine = (Button) card.findViewById(R.id.buttonSelecionarRemedio);
-        this.buttonViewUbsDescription = (Button) card.findViewById(R.id.buttonVisualizarDescricaoUBS);
+        this.buttonSelectMedicine = (Button) card.findViewById(R.id.buttonSelectMedicine);
+        this.buttonViewUbsDescription = (Button) card.findViewById(R.id.buttonUbsDescription);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -54,8 +54,10 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
                         expandLayout.getViewTreeObserver().removeOnPreDrawListener(this);
                         expandLayout.setVisibility(View.GONE);
 
-                        final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-                        final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                        final int widthSpec = View.MeasureSpec.makeMeasureSpec(0,
+                                                View.MeasureSpec.UNSPECIFIED);
+                        final int heightSpec = View.MeasureSpec.makeMeasureSpec(0,
+                                                View.MeasureSpec.UNSPECIFIED);
                         expandLayout.measure(widthSpec, heightSpec);
 
                         mAnimator = slideAnimator(0, expandLayout.getMeasuredHeight());
@@ -81,7 +83,8 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectMedicineActivity.class);
-                UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
+                UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this
+                                    .getAdapterPosition());
                 intent.putExtra("nomeUBS", selectItem.getUbsName());
                 intent.putExtra("nivelAtencao", selectItem.getUbsAttentionLevel());
                 v.getContext().startActivity(intent);
@@ -92,7 +95,8 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UbsMapsActivity.class);
-                UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
+                UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this
+                                    .getAdapterPosition());
                 intent.putExtra("latitude", selectItem.getUbsLatitude());
                 intent.putExtra("longitude", selectItem.getUbsLongitude());
                 intent.putExtra("nomeUBS", selectItem.getUbsName());
@@ -125,17 +129,17 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
 
             @Override
             public void onAnimationStart(Animator animator) {
-                /* Nothing to do */
+                // Nothing to do
             }
 
             @Override
             public void onAnimationCancel(Animator animator) {
-                /* Nothing to do */
+                // Nothing to do
             }
 
             @Override
             public void onAnimationRepeat(Animator animator) {
-                /* Nothing to do */
+                // Nothing to do
             }
         });
         mAnimator2.start();
@@ -157,7 +161,6 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
             }
         });
         return animator;
-
     }
 
     public TextView getTextViewUbsName(){
