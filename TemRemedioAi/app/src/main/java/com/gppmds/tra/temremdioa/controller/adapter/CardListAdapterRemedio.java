@@ -15,22 +15,21 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
+/**
+ * Created by carolina on 04/05/16.
+ */
 public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemedio> implements Filterable{
     public static List<Remedio> dataRemedio;
     List<Remedio> filterDataRemedio;
     Context contextOpen;
     FilterSearchRemedio filter;
     private Boolean showButtonUBSs;
-    private Boolean showButtonInform;
-    private String ubsName;
 
     public CardListAdapterRemedio(Context context, List<Remedio> dataRemedio) {
         this.contextOpen = context;
         this.dataRemedio = dataRemedio;
         this.filterDataRemedio = dataRemedio;
         setShowButtonUBSs(true);
-        setShowButtonInform(false);
-        setUbsName("");
     }
 
     @Override
@@ -47,17 +46,8 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
         holder.textViewTipoMedicamento.setText(rowData.getUnidadeFormated());
         holder.textViewQuantidadePorcao.setText(rowData.getMedDos());
         holder.textViewNivelAtMedicamento.setText(rowData.getNivelAtencaoFormated());
-
         if (!getShowButtonUBSs()) {
             holder.buttonSelecionaUbs.setVisibility(View.GONE);
-        }
-
-        if (!getUbsName().equalsIgnoreCase("")) {
-            holder.ubsSelectedName = getUbsName();
-        }
-
-        if (!getShowButtonInform()) {
-            holder.buttonMedicineInform.setVisibility(View.GONE);
         }
     }
 
@@ -79,31 +69,7 @@ public class CardListAdapterRemedio extends RecyclerView.Adapter<ViewHolderRemed
         this.showButtonUBSs = showButtonUBSs;
     }
 
-    public void setShowButtonInform(Boolean showButtonInform){
-        this.showButtonInform = showButtonInform;
-    }
-
     private Boolean getShowButtonUBSs() {
         return this.showButtonUBSs;
-    }
-
-    private Boolean getShowButtonInform(){
-        return this.showButtonInform;
-    }
-
-    public String getUbsName(){
-        return this.ubsName;
-    }
-
-    public void setUbsName(String ubsName){
-        this.ubsName = ubsName;
-    }
-
-    private void showInformButtonIfThereIsACurrentUser(){
-        /* Checar se o usuario está logado antes de mostrar o botao
-        if (getCurrentUser() != null){
-            setShowButtonInform(true);
-        }
-        */
     }
 }

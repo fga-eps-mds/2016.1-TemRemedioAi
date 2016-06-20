@@ -83,10 +83,8 @@
         </activity>
         <activity android:name="com.gppmds.tra.temremdioa.controller.LogInActivity" />
         <activity android:name="com.gppmds.tra.temremdioa.controller.SignUpActivity" />
-        <activity
-            android:name="com.gppmds.tra.temremdioa.controller.UserProfile"
-            android:label="@string/user" />
-        <activity android:name="com.gppmds.tra.temremdioa.controller.Inform"></activity>
+        <activity android:name="com.gppmds.tra.temremdioa.controller.UserProfile"
+            android:label="@string/user"></activity>
     </application>
 
 </manifest>

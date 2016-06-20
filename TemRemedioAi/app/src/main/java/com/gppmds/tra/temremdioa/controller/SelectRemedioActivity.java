@@ -51,8 +51,6 @@ public class SelectRemedioActivity extends AppCompatActivity {
 
             CardListAdapterRemedio claRemedio = new CardListAdapterRemedio(SelectRemedioActivity.this, remedios);
             claRemedio.setShowButtonUBSs(false);
-            claRemedio.setShowButtonInform(true);
-            claRemedio.setUbsName(nomeUBS);
             recyclerView.setAdapter(claRemedio);
 
             TextView textViewQuantidadeLocais = (TextView) findViewById(R.id.textViewQuantidadeLocais);
