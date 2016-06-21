@@ -70,10 +70,10 @@
                             android:id="@+id/textViewDscAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/imageView2"
+                            android:layout_alignBottom="@id/imageView2"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@+id/imageView2"
+                            android:layout_toEndOf="@id/imageView2"
                             android:textSize="14dp"/>
 
                         <ImageView
@@ -81,17 +81,17 @@
                             android:layout_width="400dp"
                             android:layout_height="20dp"
                             android:layout_alignParentStart="true"
-                            android:layout_below="@+id/imageView2"
+                            android:layout_below="@id/imageView2"
                             android:background="@drawable/line_divider" />
 
                         <TextView
                             android:id="@+id/textViewDscNeighborhood"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageView3"
+                            android:layout_below="@id/imageView3"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@+id/imageView2"
+                            android:layout_toEndOf="@id/imageView2"
                             android:textSize="14dp"/>
 
                         <ImageView
@@ -99,7 +99,7 @@
                             android:layout_width="400dp"
                             android:layout_height="20dp"
                             android:layout_alignParentStart="true"
-                            android:layout_below="@+id/textViewDscNeighborhood"
+                            android:layout_below="@id/textViewDscNeighborhood"
                             android:background="@drawable/line_divider" />
 
                         <TextView
@@ -109,8 +109,28 @@
                             android:layout_below="@+id/imageView4"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@+id/imageView2"
+                            android:layout_toEndOf="@id/imageView2"
                             android:textSize="14dp"/>
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="400dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/line_divider"
+                            android:layout_below="@id/textViewCityUbs"
+                            android:layout_alignParentStart="true" />
+
+                        <TextView
+                            android:id="@+id/textViewPhoneUbs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imageView5"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/imageView2"
+                            android:textSize="14dp"
+                            android:autoLink="phone"
+                            android:textColorLink="#000000"/>
 
                     </RelativeLayout>
 
