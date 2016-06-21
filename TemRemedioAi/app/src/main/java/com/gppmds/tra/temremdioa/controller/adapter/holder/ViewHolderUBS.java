@@ -34,9 +34,9 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
 
     public ViewHolderUBS(CardView card) {
         super(card);
-        this.textViewUbsName = (TextView) card.findViewById(R.id.textViewUBSName);
-        this.textViewUbsNeighborhood = (TextView) card.findViewById(R.id.textViewUBSNeighborhood);
-        this.textViewUbsCity = (TextView) card.findViewById(R.id.textViewUBSCity);
+        this.textViewUbsName = (TextView) card.findViewById(R.id.textViewUbsName);
+        this.textViewUbsNeighborhood = (TextView) card.findViewById(R.id.textViewUbsNeighborhood);
+        this.textViewUbsCity = (TextView) card.findViewById(R.id.textViewUbsCity);
         this.textViewUbsAttentionLevel = (TextView) card.findViewById(R.id.textViewUbsAttentionLevel);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelectMedicine = (Button) card.findViewById(R.id.buttonSelectMedicine);
@@ -103,6 +103,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
                 intent.putExtra("descEnderecoUBS", selectItem.getUbsAddress());
                 intent.putExtra("descBairroUBS", selectItem.getUbsNeighborhood());
                 intent.putExtra("descCidadeUBS", selectItem.getUbsCity());
+                intent.putExtra("telefoneUBS", selectItem.getUbsPhone());
                 v.getContext().startActivity(intent);
             }
         });

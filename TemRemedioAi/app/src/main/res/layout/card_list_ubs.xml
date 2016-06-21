@@ -24,22 +24,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewNomeUBS"
+                android:id="@+id/textViewUbsName"
                 android:layout_alignParentStart="true"
                 android:textSize="14sp"
                 android:text="Nome da UBS"
-                android:textColor="@color/colorPrimaryText"
-                android:editable="false" />
+                android:textColor="@color/colorPrimaryText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewBairroUBS"
+                android:id="@+id/textViewUbsNeighborhood"
                 android:textColor="@color/colorSecondText"
                 android:textSize="14sp"
-                android:text="Bairro da UBS"
-                android:editable="false"
-                android:layout_below="@+id/textViewNomeUBS" />
+                android:text="@string/ubs_neighborhood"
+                android:layout_below="@id/textViewUbsName" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -70,28 +68,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewCidadeUBS"
+                android:id="@+id/textViewUbsCity"
                 android:textSize="14sp"
-                android:text="Cidade de Localizaçao"
+                android:text="@string/ubs_city"
                 android:layout_marginTop="24dp"
                 android:layout_marginLeft="24dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewNivelAtencaoUBS"
+                android:id="@+id/textViewUbsAttentionLevel"
                 android:textAlignment="textStart"
                 android:textSize="14sp"
-                android:text="Nível de Atenção"
+                android:text="@string/ubs_attention_level"
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="24dp"
-                android:layout_below="@+id/textViewCidadeUBS"/>
+                android:layout_below="@id/textViewUbsCity"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Remédios"
-                android:id="@+id/buttonSelecionarRemedio"
+                android:id="@+id/buttonSelectMedicine"
                 android:layout_alignParentEnd="false"
                 android:minWidth="88dp"
                 android:minHeight="54dp"
@@ -101,14 +99,14 @@
                 android:textColor="@color/colorPrimaryText"
                 android:singleLine="false"
                 android:elevation="0dp"
-                android:layout_below="@+id/textViewNivelAtencaoUBS"
-                android:layout_toLeftOf="@+id/buttonVisualizarDescricaoUBS" />
+                android:layout_below="@id/textViewUbsAttentionLevel"
+                android:layout_toLeftOf="@+id/buttonUbsDescription" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Descrição"
-                android:id="@+id/buttonVisualizarDescricaoUBS"
+                android:id="@id/buttonUbsDescription"
                 android:minWidth="88dp"
                 android:minHeight="54dp"
                 android:layout_marginTop="8dp"
@@ -117,7 +115,7 @@
                 android:textColor="@color/colorPrimaryText"
                 android:singleLine="false"
                 android:elevation="0dp"
-                android:layout_below="@+id/textViewNivelAtencaoUBS"
+                android:layout_below="@id/textViewUbsAttentionLevel"
                 android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
