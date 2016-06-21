@@ -30,7 +30,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     private Button buttonSelectUbs;
     private ImageView imageViewArrow;
 
-    public ViewHolderMedicine(CardView card) {
+    public ViewHolderMedicine(final CardView card) {
         super(card);
         this.textViewMedicineName = (TextView) card.findViewById(R.id.textViewMedicineName);
         this.textViewMedicineType = (TextView) card.findViewById(R.id.textViewMedicineType);
