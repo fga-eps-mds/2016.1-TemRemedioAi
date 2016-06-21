@@ -16,4 +16,10 @@
     <string name="selectedUBS">UBS Selecionada</string>
     <string name="ubsQuantity">Quantidade de Locais</string>
     <string name="version">Versão 1.0</string>
+    <string name="ubs_neighborhood">Bairro da UBS</string>
+    <string name="ubs_name">Nome da UBS</string>
+    <string name="ubs_city">Cidade de Localizaçao</string>
+    <string name="ubs_attention_level">Nível de Atenção</string>
+    <string name="medicines">Remédios</string>
+    <string name="description">Descrição</string>
 </resources>
