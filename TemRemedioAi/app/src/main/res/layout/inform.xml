@@ -55,29 +55,6 @@
         android:ems="10"
         android:layout_below="@id/ubs_inform_title"/>
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/available"
-        android:id="@+id/available"
-        android:layout_below="@+id/informed_ubs"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="109dp"
-        android:layout_marginLeft="10dp"
-        android:checked="false"
-        android:buttonTint="#000000"/>
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/not_available"
-        android:id="@+id/not_available"
-        android:layout_alignTop="@+id/available"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:checked="false"
-        android:buttonTint="#000000"/>
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,4 +70,57 @@
         android:id="@+id/cancel_button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/inform_button"
+        android:orientation="horizontal"
+        android:id="@+id/radio_group_inform"
+        android:layout_centerInParent="true">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/available"
+            android:id="@+id/available"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:checked="false"
+            android:buttonTint="#000000"
+            android:layout_above="@+id/inform_button"
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_available"
+            android:id="@+id/not_available"
+            android:layout_alignTop="@+id/available"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:checked="false"
+            android:buttonTint="#000000" />
+
+    </RadioGroup>
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_picker_inform"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/informed_ubs"
+        android:layout_above="@+id/radio_group_inform"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:longClickable="false"
+        android:nestedScrollingEnabled="false"
+        android:startYear="2015"
+        android:minDate="2015-01-01" />
 </RelativeLayout>

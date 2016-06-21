@@ -1,30 +1,35 @@
 package com.gppmds.tra.temremdioa.controller;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.gppmds.tra.temremdioa.model.Remedio;
-import com.parse.ParseQuery;
+import com.gppmds.tra.temremdioa.model.Notification;
 import com.tra.gppmds.temremdioa.R;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Inform extends AppCompatActivity {
 
-    TextView informedMedicineTextView;
-    TextView informedUbsTextView;
-    RadioButton available;
-    RadioButton notAvailable;
+    TextView textViewInformedMedicine;
+    TextView textViewInformedUbs;
+    TextView textViewAvailableError;
+    RadioButton radioButtonAvailable;
+    RadioButton radioButtonNotAvailable;
     Button informButton;
     Button cancelButton;
-    Integer availability;
-    TextView availableError;
+    DatePicker datePickerInform;
+
+    private Boolean availability;
+    private String ubsName;
+    private String medicineName;
+    private String medicineDos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,36 +44,72 @@ public class Inform extends AppCompatActivity {
             }
         });
 
-        String ubsName = getIntent().getStringExtra("UBSName");
-        String medicineName= getIntent().getStringExtra("MedicineName");
-        String medicineDos= getIntent().getStringExtra("MedicineDos");
-
         informButton = (Button) findViewById(R.id.inform_button);
-        informedMedicineTextView = (TextView) findViewById(R.id.informed_medicine);
-        informedMedicineTextView.setText(medicineName);
-        informedUbsTextView = (TextView) findViewById(R.id.informed_ubs);
-        informedUbsTextView.setText(ubsName);
-        available = (RadioButton) findViewById(R.id.available);
-        notAvailable = (RadioButton) findViewById(R.id.not_available);
+        informButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (validateInform()) {
+                    attemptInform();
+                    Toast.makeText(view.getContext(), "Informação enviada com sucesso.", Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(view.getContext(), "Não foi possível completar a ação.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        ubsName = getIntent().getStringExtra("UBSName");
+        medicineName = getIntent().getStringExtra("MedicineName");
+        medicineDos = getIntent().getStringExtra("MedicineDos");
+
+        textViewInformedMedicine = (TextView) findViewById(R.id.informed_medicine);
+        textViewInformedMedicine.setText(medicineName);
+        textViewInformedUbs = (TextView) findViewById(R.id.informed_ubs);
+        textViewInformedUbs.setText(ubsName);
+//        textViewAvailableError = (TextView) findViewById(R.id.)
+
+        radioButtonAvailable = (RadioButton) findViewById(R.id.available);
+        radioButtonNotAvailable = (RadioButton) findViewById(R.id.not_available);
+
+        datePickerInform = (DatePicker) findViewById(R.id.date_picker_inform);
     }
 
     private void attemptInform() {
 
-        // Radio Button
-        if (!available.isChecked() && !notAvailable.isChecked()) {
-            availableError.setError("Disponibilidade não selecionada");
-        } else if (available.isChecked()) {
-            availability = 1;
-        } else if (notAvailable.isChecked()) {
-            availability = 0;
+        if (radioButtonAvailable.isChecked()) {
+            availability = true;
+        } else if (radioButtonNotAvailable.isChecked()) {
+            availability = false;
+        } else {
+            availability = false;
         }
 
-        // TextView of Medicine
-        informedMedicineTextView = (TextView) findViewById(R.id.informed_medicine);
+        Integer selectedYear = datePickerInform.getYear();
+        Integer selectedMonth = datePickerInform.getMonth();
+        Integer selectedDay = datePickerInform.getDayOfMonth();
 
-        // TextView of Ubs
-        informedUbsTextView = (TextView)findViewById(R.id.informed_ubs);
+        Calendar calendar = new GregorianCalendar();
+        calendar.set(selectedYear, selectedMonth, selectedDay);
 
+        Notification notification = new Notification();
+        notification.setMedicineDosage(medicineDos);
+        notification.setMedicineName(medicineName);
+        notification.setUBSName(ubsName);
+        notification.setAvailable(availability);
+        notification.setDateInform(calendar.getTime());
+        notification.setUserInform("0");
+        notification.saveInBackground();
+    }
+
+    private boolean validateInform() {
+        boolean returnValidate = true;
+        if (!radioButtonAvailable.isChecked() && !radioButtonNotAvailable.isChecked()) {
+            radioButtonAvailable.setError("Disponibilidade não selecionada");
+            returnValidate = false;
+        }
+        // Validar data;
+
+        return returnValidate;
     }
 
 }
