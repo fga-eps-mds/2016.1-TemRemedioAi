@@ -119,6 +119,22 @@
                 android:layout_below="@+id/textViewNivelAtencaoUBS"
                 android:layout_alignParentEnd="true" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informar"
+                android:id="@+id/buttonInformUbs"
+                android:layout_alignParentEnd="false"
+                android:minWidth="88dp"
+                android:minHeight="54dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorPrimaryText"
+                android:singleLine="false"
+                android:elevation="0dp"
+                android:layout_below="@+id/textViewNivelAtencaoUBS"
+                android:layout_toLeftOf="@+id/buttonVisualizarDescricaoUBS" />
         </RelativeLayout>
     </RelativeLayout>
 
