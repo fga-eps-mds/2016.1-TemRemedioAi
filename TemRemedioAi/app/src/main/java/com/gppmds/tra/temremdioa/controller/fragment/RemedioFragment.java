@@ -16,9 +16,6 @@ import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
 
-/**
- * Created by carolina on 01/05/16.
- */
 public class RemedioFragment extends Fragment{
 
     public RecyclerView recyclerView;
@@ -44,9 +41,10 @@ public class RemedioFragment extends Fragment{
         List<Remedio> remedios;
         try {
             remedios = queryRemedio.find();
-                adapter = new CardListAdapterRemedio(RemedioFragment.this.getContext(), remedios);
-                recyclerView.setAdapter( adapter );
-
+            adapter = new CardListAdapterRemedio(RemedioFragment.this.getContext(), remedios);
+            adapter.setShowButtonInform(false);
+            adapter.setUbsName("");
+            recyclerView.setAdapter( adapter );
 
         } catch (ParseException e) {
             e.printStackTrace();

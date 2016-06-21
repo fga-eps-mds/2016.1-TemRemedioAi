@@ -94,16 +94,29 @@
                     android:layout_height="wrap_content"
                     android:text="Selecionar UBS"
                     android:id="@+id/buttonSelecionarUbs"
-                    android:layout_alignParentEnd="true"
                     android:minWidth="88dp"
                     android:minHeight="54dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_alignWithParentIfMissing="false"
-                    android:layout_alignParentBottom="false"
                     android:textColor="@color/colorPrimaryText"
                     android:singleLine="false"
-                    android:elevation="0dp"/>
+                    android:elevation="0dp"
+                    android:layout_alignTop="@+id/buttonInformRemedio"
+                    android:layout_alignParentEnd="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informar"
+                    android:id="@+id/buttonInformRemedio"
+                    android:minWidth="88dp"
+                    android:minHeight="54dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:singleLine="false"
+                    android:elevation="0dp"
+                    android:layout_below="@+id/textViewNivelAtMedicamento"
+                    android:layout_alignParentEnd="true"/>
 
         </RelativeLayout>
     </RelativeLayout>

@@ -14,14 +14,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gppmds.tra.temremdioa.controller.Inform;
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterRemedio;
 import com.gppmds.tra.temremdioa.model.Remedio;
 import com.tra.gppmds.temremdioa.R;
 
-/**
- * Created by elmar on 09/05/16.
- */
 public class ViewHolderRemedio extends RecyclerView.ViewHolder {
     public TextView textViewNomeMedicamento;
     public TextView textViewTipoMedicamento;
@@ -31,7 +29,9 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
     public RelativeLayout expandLayout;
     public ValueAnimator mAnimator;
     public Button buttonSelecionaUbs;
+    public Button buttonMedicineInform;
     public ImageView imageViewArrow;
+    public String ubsSelectedName;
 
     public ViewHolderRemedio(CardView card) {
         super(card);
@@ -41,6 +41,7 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
         this.textViewNivelAtMedicamento = (TextView) card.findViewById(R.id.textViewNivelAtMedicamento);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelecionaUbs = (Button) card.findViewById(R.id.buttonSelecionarUbs);
+        this.buttonMedicineInform = (Button) card.findViewById(R.id.buttonInformRemedio);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -84,8 +85,22 @@ public class ViewHolderRemedio extends RecyclerView.ViewHolder {
                 Remedio selectItem = CardListAdapterRemedio.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
                 intent.putExtra("nomeRemedio", selectItem.getMedDes());
                 intent.putExtra("nivelAtencao", selectItem.getNivelAt());
-
+                intent.putExtra("medicineDos", selectItem.getMedDos());
                 v.getContext().startActivity(intent);
+            }
+        });
+
+        this.buttonMedicineInform.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Inform.class);
+                Remedio selectedItem = CardListAdapterRemedio.dataRemedio.get(ViewHolderRemedio.this.getAdapterPosition());
+                intent.putExtra("MedicineName", selectedItem.getMedDes());
+                intent.putExtra("MedicineDos", selectedItem.getMedDos());
+                intent.putExtra("MedicineDos", selectedItem.getMedDos());
+                intent.putExtra("UBSName",ubsSelectedName);
+
+                view.getContext().startActivity(intent);
             }
         });
     }
