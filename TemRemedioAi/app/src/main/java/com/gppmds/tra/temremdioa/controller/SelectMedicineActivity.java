@@ -72,6 +72,7 @@ public class SelectMedicineActivity extends AppCompatActivity {
 
     public List<Medicine> getListOfMedicine(ArrayList<String> filterAttentionLevel) {
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
+        queryMedicine.setLimit(1000);
         queryMedicine.whereContainedIn(Medicine.getMedicineAttentionLevelTitle(), filterAttentionLevel);
         queryMedicine.orderByAscending(Medicine.getMedicineDescriptionTitle());
         List<Medicine> medicines = null;

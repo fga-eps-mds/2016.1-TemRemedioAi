@@ -42,6 +42,7 @@ public class MedicineFragment extends Fragment{
     public List<Medicine> getListOfMedicines() {
         /* Query medicine data from parse */
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
+        queryMedicine.setLimit(1000);
         List<Medicine> medicines = null;
 
         try {
