@@ -78,6 +78,16 @@ public class UBS extends ParseObject {
         put(getUbsAttentionLevelTitle(), ubsAttentionLevel);
     }
 
+    //Returns the phone of a establishment
+    public String getUbsPhone(){
+        return getString(getUbsPhoneTitle());
+    }
+
+    //Sets the phone of the establishment
+    public void setUbsPhone(String ubsPhone){
+        put(getUbsPhoneTitle(), ubsPhone);
+    }
+
     //Query UBS data from parse
     public static ParseQuery<UBS> getQuery() {
         return ParseQuery.getQuery(UBS.class);
@@ -114,6 +124,11 @@ public class UBS extends ParseObject {
     //Returns the attention level title of a establishment
     public static String getUbsAttentionLevelTitle(){
         return "nivel_at";
+    }
+
+    //Returns the phone of a establishment
+    public static String getUbsPhoneTitle() {
+        return "telefone";
     }
 
     //Overrides the method to returns the description title of a establishment
