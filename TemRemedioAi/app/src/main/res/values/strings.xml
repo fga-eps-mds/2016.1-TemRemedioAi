@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Tem Remédio Aí</string>
+    <string name="appName">Tem Remédio Aí</string>
     <string name="action_about">Sobre o Aplicativo</string>
-    <string name="title_activity_ubs_maps">Localização</string>
-    <string name="title_activity_about">Informações</string>
-    <string name="title_activity_select_UBS">UBSs Encontradas</string>
-    <string name="title_activity_select_Remedio">Remedios Encontrados</string>
+    <string name="titleActivityUbsMaps">Localização</string>
+    <string name="titleActivityAbout">Informações</string>
+    <string name="titleActivitySelectUbs">UBSs Encontradas</string>
+    <string name="titleActivitySelectMedicine">Remedios Encontrados</string>
     <string name="testeTexto">testeTexto</string>
     <string name="search">Pesquisar...</string>
     <string name="dsc_about">O aplicativo Tem Remédio Aí? tem como objetivo facilitar o acesso
