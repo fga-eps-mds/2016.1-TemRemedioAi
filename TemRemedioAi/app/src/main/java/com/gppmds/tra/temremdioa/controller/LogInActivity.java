@@ -22,7 +22,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -44,9 +43,9 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private ProgressBar mProgressView;
     private View mLoginFormView;
+    private View focusView = null;
     private Button mUsernameSignInButton;
     private Button mRegisterButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
-    public boolean setValues() {
+    public void setValues() {
 
         mUsernameView = (EditText) findViewById(R.id.log_in_username_field);
         mPasswordView = (EditText) findViewById(R.id.log_in_password_field);
@@ -72,10 +71,9 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = (View) findViewById(R.id.log_in_form);
         mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
 
-        return true;
     }
 
-    public void setListener() {
+    private void setListener() {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -106,40 +104,19 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     // Attempts to login in the system if the entries email and password are valid
     private void attemptLogin(){
-        if (mAuthTask != null){
-            return;
-        }
-
-        // Reset errors
-        mUsernameView.setError(null);
-        mPasswordView.setError(null);
-
         // Store values at the time of the login attempt
         String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        boolean cancel = false;
-        View focusView = null;
-
-        // Check if password is valid
-        if (TextUtils.isEmpty(password)){
-            mPasswordView.setError("Por favor, coloque sua senha.");
-            focusView = mPasswordView;
-            cancel = true;
-        } else if (!isPasswordValid(password)) {
-            mPasswordView.setError("Essa senha é muito curta.");
-            focusView = mPasswordView;
-            cancel = true;
+        if (mAuthTask != null){
+            return;
         }
 
-        // Check if email is valid
-        if (TextUtils.isEmpty(username)) {
-            mUsernameView.setError("Por favor, coloque seu username.");
-            focusView = mUsernameView;
-            cancel = true;
-        }
-        if (cancel) { // Either there's a error with email or password
+        if ((validateError(username, "Ops! Campo de username esta vazio.", mUsernameView) ||
+                validateError(password, "Ops! Campo do password esta vazio.", mPasswordView))) {
+
             focusView.requestFocus();
+
         } else {
             showProgress(true);
             ParseUser.logInInBackground(username, password, new LogInCallback() {
@@ -162,13 +139,11 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    private boolean isPasswordValid(String password) {
-
-        return password.length() > 5;
-    }
-
-    public boolean returnIsPasswordValid(String password){
-        return password.length() > 5;
+    public boolean validateError(String word, String phrase, EditText text) {
+        String phraseValited = TextUtils.isEmpty(word) ? phrase : null;
+        text.setError(phraseValited);
+        focusView = phraseValited != null ? text : null;
+        return TextUtils.isEmpty(word);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)

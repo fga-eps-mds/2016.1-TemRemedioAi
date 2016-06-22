@@ -81,11 +81,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
-        <activity android:name="com.gppmds.tra.temremdioa.controller.LogInActivity" />
-        <activity android:name="com.gppmds.tra.temremdioa.controller.SignUpActivity" />
         <activity
-            android:name="com.gppmds.tra.temremdioa.controller.UserProfile"
-            android:label="@string/user" />
+            android:name="com.gppmds.tra.temremdioa.controller.LogInActivity"
+            android:label="@string/title_activity_log_in">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.gppmds.tra.temremdioa.controller.SignUpActivity"
+            android:label="@string/title_activity_sign_up">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gppmds.tra.temremdioa.controller.LogInActivity" />
+        </activity>
+        <activity android:name="com.gppmds.tra.temremdioa.controller.UserProfile"
+            android:label="@string/user"></activity>
         <activity android:name="com.gppmds.tra.temremdioa.controller.Inform"></activity>
     </application>
 

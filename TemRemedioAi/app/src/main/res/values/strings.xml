@@ -41,4 +41,6 @@
     <string name="selected_medicine">Remédio Selecionado</string>
     <string name="not_available">Não Disponível</string>
     <string name="available">Disponível</string>
+    <string name="title_activity_log_in">Entrar</string>
+    <string name="title_activity_sign_up">Cadastro</string>
 </resources>
