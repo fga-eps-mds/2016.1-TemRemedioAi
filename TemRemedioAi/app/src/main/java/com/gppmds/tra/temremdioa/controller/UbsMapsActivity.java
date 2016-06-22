@@ -72,13 +72,13 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
     private void gettingUbsAddress () {
         String descUbsAddress = getIntent().getStringExtra("descEnderecoUBS");
-        TextView editDscAddress = (TextView) findViewById(R.id.textViewDscAddress);
+        TextView editDscAddress = (TextView) findViewById(R.id.textViewUbsAddress);
         editDscAddress.setText(descUbsAddress);
     }
 
     private void gettingUbsNeighborhood() {
         String descUbsNeighborhood = getIntent().getStringExtra("descBairroUBS");
-        TextView editDscNeighborhood = (TextView) findViewById(R.id.textViewDscNeighborhood);
+        TextView editDscNeighborhood = (TextView) findViewById(R.id.textViewUbsNeighborhood);
         editDscNeighborhood.setText(descUbsNeighborhood);
     }
 

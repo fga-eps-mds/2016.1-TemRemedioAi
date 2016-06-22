@@ -30,7 +30,7 @@
                 android:layout_height="match_parent">
 
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_view"
+                    android:id="@+id/cardViewUbs"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -56,7 +56,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView2"
+                            android:id="@+id/imageViewPlace"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -67,53 +67,53 @@
                             android:layout_marginStart="25dp" />
 
                         <TextView
-                            android:id="@+id/textViewDscAddress"
+                            android:id="@+id/textViewUbsAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@id/imageView2"
+                            android:layout_alignBottom="@id/imageViewPlace"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageView2"
+                            android:layout_toEndOf="@id/imageViewPlace"
                             android:textSize="14dp"/>
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/imageViewLineDivider"
                             android:layout_width="400dp"
                             android:layout_height="20dp"
                             android:layout_alignParentStart="true"
-                            android:layout_below="@id/imageView2"
+                            android:layout_below="@id/imageViewPlace"
                             android:background="@drawable/line_divider" />
 
                         <TextView
-                            android:id="@+id/textViewDscNeighborhood"
+                            android:id="@+id/textViewUbsNeighborhood"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageView3"
+                            android:layout_below="@id/imageViewLineDivider"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageView2"
+                            android:layout_toEndOf="@id/imageViewPlace"
                             android:textSize="14dp"/>
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/imageViewLineDivider2"
                             android:layout_width="400dp"
                             android:layout_height="20dp"
                             android:layout_alignParentStart="true"
-                            android:layout_below="@id/textViewDscNeighborhood"
+                            android:layout_below="@id/textViewUbsNeighborhood"
                             android:background="@drawable/line_divider" />
 
                         <TextView
                             android:id="@+id/textViewCityUbs"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/imageView4"
+                            android:layout_below="@+id/imageViewLineDivider2"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageView2"
+                            android:layout_toEndOf="@id/imageViewPlace"
                             android:textSize="14dp"/>
 
                         <ImageView
-                            android:id="@+id/imageView5"
+                            android:id="@+id/imageViewLineDivider3"
                             android:layout_width="400dp"
                             android:layout_height="20dp"
                             android:background="@drawable/line_divider"
@@ -124,13 +124,13 @@
                             android:id="@+id/textViewPhoneUbs"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageView5"
+                            android:layout_below="@id/imageViewLineDivider3"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageView2"
-                            android:textSize="14dp"
+                            android:layout_toEndOf="@id/imageViewPlace"
+                            android:textSize="15dp"
                             android:autoLink="phone"
-                            android:textColorLink="#000000"/>
+                            android:textColorLink="#3d6aff"/>
 
                     </RelativeLayout>
 
