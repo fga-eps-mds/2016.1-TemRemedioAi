@@ -56,6 +56,15 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/imageViewTRA2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_action_name"
+                            android:layout_below="@+id/imageViewLineDivider3"
+                            android:layout_toStartOf="@+id/textViewPhoneUbs" />
+
+                        <ImageView
                             android:id="@+id/imageViewTRA"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
