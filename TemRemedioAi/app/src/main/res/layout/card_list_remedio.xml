@@ -58,15 +58,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-                <!--<ImageView
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pie_chart_medicine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/imageGraficView"
-                    android:layout_marginLeft="24dp"
+                    android:layout_alignParentEnd="false"
                     android:layout_marginTop="24dp"
-                    android:background="@android:drawable/ic_menu_recent_history" />-->
+                    android:layout_marginLeft="24dp"
+                    android:minHeight="86dp"
+                    android:minWidth="86dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -75,7 +76,8 @@
                     android:textSize="14sp"
                     android:text="Unidade de Venda"
                     android:layout_marginTop="24dp"
-                    android:layout_marginLeft="24dp"/>
+                    android:layout_marginLeft="24dp"
+                    android:layout_toRightOf="@+id/pie_chart_medicine" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -87,7 +89,8 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginLeft="24dp"
                     android:layout_marginBottom="24dp"
-                    android:layout_below="@+id/textViewTipoMedicamento"/>
+                    android:layout_below="@+id/textViewTipoMedicamento"
+                    android:layout_toRightOf="@+id/pie_chart_medicine" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -101,8 +104,9 @@
                     android:textColor="@color/colorPrimaryText"
                     android:singleLine="false"
                     android:elevation="0dp"
-                    android:layout_alignTop="@+id/buttonInformRemedio"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textViewNivelAtMedicamento"
+                    android:layout_marginBottom="8dp" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -115,8 +119,9 @@
                     android:textColor="@color/colorPrimaryText"
                     android:singleLine="false"
                     android:elevation="0dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textViewNivelAtMedicamento"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_marginBottom="8dp" />
 
         </RelativeLayout>
     </RelativeLayout>
