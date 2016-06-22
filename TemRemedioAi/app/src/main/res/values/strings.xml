@@ -1,24 +1,25 @@
 <resources>
     <string name="appName">Tem Remédio Aí</string>
+    <string name="action_about">Sobre o Aplicativo</string>
     <string name="titleActivityUbsMaps">Localização</string>
     <string name="titleActivityAbout">Informações</string>
     <string name="titleActivitySelectUbs">UBSs Encontradas</string>
     <string name="titleActivitySelectMedicine">Remedios Encontrados</string>
     <string name="testeTexto">testeTexto</string>
     <string name="search">Pesquisar...</string>
-    <string name="dscAbout">O aplicativo Tem Remédio Aí? tem como objetivo facilitar o acesso
+    <string name="dsc_about">O aplicativo Tem Remédio Aí? tem como objetivo facilitar o acesso
                             à informação da disponibilidade de medicamentos gratuitamente
                             distribuídos em Unidades Básicas de Saúde, Hospitais e Farmácias de
                             Alto Custo da Secretaria de Saúde do Distrito Federal.
                             </string>
-    <string name="titleAbout">Sobre o Aplicativo</string>
+    <string name="about">Sobre o Aplicativo</string>
     <string name="selectedUBS">UBS Selecionada</string>
     <string name="ubsQuantity">Quantidade de Locais</string>
-    <string name="appVersion">Versão 1.0</string>
-    <string name="ubsNeighborhood">Bairro da UBS</string>
-    <string name="ubsName">Nome da UBS</string>
-    <string name="ubsCity">Cidade de Localizaçao</string>
-    <string name="ubsAttentionLevel">Nível de Atenção</string>
+    <string name="version">Versão 1.0</string>
+    <string name="ubs_neighborhood">Bairro da UBS</string>
+    <string name="ubs_name">Nome da UBS</string>
+    <string name="ubs_city">Cidade de Localizaçao</string>
+    <string name="ubs_attention_level">Nível de Atenção</string>
     <string name="medicines">Remédios</string>
     <string name="description">Descrição</string>
 </resources>
