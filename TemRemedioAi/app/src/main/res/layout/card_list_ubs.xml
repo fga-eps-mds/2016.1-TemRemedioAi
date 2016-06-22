@@ -36,7 +36,7 @@
                 android:id="@+id/textViewUbsNeighborhood"
                 android:textColor="@color/colorSecondText"
                 android:textSize="14sp"
-                android:text="@string/ubsNeighborhood"
+                android:text="@string/ubs_neighborhood"
                 android:layout_below="@id/textViewUbsName" />
 
             <ImageView
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewUbsCity"
                 android:textSize="14sp"
-                android:text="@string/ubsCity"
+                android:text="@string/ubs_city"
                 android:layout_marginTop="24dp"
                 android:layout_marginLeft="24dp"/>
 
@@ -80,7 +80,7 @@
                 android:id="@+id/textViewUbsAttentionLevel"
                 android:textAlignment="textStart"
                 android:textSize="14sp"
-                android:text="@string/ubsAttentionLevel"
+                android:text="@string/ubs_attention_level"
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="24dp"
                 android:layout_below="@id/textViewUbsCity"/>

@@ -56,7 +56,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageViewTRA"
+                            android:id="@+id/imageViewPlace"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -70,10 +70,10 @@
                             android:id="@+id/textViewUbsAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@id/imageViewTRA"
+                            android:layout_alignBottom="@id/imageViewPlace"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageViewTRA"
+                            android:layout_toEndOf="@id/imageViewPlace"
                             android:textSize="14dp"/>
 
                         <ImageView
@@ -81,7 +81,7 @@
                             android:layout_width="400dp"
                             android:layout_height="20dp"
                             android:layout_alignParentStart="true"
-                            android:layout_below="@id/imageViewTRA"
+                            android:layout_below="@id/imageViewPlace"
                             android:background="@drawable/line_divider" />
 
                         <TextView
@@ -91,7 +91,7 @@
                             android:layout_below="@id/imageViewLineDivider"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageViewTRA"
+                            android:layout_toEndOf="@id/imageViewPlace"
                             android:textSize="14dp"/>
 
                         <ImageView
@@ -109,7 +109,7 @@
                             android:layout_below="@+id/imageViewLineDivider2"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageViewTRA"
+                            android:layout_toEndOf="@id/imageViewPlace"
                             android:textSize="14dp"/>
 
                         <ImageView
@@ -127,7 +127,7 @@
                             android:layout_below="@id/imageViewLineDivider3"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="10dp"
-                            android:layout_toEndOf="@id/imageViewTRA"
+                            android:layout_toEndOf="@id/imageViewPlace"
                             android:textSize="15dp"
                             android:autoLink="phone"
                             android:textColorLink="#3d6aff"/>
