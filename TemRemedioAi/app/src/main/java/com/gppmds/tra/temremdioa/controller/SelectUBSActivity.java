@@ -27,7 +27,7 @@ public class SelectUBSActivity extends AppCompatActivity {
     private String medicineAttentionLevel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_ubs);
 
