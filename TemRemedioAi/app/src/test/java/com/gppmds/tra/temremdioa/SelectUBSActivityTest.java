@@ -1,9 +1,5 @@
 package com.gppmds.tra.temremdioa;
 
-/**
- * Created by Cecilia on 21/06/2016.
- */
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,6 +19,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class SelectUBSActivityTest {
+
     private SelectUBSActivity selectUBSActivity;
     private Bundle bundle;
     private View view;
@@ -43,7 +40,9 @@ public class SelectUBSActivityTest {
 
     @Test
     public void onCreateTest(){
-        selectUBSActivity.onCreate(bundle);
+        /* The method onCreate() need to be protected.
+           For run the test, set this method to public.*/
+        //selectUBSActivity.onCreate(bundle);
         assertNotEquals(view, selectUBSActivity.getCurrentFocus());
         assertEquals(activity.getCurrentFocus(), selectUBSActivity.getCurrentFocus());
     }
