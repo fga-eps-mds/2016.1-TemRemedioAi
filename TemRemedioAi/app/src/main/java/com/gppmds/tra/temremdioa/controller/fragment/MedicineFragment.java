@@ -30,6 +30,8 @@ public class MedicineFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_medicine, container, false);
 
         medicineAdapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), getListOfMedicines());
+        medicineAdapter.setShowButtonInform(false);
+        medicineAdapter.setUbsName("");
 
         medicineRecyclerView = (RecyclerView) rootView.findViewById(R.id.medicine_recycler_view);
         medicineRecyclerView.setHasFixedSize(true);

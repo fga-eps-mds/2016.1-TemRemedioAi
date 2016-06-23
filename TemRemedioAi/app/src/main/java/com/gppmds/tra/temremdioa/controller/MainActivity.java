@@ -82,7 +82,10 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // case ENTRAR
+            case R.id.action_login:
+                Intent loginActivity = new Intent(MainActivity.this,LogInActivity.class);
+                startActivity(loginActivity);
+                break;
             case R.id.action_about:
                 Intent aboutActivity = new Intent(this, AboutActivity.class);
                 startActivity(aboutActivity);

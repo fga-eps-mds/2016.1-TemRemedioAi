@@ -1,6 +1,7 @@
 package com.gppmds.tra.temremdioa.controller;
 
 import com.gppmds.tra.temremdioa.model.Medicine;
+import com.gppmds.tra.temremdioa.model.Notification;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -14,13 +15,13 @@ public class ParseInitializer extends android.app.Application {
 
         registerParserSubClasses();
         inicializeParser();
-
     }
 
     public boolean registerParserSubClasses() {
         try {
             ParseObject.registerSubclass(UBS.class);
             ParseObject.registerSubclass(Medicine.class);
+            ParseObject.registerSubclass(Notification.class);
             return true;
         } catch (Exception e) {
             return false;

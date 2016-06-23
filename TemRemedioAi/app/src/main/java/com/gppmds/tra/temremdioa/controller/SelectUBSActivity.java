@@ -25,6 +25,7 @@ public class SelectUBSActivity extends AppCompatActivity {
     private ArrayList<String> filterAttentionLevel;
     private String medicineName;
     private String medicineAttentionLevel;
+    private String medicineDosage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,9 +42,12 @@ public class SelectUBSActivity extends AppCompatActivity {
 
         }
 
-        CardListAdapterUBS claUbs = new CardListAdapterUBS(SelectUBSActivity.this,
-                                    getListOfUbs(getFilterAttentionLevel()));
+
+        CardListAdapterUBS claUbs = new CardListAdapterUBS(SelectUBSActivity.this, getListOfUbs(getFilterAttentionLevel()));
         claUbs.setShowButtonMedicines(false);
+        claUbs.setShowButtonInform(true);
+        claUbs.setMedicineName(getMedicineName());
+        claUbs.setMedicineDos(getMedicineDosage());
 
         try {
             createRecyclerView(claUbs);
@@ -110,6 +114,7 @@ public class SelectUBSActivity extends AppCompatActivity {
 
     public void setMedicineInfo() {
         setMedicineName(getIntent().getStringExtra("nomeRemedio"));
+        setMedicineDosage(getIntent().getStringExtra("medicineDos"));
         setMedicineAttentionLevel(getIntent().getStringExtra("nivelAtencao"));
         setFilterAttentionLevel(getMedicineAttentionLevel());
     }
@@ -137,6 +142,10 @@ public class SelectUBSActivity extends AppCompatActivity {
         this.medicineName = medicineName;
     }
 
+    public void setMedicineDosage(String medicineDosage) {
+        this.medicineDosage = medicineDosage;
+    }
+
     public void setMedicineAttentionLevel(String medicineAttentionLevel) {
         this.medicineAttentionLevel = medicineAttentionLevel;
     }
@@ -147,5 +156,8 @@ public class SelectUBSActivity extends AppCompatActivity {
 
     public String getMedicineName() {
         return this.medicineName;
+    }
+    public String getMedicineDosage() {
+        return this.medicineDosage;
     }
 }

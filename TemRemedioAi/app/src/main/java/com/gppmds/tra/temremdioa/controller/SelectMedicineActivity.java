@@ -40,6 +40,8 @@ public class SelectMedicineActivity extends AppCompatActivity {
         claMedicine = new CardListAdapterMedicine(SelectMedicineActivity.this,
                 getListOfMedicine(getFilterAttentionLevel()));
         claMedicine.setShowButtonUBSs(false);
+        claMedicine.setShowButtonInform(true);
+        claMedicine.setUbsName(getUbsName());
 
         try {
             createRecyclerView(claMedicine);

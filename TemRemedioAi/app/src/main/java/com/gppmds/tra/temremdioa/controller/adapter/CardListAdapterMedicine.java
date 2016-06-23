@@ -20,12 +20,16 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     Context contextOpen;
     FilterSearchMedicine filter;
     private Boolean showButtonUBSs;
+    private Boolean showButtonInform;
+    private String ubsName;
 
     public CardListAdapterMedicine(Context context, List<Medicine> dataMedicine) {
         this.contextOpen = context;
         this.dataMedicine = dataMedicine;
         this.filterDataMedicine = dataMedicine;
         setShowButtonUBSs(true);
+        setShowButtonInform(false);
+        setUbsName("");
     }
 
     @Override
@@ -46,6 +50,14 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
             holder.getButtonSelectUbs().setVisibility(View.GONE);
         } else {
             /* Nothing to do */
+        }
+
+        if (!getUbsName().equalsIgnoreCase("")) {
+            holder.ubsSelectedName = getUbsName();
+        }
+
+        if (!getShowButtonInform()) {
+            holder.buttonMedicineInform.setVisibility(View.GONE);
         }
     }
 
@@ -73,6 +85,29 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
         return this.showButtonUBSs;
     }
 
+    public void setShowButtonInform(Boolean showButtonInform){
+        this.showButtonInform = showButtonInform;
+    }
+
+    private Boolean getShowButtonInform(){
+        return this.showButtonInform;
+    }
+
+    public String getUbsName(){
+        return this.ubsName;
+    }
+
+    public void setUbsName(String ubsName){
+        this.ubsName = ubsName;
+    }
+
+    private void showInformButtonIfThereIsACurrentUser(){
+        /* Checar se o usuario está logado antes de mostrar o botao
+        if (getCurrentUser() != null){
+            setShowButtonInform(true);
+        }
+        */
+    }
 
     public void createFilter() {
         filter = new FilterSearchMedicine(filterDataMedicine, this);

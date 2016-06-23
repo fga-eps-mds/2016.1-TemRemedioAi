@@ -14,10 +14,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.gppmds.tra.temremdioa.controller.Inform;
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
 import com.gppmds.tra.temremdioa.model.Medicine;
 import com.tra.gppmds.temremdioa.R;
+import com.gppmds.tra.temremdioa.model.Notification;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
 
 public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     private TextView textViewMedicineName;
@@ -28,9 +39,13 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     private RelativeLayout expandLayout;
     private ValueAnimator mAnimator;
     private Button buttonSelectUbs;
+    public Button buttonMedicineInform;
     private ImageView imageViewArrow;
+    public String ubsSelectedName;
+    private PieChart pieChart;
 
-    public ViewHolderMedicine(final CardView card) {
+
+    public ViewHolderMedicine(CardView card) {
         super(card);
         this.textViewMedicineName = (TextView) card.findViewById(R.id.textViewMedicineName);
         this.textViewMedicineType = (TextView) card.findViewById(R.id.textViewMedicineType);
@@ -38,8 +53,10 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         this.textViewMedicineAttentionLevel = (TextView) card.findViewById(R.id.textViewMedicineAttetionLevel);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelectUbs = (Button) card.findViewById(R.id.buttonSelectUbs);
+        this.buttonMedicineInform = (Button) card.findViewById(R.id.buttonInformRemedio);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
+        this.pieChart = (PieChart) card.findViewById(R.id.pie_chart_medicine);
 
         this.expandLayout.setVisibility(View.GONE);
 
@@ -66,6 +83,8 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
                 Log.i("LOG", "onClickListener of headerLayout clicked");
                 if (expandLayout.getVisibility() == View.GONE) {
                     Log.i("LOG", "Expand Click");
+                    Medicine selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
+                    setInformationOfChart(selectItem);
                     expand();
                 } else {
                     Log.i("LOG", "Collapse Click");
@@ -78,13 +97,84 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SelectUBSActivity.class);
+
                 Medicine selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
                 intent.putExtra("nomeRemedio", selectItem.getMedicineDescription());
                 intent.putExtra("nivelAtencao", selectItem.getMedicineAttentionLevel());
+                intent.putExtra("medicineDos", selectItem.getMedicineDosage());
 
                 v.getContext().startActivity(intent);
             }
         });
+
+        this.buttonMedicineInform.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Inform.class);
+                Medicine selectedItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
+                intent.putExtra("MedicineName", selectedItem.getMedicineDescription());
+                intent.putExtra("MedicineDos", selectedItem.getMedicineDosage());
+                intent.putExtra("UBSName",ubsSelectedName);
+
+                view.getContext().startActivity(intent);
+            }
+        });
+    }
+
+    private void setInformationOfChart(Medicine medicine) {
+        pieChart.setDescription("");
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setHoleRadius(7);
+        pieChart.setTransparentCircleRadius(10);
+        pieChart.setDrawSliceText(true);
+        pieChart.setRotationAngle(0);
+        pieChart.setRotationEnabled(true);
+        pieChart.setData(getDataPie(medicine));
+
+    }
+
+    public PieData getDataPie(Medicine medicine) {
+        PieData pieData = null;
+
+        Integer countNotificationAvailable = 0;
+        Integer countNotificationNotAvailable = 0;
+
+        ParseQuery<Notification> queryNotificationAvailable = Notification.getQuery();
+        queryNotificationAvailable.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
+        queryNotificationAvailable.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
+        queryNotificationAvailable.whereEqualTo(Notification.getTitleAvailable(), true);
+        try {
+            countNotificationAvailable = queryNotificationAvailable.count();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        ParseQuery<Notification> queryNotificationNotAvailable = Notification.getQuery();
+        queryNotificationNotAvailable.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
+        queryNotificationNotAvailable.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
+        queryNotificationNotAvailable.whereEqualTo(Notification.getTitleAvailable(), false);
+        try {
+            countNotificationNotAvailable = queryNotificationNotAvailable.count();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Entry> valuesAvailable = new ArrayList<Entry>();
+        ArrayList<String> valuesLegend = new ArrayList<String>();
+
+        valuesLegend.add("Sim");
+        valuesLegend.add("Não");
+
+        valuesAvailable.add(new Entry((float) countNotificationAvailable, 0));
+        valuesAvailable.add(new Entry((float) countNotificationNotAvailable, 1));
+
+        PieDataSet pieDataSet = new PieDataSet(valuesAvailable, "");
+        pieDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        pieDataSet.setSliceSpace(2f);
+
+        pieData = new PieData(valuesLegend, pieDataSet);
+
+        return pieData;
     }
 
     private void expand() {

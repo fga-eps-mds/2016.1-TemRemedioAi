@@ -20,13 +20,20 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     List<UBS> filterDataUBS;
     private static Context contextOpen;
     FilterSearchUBS filter;
+
     private Boolean showButtonMedicines;
+    private Boolean showButtonInform;
+    private String medicineName;
+    private String medicineDos;
 
     public CardListAdapterUBS(Context context, List<UBS> dataUBS) {
         this.contextOpen = context;
         this.dataUBS = dataUBS;
         this.filterDataUBS = dataUBS;
         setShowButtonMedicines(true);
+        setShowButtonInform(false);
+        setMedicineName("");
+        setMedicineDos("");
     }
 
     @Override
@@ -44,7 +51,6 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     public ViewHolderUBS onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         CardView view = (CardView) inflater.inflate(R.layout.card_list_ubs, parent, false);
-
         return new ViewHolderUBS(view);
     }
 
@@ -55,10 +61,23 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
         holder.getTextViewUbsNeighborhood().setText(rowData.getUbsNeighborhood());
         holder.getTextViewUbsCity().setText(rowData.getUbsCity());
         holder.getTextViewUbsAttentionLevel().setText(rowData.getUbsAttentionLevel());
+
         if (!getShowButtonMedicines()) {
             holder.getButtonSelectMedicine().setVisibility(View.GONE);
         } else {
             // Nothing to do
+        }
+
+        if(!getMedicineName().equalsIgnoreCase("")){
+            holder.medicineSelectedName = getMedicineName();
+        }
+
+        if(!getMedicineDos().equalsIgnoreCase("")){
+            holder.medicineSelectedDos = getMedicineDos();
+        }
+
+        if(!getShowButtonInform()){
+            holder.buttonUbsInform.setVisibility(View.GONE);
         }
     }
 
@@ -79,5 +98,29 @@ public class CardListAdapterUBS extends RecyclerView.Adapter<ViewHolderUBS> impl
     public void createFilter() {
         filter = new FilterSearchUBS(filterDataUBS, this);
         Boolean test = getShowButtonMedicines();
+    }
+
+    public void setShowButtonInform(boolean showButtonInform) {
+        this.showButtonInform = showButtonInform;
+    }
+
+    public boolean getShowButtonInform(){
+        return this.showButtonInform;
+    }
+
+    public void setMedicineName(String medicineName) {
+        this.medicineName = medicineName;
+    }
+
+    public String getMedicineName(){
+        return this.medicineName;
+    }
+
+    public void setMedicineDos(String medicineDos) {
+        this.medicineDos= medicineDos;
+    }
+
+    public String getMedicineDos(){
+        return this.medicineDos;
     }
 }

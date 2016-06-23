@@ -36,12 +36,14 @@ public class UBSFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
 
         ubsAdapter = new CardListAdapterUBS(UBSFragment.this.getContext(), getListOfUBS());
+        ubsAdapter.setShowButtonInform(false);
+        ubsAdapter.setMedicineName("");
+        ubsAdapter.setMedicineDos("");
 
         ubsRecyclerView = (RecyclerView) rootView.findViewById(R.id.ubs_recycler_view);
         ubsRecyclerView.setHasFixedSize(true);
         ubsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ubsRecyclerView.setAdapter(getUbsAdapter());
-
 
         return rootView;
     }

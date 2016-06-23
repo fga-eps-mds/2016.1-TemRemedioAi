@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gppmds.tra.temremdioa.controller.SelectMedicineActivity;
+import com.gppmds.tra.temremdioa.controller.Inform;
 import com.gppmds.tra.temremdioa.controller.UbsMapsActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
@@ -30,7 +31,10 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
     private ValueAnimator mAnimator;
     private Button buttonSelectMedicine;
     private Button buttonViewUbsDescription;
-    private ImageView imageViewArrow;
+    public Button buttonUbsInform;
+    public String medicineSelectedName;
+    public String medicineSelectedDos;
+    public ImageView imageViewArrow;
 
     public ViewHolderUBS(CardView card) {
         super(card);
@@ -41,6 +45,7 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelectMedicine = (Button) card.findViewById(R.id.buttonSelectMedicine);
         this.buttonViewUbsDescription = (Button) card.findViewById(R.id.buttonUbsDescription);
+        this.buttonUbsInform = (Button) card.findViewById(R.id.buttonInformUbs);
         this.expandLayout = (RelativeLayout) card.findViewById(R.id.expandable);
         this.headerLayout = (RelativeLayout) card.findViewById(R.id.header);
 
@@ -105,6 +110,19 @@ public class ViewHolderUBS extends RecyclerView.ViewHolder{
                 intent.putExtra("descCidadeUBS", selectItem.getUbsCity());
                 intent.putExtra("telefoneUBS", selectItem.getUbsPhone());
                 v.getContext().startActivity(intent);
+            }
+        });
+
+        this.buttonUbsInform.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Inform.class);
+                UBS selectItem = CardListAdapterUBS.dataUBS.get(ViewHolderUBS.this.getAdapterPosition());
+                intent.putExtra("UBSName", selectItem.getUbsName());
+                intent.putExtra("MedicineName", medicineSelectedName);
+                intent.putExtra("MedicineDos", medicineSelectedDos);
+
+                view.getContext().startActivity(intent);
             }
         });
     }
