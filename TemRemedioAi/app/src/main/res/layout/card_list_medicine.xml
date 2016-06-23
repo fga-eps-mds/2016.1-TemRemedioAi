@@ -57,7 +57,7 @@
             android:id="@+id/expandable"
             android:layout_below="@id/header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="150dp">
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pie_chart_medicine"
@@ -65,10 +65,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="false"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:minHeight="86dp"
-                    android:minWidth="86dp"/>
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:minHeight="130dp"
+                    android:minWidth="130dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -120,9 +120,10 @@
                     android:textColor="@color/colorPrimaryText"
                     android:singleLine="false"
                     android:elevation="0dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/textViewMedicineAttetionLevel"
-                    android:layout_marginBottom="8dp" />
+                    android:layout_marginBottom="8dp"
+                    android:layout_below="@id/textViewMedicineAttetionLevel"
+                    android:layout_toLeftOf="@+id/buttonSelectUbs"
+                    android:layout_alignStart="@+id/textViewMedicineAttetionLevel"/>
 
         </RelativeLayout>
     </RelativeLayout>
