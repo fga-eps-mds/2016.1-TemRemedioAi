@@ -86,6 +86,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
+
+            <meta-data
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id"/>
         </activity>
         <activity
             android:name="com.gppmds.tra.temremdioa.controller.SignUpActivity"

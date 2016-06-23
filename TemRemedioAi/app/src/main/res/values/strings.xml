@@ -52,4 +52,5 @@
     <string name="available">Disponível</string>
     <string name="title_activity_log_in">Entrar</string>
     <string name="title_activity_sign_up">Cadastro</string>
+    <string name="facebook_app_id">801509273283863</string>
 </resources>
