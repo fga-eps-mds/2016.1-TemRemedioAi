@@ -71,7 +71,7 @@ public class ParseInitializer extends android.app.Application {
 
     public boolean loadLocalDateBaseUBS() {
         ParseQuery<UBS> queryUBS = UBS.getQuery();
-        queryUBS.setLimit(100);
+        queryUBS.setLimit(120);
         queryUBS.findInBackground(new FindCallback<UBS>() {
             @Override
             public void done(List<UBS> list, ParseException e) {
