@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gppmds.tra.temremdioa.model.Notification;
+import com.parse.ParseUser;
 import com.tra.gppmds.temremdioa.R;
 
 import java.util.Calendar;
@@ -91,13 +92,15 @@ public class Inform extends AppCompatActivity {
         Calendar calendar = new GregorianCalendar();
         calendar.set(selectedYear, selectedMonth, selectedDay);
 
+        ParseUser getCurrentUser = ParseUser.getCurrentUser();
+
         Notification notification = new Notification();
         notification.setMedicineDosage(medicineDos);
         notification.setMedicineName(medicineName);
         notification.setUBSName(ubsName);
         notification.setAvailable(availability);
         notification.setDateInform(calendar.getTime());
-        notification.setUserInform("0");
+        notification.setUserInform(getCurrentUser.getUsername());
         notification.saveInBackground();
     }
 

@@ -76,7 +76,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
         mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
-        mFacebookButton = (Button) findViewById(R.id.log_in_button_facebook);
+        //mFacebookButton = (Button) findViewById(R.id.log_in_button_facebook);
 
         logInFacebook();
 
