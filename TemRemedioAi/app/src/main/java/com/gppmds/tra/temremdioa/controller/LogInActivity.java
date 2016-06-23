@@ -30,7 +30,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -51,7 +55,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private View focusView = null;
     private Button mUsernameSignInButton;
     private Button mRegisterButton;
-    private Button mFacebookButton;
+    private LoginButton mFacebookButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +100,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
         mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
         info = (TextView)findViewById(R.id.info);
-        mFacebookButton = (Button) findViewById(R.id.login_button_fb);
+        mFacebookButton = (LoginButton) findViewById(R.id.login_button_fb);
 
         mLoginFormView = (View) findViewById(R.id.log_in_form);
         mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
@@ -104,6 +108,22 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void setListener() {
+        mFacebookButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+
+            }
+        });
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
