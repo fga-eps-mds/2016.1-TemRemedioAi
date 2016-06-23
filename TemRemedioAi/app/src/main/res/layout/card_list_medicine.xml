@@ -28,8 +28,27 @@
                 android:layout_alignParentStart="true"
                 android:textSize="14sp"
                 android:text="Nome Medicamento"
-                android:textColor="@color/colorPrimaryText"
-                android:editable="false" />
+                android:textColor="@color/colorPrimaryText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewMedicineUnit"
+                android:textColor="@color/colorSecondText"
+                android:textSize="14sp"
+                android:text="Comprimido"
+                android:layout_below="@+id/textViewMedicineName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewAdjustOfDescritionMedicine"
+                android:textColor="@color/colorSecondText"
+                android:textSize="14sp"
+                android:text=" - "
+                android:layout_below="@+id/textViewMedicineName"
+                android:layout_alignParentEnd="false"
+                android:layout_toRightOf="@+id/textViewMedicineUnit" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -38,8 +57,8 @@
                 android:textColor="@color/colorSecondText"
                 android:textSize="14sp"
                 android:text="300 mg"
-                android:editable="false"
-                android:layout_below="@+id/textViewMedicineName" />
+                android:layout_below="@+id/textViewMedicineName"
+                android:layout_toRightOf="@+id/textViewAdjustOfDescritionMedicine" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -57,7 +76,7 @@
             android:id="@+id/expandable"
             android:layout_below="@id/header"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="wrap_content">
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pie_chart_medicine"
@@ -66,31 +85,56 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="false"
                     android:layout_marginTop="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:minHeight="130dp"
-                    android:minWidth="130dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:minHeight="150dp"
+                    android:minWidth="120dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewMedicineType"
+                    android:textColor="@color/colorSecondText"
+                    android:id="@+id/textViewLastInformationTitle"
                     android:textSize="14sp"
-                    android:text="Unidade de Venda"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:text="Últimas notificações enviadas:"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
                     android:layout_toRightOf="@+id/pie_chart_medicine" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewMedicineAttetionLevel"
+                    android:textColor="@color/colorPrimaryText"
+                    android:id="@+id/textViewLastInformation1"
+                    android:textSize="14sp"
+                    android:text="Disponível - 23 Jun 2016"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/textViewLastInformationTitle"
+                    android:layout_toRightOf="@+id/pie_chart_medicine" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryText"
+                    android:id="@+id/textViewLastInformation2"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:text="Nível de Atenção"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="24dp"
+                    android:text="Indisponível - 20 Jun 2016"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/textViewLastInformation1"
+                    android:layout_toRightOf="@+id/pie_chart_medicine" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryText"
+                    android:id="@+id/textViewLastInformation3"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:text="Disponível - 15 Mai 2016"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginBottom="24dp"
-                    android:layout_below="@+id/textViewMedicineType"
+                    android:layout_below="@+id/textViewLastInformation2"
                     android:layout_toRightOf="@+id/pie_chart_medicine" />
 
                 <Button
@@ -106,8 +150,9 @@
                     android:singleLine="false"
                     android:elevation="0dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/textViewMedicineAttetionLevel"
-                    android:layout_marginBottom="8dp" />
+                    android:layout_marginBottom="8dp"
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/textViewLastInformation3" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -121,9 +166,9 @@
                     android:singleLine="false"
                     android:elevation="0dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_below="@id/textViewMedicineAttetionLevel"
                     android:layout_toLeftOf="@+id/buttonSelectUbs"
-                    android:layout_alignStart="@+id/textViewMedicineAttetionLevel"/>
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/textViewLastInformation3" />
 
         </RelativeLayout>
     </RelativeLayout>

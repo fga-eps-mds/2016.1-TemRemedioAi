@@ -3,6 +3,7 @@ package com.gppmds.tra.temremdioa.controller.adapter.holder;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,26 +16,28 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.gppmds.tra.temremdioa.controller.Inform;
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
 import com.gppmds.tra.temremdioa.model.Medicine;
-import com.tra.gppmds.temremdioa.R;
 import com.gppmds.tra.temremdioa.model.Notification;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.tra.gppmds.temremdioa.R;
 
 import java.util.ArrayList;
 
 public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     private TextView textViewMedicineName;
-    private TextView textViewMedicineType;
+    private TextView textViewLastInformation1;
+    private TextView textViewLastInformation2;
+    private TextView textViewLastInformation3;
+    private TextView textViewMedicineUnit;
     private TextView textViewMedicineDosage;
-    private TextView textViewMedicineAttentionLevel;
     private RelativeLayout headerLayout;
     private RelativeLayout expandLayout;
     private ValueAnimator mAnimator;
@@ -48,9 +51,11 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     public ViewHolderMedicine(CardView card) {
         super(card);
         this.textViewMedicineName = (TextView) card.findViewById(R.id.textViewMedicineName);
-        this.textViewMedicineType = (TextView) card.findViewById(R.id.textViewMedicineType);
+        this.textViewLastInformation1 = (TextView) card.findViewById(R.id.textViewLastInformation1);
+        this.textViewLastInformation2 = (TextView) card.findViewById(R.id.textViewLastInformation2);
+        this.textViewLastInformation3 = (TextView) card.findViewById(R.id.textViewLastInformation3);
         this.textViewMedicineDosage = (TextView) card.findViewById(R.id.textViewMedicineDosage);
-        this.textViewMedicineAttentionLevel = (TextView) card.findViewById(R.id.textViewMedicineAttetionLevel);
+        this.textViewMedicineUnit = (TextView) card.findViewById(R.id.textViewMedicineUnit);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
         this.buttonSelectUbs = (Button) card.findViewById(R.id.buttonSelectUbs);
         this.buttonMedicineInform = (Button) card.findViewById(R.id.buttonInformRemedio);
@@ -124,13 +129,19 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     private void setInformationOfChart(Medicine medicine) {
         pieChart.setDescription("");
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleRadius(7);
-        pieChart.setTransparentCircleRadius(10);
-        pieChart.setDrawSliceText(true);
+        pieChart.setHoleRadius(0);
+        pieChart.setTransparentCircleRadius(40);
+        pieChart.setDrawSliceText(false);
         pieChart.setRotationAngle(0);
         pieChart.setRotationEnabled(true);
-        pieChart.setData(getDataPie(medicine));
+        pieChart.animateY(1000);
 
+        pieChart.getLegend().setEnabled(true);
+        pieChart.getLegend().setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        pieChart.getLegend().setTextSize(12);
+
+        pieChart.setNoDataTextDescription("Sem notificações encontradas.");
+        pieChart.setData(getDataPie(medicine));
     }
 
     public PieData getDataPie(Medicine medicine) {
@@ -144,6 +155,12 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         queryNotificationAvailable.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
         queryNotificationAvailable.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
         queryNotificationAvailable.whereEqualTo(Notification.getTitleAvailable(), true);
+        if (ubsSelectedName != "") {
+            queryNotificationAvailable.whereEqualTo(Notification.getTitleUBSName(), ubsSelectedName);
+        } else {
+            // Nothing to do
+        }
+
         try {
             countNotificationAvailable = queryNotificationAvailable.count();
         } catch (ParseException e) {
@@ -155,6 +172,12 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         queryNotificationNotAvailable.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
         queryNotificationNotAvailable.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
         queryNotificationNotAvailable.whereEqualTo(Notification.getTitleAvailable(), false);
+        if (ubsSelectedName != "") {
+            queryNotificationNotAvailable.whereEqualTo(Notification.getTitleUBSName(), ubsSelectedName);
+        } else {
+            // Nothing to do
+        }
+
         try {
             countNotificationNotAvailable = queryNotificationNotAvailable.count();
         } catch (ParseException e) {
@@ -171,8 +194,9 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         valuesAvailable.add(new Entry((float) countNotificationNotAvailable, 1));
 
         PieDataSet pieDataSet = new PieDataSet(valuesAvailable, "");
-        pieDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        pieDataSet.setSliceSpace(2f);
+        int color [] = {Color.parseColor("#00BEED"), Color.parseColor("#FFED4F")};
+        pieDataSet.setColors(color);
+        pieDataSet.setSliceSpace(5);
 
         pieData = new PieData(valuesLegend, pieDataSet);
 
@@ -238,16 +262,21 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         return textViewMedicineName;
     }
 
-    public TextView getTextViewMedicineType() {
-        return textViewMedicineType;
+    public TextView getTextViewLastInformation1() {
+        return textViewLastInformation1;
+    }
+    public TextView getTextViewLastInformation2() {
+        return textViewLastInformation2;
+    }
+    public TextView getTextViewLastInformation3() {
+        return textViewLastInformation3;
     }
 
     public TextView getTextViewMedicineDosage() {
         return textViewMedicineDosage;
     }
-
-    public TextView getTextViewMedicineAttentionLevel() {
-        return textViewMedicineAttentionLevel;
+    public TextView getTextViewMedicineUnit() {
+        return textViewMedicineUnit;
     }
 
     public Button getButtonSelectUbs() {

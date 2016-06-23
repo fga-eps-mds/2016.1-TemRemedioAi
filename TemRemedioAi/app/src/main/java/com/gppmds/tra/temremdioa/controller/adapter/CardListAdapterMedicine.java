@@ -10,6 +10,7 @@ import android.widget.Filterable;
 
 import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderMedicine;
 import com.gppmds.tra.temremdioa.model.Medicine;
+import com.gppmds.tra.temremdioa.model.Notification;
 import com.tra.gppmds.temremdioa.R;
 
 import java.util.List;
@@ -43,9 +44,9 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     public void onBindViewHolder(ViewHolderMedicine holder, int position) {
         Medicine rowData = this.dataMedicine.get(position);
         holder.getTextViewMedicineName().setText(rowData.getMedicineDescription());
-        holder.getTextViewMedicineType().setText(rowData.getUnityMedicineFormatted());
+        holder.getTextViewMedicineUnit().setText(rowData.getUnityMedicineFormatted());
         holder.getTextViewMedicineDosage().setText(rowData.getMedicineDosage());
-        holder.getTextViewMedicineAttentionLevel().setText(rowData.getMedicineAttentionLevelExtended());
+
         if (!getShowButtonUBSs()) {
             holder.getButtonSelectUbs().setVisibility(View.GONE);
         } else {
@@ -54,6 +55,8 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
 
         if (!getUbsName().equalsIgnoreCase("")) {
             holder.ubsSelectedName = getUbsName();
+        } else {
+            holder.ubsSelectedName = "";
         }
 
         if (!getShowButtonInform()) {
@@ -70,6 +73,14 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
         }
 
         return filter;
+    }
+
+    private List<Notification> getNotifications(Medicine medicine) {
+        List<Notification> listNotification = null;
+
+
+
+        return listNotification;
     }
 
     @Override
