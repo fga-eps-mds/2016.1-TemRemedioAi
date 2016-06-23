@@ -140,6 +140,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         Integer countNotificationNotAvailable = 0;
 
         ParseQuery<Notification> queryNotificationAvailable = Notification.getQuery();
+        queryNotificationAvailable.fromLocalDatastore();
         queryNotificationAvailable.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
         queryNotificationAvailable.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
         queryNotificationAvailable.whereEqualTo(Notification.getTitleAvailable(), true);
@@ -150,6 +151,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         }
 
         ParseQuery<Notification> queryNotificationNotAvailable = Notification.getQuery();
+        queryNotificationNotAvailable.fromLocalDatastore();
         queryNotificationNotAvailable.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
         queryNotificationNotAvailable.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
         queryNotificationNotAvailable.whereEqualTo(Notification.getTitleAvailable(), false);

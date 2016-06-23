@@ -51,6 +51,7 @@ public class UBSFragment extends Fragment{
     public List<UBS> getListOfUBS(){
         /* Query UBS data from parse */
         ParseQuery<UBS> queryUBS = UBS.getQuery();
+        queryUBS.fromLocalDatastore();
         queryUBS.orderByAscending(UBS.getUbsNameTitle());
         List<UBS> ubsList = null;
 
