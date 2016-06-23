@@ -34,6 +34,7 @@ apply plugin: 'com.android.application'
 repositories {
     jcenter()
     maven { url "https://jitpack.io" }
+    mavenCentral()
 }
 
 dependencies {
@@ -42,7 +43,7 @@ dependencies {
     testCompile "org.robolectric:robolectric:3.1"
     testCompile "org.mockito:mockito-core:1.+"
 
-    androidTestCompile 'com.android.support:support-annotations:23.3.0'
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test:rules:0.4.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
@@ -62,6 +63,8 @@ dependencies {
     compile 'junit:junit:4.12'
     compile 'org.mockito:mockito-core:1.10.19'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
 }
 
 apply plugin: 'com.android.application'
