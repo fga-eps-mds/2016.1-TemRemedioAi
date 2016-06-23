@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +29,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -38,6 +41,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private UserLoginTask mAuthTask = null; //Keep track of the login task to ensure we can cancel
                                             // it if requested.
 
+    CallbackManager callbackManager;
     // res references
     private EditText mUsernameView;
     private EditText mPasswordView;
@@ -51,6 +55,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        facebookSDKInitialize();
         setContentView(R.layout.activity_log_in);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,12 +66,25 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
+    protected void facebookSDKInitialize() {
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+    }
+
     public ParseUser getCurrentUser(){
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         return currentUser;
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        Log.e("data",data.toString());
     }
 
     public void setValues() {
