@@ -20,6 +20,7 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.gppmds.tra.temremdioa.controller.Inform;
 import com.gppmds.tra.temremdioa.controller.SelectUBSActivity;
 import com.gppmds.tra.temremdioa.controller.adapter.CardListAdapterMedicine;
@@ -36,6 +37,8 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     private TextView textViewLastInformation1;
     private TextView textViewLastInformation2;
     private TextView textViewLastInformation3;
+    private TextView textViewLastInformationTitle;
+    private TextView textViewWithoutNotification;
     private TextView textViewMedicineUnit;
     private TextView textViewMedicineDosage;
     private RelativeLayout headerLayout;
@@ -45,6 +48,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     public Button buttonMedicineInform;
     private ImageView imageViewArrow;
     public String ubsSelectedName;
+    public Boolean haveNotification;
     private PieChart pieChart;
 
 
@@ -54,6 +58,8 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         this.textViewLastInformation1 = (TextView) card.findViewById(R.id.textViewLastInformation1);
         this.textViewLastInformation2 = (TextView) card.findViewById(R.id.textViewLastInformation2);
         this.textViewLastInformation3 = (TextView) card.findViewById(R.id.textViewLastInformation3);
+        this.textViewLastInformationTitle = (TextView) card.findViewById(R.id.textViewLastInformationTitle);
+        this.textViewWithoutNotification = (TextView) card.findViewById(R.id.textViewWithoutNotification);
         this.textViewMedicineDosage = (TextView) card.findViewById(R.id.textViewMedicineDosage);
         this.textViewMedicineUnit = (TextView) card.findViewById(R.id.textViewMedicineUnit);
         this.imageViewArrow = (ImageView) card.findViewById(R.id.imageViewArrow);
@@ -89,7 +95,13 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
                 if (expandLayout.getVisibility() == View.GONE) {
                     Log.i("LOG", "Expand Click");
                     Medicine selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
-                    setInformationOfChart(selectItem);
+                    if (haveNotification) {
+                        setInformationOfChart(selectItem);
+                        getTextViewWithoutNotification().setVisibility(View.GONE);
+                    } else {
+                        getTextViewLastInformationTitle().setText("");
+                        setInformationOfChartWithoutNotification();
+                    }
                     expand();
                 } else {
                     Log.i("LOG", "Collapse Click");
@@ -124,6 +136,41 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
                 view.getContext().startActivity(intent);
             }
         });
+    }
+
+    private void setInformationOfChartWithoutNotification() {
+        pieChart.setDescription("");
+        pieChart.setDrawHoleEnabled(true);
+        pieChart.setHoleRadius(0);
+        pieChart.setTransparentCircleRadius(40);
+        pieChart.setDrawSliceText(false);
+        pieChart.setRotationAngle(0);
+        pieChart.setRotationEnabled(true);
+        pieChart.animateY(1000);
+
+        pieChart.getLegend().setEnabled(true);
+        pieChart.getLegend().setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        pieChart.getLegend().setTextSize(12);
+
+        pieChart.setNoDataTextDescription("Sem notificações encontradas.");
+
+        ArrayList<Entry> valuesAvailable = new ArrayList<Entry>();
+        ArrayList<String> valuesLegend = new ArrayList<String>();
+
+        valuesLegend.add("Sem Notificação");
+
+        valuesAvailable.add(new Entry((float) 1, 0));
+
+        PieDataSet pieDataSet = new PieDataSet(valuesAvailable, "");
+        int color [] = {Color.parseColor("#F0F0F0")};
+        pieDataSet.setColors(color);
+        pieDataSet.setSliceSpace(5);
+
+        PieData pieData = new PieData(valuesLegend, pieDataSet);
+        for (IDataSet<?> set : pieData.getDataSets())
+            set.setDrawValues(!set.isDrawValuesEnabled());
+
+        pieChart.setData(pieData);
     }
 
     private void setInformationOfChart(Medicine medicine) {
@@ -197,6 +244,8 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
         int color [] = {Color.parseColor("#00BEED"), Color.parseColor("#FFED4F")};
         pieDataSet.setColors(color);
         pieDataSet.setSliceSpace(5);
+        pieDataSet.setValueTextSize(10);
+
 
         pieData = new PieData(valuesLegend, pieDataSet);
 
@@ -261,7 +310,12 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     public TextView getTextViewMedicineName(){
         return textViewMedicineName;
     }
-
+    public TextView getTextViewWithoutNotification(){
+        return textViewWithoutNotification;
+    }
+    public TextView getTextViewLastInformationTitle() {
+        return textViewLastInformationTitle;
+    }
     public TextView getTextViewLastInformation1() {
         return textViewLastInformation1;
     }
@@ -271,7 +325,6 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     public TextView getTextViewLastInformation3() {
         return textViewLastInformation3;
     }
-
     public TextView getTextViewMedicineDosage() {
         return textViewMedicineDosage;
     }

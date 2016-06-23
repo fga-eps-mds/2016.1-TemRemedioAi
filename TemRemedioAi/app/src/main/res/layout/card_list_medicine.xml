@@ -78,97 +78,108 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pie_chart_medicine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="false"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginLeft="10dp"
-                    android:minHeight="150dp"
-                    android:minWidth="120dp"/>
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pie_chart_medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="false"
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="10dp"
+                android:minHeight="150dp"
+                android:minWidth="120dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorSecondText"
-                    android:id="@+id/textViewLastInformationTitle"
-                    android:textSize="14sp"
-                    android:text="Últimas notificações enviadas:"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/pie_chart_medicine" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorSecondText"
+                android:id="@+id/textViewLastInformationTitle"
+                android:textSize="14sp"
+                android:text="Últimas notificações enviadas:"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/pie_chart_medicine" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryText"
-                    android:id="@+id/textViewLastInformation1"
-                    android:textSize="14sp"
-                    android:text="Disponível - 23 Jun 2016"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_below="@+id/textViewLastInformationTitle"
-                    android:layout_toRightOf="@+id/pie_chart_medicine" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewLastInformation1"
+                android:textSize="14sp"
+                android:text="Disponível - 23 Jun 2016"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/textViewLastInformationTitle"
+                android:layout_toRightOf="@+id/pie_chart_medicine" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryText"
-                    android:id="@+id/textViewLastInformation2"
-                    android:textAlignment="textStart"
-                    android:textSize="14sp"
-                    android:text="Indisponível - 20 Jun 2016"
-                    android:layout_marginLeft="15dp"
-                    android:layout_below="@+id/textViewLastInformation1"
-                    android:layout_toRightOf="@+id/pie_chart_medicine" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewLastInformation2"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:text="Indisponível - 20 Jun 2016"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/textViewLastInformation1"
+                android:layout_toRightOf="@+id/pie_chart_medicine" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryText"
-                    android:id="@+id/textViewLastInformation3"
-                    android:textAlignment="textStart"
-                    android:textSize="14sp"
-                    android:text="Disponível - 15 Mai 2016"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="24dp"
-                    android:layout_below="@+id/textViewLastInformation2"
-                    android:layout_toRightOf="@+id/pie_chart_medicine" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewLastInformation3"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:text="Disponível - 15 Mai 2016"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="24dp"
+                android:layout_below="@+id/textViewLastInformation2"
+                android:layout_toRightOf="@+id/pie_chart_medicine" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Selecionar UBS"
-                    android:id="@+id/buttonSelectUbs"
-                    android:minWidth="88dp"
-                    android:minHeight="54dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_alignWithParentIfMissing="false"
-                    android:textColor="@color/colorPrimaryText"
-                    android:singleLine="false"
-                    android:elevation="0dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginBottom="8dp"
-                    android:layout_alignParentBottom="false"
-                    android:layout_below="@+id/textViewLastInformation3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewWithoutNotification"
+                android:textSize="14sp"
+                android:text="Nenhuma notificação enviada."
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/textViewLastInformationTitle"
+                android:layout_toRightOf="@+id/pie_chart_medicine" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Informar"
-                    android:id="@+id/buttonInformRemedio"
-                    android:minWidth="88dp"
-                    android:minHeight="54dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/colorPrimaryText"
-                    android:singleLine="false"
-                    android:elevation="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_toLeftOf="@+id/buttonSelectUbs"
-                    android:layout_alignParentBottom="false"
-                    android:layout_below="@+id/textViewLastInformation3" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selecionar UBS"
+                android:id="@+id/buttonSelectUbs"
+                android:minWidth="88dp"
+                android:minHeight="54dp"
+                android:layout_marginRight="8dp"
+                android:layout_alignWithParentIfMissing="false"
+                android:textColor="@color/colorPrimaryText"
+                android:singleLine="false"
+                android:elevation="0dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="8dp"
+                android:layout_alignParentBottom="false"
+                android:layout_below="@+id/textViewLastInformation3" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informar"
+                android:id="@+id/buttonInformRemedio"
+                android:minWidth="88dp"
+                android:minHeight="54dp"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorPrimaryText"
+                android:singleLine="false"
+                android:elevation="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toLeftOf="@+id/buttonSelectUbs"
+                android:layout_alignParentBottom="false"
+                android:layout_below="@+id/textViewLastInformation3" />
 
         </RelativeLayout>
     </RelativeLayout>
