@@ -53,5 +53,4 @@
     <string name="title_activity_log_in">Entrar com username</string>
     <string name="title_activity_sign_up">Cadastra-se</string>
     <string name="facebook_app_id">801509273283863</string>
-    <string name="action_log_in_facebook">Entrar com Facebook</string>
 </resources>

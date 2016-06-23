@@ -46,6 +46,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private View focusView = null;
     private Button mUsernameSignInButton;
     private Button mRegisterButton;
+    private Button mFacebookButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +68,16 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
         mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
+        mFacebookButton = (Button) findViewById(R.id.log_in_button_facebook);
+
+        logInFacebook();
 
         mLoginFormView = (View) findViewById(R.id.log_in_form);
         mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
+
+    }
+
+    private void logInFacebook() {
 
     }
 
