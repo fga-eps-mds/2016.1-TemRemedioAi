@@ -77,6 +77,7 @@ public class SelectMedicineActivity extends AppCompatActivity {
         queryMedicine.setLimit(1000);
         queryMedicine.whereContainedIn(Medicine.getMedicineAttentionLevelTitle(), filterAttentionLevel);
         queryMedicine.orderByAscending(Medicine.getMedicineDescriptionTitle());
+        queryMedicine.fromLocalDatastore();
         List<Medicine> medicines = null;
 
         try {

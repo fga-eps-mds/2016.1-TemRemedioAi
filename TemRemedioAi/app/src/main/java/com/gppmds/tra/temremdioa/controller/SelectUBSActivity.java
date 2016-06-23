@@ -13,11 +13,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SelectUBSActivity extends AppCompatActivity {
@@ -83,6 +79,7 @@ public class SelectUBSActivity extends AppCompatActivity {
         ParseQuery<UBS> queryUBS = UBS.getQuery();
         queryUBS.whereContainedIn(UBS.getUbsAttentionLevelTitle(), filterAttentionLevel);
         queryUBS.orderByAscending(UBS.getUbsNameTitle());
+        queryUBS.fromLocalDatastore();
         List<UBS> ubsList = null;
 
         try {
