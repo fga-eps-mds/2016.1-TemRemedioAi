@@ -64,8 +64,7 @@ dependencies {
     compile 'org.mockito:mockito-core:1.10.19'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
-//    compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
-    compile 'com.parse:parse-android:1.10.3'
+    compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
 }
 
 apply plugin: 'com.android.application'
@@ -75,23 +74,44 @@ jacoco {
     toolVersion = "0.7.1.201405082137"
 
 }
-
-task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
-
+task jacocoTestReportAndroidTest(type: JacocoReport, dependsOn: "connectedAndroidTest") {
+    def coverageSourceDirs = [
+            'src/androidTest/java/com.gppmds.tra.temremdioa/',
+            'src/test/java/com.gppmds.tra.temremdioa/'
+    ]
+    group = "Reporting"
+    description = "Generates Jacoco coverage reports"
     reports {
-        xml.enabled = true
-        html.enabled = true
+        csv.enabled false
+        xml{
+            enabled = true
+            destination "${buildDir}/reports/jacoco/jacoco.xml"
+        }
+        html{
+            enabled true
+            destination "${buildDir}/jacocoHtml"
+        }
     }
+    classDirectories = fileTree(
+            dir: 'build/intermediates/classes',
+            excludes: ['**/R.class',
+                       '**/R$*.class',
+                       '**/BuildConfig.*',
+                       '**/Manifest*.*',
+                       '**/*Activity*.*',
+                       '**/*Fragment*.*'
+            ]
+    )
+    sourceDirectories = files(coverageSourceDirs)
+    additionalSourceDirs = files(coverageSourceDirs)
 
-    jacocoClasspath = configurations['androidJacocoAnt']
-
-    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
-    def mainSrc = "${project.projectDir}/src/main/java"
-
-    sourceDirectories = files([mainSrc])
-    classDirectories = files([debugTree])
-    executionData = files(["${buildDir}/jacoco/testDebugUnitTest.exec",
-                           "${buildDir}/outputs/code-coverage/connected/coverage.ec"
-    ])
+    if (project.hasProperty('coverageFiles')) {
+        // convert the comma separated string to an array to create an aggregate report from
+        // multiple coverage.ec files
+        def coverageFilesArray = coverageFiles.split(',')
+        executionData = files(coverageFilesArray)
+    }
+    else {
+        executionData = files('build/outputs/code-coverage/connected/coverage.ec')
+    }
 }
