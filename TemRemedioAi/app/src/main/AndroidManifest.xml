@@ -98,8 +98,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.LogInActivity" />
         </activity>
-        <activity android:name="com.gppmds.tra.temremdioa.controller.UserProfile"
-            android:label="@string/user"></activity>
         <activity android:name="com.gppmds.tra.temremdioa.controller.Inform"></activity>
     </application>
 

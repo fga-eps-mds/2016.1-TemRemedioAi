@@ -4,7 +4,6 @@ import com.gppmds.tra.temremdioa.model.Medicine;
 import com.gppmds.tra.temremdioa.model.Notification;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.Parse;
-import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -39,8 +38,6 @@ public class ParseInitializer extends android.app.Application {
                     .clientKey("kijasijijasiasjsiajalllkaosiajhsis")
                     .build()
             );
-            ParseUser.enableAutomaticUser();
-            ParseFacebookUtils.initialize(this);
 
 
             return true;

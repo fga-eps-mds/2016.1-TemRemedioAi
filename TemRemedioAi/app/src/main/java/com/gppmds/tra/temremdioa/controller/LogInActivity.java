@@ -61,6 +61,14 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
+    public ParseUser getCurrentUser(){
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        return currentUser;
+
+    }
+
     public void setValues() {
 
         mUsernameView = (EditText) findViewById(R.id.log_in_username_field);
@@ -113,7 +121,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     // Attempts to login in the system if the entries email and password are valid
     private void attemptLogin(){
         // Store values at the time of the login attempt
-        String username = mUsernameView.getText().toString();
+        final String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         if (mAuthTask != null){
@@ -132,12 +140,11 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
                 public void done(ParseUser parseUser, ParseException e) {
                     if (parseUser != null) {
 
-                        Intent intent = new Intent(LogInActivity.this, UserProfile.class);
-                        startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Logado com sucesso, seja bem vindo " + username +"!", Toast.LENGTH_LONG).show();
                         finish();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Username e/ou senha não existente!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Nome de usuário e/ou senha não existente!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LogInActivity.this, LogInActivity.class);
                         startActivity(intent);
                         finish();

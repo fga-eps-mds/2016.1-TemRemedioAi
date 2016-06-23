@@ -1,11 +1,16 @@
 package com.gppmds.tra.temremdioa.controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +24,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.gppmds.tra.temremdioa.controller.adapter.TabsAdapter;
 import com.gppmds.tra.temremdioa.controller.fragment.MedicineFragment;
 import com.gppmds.tra.temremdioa.controller.fragment.UBSFragment;
+import com.gppmds.tra.temremdioa.controller.LogInActivity;
+
+import com.parse.ParseUser;
 import com.tra.gppmds.temremdioa.R;
 
 public class MainActivity extends AppCompatActivity{
@@ -70,12 +78,46 @@ public class MainActivity extends AppCompatActivity{
         return true;
     }
 
+
+
+    public DialogInterface.OnClickListener logout() {
+        return new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                ParseUser.logOut();
+                Toast.makeText(getApplicationContext(), "Deslogado com sucesso!", Toast.LENGTH_SHORT).show();
+
+
+            }
+        };
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_login:
-                Intent loginActivity = new Intent(MainActivity.this,LogInActivity.class);
-                startActivity(loginActivity);
+
+                 ParseUser currentUser = ParseUser.getCurrentUser();
+                if (currentUser != null) {
+                    // do stuff with the user
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Aviso");
+                    builder.setIcon(R.drawable.ic_warning_black_48dp);
+                    builder.setMessage("Usuario logado como " + currentUser.getUsername() + ", deseja sair dessa conta?");
+                    builder.setCancelable(true);
+                    builder.setNegativeButton("Cancelar",null);
+                    builder.setPositiveButton("Sair", logout());
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                } else {
+                    // show the signup or login screen
+                    Intent loginActivity = new Intent(MainActivity.this,LogInActivity.class);
+                    startActivity(loginActivity);
+                }
+
                 break;
             case R.id.action_about:
                 Intent aboutActivity = new Intent(this, AboutActivity.class);
