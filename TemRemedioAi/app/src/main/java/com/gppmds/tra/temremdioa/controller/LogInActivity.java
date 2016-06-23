@@ -43,6 +43,7 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     CallbackManager callbackManager;
     // res references
+    private TextView info;
     private EditText mUsernameView;
     private EditText mPasswordView;
     private ProgressBar mProgressView;
@@ -94,16 +95,11 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
         mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
-        //mFacebookButton = (Button) findViewById(R.id.log_in_button_facebook);
-
-        logInFacebook();
+        info = (TextView)findViewById(R.id.info);
+        mFacebookButton = (Button) findViewById(R.id.login_button_fb);
 
         mLoginFormView = (View) findViewById(R.id.log_in_form);
         mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
-
-    }
-
-    private void logInFacebook() {
 
     }
 
