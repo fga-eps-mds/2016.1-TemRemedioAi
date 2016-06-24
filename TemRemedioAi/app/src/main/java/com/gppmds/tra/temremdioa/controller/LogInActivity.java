@@ -33,6 +33,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.parse.LogInCallback;
@@ -56,7 +57,6 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private Button mUsernameSignInButton;
     private Button mRegisterButton;
     private LoginButton mFacebookButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,17 +111,25 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         mFacebookButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
+                info.setText(
+                        "User ID: "
+                                + loginResult.getAccessToken().getUserId()
+                                + "\n" +
+                                "Auth Token: "
+                                + loginResult.getAccessToken().getToken()
+                );
+                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public void onCancel() {
-
+                info.setText("Login attempt canceled.");
             }
 
             @Override
             public void onError(FacebookException e) {
-
+                info.setText("Login attempt failed.");
             }
         });
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
