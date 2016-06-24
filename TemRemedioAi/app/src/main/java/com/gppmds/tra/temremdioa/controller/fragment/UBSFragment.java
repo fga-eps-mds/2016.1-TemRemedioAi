@@ -35,23 +35,33 @@ public class UBSFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_ubs, container, false);
 
+        ubsAdapter = new CardListAdapterUBS(UBSFragment.this.getContext(), getListOfUBS());
+        ubsAdapter.setShowButtonInform(false);
+        ubsAdapter.setMedicineName("");
+        ubsAdapter.setMedicineDos("");
+
         ubsRecyclerView = (RecyclerView) rootView.findViewById(R.id.ubs_recycler_view);
         ubsRecyclerView.setHasFixedSize(true);
         ubsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        ubsRecyclerView.setAdapter(getUbsAdapter());
 
+        return rootView;
+    }
+
+    public List<UBS> getListOfUBS(){
         /* Query UBS data from parse */
         ParseQuery<UBS> queryUBS = UBS.getQuery();
+        queryUBS.fromLocalDatastore();
         queryUBS.orderByAscending(UBS.getUbsNameTitle());
-        List<UBS> ubsList;
+        List<UBS> ubsList = null;
 
         try {
             ubsList = queryUBS.find();
-            ubsAdapter = new CardListAdapterUBS(UBSFragment.this.getContext(), ubsList);
-            ubsRecyclerView.setAdapter(getUbsAdapter());
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        return rootView;
+        return ubsList;
     }
 }

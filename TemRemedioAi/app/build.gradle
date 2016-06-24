@@ -8,9 +8,10 @@ apply plugin: 'com.android.application'
          applicationId "com.tra.gppmds.temremdioa"
          minSdkVersion 19
          targetSdkVersion 23
-         versionCode 1
-         versionName "1.0"
+         versionCode 2
+         versionName "1.0.1"
          testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+         multiDexEnabled true
      }
      buildTypes {
          release {
@@ -24,10 +25,16 @@ apply plugin: 'com.android.application'
      testOptions {
          unitTests.returnDefaultValues = true
      }
+
+     dexOptions {
+         javaMaxHeapSize "4g"
+     }
  }
 
 repositories {
     jcenter()
+    maven { url "https://jitpack.io" }
+    mavenCentral()
 }
 
 dependencies {
@@ -36,7 +43,7 @@ dependencies {
     testCompile "org.robolectric:robolectric:3.1"
     testCompile "org.mockito:mockito-core:1.+"
 
-    androidTestCompile 'com.android.support:support-annotations:23.3.0'
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test:rules:0.4.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
@@ -55,4 +62,56 @@ dependencies {
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'junit:junit:4.12'
     compile 'org.mockito:mockito-core:1.10.19'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+
+}
+task jacocoTestReportAndroidTest(type: JacocoReport, dependsOn: "connectedAndroidTest") {
+    def coverageSourceDirs = [
+            'src/androidTest/java/com.gppmds.tra.temremdioa/',
+            'src/test/java/com.gppmds.tra.temremdioa/'
+    ]
+    group = "Reporting"
+    description = "Generates Jacoco coverage reports"
+    reports {
+        csv.enabled false
+        xml{
+            enabled = true
+            destination "${buildDir}/reports/jacoco/jacoco.xml"
+        }
+        html{
+            enabled true
+            destination "${buildDir}/jacocoHtml"
+        }
+    }
+    classDirectories = fileTree(
+            dir: 'build/intermediates/classes',
+            excludes: ['**/R.class',
+                       '**/R$*.class',
+                       '**/BuildConfig.*',
+                       '**/Manifest*.*',
+                       '**/*Activity*.*',
+                       '**/*Fragment*.*'
+            ]
+    )
+    sourceDirectories = files(coverageSourceDirs)
+    additionalSourceDirs = files(coverageSourceDirs)
+
+    if (project.hasProperty('coverageFiles')) {
+        // convert the comma separated string to an array to create an aggregate report from
+        // multiple coverage.ec files
+        def coverageFilesArray = coverageFiles.split(',')
+        executionData = files(coverageFilesArray)
+    }
+    else {
+        executionData = files('build/outputs/code-coverage/connected/coverage.ec')
+    }
 }

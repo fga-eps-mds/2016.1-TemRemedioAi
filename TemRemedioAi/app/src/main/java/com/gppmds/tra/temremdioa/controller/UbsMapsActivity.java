@@ -61,7 +61,7 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
         gettingUbsAddress();
         gettingUbsNeighborhood();
         gettingUbsCity();
-        //gettingUbsPhone();
+        gettingUbsPhone();
     }
 
     private void gettingUbsName() {
@@ -72,13 +72,13 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
 
     private void gettingUbsAddress () {
         String descUbsAddress = getIntent().getStringExtra("descEnderecoUBS");
-        TextView editDscAddress = (TextView) findViewById(R.id.textViewDscAddress);
+        TextView editDscAddress = (TextView) findViewById(R.id.textViewUbsAddress);
         editDscAddress.setText(descUbsAddress);
     }
 
     private void gettingUbsNeighborhood() {
         String descUbsNeighborhood = getIntent().getStringExtra("descBairroUBS");
-        TextView editDscNeighborhood = (TextView) findViewById(R.id.textViewDscNeighborhood);
+        TextView editDscNeighborhood = (TextView) findViewById(R.id.textViewUbsNeighborhood);
         editDscNeighborhood.setText(descUbsNeighborhood);
     }
 
@@ -89,7 +89,9 @@ public class UbsMapsActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
     private void gettingUbsPhone() {
-        // String telefoneUBS = getIntent().getStringExtra("telefoneUBS");
+        String descUbsPhone = getIntent().getStringExtra("telefoneUBS");
+        TextView editDscPhone = (TextView) findViewById(R.id.textViewPhoneUbs);
+        editDscPhone.setText(descUbsPhone);
     }
 
     private void generateTrajectory() {

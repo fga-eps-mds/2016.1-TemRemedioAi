@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.tra.gppmds.temremdioa">
 
     <!-- User Permissions -->
@@ -16,21 +15,18 @@
 
     <application
         android:name="com.gppmds.tra.temremdioa.controller.ParseInitializer"
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/appName"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
         <activity
-
             android:name="com.gppmds.tra.temremdioa.controller.MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/appName"
             android:theme="@style/AppTheme.NoActionBar">
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -47,17 +43,15 @@
         <activity
             android:name="com.gppmds.tra.temremdioa.controller.SplashScreenActivity"
             android:theme="@style/FullSrceenTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.gppmds.tra.temremdioa.controller.UbsMapsActivity"
-            android:label="@string/title_activity_ubs_maps">
+            android:label="@string/titleActivityUbsMaps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
@@ -72,23 +66,47 @@
 
         <activity
             android:name="com.gppmds.tra.temremdioa.controller.AboutActivity"
-            android:label="@string/title_activity_about">
+            android:label="@string/titleActivityAbout">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
         <activity android:name="com.gppmds.tra.temremdioa.controller.SelectUBSActivity"
-            android:label="@string/title_activity_select_UBS">
+            android:label="@string/titleActivitySelectUbs">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
-        <activity android:name="com.gppmds.tra.temremdioa.controller.SelectRemedioActivity"
-            android:label="@string/title_activity_select_Remedio">
+        <activity android:name="com.gppmds.tra.temremdioa.controller.SelectMedicineActivity"
+            android:label="@string/titleActivitySelectMedicine">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
         </activity>
+        <activity
+            android:name="com.gppmds.tra.temremdioa.controller.LogInActivity"
+            android:label="@string/title_activity_log_in">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gppmds.tra.temremdioa.controller.MainActivity" />
+
+            <meta-data
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id"/>
+        </activity>
+        <activity
+            android:name="com.gppmds.tra.temremdioa.controller.SignUpActivity"
+            android:label="@string/title_activity_sign_up">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gppmds.tra.temremdioa.controller.LogInActivity" />
+        </activity>
+        <activity android:name="com.gppmds.tra.temremdioa.controller.Inform"></activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/appName" />
     </application>
 
 </manifest>

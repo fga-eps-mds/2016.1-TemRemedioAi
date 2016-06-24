@@ -68,6 +68,12 @@ public class UBSTest {
     }
 
     @Test
+    public void getUbsPhoneTest() throws Exception{
+        ubs.setUbsPhone("(61) 5555-5555");
+        assertEquals("(61) 5555-5555", ubs.getUbsPhone());
+    }
+
+    @Test
     public void toStringTest() throws Exception {
         ubs.setUbsName("test toString");
         assertEquals("test toString", ubs.toString());

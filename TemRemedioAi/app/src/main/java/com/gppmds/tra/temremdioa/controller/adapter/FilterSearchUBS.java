@@ -45,6 +45,6 @@ public class FilterSearchUBS extends Filter {
     @Override
     public void publishResults(CharSequence constraint, FilterResults results) {
         adapter.dataUBS = (List<UBS>) results.values;
-        // adapter.notifyDataSetChanged();
+         adapter.notifyDataSetChanged();
     }
 }

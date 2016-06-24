@@ -30,6 +30,8 @@ public class MedicineFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_medicine, container, false);
 
         medicineAdapter = new CardListAdapterMedicine(MedicineFragment.this.getContext(), getListOfMedicines());
+        medicineAdapter.setShowButtonInform(false);
+        medicineAdapter.setUbsName("");
 
         medicineRecyclerView = (RecyclerView) rootView.findViewById(R.id.medicine_recycler_view);
         medicineRecyclerView.setHasFixedSize(true);
@@ -42,6 +44,8 @@ public class MedicineFragment extends Fragment{
     public List<Medicine> getListOfMedicines() {
         /* Query medicine data from parse */
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
+        queryMedicine.fromLocalDatastore();
+        queryMedicine.setLimit(1000);
         List<Medicine> medicines = null;
 
         try {

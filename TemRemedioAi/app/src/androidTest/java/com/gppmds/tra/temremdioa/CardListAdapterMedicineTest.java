@@ -31,6 +31,7 @@ public class CardListAdapterMedicineTest extends ActivityInstrumentationTestCase
         RecyclerView rv = (RecyclerView) getActivity().findViewById(R.id.medicine_recycler_view);
 
         ParseQuery<Medicine> queryMedicine = Medicine.getQuery();
+        queryMedicine.setLimit(1000);
         List<Medicine> medicines;
 
         try {

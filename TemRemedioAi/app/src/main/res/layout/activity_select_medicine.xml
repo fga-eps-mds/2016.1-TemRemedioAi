@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gppmds.tra.temremdioa.controller.SelectMedicineActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/panelInfosSuperior"
+        android:elevation="2dp"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/textViewSelectedUBS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selectedUBS"
+            android:textSize="14sp"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/textViewMedicineQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ubsQuantity"
+            android:textSize="10sp"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/fragment_medicine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/panelInfosSuperior"></include>
+
+</RelativeLayout>
