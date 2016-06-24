@@ -31,7 +31,11 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.tra.gppmds.temremdioa.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     private TextView textViewMedicineName;
@@ -96,6 +100,30 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
                 if (expandLayout.getVisibility() == View.GONE) {
                     Log.i("LOG", "Expand Click");
                     Medicine selectItem = CardListAdapterMedicine.dataMedicine.get(ViewHolderMedicine.this.getAdapterPosition());
+
+                    List<Notification> notificationList = null;
+                    notificationList = getNotifications(selectItem);
+
+                    haveNotification = false;
+                    if (notificationList.size() >= 1) {
+                        haveNotification = true;
+                        getTextViewLastInformation1().setText("1. " + generateTextNotification(notificationList.get(0)));
+                    } else {
+                        getTextViewLastInformation1().setText("");
+                    }
+
+                    if (notificationList.size() >= 2) {
+                        getTextViewLastInformation2().setText("2. " + generateTextNotification(notificationList.get(1)));
+                    } else {
+                        getTextViewLastInformation2().setText("");
+                    }
+
+                    if (notificationList.size() >= 3) {
+                        getTextViewLastInformation3().setText("3. " + generateTextNotification(notificationList.get(2)));
+                    } else {
+                        getTextViewLastInformation3().setText("");
+                    }
+
                     if (haveNotification) {
                         setInformationOfChart(selectItem);
                         getTextViewWithoutNotification().setVisibility(View.GONE);
@@ -145,6 +173,42 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
                 view.getContext().startActivity(intent);
             }
         });
+    }
+    private String generateTextNotification(Notification notification) {
+        String textOfNotification = "";
+        if (notification.getAvailable()) {
+            textOfNotification = "Disponível em ";
+        } else {
+            textOfNotification = "Indisponível em ";
+        }
+        Calendar dayCalendar = Calendar.getInstance(new Locale("pt", "BR"));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+        dayCalendar.setTime(notification.getDateInform());
+        textOfNotification = textOfNotification + simpleDateFormat.format(dayCalendar.getTime());
+
+        return textOfNotification;
+    }
+
+    private List<Notification> getNotifications(Medicine medicine) {
+        List<Notification> listNotification = null;
+
+        ParseQuery<Notification> queryNotification = Notification.getQuery();
+        queryNotification.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
+        queryNotification.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
+        if (!ubsSelectedName.isEmpty()) {
+            queryNotification.whereEqualTo(Notification.getTitleUBSName(), ubsSelectedName);
+        }
+        queryNotification.orderByDescending(Notification.getTitleDateInform());
+        queryNotification.setLimit(3);
+
+        try {
+            listNotification = queryNotification.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return listNotification;
     }
 
     private void setInformationOfChartWithoutNotification() {
