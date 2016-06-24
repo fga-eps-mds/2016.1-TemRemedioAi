@@ -36,7 +36,6 @@
                 android:id="@+id/textViewUbsNeighborhood"
                 android:textColor="@color/colorSecondText"
                 android:textSize="14sp"
-                android:layout_marginTop="8dp"
                 android:text="@string/ubs_neighborhood"
                 android:layout_below="@id/textViewUbsName" />
 
@@ -55,36 +54,77 @@
             android:id="@+id/expandable"
             android:layout_below="@id/header"
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="170dp">
 
-            <!--<ImageView
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pie_chart_ubs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:id="@+id/imageGraficView"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="24dp"
-                android:background="@android:drawable/ic_menu_recent_history" />-->
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewUbsCity"
-                android:textSize="14sp"
-                android:text="@string/ubs_city"
+                android:layout_alignParentEnd="false"
                 android:layout_marginTop="1dp"
-                android:layout_marginLeft="180dp"/>
+                android:layout_marginLeft="10dp"
+                android:minHeight="150dp"
+                android:minWidth="120dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewUbsAttentionLevel"
+                android:textColor="@color/colorSecondText"
+                android:id="@+id/textViewLastInformationTitle"
+                android:textSize="14sp"
+                android:text="Últimas notificações enviadas:"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/pie_chart_ubs" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewLastInformation1"
+                android:textSize="14sp"
+                android:text="Disponível - 23 Jun 2016"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/textViewLastInformationTitle"
+                android:layout_toRightOf="@+id/pie_chart_ubs" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewLastInformation2"
                 android:textAlignment="textStart"
                 android:textSize="14sp"
-                android:text="@string/ubs_attention_level"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="180dp"
-                android:layout_below="@id/textViewUbsCity"/>
+                android:text="Indisponível - 20 Jun 2016"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/textViewLastInformation1"
+                android:layout_toRightOf="@+id/pie_chart_ubs" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewLastInformation3"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:text="Disponível - 15 Mai 2016"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="24dp"
+                android:layout_below="@+id/textViewLastInformation2"
+                android:layout_toRightOf="@+id/pie_chart_ubs" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:id="@+id/textViewWithoutNotification"
+                android:textSize="14sp"
+                android:text="Nenhuma notificação enviada."
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/textViewLastInformationTitle"
+                android:layout_toRightOf="@+id/pie_chart_ubs" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -94,13 +134,12 @@
                 android:layout_alignParentEnd="false"
                 android:minWidth="88dp"
                 android:minHeight="54dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/colorPrimaryText"
                 android:singleLine="false"
                 android:elevation="0dp"
-                android:layout_below="@id/textViewUbsAttentionLevel"
+                android:layout_below="@id/textViewLastInformation3"
                 android:layout_toLeftOf="@+id/buttonUbsDescription" />
 
             <Button
@@ -110,13 +149,12 @@
                 android:id="@id/buttonUbsDescription"
                 android:minWidth="88dp"
                 android:minHeight="54dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/colorPrimaryText"
                 android:singleLine="false"
                 android:elevation="0dp"
-                android:layout_below="@id/textViewUbsAttentionLevel"
+                android:layout_below="@id/textViewLastInformation3"
                 android:layout_alignParentEnd="true" />
 
             <Button
@@ -127,13 +165,12 @@
                 android:layout_alignParentEnd="false"
                 android:minWidth="88dp"
                 android:minHeight="54dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/colorPrimaryText"
                 android:singleLine="false"
                 android:elevation="0dp"
-                android:layout_below="@id/textViewUbsAttentionLevel"
+                android:layout_below="@id/textViewLastInformation3"
                 android:layout_toLeftOf="@+id/buttonUbsDescription" />
         </RelativeLayout>
     </RelativeLayout>

@@ -101,6 +101,7 @@ public class Inform extends AppCompatActivity {
         notification.setAvailable(availability);
         notification.setDateInform(calendar.getTime());
         notification.setUserInform(getCurrentUser.getUsername());
+        notification.pinInBackground();
         notification.saveInBackground();
     }
 
