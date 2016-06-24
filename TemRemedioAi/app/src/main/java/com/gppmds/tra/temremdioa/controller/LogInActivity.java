@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +29,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -38,7 +50,9 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     //Keep track of the login task to ensure we can cancel it if requested.
     private UserLoginTask mAuthTask = null;
 
+    CallbackManager callbackManager;
     // res references
+    private TextView info;
     private EditText mUsernameView;
     private EditText mPasswordView;
     private ProgressBar mProgressView;
@@ -46,11 +60,11 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
     private View focusView = null;
     private Button mUsernameSignInButton;
     private Button mRegisterButton;
-    private Button mFacebookButton;
-
+    private LoginButton mFacebookButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        facebookSDKInitialize();
         setContentView(R.layout.activity_log_in);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,12 +75,23 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
+    protected void facebookSDKInitialize() {
+        callbackManager = CallbackManager.Factory.create();
+    }
+
     public ParseUser getCurrentUser(){
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         return currentUser;
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        Log.e("data",data.toString());
     }
 
     public void setValues() {
@@ -76,20 +101,38 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mUsernameSignInButton = (Button) findViewById(R.id.log_in_button);
         mRegisterButton = (Button) findViewById(R.id.log_in_sign_in_button);
-        //mFacebookButton = (Button) findViewById(R.id.log_in_button_facebook);
-
-        logInFacebook();
+        info = (TextView)findViewById(R.id.info);
+        mFacebookButton = (LoginButton) findViewById(R.id.login_button_fb);
 
         mLoginFormView = (View) findViewById(R.id.log_in_form);
         mProgressView = (ProgressBar) findViewById(R.id.log_in_progress_bar);
 
     }
 
-    private void logInFacebook() {
-
-    }
-
     private void setListener() {
+        mFacebookButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+//                info.setText(
+//                        "User ID: "
+//                                + loginResult.getAccessToken().getUserId()
+//                                + "\n" +
+//                                "Auth Token: "
+//                                + loginResult.getAccessToken().getToken()
+//                );
+                finish();
+            }
+
+            @Override
+            public void onCancel() {
+                info.setText("Login attempt canceled.");
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                info.setText("Login attempt failed.");
+            }
+        });
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {

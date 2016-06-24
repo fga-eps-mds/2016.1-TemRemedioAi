@@ -20,6 +20,9 @@
         android:label="@string/appName"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
         <activity
             android:name="com.gppmds.tra.temremdioa.controller.MainActivity"
             android:label="@string/appName"
@@ -99,6 +102,11 @@
                 android:value="com.gppmds.tra.temremdioa.controller.LogInActivity" />
         </activity>
         <activity android:name="com.gppmds.tra.temremdioa.controller.Inform"></activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/appName" />
     </application>
 
 </manifest>
