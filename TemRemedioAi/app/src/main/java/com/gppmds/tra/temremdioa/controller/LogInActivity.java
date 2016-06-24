@@ -35,8 +35,8 @@ import com.tra.gppmds.temremdioa.R;
 
 public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    private UserLoginTask mAuthTask = null; //Keep track of the login task to ensure we can cancel
-                                            // it if requested.
+    //Keep track of the login task to ensure we can cancel it if requested.
+    private UserLoginTask mAuthTask = null;
 
     // res references
     private EditText mUsernameView;

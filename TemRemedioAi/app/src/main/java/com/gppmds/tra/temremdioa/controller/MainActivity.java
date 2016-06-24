@@ -23,7 +23,7 @@ import com.tra.gppmds.temremdioa.R;
 
 public class MainActivity extends AppCompatActivity{
 
-    public static SearchView searchView;
+    public SearchView searchView;
     private GoogleApiClient client;
 
     @Override
@@ -123,6 +123,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public GoogleApiClient createClient(){
-        return (new GoogleApiClient.Builder(this).addApi(AppIndex.API).build());
+        return new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 }

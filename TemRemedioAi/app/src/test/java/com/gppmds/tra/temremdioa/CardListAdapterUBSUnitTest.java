@@ -2,8 +2,6 @@ package com.gppmds.tra.temremdioa;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,17 +11,12 @@ import com.gppmds.tra.temremdioa.controller.adapter.FilterSearchUBS;
 import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderUBS;
 import com.gppmds.tra.temremdioa.model.UBS;
 import com.parse.ParseObject;
-import com.tra.gppmds.temremdioa.R;
 
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.asm.Type;
-import org.mockito.internal.stubbing.answers.Returns;
-import org.mockito.internal.stubbing.defaultanswers.ReturnsSmartNulls;
-import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +38,7 @@ public class CardListAdapterUBSUnitTest {
     private TextView textView;
 
     @Before
-    public void CardListAdapterTest() {
+    public void cardListAdapterTest() {
         ParseObject.registerSubclass(UBS.class);
         context = Mockito.mock(Context.class, Mockito.RETURNS_SMART_NULLS);
         viewHolderUBS = Mockito.mock(ViewHolderUBS.class, Mockito.RETURNS_SMART_NULLS);
@@ -81,7 +74,8 @@ public class CardListAdapterUBSUnitTest {
 
     @Test
     public void getItemCountTest() {
-        Assert.assertEquals(2, cardListAdapterUBS.getItemCount());
+        final int UBS_SIZE = 2;
+        Assert.assertEquals(UBS_SIZE, cardListAdapterUBS.getItemCount());
     }
 
     @Test
