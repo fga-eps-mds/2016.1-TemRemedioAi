@@ -10,9 +10,15 @@ import android.widget.Filterable;
 
 import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderMedicine;
 import com.gppmds.tra.temremdioa.model.Medicine;
+import com.gppmds.tra.temremdioa.model.Notification;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.tra.gppmds.temremdioa.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedicine> implements Filterable{
     public static List<Medicine> dataMedicine;
@@ -43,9 +49,9 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
     public void onBindViewHolder(ViewHolderMedicine holder, int position) {
         Medicine rowData = this.dataMedicine.get(position);
         holder.getTextViewMedicineName().setText(rowData.getMedicineDescription());
-        holder.getTextViewMedicineType().setText(rowData.getUnityMedicineFormatted());
+        holder.getTextViewMedicineUnit().setText(rowData.getUnityMedicineFormatted());
         holder.getTextViewMedicineDosage().setText(rowData.getMedicineDosage());
-        holder.getTextViewMedicineAttentionLevel().setText(rowData.getMedicineAttentionLevelExtended());
+
         if (!getShowButtonUBSs()) {
             holder.getButtonSelectUbs().setVisibility(View.GONE);
         } else {
@@ -54,13 +60,53 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
 
         if (!getUbsName().equalsIgnoreCase("")) {
             holder.ubsSelectedName = getUbsName();
+        } else {
+            holder.ubsSelectedName = "";
         }
 
         if (!getShowButtonInform()) {
             holder.buttonMedicineInform.setVisibility(View.GONE);
         }
+
+        List<Notification> notificationList = null;
+        notificationList = getNotifications(rowData);
+
+        holder.haveNotification = false;
+        if (notificationList.size() >= 1) {
+            holder.haveNotification = true;
+            holder.getTextViewLastInformation1().setText("1. " + generateTextNotification(notificationList.get(0)));
+        } else {
+            holder.getTextViewLastInformation1().setText("");
+        }
+
+        if (notificationList.size() >= 2) {
+            holder.getTextViewLastInformation2().setText("2. " + generateTextNotification(notificationList.get(1)));
+        } else {
+            holder.getTextViewLastInformation2().setText("");
+        }
+
+        if (notificationList.size() >= 3) {
+            holder.getTextViewLastInformation3().setText("3. " + generateTextNotification(notificationList.get(2)));
+        } else {
+            holder.getTextViewLastInformation3().setText("");
+        }
     }
 
+    private String generateTextNotification(Notification notification) {
+        String textOfNotification = "";
+        if (notification.getAvailable()) {
+            textOfNotification = "Disponível em ";
+        } else {
+            textOfNotification = "Indisponível em ";
+        }
+        Calendar dayCalendar = Calendar.getInstance(new Locale("pt", "BR"));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+        dayCalendar.setTime(notification.getDateInform());
+        textOfNotification = textOfNotification + simpleDateFormat.format(dayCalendar.getTime());
+
+        return textOfNotification;
+    }
     @Override
     public FilterSearchMedicine getFilter() {
         if(filter == null) {
@@ -70,6 +116,27 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
         }
 
         return filter;
+    }
+
+    private List<Notification> getNotifications(Medicine medicine) {
+        List<Notification> listNotification = null;
+
+        ParseQuery<Notification> queryNotification = Notification.getQuery();
+        queryNotification.whereEqualTo(Notification.getTitleMedicineName(), medicine.getMedicineDescription());
+        queryNotification.whereEqualTo(Notification.getTitleMedicineDosage(), medicine.getMedicineDosage());
+        if (!getUbsName().isEmpty()) {
+            queryNotification.whereEqualTo(Notification.getTitleUBSName(), getUbsName());
+        }
+        queryNotification.orderByDescending(Notification.getTitleDateInform());
+        queryNotification.setLimit(3);
+
+        try {
+            listNotification = queryNotification.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return listNotification;
     }
 
     @Override

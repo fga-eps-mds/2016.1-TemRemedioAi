@@ -2,12 +2,7 @@ package com.gppmds.tra.temremdioa.controller;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -16,7 +11,6 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
@@ -27,8 +21,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.gppmds.tra.temremdioa.controller.adapter.TabsAdapter;
 import com.gppmds.tra.temremdioa.controller.fragment.MedicineFragment;
 import com.gppmds.tra.temremdioa.controller.fragment.UBSFragment;
-import com.gppmds.tra.temremdioa.controller.LogInActivity;
-
 import com.parse.ParseUser;
 import com.tra.gppmds.temremdioa.R;
 
@@ -36,7 +28,7 @@ import static com.facebook.AccessToken.getCurrentAccessToken;
 
 public class MainActivity extends AppCompatActivity{
 
-    public static SearchView searchView;
+    public SearchView searchView;
     private GoogleApiClient client;
 
     @Override
@@ -138,6 +130,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public GoogleApiClient createClient(){
-        return (new GoogleApiClient.Builder(this).addApi(AppIndex.API).build());
+        return new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 }
