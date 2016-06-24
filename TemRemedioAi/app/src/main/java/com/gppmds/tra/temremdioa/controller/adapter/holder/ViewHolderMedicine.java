@@ -28,6 +28,7 @@ import com.gppmds.tra.temremdioa.model.Medicine;
 import com.gppmds.tra.temremdioa.model.Notification;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.tra.gppmds.temremdioa.R;
 
 import java.util.ArrayList;
@@ -102,6 +103,14 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
                         getTextViewLastInformationTitle().setText("");
                         setInformationOfChartWithoutNotification();
                     }
+
+                    ParseUser getCurrentUser = ParseUser.getCurrentUser();
+                    if (getCurrentUser != null) {
+                        getButtonMedicineInform().setVisibility(View.VISIBLE);
+                    } else {
+                        getButtonMedicineInform().setVisibility(View.GONE);
+                    }
+
                     expand();
                 } else {
                     Log.i("LOG", "Collapse Click");
@@ -308,31 +317,33 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     }
 
     public TextView getTextViewMedicineName(){
-        return textViewMedicineName;
+        return this.textViewMedicineName;
     }
     public TextView getTextViewWithoutNotification(){
-        return textViewWithoutNotification;
+        return this.textViewWithoutNotification;
     }
     public TextView getTextViewLastInformationTitle() {
-        return textViewLastInformationTitle;
+        return this.textViewLastInformationTitle;
     }
     public TextView getTextViewLastInformation1() {
-        return textViewLastInformation1;
+        return this.textViewLastInformation1;
     }
     public TextView getTextViewLastInformation2() {
-        return textViewLastInformation2;
+        return this.textViewLastInformation2;
     }
     public TextView getTextViewLastInformation3() {
-        return textViewLastInformation3;
+        return this.textViewLastInformation3;
     }
     public TextView getTextViewMedicineDosage() {
-        return textViewMedicineDosage;
+        return this.textViewMedicineDosage;
     }
     public TextView getTextViewMedicineUnit() {
-        return textViewMedicineUnit;
+        return this.textViewMedicineUnit;
     }
-
+    public Button getButtonMedicineInform() {
+        return this.buttonMedicineInform;
+    }
     public Button getButtonSelectUbs() {
-        return buttonSelectUbs;
+        return this.buttonSelectUbs;
     }
 }

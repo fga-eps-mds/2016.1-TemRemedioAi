@@ -160,10 +160,11 @@
                 android:textColor="@color/colorPrimaryText"
                 android:singleLine="false"
                 android:elevation="0dp"
-                android:layout_alignParentEnd="true"
+                android:layout_alignParentEnd="false"
                 android:layout_marginBottom="8dp"
                 android:layout_alignParentBottom="false"
-                android:layout_below="@+id/textViewLastInformation3" />
+                android:layout_below="@+id/textViewLastInformation3"
+                android:layout_toLeftOf="@+id/buttonInformRemedio"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -177,9 +178,8 @@
                 android:singleLine="false"
                 android:elevation="0dp"
                 android:layout_marginBottom="8dp"
-                android:layout_toLeftOf="@+id/buttonSelectUbs"
-                android:layout_alignParentBottom="false"
-                android:layout_below="@+id/textViewLastInformation3" />
+                android:layout_below="@+id/textViewLastInformation3"
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
     </RelativeLayout>
