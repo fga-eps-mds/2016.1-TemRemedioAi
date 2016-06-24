@@ -13,8 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = Build.VERSION_CODES.LOLLIPOP)
@@ -28,36 +29,43 @@ public class TabsAdapterTest extends FragmentActivity {
 
     @Test
     public void getItemReturnMedicineTest(){
-        assertEquals(MedicineFragment.class, tabsAdapter.getItem(0).getClass());
+        final int MEDICINE_FRAGMENT_OPTION = 0;
+        assertEquals(MedicineFragment.class, tabsAdapter.getItem(MEDICINE_FRAGMENT_OPTION).getClass());
     }
 
     @Test
     public void getItemReturnUBSTest(){
-        assertEquals(UBSFragment.class, tabsAdapter.getItem(1).getClass());
+        final int UBS_FRAGMENT_OPTION = 1;
+        assertEquals(UBSFragment.class, tabsAdapter.getItem(UBS_FRAGMENT_OPTION).getClass());
     }
 
     @Test
     public void getItemReturnNullTest(){
+        final int NULL_OPTION = 2;
         assertNull(tabsAdapter.getItem(2));
     }
 
     @Test
     public void getCountTest(){
-        assertEquals(tabsAdapter.getCount(), 2);
+        final int NUMBER_OF_TABS = 2;
+        assertEquals(tabsAdapter.getCount(), NUMBER_OF_TABS);
     }
 
     @Test
     public void getPageTitleMedicineTest(){
-        assertEquals("Remédio",tabsAdapter.getPageTitle(0));
+        final int MEDICINE_STRING = 0;
+        assertEquals("Remédio",tabsAdapter.getPageTitle(MEDICINE_STRING));
     }
 
     @Test
     public void getPageTitleUBSTest(){
-        assertEquals("UBS",tabsAdapter.getPageTitle(1));
+        final int UBS_STRING = 1;
+        assertEquals("UBS",tabsAdapter.getPageTitle(UBS_STRING));
     }
 
     @Test
     public void getPageTitleReturnNullTest(){
+        final int NULL_OPTION = 2;
         assertNull(tabsAdapter.getPageTitle(2));
     }
 }
