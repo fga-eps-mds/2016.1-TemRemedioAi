@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filterable;
+import android.widget.RelativeLayout;
 
 import com.gppmds.tra.temremdioa.controller.adapter.holder.ViewHolderMedicine;
 import com.gppmds.tra.temremdioa.model.Medicine;
@@ -54,6 +55,9 @@ public class CardListAdapterMedicine extends RecyclerView.Adapter<ViewHolderMedi
 
         if (!getShowButtonUBSs()) {
             holder.getButtonSelectUbs().setVisibility(View.GONE);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) holder.getButtonMedicineInform().getLayoutParams();
+            params.addRule(RelativeLayout.ALIGN_PARENT_END);
+            holder.getButtonMedicineInform().setLayoutParams(params);
         } else {
             /* Nothing to do */
         }

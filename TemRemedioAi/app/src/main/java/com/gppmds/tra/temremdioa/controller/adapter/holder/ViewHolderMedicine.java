@@ -105,7 +105,7 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
                     }
 
                     ParseUser getCurrentUser = ParseUser.getCurrentUser();
-                    if (getCurrentUser != null) {
+                    if (getCurrentUser != null && getButtonMedicineInform().getVisibility() == View.VISIBLE) {
                         getButtonMedicineInform().setVisibility(View.VISIBLE);
                     } else {
                         getButtonMedicineInform().setVisibility(View.GONE);
@@ -322,6 +322,9 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     public TextView getTextViewWithoutNotification(){
         return this.textViewWithoutNotification;
     }
+    public TextView getTextViewMedicineUnit() {
+        return this.textViewMedicineUnit;
+    }
     public TextView getTextViewLastInformationTitle() {
         return this.textViewLastInformationTitle;
     }
@@ -336,9 +339,6 @@ public class ViewHolderMedicine extends RecyclerView.ViewHolder {
     }
     public TextView getTextViewMedicineDosage() {
         return this.textViewMedicineDosage;
-    }
-    public TextView getTextViewMedicineUnit() {
-        return this.textViewMedicineUnit;
     }
     public Button getButtonMedicineInform() {
         return this.buttonMedicineInform;
